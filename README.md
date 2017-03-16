@@ -33,7 +33,7 @@ Nothing here yet.
 The easiest way to get started with Python is downloading a bundle installer. We recommend Anaconda, this platform includes Python and makes it easier to install the dependencies. Download and install [Anaconda](https://www.continuum.io/downloads).
 
 #### Install a C-compiler
-Compiling C++-extensions on Windows for Python 3.5 and later requires Microsoft Visual C++ 14.0 or later, this also works for earlier versions of Python. Download and install [Visual C++ 2015(or later) Build Tools](http://landinghub.visualstudio.com/visual-cpp-build-tools), this requires 4 gb of free space and may take 20 minutes.
+Compiling C++-extensions on Windows for Python 3.5 requires Microsoft Visual C++ 14.0 or later, this also works for earlier versions of Python. Download and install [Visual C++ 2015 Build Tools](http://landinghub.visualstudio.com/visual-cpp-build-tools), this requires 4 gb of free space and may take 20 minutes.
 
 Alternatively and only if you are using Python 2.7, you can install [TDM-GCC](http://tdm-gcc.tdragon.net/) and in the Anaconda prompt write 
 ```
