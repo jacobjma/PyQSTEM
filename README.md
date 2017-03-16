@@ -26,23 +26,28 @@ Optional:
 ## Building
 ### Windows
 
+#### Install Python
 The easiest way to get started with Python is downloading a bundle installer. We recommend Anaconda, this platform includes Python and makes it easier to install the dependencies. Download and install Anaconda from https://www.continuum.io/downloads.
 
+#### Install a C-compiler
 Compiling C++-extensions on Windows for Python 3.5 and later requires Microsoft Visual C++ 14.0 or later, this also works for earlier versions of Python. Download and install Visual C++ 2015(or later) Build Tools from http://landinghub.visualstudio.com/visual-cpp-build-tools, this requires 4 gb of free space and may take 20 minutes.
 
 Alternatively, if you are using Python 2.7, you can install http://tdm-gcc.tdragon.net/ and in the Anaconda prompt write 
 ```
 conda install
 ```
+#### Notes on FFTW
 Precompiled libraries for FFTW 3.3.5 from (http://www.fftw.org/install/windows.html) are included for both 32 and 64-bit Windows. You should not have to do anything.
 
-When Anaconda and a C++-compiler is installed, open the Anaconda prompt, and type the following commands to install the required dependencies:
+#### Install dependencies
+When Anaconda and a C++-compiler is installed, open the `Anaconda prompt`, and type the following commands to install ASE and cython:
 ```
 conda install cython
 pip install ase
 ```
-The other required dependencies should be included with Anaconda.
+The other required dependencies should be included with Anaconda, otherwise install them in a similar manner.
 
+#### Install PyQSTEM
 When the dependencies are installed, download, compile and install PyQSTEM by writing.
 ```
 git clone 
@@ -52,4 +57,3 @@ python setup.py install
 You will get some warnings which can be ignored.
 
 QSTEM is now ready to be used from Python. We recommend that you start by testing one of the interactive notebooks included under pyqstem/examples.
-
