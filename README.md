@@ -24,8 +24,11 @@ Optional:
 * [PIL (Python Image Library)](http://www.pythonware.com/products/pil/)
 
 ## Building from Source
+### Linux
+Nothing here yet.
+### Mac
+Nothing here yet.
 ### Windows
-
 #### Install Python
 The easiest way to get started with Python is downloading a bundle installer. We recommend Anaconda, this platform includes Python and makes it easier to install the dependencies. Download and install [Anaconda](https://www.continuum.io/downloads).
 
