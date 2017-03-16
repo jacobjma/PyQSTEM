@@ -24,3 +24,9 @@ Optional:
 * [PIL (Python Image Library)](http://www.pythonware.com/products/pil/)
 
 ## Installation
+### Windows
+If you are new to Python the easiest way to get started is downloading a bundle installer.  
+We recommend [Anaconda](https://www.continuum.io/downloads), this platform includes Python and makes it much easier to install the dependencies.
+
+Windows 3.5 and later requires 
+http://landinghub.visualstudio.com/visual-cpp-build-tools
