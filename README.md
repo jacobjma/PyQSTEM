@@ -23,29 +23,29 @@ Optional:
 * [scikit-image](http://scikit-image.org/)
 * [PIL (Python Image Library)](http://www.pythonware.com/products/pil/)
 
-## Building
+## Building from Source
 ### Windows
 
 #### Install Python
-The easiest way to get started with Python is downloading a bundle installer. We recommend Anaconda, this platform includes Python and makes it easier to install the dependencies. Download and install Anaconda from https://www.continuum.io/downloads.
+The easiest way to get started with Python is downloading a bundle installer. We recommend Anaconda, this platform includes Python and makes it easier to install the dependencies. Download and install [Anaconda](https://www.continuum.io/downloads).
 
 #### Install a C-compiler
-Compiling C++-extensions on Windows for Python 3.5 and later requires Microsoft Visual C++ 14.0 or later, this also works for earlier versions of Python. Download and install Visual C++ 2015(or later) Build Tools from http://landinghub.visualstudio.com/visual-cpp-build-tools, this requires 4 gb of free space and may take 20 minutes.
+Compiling C++-extensions on Windows for Python 3.5 and later requires Microsoft Visual C++ 14.0 or later, this also works for earlier versions of Python. Download and install [Visual C++ 2015(or later) Build Tools](http://landinghub.visualstudio.com/visual-cpp-build-tools), this requires 4 gb of free space and may take 20 minutes.
 
 Alternatively, if you are using Python 2.7, you can install http://tdm-gcc.tdragon.net/ and in the Anaconda prompt write 
 ```
 conda install
 ```
-#### Notes on FFTW
-Precompiled libraries for FFTW 3.3.5 from (http://www.fftw.org/install/windows.html) are included for both 32 and 64-bit Windows. You should not have to do anything.
+#### FFTW
+Precompiled libraries for [FFTW 3.3.5](http://www.fftw.org/install/windows.html) are included for both 32 and 64-bit Windows. You should not have to do anything.
 
 #### Install dependencies
 When Anaconda and a C++-compiler is installed, open the `Anaconda prompt`, and type the following commands to install ASE and cython:
 ```
-conda install cython
 pip install ase
+conda install cython
 ```
-The other required dependencies should be included with Anaconda, otherwise install them in a similar manner.
+The other required dependencies should be included with Anaconda, otherwise install them using `pip`.
 
 #### Install PyQSTEM
 When the dependencies are installed, download, compile and install PyQSTEM by writing.
