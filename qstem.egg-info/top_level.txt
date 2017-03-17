@@ -1,2 +1,1 @@
 pyqstem
-qstem_interface

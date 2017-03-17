@@ -11,9 +11,9 @@
             "-D MS_WIN64"
         ],
         "include_dirs": [
-            "C:\\Users\\Jacob\\Anaconda2\\envs\\qstem\\lib\\site-packages\\numpy\\core\\include",
-            "C:\\Users\\Jacob\\Documents\\GitHub\\PyQSTEM\\fftw",
-            "C:\\Users\\Jacob\\Documents\\GitHub\\PyQSTEM\\source/"
+            "C:\\Users\\jacob\\Anaconda3\\envs\\qstem\\lib\\site-packages\\numpy\\core\\include",
+            "C:\\Users\\jacob\\Documents\\github\\PyQSTEM\\fftw",
+            "C:\\Users\\jacob\\Documents\\github\\PyQSTEM\\source/"
         ],
         "language": "c++",
         "libraries": [
@@ -25,7 +25,7 @@
             "fftw/win64"
         ]
     },
-    "module_name": "qstem_interface"
+    "module_name": "pyqstem.qstem_interface"
 }
 END: Cython Metadata */
 
@@ -841,28 +841,6 @@ static CYTHON_INLINE PyObject* __Pyx_PyObject_CallNoArg(PyObject *func);
 /* GetModuleGlobalName.proto */
 static CYTHON_INLINE PyObject *__Pyx_GetModuleGlobalName(PyObject *name);
 
-/* GetItemInt.proto */
-#define __Pyx_GetItemInt(o, i, type, is_signed, to_py_func, is_list, wraparound, boundscheck)\
-    (__Pyx_fits_Py_ssize_t(i, type, is_signed) ?\
-    __Pyx_GetItemInt_Fast(o, (Py_ssize_t)i, is_list, wraparound, boundscheck) :\
-    (is_list ? (PyErr_SetString(PyExc_IndexError, "list index out of range"), (PyObject*)NULL) :\
-               __Pyx_GetItemInt_Generic(o, to_py_func(i))))
-#define __Pyx_GetItemInt_List(o, i, type, is_signed, to_py_func, is_list, wraparound, boundscheck)\
-    (__Pyx_fits_Py_ssize_t(i, type, is_signed) ?\
-    __Pyx_GetItemInt_List_Fast(o, (Py_ssize_t)i, wraparound, boundscheck) :\
-    (PyErr_SetString(PyExc_IndexError, "list index out of range"), (PyObject*)NULL))
-static CYTHON_INLINE PyObject *__Pyx_GetItemInt_List_Fast(PyObject *o, Py_ssize_t i,
-                                                              int wraparound, int boundscheck);
-#define __Pyx_GetItemInt_Tuple(o, i, type, is_signed, to_py_func, is_list, wraparound, boundscheck)\
-    (__Pyx_fits_Py_ssize_t(i, type, is_signed) ?\
-    __Pyx_GetItemInt_Tuple_Fast(o, (Py_ssize_t)i, wraparound, boundscheck) :\
-    (PyErr_SetString(PyExc_IndexError, "tuple index out of range"), (PyObject*)NULL))
-static CYTHON_INLINE PyObject *__Pyx_GetItemInt_Tuple_Fast(PyObject *o, Py_ssize_t i,
-                                                              int wraparound, int boundscheck);
-static CYTHON_INLINE PyObject *__Pyx_GetItemInt_Generic(PyObject *o, PyObject* j);
-static CYTHON_INLINE PyObject *__Pyx_GetItemInt_Fast(PyObject *o, Py_ssize_t i,
-                                                     int is_list, int wraparound, int boundscheck);
-
 /* PyThreadStateGet.proto */
 #if CYTHON_FAST_THREAD_STATE
 #define __Pyx_PyThreadState_declare  PyThreadState *__pyx_tstate;
@@ -889,6 +867,28 @@ static CYTHON_INLINE void __Pyx_ErrFetchInState(PyThreadState *tstate, PyObject 
 
 /* RaiseException.proto */
 static void __Pyx_Raise(PyObject *type, PyObject *value, PyObject *tb, PyObject *cause);
+
+/* GetItemInt.proto */
+#define __Pyx_GetItemInt(o, i, type, is_signed, to_py_func, is_list, wraparound, boundscheck)\
+    (__Pyx_fits_Py_ssize_t(i, type, is_signed) ?\
+    __Pyx_GetItemInt_Fast(o, (Py_ssize_t)i, is_list, wraparound, boundscheck) :\
+    (is_list ? (PyErr_SetString(PyExc_IndexError, "list index out of range"), (PyObject*)NULL) :\
+               __Pyx_GetItemInt_Generic(o, to_py_func(i))))
+#define __Pyx_GetItemInt_List(o, i, type, is_signed, to_py_func, is_list, wraparound, boundscheck)\
+    (__Pyx_fits_Py_ssize_t(i, type, is_signed) ?\
+    __Pyx_GetItemInt_List_Fast(o, (Py_ssize_t)i, wraparound, boundscheck) :\
+    (PyErr_SetString(PyExc_IndexError, "list index out of range"), (PyObject*)NULL))
+static CYTHON_INLINE PyObject *__Pyx_GetItemInt_List_Fast(PyObject *o, Py_ssize_t i,
+                                                              int wraparound, int boundscheck);
+#define __Pyx_GetItemInt_Tuple(o, i, type, is_signed, to_py_func, is_list, wraparound, boundscheck)\
+    (__Pyx_fits_Py_ssize_t(i, type, is_signed) ?\
+    __Pyx_GetItemInt_Tuple_Fast(o, (Py_ssize_t)i, wraparound, boundscheck) :\
+    (PyErr_SetString(PyExc_IndexError, "tuple index out of range"), (PyObject*)NULL))
+static CYTHON_INLINE PyObject *__Pyx_GetItemInt_Tuple_Fast(PyObject *o, Py_ssize_t i,
+                                                              int wraparound, int boundscheck);
+static CYTHON_INLINE PyObject *__Pyx_GetItemInt_Generic(PyObject *o, PyObject* j);
+static CYTHON_INLINE PyObject *__Pyx_GetItemInt_Fast(PyObject *o, Py_ssize_t i,
+                                                     int is_list, int wraparound, int boundscheck);
 
 /* SliceObject.proto */
 static CYTHON_INLINE PyObject* __Pyx_PyObject_GetSlice(
@@ -1171,7 +1171,7 @@ static const char __pyx_k_dw[] = "dw";
 static const char __pyx_k_np[] = "np";
 static const char __pyx_k_v0[] = "v0";
 static const char __pyx_k_TOL[] = "TOL";
-static const char __pyx_k__37[] = "*";
+static const char __pyx_k__38[] = "*";
 static const char __pyx_k_a20[] = "a20";
 static const char __pyx_k_a22[] = "a22";
 static const char __pyx_k_a31[] = "a31";
@@ -1200,10 +1200,11 @@ static const char __pyx_k_mode[] = "mode";
 static const char __pyx_k_name[] = "name";
 static const char __pyx_k_real[] = "real";
 static const char __pyx_k_rtol[] = "rtol";
-static const char __pyx_k_show[] = "show";
 static const char __pyx_k_test[] = "__test__";
 static const char __pyx_k_type[] = "type";
+static const char __pyx_k_util[] = "util";
 static const char __pyx_k_warn[] = "warn";
+static const char __pyx_k_wave[] = "wave";
 static const char __pyx_k_alpha[] = "alpha";
 static const char __pyx_k_array[] = "array";
 static const char __pyx_k_atoms[] = "atoms";
@@ -1264,14 +1265,11 @@ static const char __pyx_k_num_samples[] = "num_samples";
 static const char __pyx_k_periodic_xy[] = "periodic_xy";
 static const char __pyx_k_window_size[] = "window_size";
 static const char __pyx_k_RuntimeError[] = "RuntimeError";
-static const char __pyx_k_pyqstem_util[] = "pyqstem.util";
-static const char __pyx_k_pyqstem_wave[] = "pyqstem.wave";
+static const char __pyx_k_probe_extent[] = "probe_extent";
 static const char __pyx_k_get_positions[] = "get_positions";
-static const char __pyx_k_nonperiodic_z[] = "nonperiodic_z";
 static const char __pyx_k_get_numsamples[] = "get_numsamples";
 static const char __pyx_k_get_resolution[] = "get_resolution";
 static const char __pyx_k_get_scan_range[] = "get_scan_range";
-static const char __pyx_k_nonperiodic_xy[] = "nonperiodic_xy";
 static const char __pyx_k_set_scan_range[] = "set_scan_range";
 static const char __pyx_k_apply_along_axis[] = "apply_along_axis";
 static const char __pyx_k_potential_extent[] = "potential_extent";
@@ -1288,12 +1286,13 @@ static const char __pyx_k_get_minimum_potential_extent[] = "get_minimum_potentia
 static const char __pyx_k_Detector_name_0_not_recognized[] = "Detector name {0} not recognized";
 static const char __pyx_k_Provide_scan_window_for_mode_0[] = "Provide scan window for mode {0}";
 static const char __pyx_k_A_potential_have_not_been_build[] = "A potential have not been build";
+static const char __pyx_k_Please_set_atoms_and_simulation[] = "Please set atoms and simulation box";
 static const char __pyx_k_Please_set_or_build_a_potential[] = "Please set or build a potential";
 static const char __pyx_k_Wavefunction_resolution_will_be[] = "Wavefunction resolution will be changed to match the simulation box";
 static const char __pyx_k_A_potential_have_not_been_create[] = "A potential have not been created";
 static const char __pyx_k_A_wavefunction_have_not_been_cre[] = "A wavefunction have not been created";
-static const char __pyx_k_Create_potential_before_building[] = "Create potential before building the wave function";
 static const char __pyx_k_Detector_0_is_empty_add_the_dete[] = "Detector {0} is empty, add the detector before running";
+static const char __pyx_k_Periodic_boundary_conditions_not[] = "Periodic boundary conditions not implemented for mode {0}";
 static const char __pyx_k_Please_provide_scan_window_for_m[] = "Please provide scan window for mode STEM";
 static const char __pyx_k_Please_specify_resolution_or_win[] = "Please specify resolution or window size";
 static const char __pyx_k_Potential_resolution_does_not_ma[] = "Potential resolution does not match wavefunction ({0},{1})!=({2},{3})";
@@ -1307,12 +1306,13 @@ static PyObject *__pyx_kp_s_A_potential_have_not_been_build;
 static PyObject *__pyx_kp_s_A_potential_have_not_been_create;
 static PyObject *__pyx_kp_s_A_wavefunction_have_not_been_cre;
 static PyObject *__pyx_n_s_C5;
-static PyObject *__pyx_kp_s_Create_potential_before_building;
 static PyObject *__pyx_n_s_Cs;
 static PyObject *__pyx_kp_s_Detector_0_is_empty_add_the_dete;
 static PyObject *__pyx_kp_s_Detector_name_0_not_recognized;
 static PyObject *__pyx_n_s_OrderedDict;
+static PyObject *__pyx_kp_s_Periodic_boundary_conditions_not;
 static PyObject *__pyx_kp_s_Please_provide_scan_window_for_m;
+static PyObject *__pyx_kp_s_Please_set_atoms_and_simulation;
 static PyObject *__pyx_kp_s_Please_set_or_build_a_potential;
 static PyObject *__pyx_kp_s_Please_specify_resolution_or_win;
 static PyObject *__pyx_n_s_Potential;
@@ -1327,7 +1327,7 @@ static PyObject *__pyx_kp_s_The_wavefunction_have_to_be_recr;
 static PyObject *__pyx_n_s_Wave;
 static PyObject *__pyx_kp_s_Wave_function_shape_does_not_mat;
 static PyObject *__pyx_kp_s_Wavefunction_resolution_will_be;
-static PyObject *__pyx_n_s__37;
+static PyObject *__pyx_n_s__38;
 static PyObject *__pyx_n_b_a20;
 static PyObject *__pyx_n_b_a22;
 static PyObject *__pyx_n_b_a31;
@@ -1396,8 +1396,6 @@ static PyObject *__pyx_n_s_matplotlib_pyplot;
 static PyObject *__pyx_n_s_mode;
 static PyObject *__pyx_n_s_name;
 static PyObject *__pyx_n_s_newaxis;
-static PyObject *__pyx_n_s_nonperiodic_xy;
-static PyObject *__pyx_n_s_nonperiodic_z;
 static PyObject *__pyx_n_s_np;
 static PyObject *__pyx_n_s_num_samples;
 static PyObject *__pyx_n_s_num_slices;
@@ -1420,9 +1418,8 @@ static PyObject *__pyx_n_s_plane;
 static PyObject *__pyx_n_s_plt;
 static PyObject *__pyx_n_s_potential;
 static PyObject *__pyx_n_s_potential_extent;
+static PyObject *__pyx_n_s_probe_extent;
 static PyObject *__pyx_n_s_pyqstem_qstem_interface;
-static PyObject *__pyx_n_s_pyqstem_util;
-static PyObject *__pyx_n_s_pyqstem_wave;
 static PyObject *__pyx_n_s_radii;
 static PyObject *__pyx_n_s_range;
 static PyObject *__pyx_n_s_real;
@@ -1434,18 +1431,19 @@ static PyObject *__pyx_n_s_set_box;
 static PyObject *__pyx_n_s_set_scan_range;
 static PyObject *__pyx_n_s_shape;
 static PyObject *__pyx_n_s_shift;
-static PyObject *__pyx_n_s_show;
 static PyObject *__pyx_n_s_test;
 static PyObject *__pyx_n_s_type;
 static PyObject *__pyx_kp_s_utf_8;
+static PyObject *__pyx_n_s_util;
 static PyObject *__pyx_n_s_v0;
 static PyObject *__pyx_n_s_warn;
 static PyObject *__pyx_n_s_warnings;
+static PyObject *__pyx_n_s_wave;
 static PyObject *__pyx_n_s_window_size;
 static int __pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM___cinit__(struct __pyx_obj_7pyqstem_15qstem_interface_PyQSTEM *__pyx_v_self, PyObject *__pyx_v_mode); /* proto */
 static void __pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_2__dealloc__(struct __pyx_obj_7pyqstem_15qstem_interface_PyQSTEM *__pyx_v_self); /* proto */
 static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_4set_atoms(struct __pyx_obj_7pyqstem_15qstem_interface_PyQSTEM *__pyx_v_self, PyObject *__pyx_v_atoms, PyObject *__pyx_v_dw, PyObject *__pyx_v_set_box); /* proto */
-static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_6set_box(struct __pyx_obj_7pyqstem_15qstem_interface_PyQSTEM *__pyx_v_self, PyObject *__pyx_v_box, PyObject *__pyx_v_nonperiodic_xy, PyObject *__pyx_v_nonperiodic_z, PyObject *__pyx_v_cell_div); /* proto */
+static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_6set_box(struct __pyx_obj_7pyqstem_15qstem_interface_PyQSTEM *__pyx_v_self, PyObject *__pyx_v_box, PyObject *__pyx_v_periodic_xy, PyObject *__pyx_v_periodic_z, PyObject *__pyx_v_cell_div); /* proto */
 static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_8get_resolution(struct __pyx_obj_7pyqstem_15qstem_interface_PyQSTEM *__pyx_v_self); /* proto */
 static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_10get_potential_samples(struct __pyx_obj_7pyqstem_15qstem_interface_PyQSTEM *__pyx_v_self); /* proto */
 static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_12get_probe_samples(struct __pyx_obj_7pyqstem_15qstem_interface_PyQSTEM *__pyx_v_self); /* proto */
@@ -1455,14 +1453,14 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_18get_probe_extent
 static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_20get_potential_extent(struct __pyx_obj_7pyqstem_15qstem_interface_PyQSTEM *__pyx_v_self); /* proto */
 static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_22get_minimum_potential_extent(struct __pyx_obj_7pyqstem_15qstem_interface_PyQSTEM *__pyx_v_self); /* proto */
 static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_24view(struct __pyx_obj_7pyqstem_15qstem_interface_PyQSTEM *__pyx_v_self, PyObject *__pyx_v_ax); /* proto */
-static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_26build_potential(struct __pyx_obj_7pyqstem_15qstem_interface_PyQSTEM *__pyx_v_self, PyObject *__pyx_v_num_slices, PyObject *__pyx_v_scan_range, PyObject *__pyx_v_num_samples); /* proto */
+static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_26build_potential(struct __pyx_obj_7pyqstem_15qstem_interface_PyQSTEM *__pyx_v_self, PyObject *__pyx_v_num_slices, PyObject *__pyx_v_scan_range, CYTHON_UNUSED PyObject *__pyx_v_num_samples); /* proto */
 static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_28set_potential(struct __pyx_obj_7pyqstem_15qstem_interface_PyQSTEM *__pyx_v_self, PyObject *__pyx_v_potential, PyObject *__pyx_v_scan_range); /* proto */
 static PyObject *__pyx_lambda_funcdef_lambda(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_args); /* proto */
 static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_30get_potential_or_transfunc(struct __pyx_obj_7pyqstem_15qstem_interface_PyQSTEM *__pyx_v_self); /* proto */
 static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_32calculate_transfunc(struct __pyx_obj_7pyqstem_15qstem_interface_PyQSTEM *__pyx_v_self); /* proto */
 static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_34set_scan_range(struct __pyx_obj_7pyqstem_15qstem_interface_PyQSTEM *__pyx_v_self, PyObject *__pyx_v_scan_range); /* proto */
 static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_36build_probe(struct __pyx_obj_7pyqstem_15qstem_interface_PyQSTEM *__pyx_v_self, PyObject *__pyx_v_v0, PyObject *__pyx_v_alpha, PyObject *__pyx_v_num_samples, PyObject *__pyx_v_resolution, PyObject *__pyx_v_window_size, PyObject *__pyx_v_defocus, PyObject *__pyx_v_Cs, PyObject *__pyx_v_C5, PyObject *__pyx_v_astig_mag, PyObject *__pyx_v_astig_angle, PyObject *__pyx_v_aberrations); /* proto */
-static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_38build_wave(struct __pyx_obj_7pyqstem_15qstem_interface_PyQSTEM *__pyx_v_self, PyObject *__pyx_v_type, PyObject *__pyx_v_v0); /* proto */
+static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_38build_wave(struct __pyx_obj_7pyqstem_15qstem_interface_PyQSTEM *__pyx_v_self, PyObject *__pyx_v_type, PyObject *__pyx_v_v0, PyObject *__pyx_v_num_samples, PyObject *__pyx_v_resolution); /* proto */
 static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_40set_wave(struct __pyx_obj_7pyqstem_15qstem_interface_PyQSTEM *__pyx_v_self, PyObject *__pyx_v_wave); /* proto */
 static PyObject *__pyx_lambda_funcdef_lambda1(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_args); /* proto */
 static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_42get_wave(struct __pyx_obj_7pyqstem_15qstem_interface_PyQSTEM *__pyx_v_self); /* proto */
@@ -1482,19 +1480,19 @@ static PyObject *__pyx_int_1;
 static PyObject *__pyx_int_2;
 static PyObject *__pyx_int_3;
 static PyObject *__pyx_int_neg_1;
-static PyObject *__pyx_k__15;
+static PyObject *__pyx_k__16;
 static PyObject *__pyx_tuple_;
-static PyObject *__pyx_slice__2;
 static PyObject *__pyx_slice__3;
 static PyObject *__pyx_slice__4;
 static PyObject *__pyx_slice__5;
 static PyObject *__pyx_slice__6;
 static PyObject *__pyx_slice__7;
 static PyObject *__pyx_slice__8;
-static PyObject *__pyx_tuple__9;
-static PyObject *__pyx_slice__10;
+static PyObject *__pyx_slice__9;
+static PyObject *__pyx_tuple__2;
 static PyObject *__pyx_slice__11;
 static PyObject *__pyx_slice__12;
+static PyObject *__pyx_slice__13;
 static PyObject *__pyx_slice__21;
 static PyObject *__pyx_slice__22;
 static PyObject *__pyx_slice__23;
@@ -1502,9 +1500,9 @@ static PyObject *__pyx_slice__24;
 static PyObject *__pyx_slice__26;
 static PyObject *__pyx_slice__27;
 static PyObject *__pyx_slice__36;
-static PyObject *__pyx_tuple__13;
+static PyObject *__pyx_tuple__10;
 static PyObject *__pyx_tuple__14;
-static PyObject *__pyx_tuple__16;
+static PyObject *__pyx_tuple__15;
 static PyObject *__pyx_tuple__17;
 static PyObject *__pyx_tuple__18;
 static PyObject *__pyx_tuple__19;
@@ -1518,6 +1516,7 @@ static PyObject *__pyx_tuple__32;
 static PyObject *__pyx_tuple__33;
 static PyObject *__pyx_tuple__34;
 static PyObject *__pyx_tuple__35;
+static PyObject *__pyx_tuple__37;
 
 /* "pyqstem/qstem_interface.pyx":59
  * 
@@ -1723,8 +1722,8 @@ static int __pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM___cinit__(struct __pyx_o
   return __pyx_r;
 }
 
-/* "pyqstem/qstem_interface.pyx":90
- * 
+/* "pyqstem/qstem_interface.pyx":89
+ *     _detectors=OrderedDict()
  * 
  *     def __dealloc__(self):             # <<<<<<<<<<<<<<
  *         del self.thisptr
@@ -1746,7 +1745,7 @@ static void __pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_2__dealloc__(struct __p
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__dealloc__", 0);
 
-  /* "pyqstem/qstem_interface.pyx":91
+  /* "pyqstem/qstem_interface.pyx":90
  * 
  *     def __dealloc__(self):
  *         del self.thisptr             # <<<<<<<<<<<<<<
@@ -1755,8 +1754,8 @@ static void __pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_2__dealloc__(struct __p
  */
   delete __pyx_v_self->thisptr;
 
-  /* "pyqstem/qstem_interface.pyx":90
- * 
+  /* "pyqstem/qstem_interface.pyx":89
+ *     _detectors=OrderedDict()
  * 
  *     def __dealloc__(self):             # <<<<<<<<<<<<<<
  *         del self.thisptr
@@ -1767,7 +1766,7 @@ static void __pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_2__dealloc__(struct __p
   __Pyx_RefNannyFinishContext();
 }
 
-/* "pyqstem/qstem_interface.pyx":93
+/* "pyqstem/qstem_interface.pyx":92
  *         del self.thisptr
  * 
  *     def set_atoms(self,atoms,dw=None,set_box=1):             # <<<<<<<<<<<<<<
@@ -1816,7 +1815,7 @@ static PyObject *__pyx_pw_7pyqstem_15qstem_interface_7PyQSTEM_5set_atoms(PyObjec
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "set_atoms") < 0)) __PYX_ERR(0, 93, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "set_atoms") < 0)) __PYX_ERR(0, 92, __pyx_L3_error)
       }
     } else {
       switch (PyTuple_GET_SIZE(__pyx_args)) {
@@ -1833,7 +1832,7 @@ static PyObject *__pyx_pw_7pyqstem_15qstem_interface_7PyQSTEM_5set_atoms(PyObjec
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("set_atoms", 0, 1, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 93, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("set_atoms", 0, 1, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 92, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("pyqstem.qstem_interface.PyQSTEM.set_atoms", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -1871,7 +1870,7 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_4set_atoms(struct 
   __Pyx_RefNannySetupContext("set_atoms", 0);
   __Pyx_INCREF(__pyx_v_dw);
 
-  /* "pyqstem/qstem_interface.pyx":94
+  /* "pyqstem/qstem_interface.pyx":93
  * 
  *     def set_atoms(self,atoms,dw=None,set_box=1):
  *         self._atoms=atoms             # <<<<<<<<<<<<<<
@@ -1884,14 +1883,14 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_4set_atoms(struct 
   __Pyx_DECREF(__pyx_v_self->_atoms);
   __pyx_v_self->_atoms = __pyx_v_atoms;
 
-  /* "pyqstem/qstem_interface.pyx":96
+  /* "pyqstem/qstem_interface.pyx":95
  *         self._atoms=atoms
  * 
  *         positions = atoms.get_positions()             # <<<<<<<<<<<<<<
  *         if dw is None:
  *             dw=[0.]*len(atoms)
  */
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_atoms, __pyx_n_s_get_positions); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 96, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_atoms, __pyx_n_s_get_positions); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 95, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_3 = NULL;
   if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_2))) {
@@ -1904,17 +1903,17 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_4set_atoms(struct 
     }
   }
   if (__pyx_t_3) {
-    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 96, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 95, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   } else {
-    __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 96, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 95, __pyx_L1_error)
   }
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_v_positions = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "pyqstem/qstem_interface.pyx":97
+  /* "pyqstem/qstem_interface.pyx":96
  * 
  *         positions = atoms.get_positions()
  *         if dw is None:             # <<<<<<<<<<<<<<
@@ -1925,15 +1924,15 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_4set_atoms(struct 
   __pyx_t_5 = (__pyx_t_4 != 0);
   if (__pyx_t_5) {
 
-    /* "pyqstem/qstem_interface.pyx":98
+    /* "pyqstem/qstem_interface.pyx":97
  *         positions = atoms.get_positions()
  *         if dw is None:
  *             dw=[0.]*len(atoms)             # <<<<<<<<<<<<<<
  *         occ=[1.]*len(atoms)
  *         q=[0.]*len(atoms)
  */
-    __pyx_t_6 = PyObject_Length(__pyx_v_atoms); if (unlikely(__pyx_t_6 == -1)) __PYX_ERR(0, 98, __pyx_L1_error)
-    __pyx_t_1 = PyList_New(1 * ((__pyx_t_6<0) ? 0:__pyx_t_6)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 98, __pyx_L1_error)
+    __pyx_t_6 = PyObject_Length(__pyx_v_atoms); if (unlikely(__pyx_t_6 == -1)) __PYX_ERR(0, 97, __pyx_L1_error)
+    __pyx_t_1 = PyList_New(1 * ((__pyx_t_6<0) ? 0:__pyx_t_6)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 97, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     { Py_ssize_t __pyx_temp;
       for (__pyx_temp=0; __pyx_temp < __pyx_t_6; __pyx_temp++) {
@@ -1945,7 +1944,7 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_4set_atoms(struct 
     __Pyx_DECREF_SET(__pyx_v_dw, __pyx_t_1);
     __pyx_t_1 = 0;
 
-    /* "pyqstem/qstem_interface.pyx":97
+    /* "pyqstem/qstem_interface.pyx":96
  * 
  *         positions = atoms.get_positions()
  *         if dw is None:             # <<<<<<<<<<<<<<
@@ -1954,15 +1953,15 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_4set_atoms(struct 
  */
   }
 
-  /* "pyqstem/qstem_interface.pyx":99
+  /* "pyqstem/qstem_interface.pyx":98
  *         if dw is None:
  *             dw=[0.]*len(atoms)
  *         occ=[1.]*len(atoms)             # <<<<<<<<<<<<<<
  *         q=[0.]*len(atoms)
  *         Znum=atoms.get_atomic_numbers()
  */
-  __pyx_t_6 = PyObject_Length(__pyx_v_atoms); if (unlikely(__pyx_t_6 == -1)) __PYX_ERR(0, 99, __pyx_L1_error)
-  __pyx_t_1 = PyList_New(1 * ((__pyx_t_6<0) ? 0:__pyx_t_6)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 99, __pyx_L1_error)
+  __pyx_t_6 = PyObject_Length(__pyx_v_atoms); if (unlikely(__pyx_t_6 == -1)) __PYX_ERR(0, 98, __pyx_L1_error)
+  __pyx_t_1 = PyList_New(1 * ((__pyx_t_6<0) ? 0:__pyx_t_6)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 98, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   { Py_ssize_t __pyx_temp;
     for (__pyx_temp=0; __pyx_temp < __pyx_t_6; __pyx_temp++) {
@@ -1974,15 +1973,15 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_4set_atoms(struct 
   __pyx_v_occ = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "pyqstem/qstem_interface.pyx":100
+  /* "pyqstem/qstem_interface.pyx":99
  *             dw=[0.]*len(atoms)
  *         occ=[1.]*len(atoms)
  *         q=[0.]*len(atoms)             # <<<<<<<<<<<<<<
  *         Znum=atoms.get_atomic_numbers()
- *         if set_box:
+ * 
  */
-  __pyx_t_6 = PyObject_Length(__pyx_v_atoms); if (unlikely(__pyx_t_6 == -1)) __PYX_ERR(0, 100, __pyx_L1_error)
-  __pyx_t_1 = PyList_New(1 * ((__pyx_t_6<0) ? 0:__pyx_t_6)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 100, __pyx_L1_error)
+  __pyx_t_6 = PyObject_Length(__pyx_v_atoms); if (unlikely(__pyx_t_6 == -1)) __PYX_ERR(0, 99, __pyx_L1_error)
+  __pyx_t_1 = PyList_New(1 * ((__pyx_t_6<0) ? 0:__pyx_t_6)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 99, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   { Py_ssize_t __pyx_temp;
     for (__pyx_temp=0; __pyx_temp < __pyx_t_6; __pyx_temp++) {
@@ -1994,14 +1993,14 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_4set_atoms(struct 
   __pyx_v_q = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "pyqstem/qstem_interface.pyx":101
+  /* "pyqstem/qstem_interface.pyx":100
  *         occ=[1.]*len(atoms)
  *         q=[0.]*len(atoms)
  *         Znum=atoms.get_atomic_numbers()             # <<<<<<<<<<<<<<
+ * 
  *         if set_box:
- *             box=np.diag(atoms.get_cell())
  */
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_atoms, __pyx_n_s_get_atomic_numbers); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 101, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_atoms, __pyx_n_s_get_atomic_numbers); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 100, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_3 = NULL;
   if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_2))) {
@@ -2014,10 +2013,10 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_4set_atoms(struct 
     }
   }
   if (__pyx_t_3) {
-    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 101, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 100, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   } else {
-    __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 101, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 100, __pyx_L1_error)
   }
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -2025,8 +2024,8 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_4set_atoms(struct 
   __pyx_t_1 = 0;
 
   /* "pyqstem/qstem_interface.pyx":102
- *         q=[0.]*len(atoms)
  *         Znum=atoms.get_atomic_numbers()
+ * 
  *         if set_box:             # <<<<<<<<<<<<<<
  *             box=np.diag(atoms.get_cell())
  *             self.set_box(box)
@@ -2035,7 +2034,7 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_4set_atoms(struct 
   if (__pyx_t_5) {
 
     /* "pyqstem/qstem_interface.pyx":103
- *         Znum=atoms.get_atomic_numbers()
+ * 
  *         if set_box:
  *             box=np.diag(atoms.get_cell())             # <<<<<<<<<<<<<<
  *             self.set_box(box)
@@ -2170,8 +2169,8 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_4set_atoms(struct 
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
     /* "pyqstem/qstem_interface.pyx":102
- *         q=[0.]*len(atoms)
  *         Znum=atoms.get_atomic_numbers()
+ * 
  *         if set_box:             # <<<<<<<<<<<<<<
  *             box=np.diag(atoms.get_cell())
  *             self.set_box(box)
@@ -2221,7 +2220,7 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_4set_atoms(struct 
  *         if self.thisptr.trans_array_state >= 1:
  *             self.thisptr.trans_array_state = -1             # <<<<<<<<<<<<<<
  * 
- *     def set_box(self,box,nonperiodic_xy=True,nonperiodic_z=True,cell_div=1):
+ *     def set_box(self,box,periodic_xy=None,periodic_z=False,cell_div=1):
  */
     __pyx_v_self->thisptr->trans_array_state = -1;
 
@@ -2234,7 +2233,7 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_4set_atoms(struct 
  */
   }
 
-  /* "pyqstem/qstem_interface.pyx":93
+  /* "pyqstem/qstem_interface.pyx":92
  *         del self.thisptr
  * 
  *     def set_atoms(self,atoms,dw=None,set_box=1):             # <<<<<<<<<<<<<<
@@ -2268,26 +2267,26 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_4set_atoms(struct 
 /* "pyqstem/qstem_interface.pyx":111
  *             self.thisptr.trans_array_state = -1
  * 
- *     def set_box(self,box,nonperiodic_xy=True,nonperiodic_z=True,cell_div=1):             # <<<<<<<<<<<<<<
- *         self.thisptr.set_box(box,nonperiodic_xy,nonperiodic_z,cell_div)
- *         self.thisptr.box_state = 1
+ *     def set_box(self,box,periodic_xy=None,periodic_z=False,cell_div=1):             # <<<<<<<<<<<<<<
+ *         if ((self.thisptr.mode == 'STEM')&(periodic_xy==True)):
+ *             raise RuntimeError('Periodic boundary conditions not implemented for mode {0}'.format(self.thisptr.mode))
  */
 
 /* Python wrapper */
 static PyObject *__pyx_pw_7pyqstem_15qstem_interface_7PyQSTEM_7set_box(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
 static PyObject *__pyx_pw_7pyqstem_15qstem_interface_7PyQSTEM_7set_box(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_box = 0;
-  PyObject *__pyx_v_nonperiodic_xy = 0;
-  PyObject *__pyx_v_nonperiodic_z = 0;
+  PyObject *__pyx_v_periodic_xy = 0;
+  PyObject *__pyx_v_periodic_z = 0;
   PyObject *__pyx_v_cell_div = 0;
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("set_box (wrapper)", 0);
   {
-    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_box,&__pyx_n_s_nonperiodic_xy,&__pyx_n_s_nonperiodic_z,&__pyx_n_s_cell_div,0};
+    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_box,&__pyx_n_s_periodic_xy,&__pyx_n_s_periodic_z,&__pyx_n_s_cell_div,0};
     PyObject* values[4] = {0,0,0,0};
-    values[1] = ((PyObject *)Py_True);
-    values[2] = ((PyObject *)Py_True);
+    values[1] = ((PyObject *)Py_None);
+    values[2] = ((PyObject *)Py_False);
     values[3] = ((PyObject *)__pyx_int_1);
     if (unlikely(__pyx_kwds)) {
       Py_ssize_t kw_args;
@@ -2307,12 +2306,12 @@ static PyObject *__pyx_pw_7pyqstem_15qstem_interface_7PyQSTEM_7set_box(PyObject 
         else goto __pyx_L5_argtuple_error;
         case  1:
         if (kw_args > 0) {
-          PyObject* value = PyDict_GetItem(__pyx_kwds, __pyx_n_s_nonperiodic_xy);
+          PyObject* value = PyDict_GetItem(__pyx_kwds, __pyx_n_s_periodic_xy);
           if (value) { values[1] = value; kw_args--; }
         }
         case  2:
         if (kw_args > 0) {
-          PyObject* value = PyDict_GetItem(__pyx_kwds, __pyx_n_s_nonperiodic_z);
+          PyObject* value = PyDict_GetItem(__pyx_kwds, __pyx_n_s_periodic_z);
           if (value) { values[2] = value; kw_args--; }
         }
         case  3:
@@ -2335,8 +2334,8 @@ static PyObject *__pyx_pw_7pyqstem_15qstem_interface_7PyQSTEM_7set_box(PyObject 
       }
     }
     __pyx_v_box = values[0];
-    __pyx_v_nonperiodic_xy = values[1];
-    __pyx_v_nonperiodic_z = values[2];
+    __pyx_v_periodic_xy = values[1];
+    __pyx_v_periodic_z = values[2];
     __pyx_v_cell_div = values[3];
   }
   goto __pyx_L4_argument_unpacking_done;
@@ -2347,38 +2346,239 @@ static PyObject *__pyx_pw_7pyqstem_15qstem_interface_7PyQSTEM_7set_box(PyObject 
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_6set_box(((struct __pyx_obj_7pyqstem_15qstem_interface_PyQSTEM *)__pyx_v_self), __pyx_v_box, __pyx_v_nonperiodic_xy, __pyx_v_nonperiodic_z, __pyx_v_cell_div);
+  __pyx_r = __pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_6set_box(((struct __pyx_obj_7pyqstem_15qstem_interface_PyQSTEM *)__pyx_v_self), __pyx_v_box, __pyx_v_periodic_xy, __pyx_v_periodic_z, __pyx_v_cell_div);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_6set_box(struct __pyx_obj_7pyqstem_15qstem_interface_PyQSTEM *__pyx_v_self, PyObject *__pyx_v_box, PyObject *__pyx_v_nonperiodic_xy, PyObject *__pyx_v_nonperiodic_z, PyObject *__pyx_v_cell_div) {
+static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_6set_box(struct __pyx_obj_7pyqstem_15qstem_interface_PyQSTEM *__pyx_v_self, PyObject *__pyx_v_box, PyObject *__pyx_v_periodic_xy, PyObject *__pyx_v_periodic_z, PyObject *__pyx_v_cell_div) {
+  int __pyx_v_nonperiodic_xy;
+  int __pyx_v_nonperiodic_z;
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
-  std::vector<double>  __pyx_t_1;
-  int __pyx_t_2;
-  int __pyx_t_3;
-  float __pyx_t_4;
-  int __pyx_t_5;
+  PyObject *__pyx_t_1 = NULL;
+  PyObject *__pyx_t_2 = NULL;
+  PyObject *__pyx_t_3 = NULL;
+  int __pyx_t_4;
+  PyObject *__pyx_t_5 = NULL;
+  PyObject *__pyx_t_6 = NULL;
+  int __pyx_t_7;
+  std::vector<double>  __pyx_t_8;
+  float __pyx_t_9;
   __Pyx_RefNannySetupContext("set_box", 0);
+  __Pyx_INCREF(__pyx_v_periodic_xy);
 
   /* "pyqstem/qstem_interface.pyx":112
  * 
- *     def set_box(self,box,nonperiodic_xy=True,nonperiodic_z=True,cell_div=1):
+ *     def set_box(self,box,periodic_xy=None,periodic_z=False,cell_div=1):
+ *         if ((self.thisptr.mode == 'STEM')&(periodic_xy==True)):             # <<<<<<<<<<<<<<
+ *             raise RuntimeError('Periodic boundary conditions not implemented for mode {0}'.format(self.thisptr.mode))
+ * 
+ */
+  __pyx_t_1 = __Pyx_PyBool_FromLong((__pyx_v_self->thisptr->mode == ((char *)"STEM"))); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 112, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_2 = PyObject_RichCompare(__pyx_v_periodic_xy, Py_True, Py_EQ); __Pyx_XGOTREF(__pyx_t_2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 112, __pyx_L1_error)
+  __pyx_t_3 = PyNumber_And(__pyx_t_1, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 112, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __pyx_t_4 = __Pyx_PyObject_IsTrue(__pyx_t_3); if (unlikely(__pyx_t_4 < 0)) __PYX_ERR(0, 112, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  if (__pyx_t_4) {
+
+    /* "pyqstem/qstem_interface.pyx":113
+ *     def set_box(self,box,periodic_xy=None,periodic_z=False,cell_div=1):
+ *         if ((self.thisptr.mode == 'STEM')&(periodic_xy==True)):
+ *             raise RuntimeError('Periodic boundary conditions not implemented for mode {0}'.format(self.thisptr.mode))             # <<<<<<<<<<<<<<
+ * 
+ *         if periodic_xy is None:
+ */
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_Periodic_boundary_conditions_not, __pyx_n_s_format); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 113, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __pyx_t_1 = __pyx_convert_PyBytes_string_to_py_std__in_string(__pyx_v_self->thisptr->mode); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 113, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __pyx_t_5 = NULL;
+    if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_2))) {
+      __pyx_t_5 = PyMethod_GET_SELF(__pyx_t_2);
+      if (likely(__pyx_t_5)) {
+        PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_2);
+        __Pyx_INCREF(__pyx_t_5);
+        __Pyx_INCREF(function);
+        __Pyx_DECREF_SET(__pyx_t_2, function);
+      }
+    }
+    if (!__pyx_t_5) {
+      __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 113, __pyx_L1_error)
+      __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+      __Pyx_GOTREF(__pyx_t_3);
+    } else {
+      #if CYTHON_FAST_PYCALL
+      if (PyFunction_Check(__pyx_t_2)) {
+        PyObject *__pyx_temp[2] = {__pyx_t_5, __pyx_t_1};
+        __pyx_t_3 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 113, __pyx_L1_error)
+        __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
+        __Pyx_GOTREF(__pyx_t_3);
+        __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+      } else
+      #endif
+      #if CYTHON_FAST_PYCCALL
+      if (__Pyx_PyFastCFunction_Check(__pyx_t_2)) {
+        PyObject *__pyx_temp[2] = {__pyx_t_5, __pyx_t_1};
+        __pyx_t_3 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 113, __pyx_L1_error)
+        __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
+        __Pyx_GOTREF(__pyx_t_3);
+        __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+      } else
+      #endif
+      {
+        __pyx_t_6 = PyTuple_New(1+1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 113, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_6);
+        __Pyx_GIVEREF(__pyx_t_5); PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_t_5); __pyx_t_5 = NULL;
+        __Pyx_GIVEREF(__pyx_t_1);
+        PyTuple_SET_ITEM(__pyx_t_6, 0+1, __pyx_t_1);
+        __pyx_t_1 = 0;
+        __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_6, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 113, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_3);
+        __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+      }
+    }
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+    __pyx_t_2 = PyTuple_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 113, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __Pyx_GIVEREF(__pyx_t_3);
+    PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_t_3);
+    __pyx_t_3 = 0;
+    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_RuntimeError, __pyx_t_2, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 113, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+    __Pyx_Raise(__pyx_t_3, 0, 0, 0);
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __PYX_ERR(0, 113, __pyx_L1_error)
+
+    /* "pyqstem/qstem_interface.pyx":112
+ * 
+ *     def set_box(self,box,periodic_xy=None,periodic_z=False,cell_div=1):
+ *         if ((self.thisptr.mode == 'STEM')&(periodic_xy==True)):             # <<<<<<<<<<<<<<
+ *             raise RuntimeError('Periodic boundary conditions not implemented for mode {0}'.format(self.thisptr.mode))
+ * 
+ */
+  }
+
+  /* "pyqstem/qstem_interface.pyx":115
+ *             raise RuntimeError('Periodic boundary conditions not implemented for mode {0}'.format(self.thisptr.mode))
+ * 
+ *         if periodic_xy is None:             # <<<<<<<<<<<<<<
+ *             if self.thisptr.mode == 'STEM':
+ *                 periodic_xy = False
+ */
+  __pyx_t_4 = (__pyx_v_periodic_xy == Py_None);
+  __pyx_t_7 = (__pyx_t_4 != 0);
+  if (__pyx_t_7) {
+
+    /* "pyqstem/qstem_interface.pyx":116
+ * 
+ *         if periodic_xy is None:
+ *             if self.thisptr.mode == 'STEM':             # <<<<<<<<<<<<<<
+ *                 periodic_xy = False
+ *             elif self.thisptr.mode == 'TEM':
+ */
+    __pyx_t_7 = ((__pyx_v_self->thisptr->mode == ((char *)"STEM")) != 0);
+    if (__pyx_t_7) {
+
+      /* "pyqstem/qstem_interface.pyx":117
+ *         if periodic_xy is None:
+ *             if self.thisptr.mode == 'STEM':
+ *                 periodic_xy = False             # <<<<<<<<<<<<<<
+ *             elif self.thisptr.mode == 'TEM':
+ *                 periodic_xy = True
+ */
+      __Pyx_INCREF(Py_False);
+      __Pyx_DECREF_SET(__pyx_v_periodic_xy, Py_False);
+
+      /* "pyqstem/qstem_interface.pyx":116
+ * 
+ *         if periodic_xy is None:
+ *             if self.thisptr.mode == 'STEM':             # <<<<<<<<<<<<<<
+ *                 periodic_xy = False
+ *             elif self.thisptr.mode == 'TEM':
+ */
+      goto __pyx_L5;
+    }
+
+    /* "pyqstem/qstem_interface.pyx":118
+ *             if self.thisptr.mode == 'STEM':
+ *                 periodic_xy = False
+ *             elif self.thisptr.mode == 'TEM':             # <<<<<<<<<<<<<<
+ *                 periodic_xy = True
+ * 
+ */
+    __pyx_t_7 = ((__pyx_v_self->thisptr->mode == ((char *)"TEM")) != 0);
+    if (__pyx_t_7) {
+
+      /* "pyqstem/qstem_interface.pyx":119
+ *                 periodic_xy = False
+ *             elif self.thisptr.mode == 'TEM':
+ *                 periodic_xy = True             # <<<<<<<<<<<<<<
+ * 
+ *         nonperiodic_xy = not periodic_xy
+ */
+      __Pyx_INCREF(Py_True);
+      __Pyx_DECREF_SET(__pyx_v_periodic_xy, Py_True);
+
+      /* "pyqstem/qstem_interface.pyx":118
+ *             if self.thisptr.mode == 'STEM':
+ *                 periodic_xy = False
+ *             elif self.thisptr.mode == 'TEM':             # <<<<<<<<<<<<<<
+ *                 periodic_xy = True
+ * 
+ */
+    }
+    __pyx_L5:;
+
+    /* "pyqstem/qstem_interface.pyx":115
+ *             raise RuntimeError('Periodic boundary conditions not implemented for mode {0}'.format(self.thisptr.mode))
+ * 
+ *         if periodic_xy is None:             # <<<<<<<<<<<<<<
+ *             if self.thisptr.mode == 'STEM':
+ *                 periodic_xy = False
+ */
+  }
+
+  /* "pyqstem/qstem_interface.pyx":121
+ *                 periodic_xy = True
+ * 
+ *         nonperiodic_xy = not periodic_xy             # <<<<<<<<<<<<<<
+ *         nonperiodic_z = not periodic_z
+ * 
+ */
+  __pyx_t_7 = __Pyx_PyObject_IsTrue(__pyx_v_periodic_xy); if (unlikely(__pyx_t_7 < 0)) __PYX_ERR(0, 121, __pyx_L1_error)
+  __pyx_v_nonperiodic_xy = (!__pyx_t_7);
+
+  /* "pyqstem/qstem_interface.pyx":122
+ * 
+ *         nonperiodic_xy = not periodic_xy
+ *         nonperiodic_z = not periodic_z             # <<<<<<<<<<<<<<
+ * 
+ *         self.thisptr.set_box(box,nonperiodic_xy,nonperiodic_z,cell_div)
+ */
+  __pyx_t_7 = __Pyx_PyObject_IsTrue(__pyx_v_periodic_z); if (unlikely(__pyx_t_7 < 0)) __PYX_ERR(0, 122, __pyx_L1_error)
+  __pyx_v_nonperiodic_z = (!__pyx_t_7);
+
+  /* "pyqstem/qstem_interface.pyx":124
+ *         nonperiodic_z = not periodic_z
+ * 
  *         self.thisptr.set_box(box,nonperiodic_xy,nonperiodic_z,cell_div)             # <<<<<<<<<<<<<<
  *         self.thisptr.box_state = 1
  *         if self.thisptr.trans_array_state >= 1:
  */
-  __pyx_t_1 = __pyx_convert_vector_from_py_double(__pyx_v_box); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 112, __pyx_L1_error)
-  __pyx_t_2 = __Pyx_PyInt_As_int(__pyx_v_nonperiodic_xy); if (unlikely((__pyx_t_2 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 112, __pyx_L1_error)
-  __pyx_t_3 = __Pyx_PyInt_As_int(__pyx_v_nonperiodic_z); if (unlikely((__pyx_t_3 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 112, __pyx_L1_error)
-  __pyx_t_4 = __pyx_PyFloat_AsFloat(__pyx_v_cell_div); if (unlikely((__pyx_t_4 == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 112, __pyx_L1_error)
-  __pyx_v_self->thisptr->set_box(__pyx_t_1, __pyx_t_2, __pyx_t_3, __pyx_t_4);
+  __pyx_t_8 = __pyx_convert_vector_from_py_double(__pyx_v_box); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 124, __pyx_L1_error)
+  __pyx_t_9 = __pyx_PyFloat_AsFloat(__pyx_v_cell_div); if (unlikely((__pyx_t_9 == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 124, __pyx_L1_error)
+  __pyx_v_self->thisptr->set_box(__pyx_t_8, __pyx_v_nonperiodic_xy, __pyx_v_nonperiodic_z, __pyx_t_9);
 
-  /* "pyqstem/qstem_interface.pyx":113
- *     def set_box(self,box,nonperiodic_xy=True,nonperiodic_z=True,cell_div=1):
+  /* "pyqstem/qstem_interface.pyx":125
+ * 
  *         self.thisptr.set_box(box,nonperiodic_xy,nonperiodic_z,cell_div)
  *         self.thisptr.box_state = 1             # <<<<<<<<<<<<<<
  *         if self.thisptr.trans_array_state >= 1:
@@ -2386,17 +2586,17 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_6set_box(struct __
  */
   __pyx_v_self->thisptr->box_state = 1;
 
-  /* "pyqstem/qstem_interface.pyx":114
+  /* "pyqstem/qstem_interface.pyx":126
  *         self.thisptr.set_box(box,nonperiodic_xy,nonperiodic_z,cell_div)
  *         self.thisptr.box_state = 1
  *         if self.thisptr.trans_array_state >= 1:             # <<<<<<<<<<<<<<
  *             self.thisptr.trans_array_state = -1
  * 
  */
-  __pyx_t_5 = ((__pyx_v_self->thisptr->trans_array_state >= 1) != 0);
-  if (__pyx_t_5) {
+  __pyx_t_7 = ((__pyx_v_self->thisptr->trans_array_state >= 1) != 0);
+  if (__pyx_t_7) {
 
-    /* "pyqstem/qstem_interface.pyx":115
+    /* "pyqstem/qstem_interface.pyx":127
  *         self.thisptr.box_state = 1
  *         if self.thisptr.trans_array_state >= 1:
  *             self.thisptr.trans_array_state = -1             # <<<<<<<<<<<<<<
@@ -2405,7 +2605,7 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_6set_box(struct __
  */
     __pyx_v_self->thisptr->trans_array_state = -1;
 
-    /* "pyqstem/qstem_interface.pyx":114
+    /* "pyqstem/qstem_interface.pyx":126
  *         self.thisptr.set_box(box,nonperiodic_xy,nonperiodic_z,cell_div)
  *         self.thisptr.box_state = 1
  *         if self.thisptr.trans_array_state >= 1:             # <<<<<<<<<<<<<<
@@ -2417,24 +2617,30 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_6set_box(struct __
   /* "pyqstem/qstem_interface.pyx":111
  *             self.thisptr.trans_array_state = -1
  * 
- *     def set_box(self,box,nonperiodic_xy=True,nonperiodic_z=True,cell_div=1):             # <<<<<<<<<<<<<<
- *         self.thisptr.set_box(box,nonperiodic_xy,nonperiodic_z,cell_div)
- *         self.thisptr.box_state = 1
+ *     def set_box(self,box,periodic_xy=None,periodic_z=False,cell_div=1):             # <<<<<<<<<<<<<<
+ *         if ((self.thisptr.mode == 'STEM')&(periodic_xy==True)):
+ *             raise RuntimeError('Periodic boundary conditions not implemented for mode {0}'.format(self.thisptr.mode))
  */
 
   /* function exit code */
   __pyx_r = Py_None; __Pyx_INCREF(Py_None);
   goto __pyx_L0;
   __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_XDECREF(__pyx_t_2);
+  __Pyx_XDECREF(__pyx_t_3);
+  __Pyx_XDECREF(__pyx_t_5);
+  __Pyx_XDECREF(__pyx_t_6);
   __Pyx_AddTraceback("pyqstem.qstem_interface.PyQSTEM.set_box", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
+  __Pyx_XDECREF(__pyx_v_periodic_xy);
   __Pyx_XGIVEREF(__pyx_r);
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-/* "pyqstem/qstem_interface.pyx":117
+/* "pyqstem/qstem_interface.pyx":129
  *             self.thisptr.trans_array_state = -1
  * 
  *     def get_resolution(self):             # <<<<<<<<<<<<<<
@@ -2465,7 +2671,7 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_8get_resolution(st
   PyObject *__pyx_t_3 = NULL;
   __Pyx_RefNannySetupContext("get_resolution", 0);
 
-  /* "pyqstem/qstem_interface.pyx":119
+  /* "pyqstem/qstem_interface.pyx":131
  *     def get_resolution(self):
  *         cdef float resolutionX, resolutionY
  *         self.thisptr.get_resolution(&resolutionX, &resolutionY)             # <<<<<<<<<<<<<<
@@ -2474,7 +2680,7 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_8get_resolution(st
  */
   __pyx_v_self->thisptr->get_resolution((&__pyx_v_resolutionX), (&__pyx_v_resolutionY));
 
-  /* "pyqstem/qstem_interface.pyx":120
+  /* "pyqstem/qstem_interface.pyx":132
  *         cdef float resolutionX, resolutionY
  *         self.thisptr.get_resolution(&resolutionX, &resolutionY)
  *         return resolutionX, resolutionY             # <<<<<<<<<<<<<<
@@ -2482,11 +2688,11 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_8get_resolution(st
  *     def get_potential_samples(self):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = PyFloat_FromDouble(__pyx_v_resolutionX); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 120, __pyx_L1_error)
+  __pyx_t_1 = PyFloat_FromDouble(__pyx_v_resolutionX); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 132, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = PyFloat_FromDouble(__pyx_v_resolutionY); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 120, __pyx_L1_error)
+  __pyx_t_2 = PyFloat_FromDouble(__pyx_v_resolutionY); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 132, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = PyTuple_New(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 120, __pyx_L1_error)
+  __pyx_t_3 = PyTuple_New(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 132, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_GIVEREF(__pyx_t_1);
   PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_1);
@@ -2498,7 +2704,7 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_8get_resolution(st
   __pyx_t_3 = 0;
   goto __pyx_L0;
 
-  /* "pyqstem/qstem_interface.pyx":117
+  /* "pyqstem/qstem_interface.pyx":129
  *             self.thisptr.trans_array_state = -1
  * 
  *     def get_resolution(self):             # <<<<<<<<<<<<<<
@@ -2519,7 +2725,7 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_8get_resolution(st
   return __pyx_r;
 }
 
-/* "pyqstem/qstem_interface.pyx":122
+/* "pyqstem/qstem_interface.pyx":134
  *         return resolutionX, resolutionY
  * 
  *     def get_potential_samples(self):             # <<<<<<<<<<<<<<
@@ -2552,7 +2758,7 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_10get_potential_sa
   PyObject *__pyx_t_4 = NULL;
   __Pyx_RefNannySetupContext("get_potential_samples", 0);
 
-  /* "pyqstem/qstem_interface.pyx":124
+  /* "pyqstem/qstem_interface.pyx":136
  *     def get_potential_samples(self):
  *         cdef int potNx, potNy, slices
  *         self.thisptr.get_potential_samples(&potNx, &potNy, &slices)             # <<<<<<<<<<<<<<
@@ -2561,7 +2767,7 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_10get_potential_sa
  */
   __pyx_v_self->thisptr->get_potential_samples((&__pyx_v_potNx), (&__pyx_v_potNy), (&__pyx_v_slices));
 
-  /* "pyqstem/qstem_interface.pyx":125
+  /* "pyqstem/qstem_interface.pyx":137
  *         cdef int potNx, potNy, slices
  *         self.thisptr.get_potential_samples(&potNx, &potNy, &slices)
  *         return potNx, potNy, slices             # <<<<<<<<<<<<<<
@@ -2569,13 +2775,13 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_10get_potential_sa
  *     def get_probe_samples(self):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_potNx); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 125, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_potNx); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 137, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_potNy); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 125, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_potNy); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 137, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v_slices); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 125, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v_slices); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 137, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = PyTuple_New(3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 125, __pyx_L1_error)
+  __pyx_t_4 = PyTuple_New(3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 137, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_GIVEREF(__pyx_t_1);
   PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_1);
@@ -2590,7 +2796,7 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_10get_potential_sa
   __pyx_t_4 = 0;
   goto __pyx_L0;
 
-  /* "pyqstem/qstem_interface.pyx":122
+  /* "pyqstem/qstem_interface.pyx":134
  *         return resolutionX, resolutionY
  * 
  *     def get_potential_samples(self):             # <<<<<<<<<<<<<<
@@ -2612,7 +2818,7 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_10get_potential_sa
   return __pyx_r;
 }
 
-/* "pyqstem/qstem_interface.pyx":127
+/* "pyqstem/qstem_interface.pyx":139
  *         return potNx, potNy, slices
  * 
  *     def get_probe_samples(self):             # <<<<<<<<<<<<<<
@@ -2643,7 +2849,7 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_12get_probe_sample
   PyObject *__pyx_t_3 = NULL;
   __Pyx_RefNannySetupContext("get_probe_samples", 0);
 
-  /* "pyqstem/qstem_interface.pyx":129
+  /* "pyqstem/qstem_interface.pyx":141
  *     def get_probe_samples(self):
  *         cdef int nx, ny
  *         self.thisptr.get_probe_samples(&nx, &ny)             # <<<<<<<<<<<<<<
@@ -2652,7 +2858,7 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_12get_probe_sample
  */
   __pyx_v_self->thisptr->get_probe_samples((&__pyx_v_nx), (&__pyx_v_ny));
 
-  /* "pyqstem/qstem_interface.pyx":130
+  /* "pyqstem/qstem_interface.pyx":142
  *         cdef int nx, ny
  *         self.thisptr.get_probe_samples(&nx, &ny)
  *         return nx, ny             # <<<<<<<<<<<<<<
@@ -2660,11 +2866,11 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_12get_probe_sample
  *     def get_scan_range(self):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_nx); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 130, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_nx); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 142, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_ny); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 130, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_ny); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 142, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = PyTuple_New(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 130, __pyx_L1_error)
+  __pyx_t_3 = PyTuple_New(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 142, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_GIVEREF(__pyx_t_1);
   PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_1);
@@ -2676,7 +2882,7 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_12get_probe_sample
   __pyx_t_3 = 0;
   goto __pyx_L0;
 
-  /* "pyqstem/qstem_interface.pyx":127
+  /* "pyqstem/qstem_interface.pyx":139
  *         return potNx, potNy, slices
  * 
  *     def get_probe_samples(self):             # <<<<<<<<<<<<<<
@@ -2697,7 +2903,7 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_12get_probe_sample
   return __pyx_r;
 }
 
-/* "pyqstem/qstem_interface.pyx":132
+/* "pyqstem/qstem_interface.pyx":144
  *         return nx, ny
  * 
  *     def get_scan_range(self):             # <<<<<<<<<<<<<<
@@ -2734,7 +2940,7 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_14get_scan_range(s
   PyObject *__pyx_t_5 = NULL;
   __Pyx_RefNannySetupContext("get_scan_range", 0);
 
-  /* "pyqstem/qstem_interface.pyx":136
+  /* "pyqstem/qstem_interface.pyx":148
  *         cdef int scanXN, scanYN
  * 
  *         self.thisptr.get_scan_range(&scanXStart, &scanXStop, &scanXN, &scanYStart, &scanYStop, &scanYN)             # <<<<<<<<<<<<<<
@@ -2743,7 +2949,7 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_14get_scan_range(s
  */
   __pyx_v_self->thisptr->get_scan_range((&__pyx_v_scanXStart), (&__pyx_v_scanXStop), (&__pyx_v_scanXN), (&__pyx_v_scanYStart), (&__pyx_v_scanYStop), (&__pyx_v_scanYN));
 
-  /* "pyqstem/qstem_interface.pyx":137
+  /* "pyqstem/qstem_interface.pyx":149
  * 
  *         self.thisptr.get_scan_range(&scanXStart, &scanXStop, &scanXN, &scanYStart, &scanYStop, &scanYN)
  *         return ((scanXStart, scanXStop, scanXN), (scanYStart, scanYStop, scanYN))             # <<<<<<<<<<<<<<
@@ -2751,13 +2957,13 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_14get_scan_range(s
  *     def get_energy(self):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = PyFloat_FromDouble(__pyx_v_scanXStart); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 137, __pyx_L1_error)
+  __pyx_t_1 = PyFloat_FromDouble(__pyx_v_scanXStart); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 149, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = PyFloat_FromDouble(__pyx_v_scanXStop); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 137, __pyx_L1_error)
+  __pyx_t_2 = PyFloat_FromDouble(__pyx_v_scanXStop); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 149, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v_scanXN); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 137, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v_scanXN); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 149, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = PyTuple_New(3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 137, __pyx_L1_error)
+  __pyx_t_4 = PyTuple_New(3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 149, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_GIVEREF(__pyx_t_1);
   PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_1);
@@ -2768,13 +2974,13 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_14get_scan_range(s
   __pyx_t_1 = 0;
   __pyx_t_2 = 0;
   __pyx_t_3 = 0;
-  __pyx_t_3 = PyFloat_FromDouble(__pyx_v_scanYStart); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 137, __pyx_L1_error)
+  __pyx_t_3 = PyFloat_FromDouble(__pyx_v_scanYStart); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 149, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_2 = PyFloat_FromDouble(__pyx_v_scanYStop); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 137, __pyx_L1_error)
+  __pyx_t_2 = PyFloat_FromDouble(__pyx_v_scanYStop); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 149, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_scanYN); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 137, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_scanYN); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 149, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_5 = PyTuple_New(3); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 137, __pyx_L1_error)
+  __pyx_t_5 = PyTuple_New(3); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 149, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_GIVEREF(__pyx_t_3);
   PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_3);
@@ -2785,7 +2991,7 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_14get_scan_range(s
   __pyx_t_3 = 0;
   __pyx_t_2 = 0;
   __pyx_t_1 = 0;
-  __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 137, __pyx_L1_error)
+  __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 149, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_GIVEREF(__pyx_t_4);
   PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_t_4);
@@ -2797,7 +3003,7 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_14get_scan_range(s
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "pyqstem/qstem_interface.pyx":132
+  /* "pyqstem/qstem_interface.pyx":144
  *         return nx, ny
  * 
  *     def get_scan_range(self):             # <<<<<<<<<<<<<<
@@ -2820,7 +3026,7 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_14get_scan_range(s
   return __pyx_r;
 }
 
-/* "pyqstem/qstem_interface.pyx":139
+/* "pyqstem/qstem_interface.pyx":151
  *         return ((scanXStart, scanXStop, scanXN), (scanYStart, scanYStop, scanYN))
  * 
  *     def get_energy(self):             # <<<<<<<<<<<<<<
@@ -2848,7 +3054,7 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_16get_energy(struc
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("get_energy", 0);
 
-  /* "pyqstem/qstem_interface.pyx":141
+  /* "pyqstem/qstem_interface.pyx":153
  *     def get_energy(self):
  *         cdef float v0
  *         self.thisptr.get_energy(&v0)             # <<<<<<<<<<<<<<
@@ -2857,7 +3063,7 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_16get_energy(struc
  */
   __pyx_v_self->thisptr->get_energy((&__pyx_v_v0));
 
-  /* "pyqstem/qstem_interface.pyx":142
+  /* "pyqstem/qstem_interface.pyx":154
  *         cdef float v0
  *         self.thisptr.get_energy(&v0)
  *         return v0             # <<<<<<<<<<<<<<
@@ -2865,13 +3071,13 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_16get_energy(struc
  *     def get_probe_extent(self):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = PyFloat_FromDouble(__pyx_v_v0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 142, __pyx_L1_error)
+  __pyx_t_1 = PyFloat_FromDouble(__pyx_v_v0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 154, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "pyqstem/qstem_interface.pyx":139
+  /* "pyqstem/qstem_interface.pyx":151
  *         return ((scanXStart, scanXStop, scanXN), (scanYStart, scanYStop, scanYN))
  * 
  *     def get_energy(self):             # <<<<<<<<<<<<<<
@@ -2890,7 +3096,7 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_16get_energy(struc
   return __pyx_r;
 }
 
-/* "pyqstem/qstem_interface.pyx":144
+/* "pyqstem/qstem_interface.pyx":156
  *         return v0
  * 
  *     def get_probe_extent(self):             # <<<<<<<<<<<<<<
@@ -2921,14 +3127,14 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_18get_probe_extent
   PyObject *__pyx_t_3 = NULL;
   __Pyx_RefNannySetupContext("get_probe_extent", 0);
 
-  /* "pyqstem/qstem_interface.pyx":145
+  /* "pyqstem/qstem_interface.pyx":157
  * 
  *     def get_probe_extent(self):
  *         probe_samples = self.get_probe_samples()             # <<<<<<<<<<<<<<
  *         resolution = self.get_resolution()
  * 
  */
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_get_probe_samples); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 145, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_get_probe_samples); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 157, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_3 = NULL;
   if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_2))) {
@@ -2941,24 +3147,24 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_18get_probe_extent
     }
   }
   if (__pyx_t_3) {
-    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 145, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 157, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   } else {
-    __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 145, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 157, __pyx_L1_error)
   }
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_v_probe_samples = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "pyqstem/qstem_interface.pyx":146
+  /* "pyqstem/qstem_interface.pyx":158
  *     def get_probe_extent(self):
  *         probe_samples = self.get_probe_samples()
  *         resolution = self.get_resolution()             # <<<<<<<<<<<<<<
  * 
  *     def get_potential_extent(self):
  */
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_get_resolution); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 146, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_get_resolution); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 158, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_3 = NULL;
   if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_2))) {
@@ -2971,17 +3177,17 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_18get_probe_extent
     }
   }
   if (__pyx_t_3) {
-    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 146, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 158, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   } else {
-    __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 146, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 158, __pyx_L1_error)
   }
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_v_resolution = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "pyqstem/qstem_interface.pyx":144
+  /* "pyqstem/qstem_interface.pyx":156
  *         return v0
  * 
  *     def get_probe_extent(self):             # <<<<<<<<<<<<<<
@@ -3006,7 +3212,7 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_18get_probe_extent
   return __pyx_r;
 }
 
-/* "pyqstem/qstem_interface.pyx":148
+/* "pyqstem/qstem_interface.pyx":160
  *         resolution = self.get_resolution()
  * 
  *     def get_potential_extent(self):             # <<<<<<<<<<<<<<
@@ -3041,7 +3247,7 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_20get_potential_ex
   PyObject *__pyx_t_5 = NULL;
   __Pyx_RefNannySetupContext("get_potential_extent", 0);
 
-  /* "pyqstem/qstem_interface.pyx":150
+  /* "pyqstem/qstem_interface.pyx":162
  *     def get_potential_extent(self):
  *         cdef float potOffsetX, potOffsetY, potSizeX, potSizeY
  *         self.thisptr.get_potential_extent(&potOffsetX, &potOffsetY, &potSizeX, &potSizeY)             # <<<<<<<<<<<<<<
@@ -3050,7 +3256,7 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_20get_potential_ex
  */
   __pyx_v_self->thisptr->get_potential_extent((&__pyx_v_potOffsetX), (&__pyx_v_potOffsetY), (&__pyx_v_potSizeX), (&__pyx_v_potSizeY));
 
-  /* "pyqstem/qstem_interface.pyx":151
+  /* "pyqstem/qstem_interface.pyx":163
  *         cdef float potOffsetX, potOffsetY, potSizeX, potSizeY
  *         self.thisptr.get_potential_extent(&potOffsetX, &potOffsetY, &potSizeX, &potSizeY)
  *         return potOffsetX, potOffsetX+potSizeX, potOffsetY, potOffsetY+potSizeY             # <<<<<<<<<<<<<<
@@ -3058,15 +3264,15 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_20get_potential_ex
  *     def get_minimum_potential_extent(self):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = PyFloat_FromDouble(__pyx_v_potOffsetX); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 151, __pyx_L1_error)
+  __pyx_t_1 = PyFloat_FromDouble(__pyx_v_potOffsetX); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 163, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = PyFloat_FromDouble((__pyx_v_potOffsetX + __pyx_v_potSizeX)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 151, __pyx_L1_error)
+  __pyx_t_2 = PyFloat_FromDouble((__pyx_v_potOffsetX + __pyx_v_potSizeX)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 163, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = PyFloat_FromDouble(__pyx_v_potOffsetY); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 151, __pyx_L1_error)
+  __pyx_t_3 = PyFloat_FromDouble(__pyx_v_potOffsetY); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 163, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = PyFloat_FromDouble((__pyx_v_potOffsetY + __pyx_v_potSizeY)); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 151, __pyx_L1_error)
+  __pyx_t_4 = PyFloat_FromDouble((__pyx_v_potOffsetY + __pyx_v_potSizeY)); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 163, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_5 = PyTuple_New(4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 151, __pyx_L1_error)
+  __pyx_t_5 = PyTuple_New(4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 163, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_GIVEREF(__pyx_t_1);
   PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_1);
@@ -3084,7 +3290,7 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_20get_potential_ex
   __pyx_t_5 = 0;
   goto __pyx_L0;
 
-  /* "pyqstem/qstem_interface.pyx":148
+  /* "pyqstem/qstem_interface.pyx":160
  *         resolution = self.get_resolution()
  * 
  *     def get_potential_extent(self):             # <<<<<<<<<<<<<<
@@ -3107,7 +3313,7 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_20get_potential_ex
   return __pyx_r;
 }
 
-/* "pyqstem/qstem_interface.pyx":153
+/* "pyqstem/qstem_interface.pyx":165
  *         return potOffsetX, potOffsetX+potSizeX, potOffsetY, potOffsetY+potSizeY
  * 
  *     def get_minimum_potential_extent(self):             # <<<<<<<<<<<<<<
@@ -3143,14 +3349,14 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_22get_minimum_pote
   PyObject *__pyx_t_6 = NULL;
   __Pyx_RefNannySetupContext("get_minimum_potential_extent", 0);
 
-  /* "pyqstem/qstem_interface.pyx":154
+  /* "pyqstem/qstem_interface.pyx":166
  * 
  *     def get_minimum_potential_extent(self):
  *         scan_range = self.get_scan_range()             # <<<<<<<<<<<<<<
  *         probe_samples = self.get_probe_samples()
  *         resolution = self.get_resolution()
  */
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_get_scan_range); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 154, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_get_scan_range); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 166, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_3 = NULL;
   if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_2))) {
@@ -3163,24 +3369,24 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_22get_minimum_pote
     }
   }
   if (__pyx_t_3) {
-    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 154, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 166, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   } else {
-    __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 154, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 166, __pyx_L1_error)
   }
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_v_scan_range = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "pyqstem/qstem_interface.pyx":155
+  /* "pyqstem/qstem_interface.pyx":167
  *     def get_minimum_potential_extent(self):
  *         scan_range = self.get_scan_range()
  *         probe_samples = self.get_probe_samples()             # <<<<<<<<<<<<<<
  *         resolution = self.get_resolution()
  * 
  */
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_get_probe_samples); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 155, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_get_probe_samples); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 167, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_3 = NULL;
   if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_2))) {
@@ -3193,24 +3399,24 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_22get_minimum_pote
     }
   }
   if (__pyx_t_3) {
-    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 155, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 167, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   } else {
-    __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 155, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 167, __pyx_L1_error)
   }
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_v_probe_samples = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "pyqstem/qstem_interface.pyx":156
+  /* "pyqstem/qstem_interface.pyx":168
  *         scan_range = self.get_scan_range()
  *         probe_samples = self.get_probe_samples()
  *         resolution = self.get_resolution()             # <<<<<<<<<<<<<<
  * 
  *         probe_size=[resolution[0]*probe_samples[0],resolution[1]*probe_samples[1]]
  */
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_get_resolution); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 156, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_get_resolution); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 168, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_3 = NULL;
   if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_2))) {
@@ -3223,40 +3429,40 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_22get_minimum_pote
     }
   }
   if (__pyx_t_3) {
-    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 156, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 168, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   } else {
-    __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 156, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 168, __pyx_L1_error)
   }
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_v_resolution = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "pyqstem/qstem_interface.pyx":158
+  /* "pyqstem/qstem_interface.pyx":170
  *         resolution = self.get_resolution()
  * 
  *         probe_size=[resolution[0]*probe_samples[0],resolution[1]*probe_samples[1]]             # <<<<<<<<<<<<<<
  *         return [scan_range[0][0]-.5*probe_size[0],scan_range[0][1]+.5*probe_size[0],
  *                 scan_range[1][0]-.5*probe_size[0],scan_range[1][1]+.5*probe_size[0]]
  */
-  __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_resolution, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 158, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_resolution, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 170, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_GetItemInt(__pyx_v_probe_samples, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 158, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_GetItemInt(__pyx_v_probe_samples, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 170, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = PyNumber_Multiply(__pyx_t_1, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 158, __pyx_L1_error)
+  __pyx_t_3 = PyNumber_Multiply(__pyx_t_1, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 170, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_GetItemInt(__pyx_v_resolution, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 158, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_GetItemInt(__pyx_v_resolution, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 170, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_probe_samples, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 158, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_probe_samples, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 170, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_4 = PyNumber_Multiply(__pyx_t_2, __pyx_t_1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 158, __pyx_L1_error)
+  __pyx_t_4 = PyNumber_Multiply(__pyx_t_2, __pyx_t_1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 170, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = PyList_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 158, __pyx_L1_error)
+  __pyx_t_1 = PyList_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 170, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_GIVEREF(__pyx_t_3);
   PyList_SET_ITEM(__pyx_t_1, 0, __pyx_t_3);
@@ -3267,7 +3473,7 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_22get_minimum_pote
   __pyx_v_probe_size = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "pyqstem/qstem_interface.pyx":159
+  /* "pyqstem/qstem_interface.pyx":171
  * 
  *         probe_size=[resolution[0]*probe_samples[0],resolution[1]*probe_samples[1]]
  *         return [scan_range[0][0]-.5*probe_size[0],scan_range[0][1]+.5*probe_size[0],             # <<<<<<<<<<<<<<
@@ -3275,79 +3481,79 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_22get_minimum_pote
  * 
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_scan_range, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 159, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_scan_range, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 171, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_4 = __Pyx_GetItemInt(__pyx_t_1, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 159, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_GetItemInt(__pyx_t_1, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 171, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_GetItemInt_List(__pyx_v_probe_size, 0, long, 1, __Pyx_PyInt_From_long, 1, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 159, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_GetItemInt_List(__pyx_v_probe_size, 0, long, 1, __Pyx_PyInt_From_long, 1, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 171, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_3 = PyNumber_Multiply(__pyx_float__5, __pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 159, __pyx_L1_error)
+  __pyx_t_3 = PyNumber_Multiply(__pyx_float__5, __pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 171, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = PyNumber_Subtract(__pyx_t_4, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 159, __pyx_L1_error)
+  __pyx_t_1 = PyNumber_Subtract(__pyx_t_4, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 171, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_GetItemInt(__pyx_v_scan_range, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 159, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_GetItemInt(__pyx_v_scan_range, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 171, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = __Pyx_GetItemInt(__pyx_t_3, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 159, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_GetItemInt(__pyx_t_3, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 171, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_GetItemInt_List(__pyx_v_probe_size, 0, long, 1, __Pyx_PyInt_From_long, 1, 0, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 159, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_GetItemInt_List(__pyx_v_probe_size, 0, long, 1, __Pyx_PyInt_From_long, 1, 0, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 171, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_2 = PyNumber_Multiply(__pyx_float__5, __pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 159, __pyx_L1_error)
+  __pyx_t_2 = PyNumber_Multiply(__pyx_float__5, __pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 171, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = PyNumber_Add(__pyx_t_4, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 159, __pyx_L1_error)
+  __pyx_t_3 = PyNumber_Add(__pyx_t_4, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 171, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "pyqstem/qstem_interface.pyx":160
+  /* "pyqstem/qstem_interface.pyx":172
  *         probe_size=[resolution[0]*probe_samples[0],resolution[1]*probe_samples[1]]
  *         return [scan_range[0][0]-.5*probe_size[0],scan_range[0][1]+.5*probe_size[0],
  *                 scan_range[1][0]-.5*probe_size[0],scan_range[1][1]+.5*probe_size[0]]             # <<<<<<<<<<<<<<
  * 
  *     def view(self,ax=None):
  */
-  __pyx_t_2 = __Pyx_GetItemInt(__pyx_v_scan_range, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 160, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_GetItemInt(__pyx_v_scan_range, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 172, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_4 = __Pyx_GetItemInt(__pyx_t_2, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 160, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_GetItemInt(__pyx_t_2, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 172, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_GetItemInt_List(__pyx_v_probe_size, 0, long, 1, __Pyx_PyInt_From_long, 1, 0, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 160, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_GetItemInt_List(__pyx_v_probe_size, 0, long, 1, __Pyx_PyInt_From_long, 1, 0, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 172, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_5 = PyNumber_Multiply(__pyx_float__5, __pyx_t_2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 160, __pyx_L1_error)
+  __pyx_t_5 = PyNumber_Multiply(__pyx_float__5, __pyx_t_2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 172, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = PyNumber_Subtract(__pyx_t_4, __pyx_t_5); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 160, __pyx_L1_error)
+  __pyx_t_2 = PyNumber_Subtract(__pyx_t_4, __pyx_t_5); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 172, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  __pyx_t_5 = __Pyx_GetItemInt(__pyx_v_scan_range, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 160, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_GetItemInt(__pyx_v_scan_range, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 172, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_4 = __Pyx_GetItemInt(__pyx_t_5, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 160, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_GetItemInt(__pyx_t_5, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 172, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  __pyx_t_5 = __Pyx_GetItemInt_List(__pyx_v_probe_size, 0, long, 1, __Pyx_PyInt_From_long, 1, 0, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 160, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_GetItemInt_List(__pyx_v_probe_size, 0, long, 1, __Pyx_PyInt_From_long, 1, 0, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 172, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_6 = PyNumber_Multiply(__pyx_float__5, __pyx_t_5); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 160, __pyx_L1_error)
+  __pyx_t_6 = PyNumber_Multiply(__pyx_float__5, __pyx_t_5); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 172, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  __pyx_t_5 = PyNumber_Add(__pyx_t_4, __pyx_t_6); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 160, __pyx_L1_error)
+  __pyx_t_5 = PyNumber_Add(__pyx_t_4, __pyx_t_6); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 172, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
 
-  /* "pyqstem/qstem_interface.pyx":159
+  /* "pyqstem/qstem_interface.pyx":171
  * 
  *         probe_size=[resolution[0]*probe_samples[0],resolution[1]*probe_samples[1]]
  *         return [scan_range[0][0]-.5*probe_size[0],scan_range[0][1]+.5*probe_size[0],             # <<<<<<<<<<<<<<
  *                 scan_range[1][0]-.5*probe_size[0],scan_range[1][1]+.5*probe_size[0]]
  * 
  */
-  __pyx_t_6 = PyList_New(4); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 159, __pyx_L1_error)
+  __pyx_t_6 = PyList_New(4); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 171, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __Pyx_GIVEREF(__pyx_t_1);
   PyList_SET_ITEM(__pyx_t_6, 0, __pyx_t_1);
@@ -3365,7 +3571,7 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_22get_minimum_pote
   __pyx_t_6 = 0;
   goto __pyx_L0;
 
-  /* "pyqstem/qstem_interface.pyx":153
+  /* "pyqstem/qstem_interface.pyx":165
  *         return potOffsetX, potOffsetX+potSizeX, potOffsetY, potOffsetY+potSizeY
  * 
  *     def get_minimum_potential_extent(self):             # <<<<<<<<<<<<<<
@@ -3393,7 +3599,7 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_22get_minimum_pote
   return __pyx_r;
 }
 
-/* "pyqstem/qstem_interface.pyx":162
+/* "pyqstem/qstem_interface.pyx":174
  *                 scan_range[1][0]-.5*probe_size[0],scan_range[1][1]+.5*probe_size[0]]
  * 
  *     def view(self,ax=None):             # <<<<<<<<<<<<<<
@@ -3429,7 +3635,7 @@ static PyObject *__pyx_pw_7pyqstem_15qstem_interface_7PyQSTEM_25view(PyObject *_
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "view") < 0)) __PYX_ERR(0, 162, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "view") < 0)) __PYX_ERR(0, 174, __pyx_L3_error)
       }
     } else {
       switch (PyTuple_GET_SIZE(__pyx_args)) {
@@ -3442,7 +3648,7 @@ static PyObject *__pyx_pw_7pyqstem_15qstem_interface_7PyQSTEM_25view(PyObject *_
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("view", 0, 0, 1, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 162, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("view", 0, 0, 1, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 174, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("pyqstem.qstem_interface.PyQSTEM.view", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -3459,6 +3665,7 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_24view(struct __py
   PyObject *__pyx_v_scan_range = NULL;
   PyObject *__pyx_v_potential_extent = NULL;
   CYTHON_UNUSED PyObject *__pyx_v_potential_samples = NULL;
+  PyObject *__pyx_v_probe_extent = NULL;
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -3467,14 +3674,14 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_24view(struct __py
   PyObject *__pyx_t_4 = NULL;
   __Pyx_RefNannySetupContext("view", 0);
 
-  /* "pyqstem/qstem_interface.pyx":163
+  /* "pyqstem/qstem_interface.pyx":175
  * 
  *     def view(self,ax=None):
  *         scan_range=self.get_scan_range()             # <<<<<<<<<<<<<<
  *         potential_extent=self.get_potential_extent()
  *         potential_samples=self.get_potential_samples()
  */
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_get_scan_range); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 163, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_get_scan_range); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 175, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_3 = NULL;
   if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_2))) {
@@ -3487,24 +3694,24 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_24view(struct __py
     }
   }
   if (__pyx_t_3) {
-    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 163, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 175, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   } else {
-    __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 163, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 175, __pyx_L1_error)
   }
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_v_scan_range = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "pyqstem/qstem_interface.pyx":164
+  /* "pyqstem/qstem_interface.pyx":176
  *     def view(self,ax=None):
  *         scan_range=self.get_scan_range()
  *         potential_extent=self.get_potential_extent()             # <<<<<<<<<<<<<<
  *         potential_samples=self.get_potential_samples()
- *         atoms_plot(self._atoms,scan_range=scan_range,potential_extent=potential_extent,ax=ax,legend=True)
+ *         probe_extent=self.get_minimum_potential_extent()
  */
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_get_potential_extent); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 164, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_get_potential_extent); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 176, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_3 = NULL;
   if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_2))) {
@@ -3517,24 +3724,24 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_24view(struct __py
     }
   }
   if (__pyx_t_3) {
-    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 164, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 176, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   } else {
-    __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 164, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 176, __pyx_L1_error)
   }
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_v_potential_extent = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "pyqstem/qstem_interface.pyx":165
+  /* "pyqstem/qstem_interface.pyx":177
  *         scan_range=self.get_scan_range()
  *         potential_extent=self.get_potential_extent()
  *         potential_samples=self.get_potential_samples()             # <<<<<<<<<<<<<<
- *         atoms_plot(self._atoms,scan_range=scan_range,potential_extent=potential_extent,ax=ax,legend=True)
- *         plt.show()
+ *         probe_extent=self.get_minimum_potential_extent()
+ *         atoms_plot(self._atoms,scan_range=scan_range,potential_extent=potential_extent,probe_extent=probe_extent,ax=ax,legend=True)
  */
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_get_potential_samples); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 165, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_get_potential_samples); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 177, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_3 = NULL;
   if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_2))) {
@@ -3547,57 +3754,27 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_24view(struct __py
     }
   }
   if (__pyx_t_3) {
-    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 165, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 177, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   } else {
-    __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 165, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 177, __pyx_L1_error)
   }
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_v_potential_samples = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "pyqstem/qstem_interface.pyx":166
+  /* "pyqstem/qstem_interface.pyx":178
  *         potential_extent=self.get_potential_extent()
  *         potential_samples=self.get_potential_samples()
- *         atoms_plot(self._atoms,scan_range=scan_range,potential_extent=potential_extent,ax=ax,legend=True)             # <<<<<<<<<<<<<<
- *         plt.show()
+ *         probe_extent=self.get_minimum_potential_extent()             # <<<<<<<<<<<<<<
+ *         atoms_plot(self._atoms,scan_range=scan_range,potential_extent=potential_extent,probe_extent=probe_extent,ax=ax,legend=True)
  * 
  */
-  __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_atoms_plot); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 166, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = PyTuple_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 166, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_get_minimum_potential_extent); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 178, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __Pyx_INCREF(__pyx_v_self->_atoms);
-  __Pyx_GIVEREF(__pyx_v_self->_atoms);
-  PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_v_self->_atoms);
-  __pyx_t_3 = PyDict_New(); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 166, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
-  if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_scan_range, __pyx_v_scan_range) < 0) __PYX_ERR(0, 166, __pyx_L1_error)
-  if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_potential_extent, __pyx_v_potential_extent) < 0) __PYX_ERR(0, 166, __pyx_L1_error)
-  if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_ax, __pyx_v_ax) < 0) __PYX_ERR(0, 166, __pyx_L1_error)
-  if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_legend, Py_True) < 0) __PYX_ERR(0, 166, __pyx_L1_error)
-  __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 166, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_4);
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-
-  /* "pyqstem/qstem_interface.pyx":167
- *         potential_samples=self.get_potential_samples()
- *         atoms_plot(self._atoms,scan_range=scan_range,potential_extent=potential_extent,ax=ax,legend=True)
- *         plt.show()             # <<<<<<<<<<<<<<
- * 
- *     def build_potential(self,num_slices,scan_range=None,num_samples=None):
- */
-  __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_plt); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 167, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_show); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 167, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_t_3 = NULL;
-  if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_2))) {
+  if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_2))) {
     __pyx_t_3 = PyMethod_GET_SELF(__pyx_t_2);
     if (likely(__pyx_t_3)) {
       PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_2);
@@ -3607,16 +3784,45 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_24view(struct __py
     }
   }
   if (__pyx_t_3) {
-    __pyx_t_4 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 167, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 178, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   } else {
-    __pyx_t_4 = __Pyx_PyObject_CallNoArg(__pyx_t_2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 167, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 178, __pyx_L1_error)
   }
-  __Pyx_GOTREF(__pyx_t_4);
+  __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __pyx_v_probe_extent = __pyx_t_1;
+  __pyx_t_1 = 0;
+
+  /* "pyqstem/qstem_interface.pyx":179
+ *         potential_samples=self.get_potential_samples()
+ *         probe_extent=self.get_minimum_potential_extent()
+ *         atoms_plot(self._atoms,scan_range=scan_range,potential_extent=potential_extent,probe_extent=probe_extent,ax=ax,legend=True)             # <<<<<<<<<<<<<<
+ * 
+ *     def build_potential(self,num_slices,scan_range=None,num_samples=None):
+ */
+  __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_atoms_plot); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 179, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_2 = PyTuple_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 179, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_INCREF(__pyx_v_self->_atoms);
+  __Pyx_GIVEREF(__pyx_v_self->_atoms);
+  PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_v_self->_atoms);
+  __pyx_t_3 = PyDict_New(); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 179, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_scan_range, __pyx_v_scan_range) < 0) __PYX_ERR(0, 179, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_potential_extent, __pyx_v_potential_extent) < 0) __PYX_ERR(0, 179, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_probe_extent, __pyx_v_probe_extent) < 0) __PYX_ERR(0, 179, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_ax, __pyx_v_ax) < 0) __PYX_ERR(0, 179, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_legend, Py_True) < 0) __PYX_ERR(0, 179, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 179, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "pyqstem/qstem_interface.pyx":162
+  /* "pyqstem/qstem_interface.pyx":174
  *                 scan_range[1][0]-.5*probe_size[0],scan_range[1][1]+.5*probe_size[0]]
  * 
  *     def view(self,ax=None):             # <<<<<<<<<<<<<<
@@ -3638,13 +3844,14 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_24view(struct __py
   __Pyx_XDECREF(__pyx_v_scan_range);
   __Pyx_XDECREF(__pyx_v_potential_extent);
   __Pyx_XDECREF(__pyx_v_potential_samples);
+  __Pyx_XDECREF(__pyx_v_probe_extent);
   __Pyx_XGIVEREF(__pyx_r);
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-/* "pyqstem/qstem_interface.pyx":169
- *         plt.show()
+/* "pyqstem/qstem_interface.pyx":181
+ *         atoms_plot(self._atoms,scan_range=scan_range,potential_extent=potential_extent,probe_extent=probe_extent,ax=ax,legend=True)
  * 
  *     def build_potential(self,num_slices,scan_range=None,num_samples=None):             # <<<<<<<<<<<<<<
  *         if self.thisptr.mode == 'STEM':
@@ -3656,7 +3863,7 @@ static PyObject *__pyx_pw_7pyqstem_15qstem_interface_7PyQSTEM_27build_potential(
 static PyObject *__pyx_pw_7pyqstem_15qstem_interface_7PyQSTEM_27build_potential(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_num_slices = 0;
   PyObject *__pyx_v_scan_range = 0;
-  PyObject *__pyx_v_num_samples = 0;
+  CYTHON_UNUSED PyObject *__pyx_v_num_samples = 0;
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("build_potential (wrapper)", 0);
@@ -3692,7 +3899,7 @@ static PyObject *__pyx_pw_7pyqstem_15qstem_interface_7PyQSTEM_27build_potential(
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "build_potential") < 0)) __PYX_ERR(0, 169, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "build_potential") < 0)) __PYX_ERR(0, 181, __pyx_L3_error)
       }
     } else {
       switch (PyTuple_GET_SIZE(__pyx_args)) {
@@ -3709,7 +3916,7 @@ static PyObject *__pyx_pw_7pyqstem_15qstem_interface_7PyQSTEM_27build_potential(
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("build_potential", 0, 1, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 169, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("build_potential", 0, 1, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 181, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("pyqstem.qstem_interface.PyQSTEM.build_potential", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -3722,7 +3929,7 @@ static PyObject *__pyx_pw_7pyqstem_15qstem_interface_7PyQSTEM_27build_potential(
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_26build_potential(struct __pyx_obj_7pyqstem_15qstem_interface_PyQSTEM *__pyx_v_self, PyObject *__pyx_v_num_slices, PyObject *__pyx_v_scan_range, PyObject *__pyx_v_num_samples) {
+static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_26build_potential(struct __pyx_obj_7pyqstem_15qstem_interface_PyQSTEM *__pyx_v_self, PyObject *__pyx_v_num_slices, PyObject *__pyx_v_scan_range, CYTHON_UNUSED PyObject *__pyx_v_num_samples) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   int __pyx_t_1;
@@ -3732,11 +3939,9 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_26build_potential(
   PyObject *__pyx_t_5 = NULL;
   PyObject *__pyx_t_6 = NULL;
   int __pyx_t_7;
-  int __pyx_t_8;
-  int __pyx_t_9;
   __Pyx_RefNannySetupContext("build_potential", 0);
 
-  /* "pyqstem/qstem_interface.pyx":170
+  /* "pyqstem/qstem_interface.pyx":182
  * 
  *     def build_potential(self,num_slices,scan_range=None,num_samples=None):
  *         if self.thisptr.mode == 'STEM':             # <<<<<<<<<<<<<<
@@ -3746,7 +3951,7 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_26build_potential(
   __pyx_t_1 = ((__pyx_v_self->thisptr->mode == ((char *)"STEM")) != 0);
   if (__pyx_t_1) {
 
-    /* "pyqstem/qstem_interface.pyx":171
+    /* "pyqstem/qstem_interface.pyx":183
  *     def build_potential(self,num_slices,scan_range=None,num_samples=None):
  *         if self.thisptr.mode == 'STEM':
  *             if scan_range is None:             # <<<<<<<<<<<<<<
@@ -3757,20 +3962,20 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_26build_potential(
     __pyx_t_2 = (__pyx_t_1 != 0);
     if (__pyx_t_2) {
 
-      /* "pyqstem/qstem_interface.pyx":172
+      /* "pyqstem/qstem_interface.pyx":184
  *         if self.thisptr.mode == 'STEM':
  *             if scan_range is None:
  *                 raise RuntimeError('Please provide scan window for mode STEM')             # <<<<<<<<<<<<<<
  *             else:
  *                 self.set_scan_range(scan_range)
  */
-      __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_RuntimeError, __pyx_tuple_, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 172, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_RuntimeError, __pyx_tuple_, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 184, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_Raise(__pyx_t_3, 0, 0, 0);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-      __PYX_ERR(0, 172, __pyx_L1_error)
+      __PYX_ERR(0, 184, __pyx_L1_error)
 
-      /* "pyqstem/qstem_interface.pyx":171
+      /* "pyqstem/qstem_interface.pyx":183
  *     def build_potential(self,num_slices,scan_range=None,num_samples=None):
  *         if self.thisptr.mode == 'STEM':
  *             if scan_range is None:             # <<<<<<<<<<<<<<
@@ -3779,15 +3984,15 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_26build_potential(
  */
     }
 
-    /* "pyqstem/qstem_interface.pyx":174
+    /* "pyqstem/qstem_interface.pyx":186
  *                 raise RuntimeError('Please provide scan window for mode STEM')
  *             else:
  *                 self.set_scan_range(scan_range)             # <<<<<<<<<<<<<<
  * 
- *         #if ((self.thisptr.atoms_state==0)|(self.thisptr.box_state==0)):
+ *         if ((self.thisptr.atoms_state==0)|(self.thisptr.box_state==0)):
  */
     /*else*/ {
-      __pyx_t_4 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_set_scan_range); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 174, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_set_scan_range); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 186, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
       __pyx_t_5 = NULL;
       if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_4))) {
@@ -3800,13 +4005,13 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_26build_potential(
         }
       }
       if (!__pyx_t_5) {
-        __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_v_scan_range); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 174, __pyx_L1_error)
+        __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_v_scan_range); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 186, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
       } else {
         #if CYTHON_FAST_PYCALL
         if (PyFunction_Check(__pyx_t_4)) {
           PyObject *__pyx_temp[2] = {__pyx_t_5, __pyx_v_scan_range};
-          __pyx_t_3 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 174, __pyx_L1_error)
+          __pyx_t_3 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 186, __pyx_L1_error)
           __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
           __Pyx_GOTREF(__pyx_t_3);
         } else
@@ -3814,19 +4019,19 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_26build_potential(
         #if CYTHON_FAST_PYCCALL
         if (__Pyx_PyFastCFunction_Check(__pyx_t_4)) {
           PyObject *__pyx_temp[2] = {__pyx_t_5, __pyx_v_scan_range};
-          __pyx_t_3 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 174, __pyx_L1_error)
+          __pyx_t_3 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 186, __pyx_L1_error)
           __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
           __Pyx_GOTREF(__pyx_t_3);
         } else
         #endif
         {
-          __pyx_t_6 = PyTuple_New(1+1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 174, __pyx_L1_error)
+          __pyx_t_6 = PyTuple_New(1+1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 186, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_6);
           __Pyx_GIVEREF(__pyx_t_5); PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_t_5); __pyx_t_5 = NULL;
           __Pyx_INCREF(__pyx_v_scan_range);
           __Pyx_GIVEREF(__pyx_v_scan_range);
           PyTuple_SET_ITEM(__pyx_t_6, 0+1, __pyx_v_scan_range);
-          __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_6, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 174, __pyx_L1_error)
+          __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_6, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 186, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_3);
           __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
         }
@@ -3835,7 +4040,7 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_26build_potential(
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     }
 
-    /* "pyqstem/qstem_interface.pyx":170
+    /* "pyqstem/qstem_interface.pyx":182
  * 
  *     def build_potential(self,num_slices,scan_range=None,num_samples=None):
  *         if self.thisptr.mode == 'STEM':             # <<<<<<<<<<<<<<
@@ -3844,60 +4049,50 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_26build_potential(
  */
   }
 
-  /* "pyqstem/qstem_interface.pyx":181
- *         #nx_old,ny_old,slices_old = self.get_numsamples()
+  /* "pyqstem/qstem_interface.pyx":188
+ *                 self.set_scan_range(scan_range)
  * 
- *         if num_samples is None:             # <<<<<<<<<<<<<<
- *             self.thisptr.build_potential(num_slices,-1,-1)
- *         else:
+ *         if ((self.thisptr.atoms_state==0)|(self.thisptr.box_state==0)):             # <<<<<<<<<<<<<<
+ *             raise RuntimeError('Please set atoms and simulation box')
+ * 
  */
-  __pyx_t_2 = (__pyx_v_num_samples == Py_None);
-  __pyx_t_1 = (__pyx_t_2 != 0);
-  if (__pyx_t_1) {
+  __pyx_t_2 = (((__pyx_v_self->thisptr->atoms_state == 0) | (__pyx_v_self->thisptr->box_state == 0)) != 0);
+  if (__pyx_t_2) {
 
-    /* "pyqstem/qstem_interface.pyx":182
+    /* "pyqstem/qstem_interface.pyx":189
  * 
- *         if num_samples is None:
- *             self.thisptr.build_potential(num_slices,-1,-1)             # <<<<<<<<<<<<<<
- *         else:
- *             self.thisptr.build_potential(num_slices,num_samples[0],num_samples[1])
- */
-    __pyx_t_7 = __Pyx_PyInt_As_int(__pyx_v_num_slices); if (unlikely((__pyx_t_7 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 182, __pyx_L1_error)
-    __pyx_v_self->thisptr->build_potential(__pyx_t_7, -1, -1);
-
-    /* "pyqstem/qstem_interface.pyx":181
+ *         if ((self.thisptr.atoms_state==0)|(self.thisptr.box_state==0)):
+ *             raise RuntimeError('Please set atoms and simulation box')             # <<<<<<<<<<<<<<
+ * 
  *         #nx_old,ny_old,slices_old = self.get_numsamples()
- * 
- *         if num_samples is None:             # <<<<<<<<<<<<<<
- *             self.thisptr.build_potential(num_slices,-1,-1)
- *         else:
  */
-    goto __pyx_L5;
+    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_RuntimeError, __pyx_tuple__2, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 189, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __Pyx_Raise(__pyx_t_3, 0, 0, 0);
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __PYX_ERR(0, 189, __pyx_L1_error)
+
+    /* "pyqstem/qstem_interface.pyx":188
+ *                 self.set_scan_range(scan_range)
+ * 
+ *         if ((self.thisptr.atoms_state==0)|(self.thisptr.box_state==0)):             # <<<<<<<<<<<<<<
+ *             raise RuntimeError('Please set atoms and simulation box')
+ * 
+ */
   }
 
-  /* "pyqstem/qstem_interface.pyx":184
- *             self.thisptr.build_potential(num_slices,-1,-1)
- *         else:
- *             self.thisptr.build_potential(num_slices,num_samples[0],num_samples[1])             # <<<<<<<<<<<<<<
+  /* "pyqstem/qstem_interface.pyx":193
+ *         #nx_old,ny_old,slices_old = self.get_numsamples()
+ * 
+ *         self.thisptr.build_potential(num_slices)             # <<<<<<<<<<<<<<
  * 
  *         self.thisptr.trans_array_state = 1
  */
-  /*else*/ {
-    __pyx_t_7 = __Pyx_PyInt_As_int(__pyx_v_num_slices); if (unlikely((__pyx_t_7 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 184, __pyx_L1_error)
-    __pyx_t_3 = __Pyx_GetItemInt(__pyx_v_num_samples, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 184, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_8 = __Pyx_PyInt_As_int(__pyx_t_3); if (unlikely((__pyx_t_8 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 184, __pyx_L1_error)
-    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_t_3 = __Pyx_GetItemInt(__pyx_v_num_samples, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 184, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_9 = __Pyx_PyInt_As_int(__pyx_t_3); if (unlikely((__pyx_t_9 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 184, __pyx_L1_error)
-    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_v_self->thisptr->build_potential(__pyx_t_7, __pyx_t_8, __pyx_t_9);
-  }
-  __pyx_L5:;
+  __pyx_t_7 = __Pyx_PyInt_As_int(__pyx_v_num_slices); if (unlikely((__pyx_t_7 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 193, __pyx_L1_error)
+  __pyx_v_self->thisptr->build_potential(__pyx_t_7);
 
-  /* "pyqstem/qstem_interface.pyx":186
- *             self.thisptr.build_potential(num_slices,num_samples[0],num_samples[1])
+  /* "pyqstem/qstem_interface.pyx":195
+ *         self.thisptr.build_potential(num_slices)
  * 
  *         self.thisptr.trans_array_state = 1             # <<<<<<<<<<<<<<
  * 
@@ -3905,8 +4100,8 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_26build_potential(
  */
   __pyx_v_self->thisptr->trans_array_state = 1;
 
-  /* "pyqstem/qstem_interface.pyx":169
- *         plt.show()
+  /* "pyqstem/qstem_interface.pyx":181
+ *         atoms_plot(self._atoms,scan_range=scan_range,potential_extent=potential_extent,probe_extent=probe_extent,ax=ax,legend=True)
  * 
  *     def build_potential(self,num_slices,scan_range=None,num_samples=None):             # <<<<<<<<<<<<<<
  *         if self.thisptr.mode == 'STEM':
@@ -3929,7 +4124,7 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_26build_potential(
   return __pyx_r;
 }
 
-/* "pyqstem/qstem_interface.pyx":191
+/* "pyqstem/qstem_interface.pyx":200
  *         #    self.thisptr.wave_state = -1
  * 
  *     def set_potential(self,potential,scan_range=None):             # <<<<<<<<<<<<<<
@@ -3970,7 +4165,7 @@ static PyObject *__pyx_pw_7pyqstem_15qstem_interface_7PyQSTEM_29set_potential(Py
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "set_potential") < 0)) __PYX_ERR(0, 191, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "set_potential") < 0)) __PYX_ERR(0, 200, __pyx_L3_error)
       }
     } else {
       switch (PyTuple_GET_SIZE(__pyx_args)) {
@@ -3985,7 +4180,7 @@ static PyObject *__pyx_pw_7pyqstem_15qstem_interface_7PyQSTEM_29set_potential(Py
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("set_potential", 0, 1, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 191, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("set_potential", 0, 1, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 200, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("pyqstem.qstem_interface.PyQSTEM.set_potential", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -4022,7 +4217,7 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_28set_potential(st
   std::vector<double>  __pyx_t_14;
   __Pyx_RefNannySetupContext("set_potential", 0);
 
-  /* "pyqstem/qstem_interface.pyx":192
+  /* "pyqstem/qstem_interface.pyx":201
  * 
  *     def set_potential(self,potential,scan_range=None):
  *         if self.thisptr.mode == 'STEM':             # <<<<<<<<<<<<<<
@@ -4032,7 +4227,7 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_28set_potential(st
   __pyx_t_1 = ((__pyx_v_self->thisptr->mode == ((char *)"STEM")) != 0);
   if (__pyx_t_1) {
 
-    /* "pyqstem/qstem_interface.pyx":193
+    /* "pyqstem/qstem_interface.pyx":202
  *     def set_potential(self,potential,scan_range=None):
  *         if self.thisptr.mode == 'STEM':
  *             if scan_range is None:             # <<<<<<<<<<<<<<
@@ -4043,16 +4238,16 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_28set_potential(st
     __pyx_t_2 = (__pyx_t_1 != 0);
     if (__pyx_t_2) {
 
-      /* "pyqstem/qstem_interface.pyx":194
+      /* "pyqstem/qstem_interface.pyx":203
  *         if self.thisptr.mode == 'STEM':
  *             if scan_range is None:
  *                 raise RuntimeError('Provide scan window for mode {0}'.format(self.thisptr.mode))             # <<<<<<<<<<<<<<
  *             else:
  *                 self.set_scan_range(scan_range)
  */
-      __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_Provide_scan_window_for_mode_0, __pyx_n_s_format); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 194, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_Provide_scan_window_for_mode_0, __pyx_n_s_format); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 203, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
-      __pyx_t_5 = __pyx_convert_PyBytes_string_to_py_std__in_string(__pyx_v_self->thisptr->mode); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 194, __pyx_L1_error)
+      __pyx_t_5 = __pyx_convert_PyBytes_string_to_py_std__in_string(__pyx_v_self->thisptr->mode); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 203, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
       __pyx_t_6 = NULL;
       if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_4))) {
@@ -4065,14 +4260,14 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_28set_potential(st
         }
       }
       if (!__pyx_t_6) {
-        __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_5); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 194, __pyx_L1_error)
+        __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_5); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 203, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
         __Pyx_GOTREF(__pyx_t_3);
       } else {
         #if CYTHON_FAST_PYCALL
         if (PyFunction_Check(__pyx_t_4)) {
           PyObject *__pyx_temp[2] = {__pyx_t_6, __pyx_t_5};
-          __pyx_t_3 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 194, __pyx_L1_error)
+          __pyx_t_3 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 203, __pyx_L1_error)
           __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
           __Pyx_GOTREF(__pyx_t_3);
           __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
@@ -4081,38 +4276,38 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_28set_potential(st
         #if CYTHON_FAST_PYCCALL
         if (__Pyx_PyFastCFunction_Check(__pyx_t_4)) {
           PyObject *__pyx_temp[2] = {__pyx_t_6, __pyx_t_5};
-          __pyx_t_3 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 194, __pyx_L1_error)
+          __pyx_t_3 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 203, __pyx_L1_error)
           __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
           __Pyx_GOTREF(__pyx_t_3);
           __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
         } else
         #endif
         {
-          __pyx_t_7 = PyTuple_New(1+1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 194, __pyx_L1_error)
+          __pyx_t_7 = PyTuple_New(1+1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 203, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_7);
           __Pyx_GIVEREF(__pyx_t_6); PyTuple_SET_ITEM(__pyx_t_7, 0, __pyx_t_6); __pyx_t_6 = NULL;
           __Pyx_GIVEREF(__pyx_t_5);
           PyTuple_SET_ITEM(__pyx_t_7, 0+1, __pyx_t_5);
           __pyx_t_5 = 0;
-          __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_7, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 194, __pyx_L1_error)
+          __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_7, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 203, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_3);
           __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
         }
       }
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-      __pyx_t_4 = PyTuple_New(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 194, __pyx_L1_error)
+      __pyx_t_4 = PyTuple_New(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 203, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_GIVEREF(__pyx_t_3);
       PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_3);
       __pyx_t_3 = 0;
-      __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_RuntimeError, __pyx_t_4, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 194, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_RuntimeError, __pyx_t_4, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 203, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       __Pyx_Raise(__pyx_t_3, 0, 0, 0);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-      __PYX_ERR(0, 194, __pyx_L1_error)
+      __PYX_ERR(0, 203, __pyx_L1_error)
 
-      /* "pyqstem/qstem_interface.pyx":193
+      /* "pyqstem/qstem_interface.pyx":202
  *     def set_potential(self,potential,scan_range=None):
  *         if self.thisptr.mode == 'STEM':
  *             if scan_range is None:             # <<<<<<<<<<<<<<
@@ -4121,7 +4316,7 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_28set_potential(st
  */
     }
 
-    /* "pyqstem/qstem_interface.pyx":196
+    /* "pyqstem/qstem_interface.pyx":205
  *                 raise RuntimeError('Provide scan window for mode {0}'.format(self.thisptr.mode))
  *             else:
  *                 self.set_scan_range(scan_range)             # <<<<<<<<<<<<<<
@@ -4129,7 +4324,7 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_28set_potential(st
  *         array = potential.array
  */
     /*else*/ {
-      __pyx_t_4 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_set_scan_range); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 196, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_set_scan_range); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 205, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
       __pyx_t_7 = NULL;
       if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_4))) {
@@ -4142,13 +4337,13 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_28set_potential(st
         }
       }
       if (!__pyx_t_7) {
-        __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_v_scan_range); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 196, __pyx_L1_error)
+        __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_v_scan_range); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 205, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
       } else {
         #if CYTHON_FAST_PYCALL
         if (PyFunction_Check(__pyx_t_4)) {
           PyObject *__pyx_temp[2] = {__pyx_t_7, __pyx_v_scan_range};
-          __pyx_t_3 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 196, __pyx_L1_error)
+          __pyx_t_3 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 205, __pyx_L1_error)
           __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
           __Pyx_GOTREF(__pyx_t_3);
         } else
@@ -4156,19 +4351,19 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_28set_potential(st
         #if CYTHON_FAST_PYCCALL
         if (__Pyx_PyFastCFunction_Check(__pyx_t_4)) {
           PyObject *__pyx_temp[2] = {__pyx_t_7, __pyx_v_scan_range};
-          __pyx_t_3 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 196, __pyx_L1_error)
+          __pyx_t_3 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 205, __pyx_L1_error)
           __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
           __Pyx_GOTREF(__pyx_t_3);
         } else
         #endif
         {
-          __pyx_t_5 = PyTuple_New(1+1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 196, __pyx_L1_error)
+          __pyx_t_5 = PyTuple_New(1+1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 205, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_5);
           __Pyx_GIVEREF(__pyx_t_7); PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_7); __pyx_t_7 = NULL;
           __Pyx_INCREF(__pyx_v_scan_range);
           __Pyx_GIVEREF(__pyx_v_scan_range);
           PyTuple_SET_ITEM(__pyx_t_5, 0+1, __pyx_v_scan_range);
-          __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_5, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 196, __pyx_L1_error)
+          __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_5, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 205, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_3);
           __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
         }
@@ -4177,7 +4372,7 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_28set_potential(st
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     }
 
-    /* "pyqstem/qstem_interface.pyx":192
+    /* "pyqstem/qstem_interface.pyx":201
  * 
  *     def set_potential(self,potential,scan_range=None):
  *         if self.thisptr.mode == 'STEM':             # <<<<<<<<<<<<<<
@@ -4186,64 +4381,64 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_28set_potential(st
  */
   }
 
-  /* "pyqstem/qstem_interface.pyx":198
+  /* "pyqstem/qstem_interface.pyx":207
  *                 self.set_scan_range(scan_range)
  * 
  *         array = potential.array             # <<<<<<<<<<<<<<
  *         nonperiodic_xy = not potential.periodic_xy
  *         nonperiodic_z = not potential.periodic_z
  */
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_potential, __pyx_n_s_array); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 198, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_potential, __pyx_n_s_array); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 207, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __pyx_v_array = __pyx_t_3;
   __pyx_t_3 = 0;
 
-  /* "pyqstem/qstem_interface.pyx":199
+  /* "pyqstem/qstem_interface.pyx":208
  * 
  *         array = potential.array
  *         nonperiodic_xy = not potential.periodic_xy             # <<<<<<<<<<<<<<
  *         nonperiodic_z = not potential.periodic_z
  *         size = array.shape
  */
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_potential, __pyx_n_s_periodic_xy); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 199, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_potential, __pyx_n_s_periodic_xy); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 208, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_3); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 199, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_3); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 208, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_v_nonperiodic_xy = (!__pyx_t_2);
 
-  /* "pyqstem/qstem_interface.pyx":200
+  /* "pyqstem/qstem_interface.pyx":209
  *         array = potential.array
  *         nonperiodic_xy = not potential.periodic_xy
  *         nonperiodic_z = not potential.periodic_z             # <<<<<<<<<<<<<<
  *         size = array.shape
  *         extent = potential.get_extent()
  */
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_potential, __pyx_n_s_periodic_z); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 200, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_potential, __pyx_n_s_periodic_z); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 209, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_3); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 200, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_3); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 209, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_v_nonperiodic_z = (!__pyx_t_2);
 
-  /* "pyqstem/qstem_interface.pyx":201
+  /* "pyqstem/qstem_interface.pyx":210
  *         nonperiodic_xy = not potential.periodic_xy
  *         nonperiodic_z = not potential.periodic_z
  *         size = array.shape             # <<<<<<<<<<<<<<
  *         extent = potential.get_extent()
  * 
  */
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_array, __pyx_n_s_shape); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 201, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_array, __pyx_n_s_shape); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 210, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __pyx_v_size = __pyx_t_3;
   __pyx_t_3 = 0;
 
-  /* "pyqstem/qstem_interface.pyx":202
+  /* "pyqstem/qstem_interface.pyx":211
  *         nonperiodic_z = not potential.periodic_z
  *         size = array.shape
  *         extent = potential.get_extent()             # <<<<<<<<<<<<<<
  * 
  *         if self.thisptr.wave_state > 0:
  */
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_potential, __pyx_n_s_get_extent); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 202, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_potential, __pyx_n_s_get_extent); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 211, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __pyx_t_5 = NULL;
   if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_4))) {
@@ -4256,17 +4451,17 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_28set_potential(st
     }
   }
   if (__pyx_t_5) {
-    __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_5); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 202, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_5); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 211, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   } else {
-    __pyx_t_3 = __Pyx_PyObject_CallNoArg(__pyx_t_4); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 202, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_CallNoArg(__pyx_t_4); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 211, __pyx_L1_error)
   }
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_v_extent = __pyx_t_3;
   __pyx_t_3 = 0;
 
-  /* "pyqstem/qstem_interface.pyx":204
+  /* "pyqstem/qstem_interface.pyx":213
  *         extent = potential.get_extent()
  * 
  *         if self.thisptr.wave_state > 0:             # <<<<<<<<<<<<<<
@@ -4276,29 +4471,29 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_28set_potential(st
   __pyx_t_2 = ((__pyx_v_self->thisptr->wave_state > 0) != 0);
   if (__pyx_t_2) {
 
-    /* "pyqstem/qstem_interface.pyx":205
+    /* "pyqstem/qstem_interface.pyx":214
  * 
  *         if self.thisptr.wave_state > 0:
  *             if not np.any(np.isclose(potential.sampling[:2],self.get_resolution(),rtol=1e-6,atol=1e-6)):             # <<<<<<<<<<<<<<
  *                 raise RuntimeError('Potential resolution does not match wavefunction ({0},{1})!=({2},{3})'
  *                           .format(potential.sampling[0],potential.sampling[1],self.get_resolution()[0],self.get_resolution()[1]))
  */
-    __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 205, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 214, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_any); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 205, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_any); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 214, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 205, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 214, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_isclose); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 205, __pyx_L1_error)
+    __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_isclose); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 214, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_potential, __pyx_n_s_sampling); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 205, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_potential, __pyx_n_s_sampling); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 214, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_6 = __Pyx_PyObject_GetSlice(__pyx_t_4, 0, 2, NULL, NULL, &__pyx_slice__2, 0, 1, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 205, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyObject_GetSlice(__pyx_t_4, 0, 2, NULL, NULL, &__pyx_slice__3, 0, 1, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 214, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __pyx_t_8 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_get_resolution); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 205, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_get_resolution); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 214, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
     __pyx_t_9 = NULL;
     if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_8))) {
@@ -4311,14 +4506,14 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_28set_potential(st
       }
     }
     if (__pyx_t_9) {
-      __pyx_t_4 = __Pyx_PyObject_CallOneArg(__pyx_t_8, __pyx_t_9); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 205, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_PyObject_CallOneArg(__pyx_t_8, __pyx_t_9); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 214, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
     } else {
-      __pyx_t_4 = __Pyx_PyObject_CallNoArg(__pyx_t_8); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 205, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_PyObject_CallNoArg(__pyx_t_8); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 214, __pyx_L1_error)
     }
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-    __pyx_t_8 = PyTuple_New(2); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 205, __pyx_L1_error)
+    __pyx_t_8 = PyTuple_New(2); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 214, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
     __Pyx_GIVEREF(__pyx_t_6);
     PyTuple_SET_ITEM(__pyx_t_8, 0, __pyx_t_6);
@@ -4326,11 +4521,11 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_28set_potential(st
     PyTuple_SET_ITEM(__pyx_t_8, 1, __pyx_t_4);
     __pyx_t_6 = 0;
     __pyx_t_4 = 0;
-    __pyx_t_4 = PyDict_New(); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 205, __pyx_L1_error)
+    __pyx_t_4 = PyDict_New(); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 214, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    if (PyDict_SetItem(__pyx_t_4, __pyx_n_s_rtol, __pyx_float_1eneg_6) < 0) __PYX_ERR(0, 205, __pyx_L1_error)
-    if (PyDict_SetItem(__pyx_t_4, __pyx_n_s_atol, __pyx_float_1eneg_6) < 0) __PYX_ERR(0, 205, __pyx_L1_error)
-    __pyx_t_6 = __Pyx_PyObject_Call(__pyx_t_7, __pyx_t_8, __pyx_t_4); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 205, __pyx_L1_error)
+    if (PyDict_SetItem(__pyx_t_4, __pyx_n_s_rtol, __pyx_float_1eneg_6) < 0) __PYX_ERR(0, 214, __pyx_L1_error)
+    if (PyDict_SetItem(__pyx_t_4, __pyx_n_s_atol, __pyx_float_1eneg_6) < 0) __PYX_ERR(0, 214, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyObject_Call(__pyx_t_7, __pyx_t_8, __pyx_t_4); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 214, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
@@ -4346,14 +4541,14 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_28set_potential(st
       }
     }
     if (!__pyx_t_4) {
-      __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_t_6); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 205, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_t_6); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 214, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
       __Pyx_GOTREF(__pyx_t_3);
     } else {
       #if CYTHON_FAST_PYCALL
       if (PyFunction_Check(__pyx_t_5)) {
         PyObject *__pyx_temp[2] = {__pyx_t_4, __pyx_t_6};
-        __pyx_t_3 = __Pyx_PyFunction_FastCall(__pyx_t_5, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 205, __pyx_L1_error)
+        __pyx_t_3 = __Pyx_PyFunction_FastCall(__pyx_t_5, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 214, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
         __Pyx_GOTREF(__pyx_t_3);
         __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
@@ -4362,50 +4557,50 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_28set_potential(st
       #if CYTHON_FAST_PYCCALL
       if (__Pyx_PyFastCFunction_Check(__pyx_t_5)) {
         PyObject *__pyx_temp[2] = {__pyx_t_4, __pyx_t_6};
-        __pyx_t_3 = __Pyx_PyCFunction_FastCall(__pyx_t_5, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 205, __pyx_L1_error)
+        __pyx_t_3 = __Pyx_PyCFunction_FastCall(__pyx_t_5, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 214, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
         __Pyx_GOTREF(__pyx_t_3);
         __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
       } else
       #endif
       {
-        __pyx_t_8 = PyTuple_New(1+1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 205, __pyx_L1_error)
+        __pyx_t_8 = PyTuple_New(1+1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 214, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_8);
         __Pyx_GIVEREF(__pyx_t_4); PyTuple_SET_ITEM(__pyx_t_8, 0, __pyx_t_4); __pyx_t_4 = NULL;
         __Pyx_GIVEREF(__pyx_t_6);
         PyTuple_SET_ITEM(__pyx_t_8, 0+1, __pyx_t_6);
         __pyx_t_6 = 0;
-        __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_8, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 205, __pyx_L1_error)
+        __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_8, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 214, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
         __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
       }
     }
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_3); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 205, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_3); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 214, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __pyx_t_1 = ((!__pyx_t_2) != 0);
     if (__pyx_t_1) {
 
-      /* "pyqstem/qstem_interface.pyx":207
+      /* "pyqstem/qstem_interface.pyx":216
  *             if not np.any(np.isclose(potential.sampling[:2],self.get_resolution(),rtol=1e-6,atol=1e-6)):
  *                 raise RuntimeError('Potential resolution does not match wavefunction ({0},{1})!=({2},{3})'
  *                           .format(potential.sampling[0],potential.sampling[1],self.get_resolution()[0],self.get_resolution()[1]))             # <<<<<<<<<<<<<<
  * 
  *         array = np.concatenate((np.real(array)[:,:,:,np.newaxis],np.imag(array)[:,:,:,np.newaxis]),axis=3)
  */
-      __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_Potential_resolution_does_not_ma, __pyx_n_s_format); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 207, __pyx_L1_error)
+      __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_Potential_resolution_does_not_ma, __pyx_n_s_format); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 216, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
-      __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_v_potential, __pyx_n_s_sampling); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 207, __pyx_L1_error)
+      __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_v_potential, __pyx_n_s_sampling); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 216, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_8);
-      __pyx_t_6 = __Pyx_GetItemInt(__pyx_t_8, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 207, __pyx_L1_error)
+      __pyx_t_6 = __Pyx_GetItemInt(__pyx_t_8, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 216, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_6);
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-      __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_v_potential, __pyx_n_s_sampling); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 207, __pyx_L1_error)
+      __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_v_potential, __pyx_n_s_sampling); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 216, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_8);
-      __pyx_t_4 = __Pyx_GetItemInt(__pyx_t_8, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 207, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_GetItemInt(__pyx_t_8, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 216, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-      __pyx_t_7 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_get_resolution); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 207, __pyx_L1_error)
+      __pyx_t_7 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_get_resolution); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 216, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
       __pyx_t_9 = NULL;
       if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_7))) {
@@ -4418,17 +4613,17 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_28set_potential(st
         }
       }
       if (__pyx_t_9) {
-        __pyx_t_8 = __Pyx_PyObject_CallOneArg(__pyx_t_7, __pyx_t_9); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 207, __pyx_L1_error)
+        __pyx_t_8 = __Pyx_PyObject_CallOneArg(__pyx_t_7, __pyx_t_9); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 216, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
       } else {
-        __pyx_t_8 = __Pyx_PyObject_CallNoArg(__pyx_t_7); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 207, __pyx_L1_error)
+        __pyx_t_8 = __Pyx_PyObject_CallNoArg(__pyx_t_7); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 216, __pyx_L1_error)
       }
       __Pyx_GOTREF(__pyx_t_8);
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-      __pyx_t_7 = __Pyx_GetItemInt(__pyx_t_8, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 207, __pyx_L1_error)
+      __pyx_t_7 = __Pyx_GetItemInt(__pyx_t_8, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 216, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-      __pyx_t_9 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_get_resolution); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 207, __pyx_L1_error)
+      __pyx_t_9 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_get_resolution); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 216, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_9);
       __pyx_t_10 = NULL;
       if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_9))) {
@@ -4441,14 +4636,14 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_28set_potential(st
         }
       }
       if (__pyx_t_10) {
-        __pyx_t_8 = __Pyx_PyObject_CallOneArg(__pyx_t_9, __pyx_t_10); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 207, __pyx_L1_error)
+        __pyx_t_8 = __Pyx_PyObject_CallOneArg(__pyx_t_9, __pyx_t_10); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 216, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
       } else {
-        __pyx_t_8 = __Pyx_PyObject_CallNoArg(__pyx_t_9); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 207, __pyx_L1_error)
+        __pyx_t_8 = __Pyx_PyObject_CallNoArg(__pyx_t_9); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 216, __pyx_L1_error)
       }
       __Pyx_GOTREF(__pyx_t_8);
       __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-      __pyx_t_9 = __Pyx_GetItemInt(__pyx_t_8, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 207, __pyx_L1_error)
+      __pyx_t_9 = __Pyx_GetItemInt(__pyx_t_8, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 216, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_9);
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
       __pyx_t_8 = NULL;
@@ -4466,7 +4661,7 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_28set_potential(st
       #if CYTHON_FAST_PYCALL
       if (PyFunction_Check(__pyx_t_5)) {
         PyObject *__pyx_temp[5] = {__pyx_t_8, __pyx_t_6, __pyx_t_4, __pyx_t_7, __pyx_t_9};
-        __pyx_t_3 = __Pyx_PyFunction_FastCall(__pyx_t_5, __pyx_temp+1-__pyx_t_11, 4+__pyx_t_11); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 207, __pyx_L1_error)
+        __pyx_t_3 = __Pyx_PyFunction_FastCall(__pyx_t_5, __pyx_temp+1-__pyx_t_11, 4+__pyx_t_11); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 216, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
         __Pyx_GOTREF(__pyx_t_3);
         __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
@@ -4478,7 +4673,7 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_28set_potential(st
       #if CYTHON_FAST_PYCCALL
       if (__Pyx_PyFastCFunction_Check(__pyx_t_5)) {
         PyObject *__pyx_temp[5] = {__pyx_t_8, __pyx_t_6, __pyx_t_4, __pyx_t_7, __pyx_t_9};
-        __pyx_t_3 = __Pyx_PyCFunction_FastCall(__pyx_t_5, __pyx_temp+1-__pyx_t_11, 4+__pyx_t_11); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 207, __pyx_L1_error)
+        __pyx_t_3 = __Pyx_PyCFunction_FastCall(__pyx_t_5, __pyx_temp+1-__pyx_t_11, 4+__pyx_t_11); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 216, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
         __Pyx_GOTREF(__pyx_t_3);
         __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
@@ -4488,7 +4683,7 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_28set_potential(st
       } else
       #endif
       {
-        __pyx_t_10 = PyTuple_New(4+__pyx_t_11); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 207, __pyx_L1_error)
+        __pyx_t_10 = PyTuple_New(4+__pyx_t_11); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 216, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_10);
         if (__pyx_t_8) {
           __Pyx_GIVEREF(__pyx_t_8); PyTuple_SET_ITEM(__pyx_t_10, 0, __pyx_t_8); __pyx_t_8 = NULL;
@@ -4505,32 +4700,32 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_28set_potential(st
         __pyx_t_4 = 0;
         __pyx_t_7 = 0;
         __pyx_t_9 = 0;
-        __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_10, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 207, __pyx_L1_error)
+        __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_10, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 216, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
         __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
       }
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-      /* "pyqstem/qstem_interface.pyx":206
+      /* "pyqstem/qstem_interface.pyx":215
  *         if self.thisptr.wave_state > 0:
  *             if not np.any(np.isclose(potential.sampling[:2],self.get_resolution(),rtol=1e-6,atol=1e-6)):
  *                 raise RuntimeError('Potential resolution does not match wavefunction ({0},{1})!=({2},{3})'             # <<<<<<<<<<<<<<
  *                           .format(potential.sampling[0],potential.sampling[1],self.get_resolution()[0],self.get_resolution()[1]))
  * 
  */
-      __pyx_t_5 = PyTuple_New(1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 206, __pyx_L1_error)
+      __pyx_t_5 = PyTuple_New(1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 215, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_GIVEREF(__pyx_t_3);
       PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_3);
       __pyx_t_3 = 0;
-      __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_RuntimeError, __pyx_t_5, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 206, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_RuntimeError, __pyx_t_5, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 215, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
       __Pyx_Raise(__pyx_t_3, 0, 0, 0);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-      __PYX_ERR(0, 206, __pyx_L1_error)
+      __PYX_ERR(0, 215, __pyx_L1_error)
 
-      /* "pyqstem/qstem_interface.pyx":205
+      /* "pyqstem/qstem_interface.pyx":214
  * 
  *         if self.thisptr.wave_state > 0:
  *             if not np.any(np.isclose(potential.sampling[:2],self.get_resolution(),rtol=1e-6,atol=1e-6)):             # <<<<<<<<<<<<<<
@@ -4539,7 +4734,7 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_28set_potential(st
  */
     }
 
-    /* "pyqstem/qstem_interface.pyx":204
+    /* "pyqstem/qstem_interface.pyx":213
  *         extent = potential.get_extent()
  * 
  *         if self.thisptr.wave_state > 0:             # <<<<<<<<<<<<<<
@@ -4548,21 +4743,21 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_28set_potential(st
  */
   }
 
-  /* "pyqstem/qstem_interface.pyx":209
+  /* "pyqstem/qstem_interface.pyx":218
  *                           .format(potential.sampling[0],potential.sampling[1],self.get_resolution()[0],self.get_resolution()[1]))
  * 
  *         array = np.concatenate((np.real(array)[:,:,:,np.newaxis],np.imag(array)[:,:,:,np.newaxis]),axis=3)             # <<<<<<<<<<<<<<
  * 
  *         self.thisptr.set_potential(array,size,extent)
  */
-  __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 209, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 218, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_concatenate); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 209, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_concatenate); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 218, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_10 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 209, __pyx_L1_error)
+  __pyx_t_10 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 218, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_10);
-  __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_10, __pyx_n_s_real); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 209, __pyx_L1_error)
+  __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_10, __pyx_n_s_real); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 218, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
   __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
   __pyx_t_10 = NULL;
@@ -4576,13 +4771,13 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_28set_potential(st
     }
   }
   if (!__pyx_t_10) {
-    __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_t_9, __pyx_v_array); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 209, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_t_9, __pyx_v_array); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 218, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
   } else {
     #if CYTHON_FAST_PYCALL
     if (PyFunction_Check(__pyx_t_9)) {
       PyObject *__pyx_temp[2] = {__pyx_t_10, __pyx_v_array};
-      __pyx_t_3 = __Pyx_PyFunction_FastCall(__pyx_t_9, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 209, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyFunction_FastCall(__pyx_t_9, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 218, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_10); __pyx_t_10 = 0;
       __Pyx_GOTREF(__pyx_t_3);
     } else
@@ -4590,50 +4785,50 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_28set_potential(st
     #if CYTHON_FAST_PYCCALL
     if (__Pyx_PyFastCFunction_Check(__pyx_t_9)) {
       PyObject *__pyx_temp[2] = {__pyx_t_10, __pyx_v_array};
-      __pyx_t_3 = __Pyx_PyCFunction_FastCall(__pyx_t_9, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 209, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyCFunction_FastCall(__pyx_t_9, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 218, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_10); __pyx_t_10 = 0;
       __Pyx_GOTREF(__pyx_t_3);
     } else
     #endif
     {
-      __pyx_t_7 = PyTuple_New(1+1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 209, __pyx_L1_error)
+      __pyx_t_7 = PyTuple_New(1+1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 218, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
       __Pyx_GIVEREF(__pyx_t_10); PyTuple_SET_ITEM(__pyx_t_7, 0, __pyx_t_10); __pyx_t_10 = NULL;
       __Pyx_INCREF(__pyx_v_array);
       __Pyx_GIVEREF(__pyx_v_array);
       PyTuple_SET_ITEM(__pyx_t_7, 0+1, __pyx_v_array);
-      __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_9, __pyx_t_7, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 209, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_9, __pyx_t_7, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 218, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
     }
   }
   __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-  __pyx_t_9 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 209, __pyx_L1_error)
+  __pyx_t_9 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 218, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
-  __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_9, __pyx_n_s_newaxis); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 209, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_9, __pyx_n_s_newaxis); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 218, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
   __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-  __pyx_t_9 = PyTuple_New(4); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 209, __pyx_L1_error)
+  __pyx_t_9 = PyTuple_New(4); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 218, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
-  __Pyx_INCREF(__pyx_slice__3);
-  __Pyx_GIVEREF(__pyx_slice__3);
-  PyTuple_SET_ITEM(__pyx_t_9, 0, __pyx_slice__3);
   __Pyx_INCREF(__pyx_slice__4);
   __Pyx_GIVEREF(__pyx_slice__4);
-  PyTuple_SET_ITEM(__pyx_t_9, 1, __pyx_slice__4);
+  PyTuple_SET_ITEM(__pyx_t_9, 0, __pyx_slice__4);
   __Pyx_INCREF(__pyx_slice__5);
   __Pyx_GIVEREF(__pyx_slice__5);
-  PyTuple_SET_ITEM(__pyx_t_9, 2, __pyx_slice__5);
+  PyTuple_SET_ITEM(__pyx_t_9, 1, __pyx_slice__5);
+  __Pyx_INCREF(__pyx_slice__6);
+  __Pyx_GIVEREF(__pyx_slice__6);
+  PyTuple_SET_ITEM(__pyx_t_9, 2, __pyx_slice__6);
   __Pyx_GIVEREF(__pyx_t_7);
   PyTuple_SET_ITEM(__pyx_t_9, 3, __pyx_t_7);
   __pyx_t_7 = 0;
-  __pyx_t_7 = PyObject_GetItem(__pyx_t_3, __pyx_t_9); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 209, __pyx_L1_error)
+  __pyx_t_7 = PyObject_GetItem(__pyx_t_3, __pyx_t_9); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 218, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-  __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 209, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 218, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_imag); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 209, __pyx_L1_error)
+  __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_imag); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 218, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_10);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_t_3 = NULL;
@@ -4647,13 +4842,13 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_28set_potential(st
     }
   }
   if (!__pyx_t_3) {
-    __pyx_t_9 = __Pyx_PyObject_CallOneArg(__pyx_t_10, __pyx_v_array); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 209, __pyx_L1_error)
+    __pyx_t_9 = __Pyx_PyObject_CallOneArg(__pyx_t_10, __pyx_v_array); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 218, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_9);
   } else {
     #if CYTHON_FAST_PYCALL
     if (PyFunction_Check(__pyx_t_10)) {
       PyObject *__pyx_temp[2] = {__pyx_t_3, __pyx_v_array};
-      __pyx_t_9 = __Pyx_PyFunction_FastCall(__pyx_t_10, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 209, __pyx_L1_error)
+      __pyx_t_9 = __Pyx_PyFunction_FastCall(__pyx_t_10, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 218, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
       __Pyx_GOTREF(__pyx_t_9);
     } else
@@ -4661,48 +4856,48 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_28set_potential(st
     #if CYTHON_FAST_PYCCALL
     if (__Pyx_PyFastCFunction_Check(__pyx_t_10)) {
       PyObject *__pyx_temp[2] = {__pyx_t_3, __pyx_v_array};
-      __pyx_t_9 = __Pyx_PyCFunction_FastCall(__pyx_t_10, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 209, __pyx_L1_error)
+      __pyx_t_9 = __Pyx_PyCFunction_FastCall(__pyx_t_10, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 218, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
       __Pyx_GOTREF(__pyx_t_9);
     } else
     #endif
     {
-      __pyx_t_4 = PyTuple_New(1+1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 209, __pyx_L1_error)
+      __pyx_t_4 = PyTuple_New(1+1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 218, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_GIVEREF(__pyx_t_3); PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_3); __pyx_t_3 = NULL;
       __Pyx_INCREF(__pyx_v_array);
       __Pyx_GIVEREF(__pyx_v_array);
       PyTuple_SET_ITEM(__pyx_t_4, 0+1, __pyx_v_array);
-      __pyx_t_9 = __Pyx_PyObject_Call(__pyx_t_10, __pyx_t_4, NULL); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 209, __pyx_L1_error)
+      __pyx_t_9 = __Pyx_PyObject_Call(__pyx_t_10, __pyx_t_4, NULL); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 218, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_9);
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     }
   }
   __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-  __pyx_t_10 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 209, __pyx_L1_error)
+  __pyx_t_10 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 218, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_10);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_10, __pyx_n_s_newaxis); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 209, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_10, __pyx_n_s_newaxis); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 218, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-  __pyx_t_10 = PyTuple_New(4); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 209, __pyx_L1_error)
+  __pyx_t_10 = PyTuple_New(4); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 218, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_10);
-  __Pyx_INCREF(__pyx_slice__6);
-  __Pyx_GIVEREF(__pyx_slice__6);
-  PyTuple_SET_ITEM(__pyx_t_10, 0, __pyx_slice__6);
   __Pyx_INCREF(__pyx_slice__7);
   __Pyx_GIVEREF(__pyx_slice__7);
-  PyTuple_SET_ITEM(__pyx_t_10, 1, __pyx_slice__7);
+  PyTuple_SET_ITEM(__pyx_t_10, 0, __pyx_slice__7);
   __Pyx_INCREF(__pyx_slice__8);
   __Pyx_GIVEREF(__pyx_slice__8);
-  PyTuple_SET_ITEM(__pyx_t_10, 2, __pyx_slice__8);
+  PyTuple_SET_ITEM(__pyx_t_10, 1, __pyx_slice__8);
+  __Pyx_INCREF(__pyx_slice__9);
+  __Pyx_GIVEREF(__pyx_slice__9);
+  PyTuple_SET_ITEM(__pyx_t_10, 2, __pyx_slice__9);
   __Pyx_GIVEREF(__pyx_t_4);
   PyTuple_SET_ITEM(__pyx_t_10, 3, __pyx_t_4);
   __pyx_t_4 = 0;
-  __pyx_t_4 = PyObject_GetItem(__pyx_t_9, __pyx_t_10); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 209, __pyx_L1_error)
+  __pyx_t_4 = PyObject_GetItem(__pyx_t_9, __pyx_t_10); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 218, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
   __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-  __pyx_t_10 = PyTuple_New(2); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 209, __pyx_L1_error)
+  __pyx_t_10 = PyTuple_New(2); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 218, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_10);
   __Pyx_GIVEREF(__pyx_t_7);
   PyTuple_SET_ITEM(__pyx_t_10, 0, __pyx_t_7);
@@ -4710,15 +4905,15 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_28set_potential(st
   PyTuple_SET_ITEM(__pyx_t_10, 1, __pyx_t_4);
   __pyx_t_7 = 0;
   __pyx_t_4 = 0;
-  __pyx_t_4 = PyTuple_New(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 209, __pyx_L1_error)
+  __pyx_t_4 = PyTuple_New(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 218, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_GIVEREF(__pyx_t_10);
   PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_10);
   __pyx_t_10 = 0;
-  __pyx_t_10 = PyDict_New(); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 209, __pyx_L1_error)
+  __pyx_t_10 = PyDict_New(); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 218, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_10);
-  if (PyDict_SetItem(__pyx_t_10, __pyx_n_s_axis, __pyx_int_3) < 0) __PYX_ERR(0, 209, __pyx_L1_error)
-  __pyx_t_7 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_4, __pyx_t_10); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 209, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_10, __pyx_n_s_axis, __pyx_int_3) < 0) __PYX_ERR(0, 218, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_4, __pyx_t_10); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 218, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
@@ -4726,19 +4921,19 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_28set_potential(st
   __Pyx_DECREF_SET(__pyx_v_array, __pyx_t_7);
   __pyx_t_7 = 0;
 
-  /* "pyqstem/qstem_interface.pyx":211
+  /* "pyqstem/qstem_interface.pyx":220
  *         array = np.concatenate((np.real(array)[:,:,:,np.newaxis],np.imag(array)[:,:,:,np.newaxis]),axis=3)
  * 
  *         self.thisptr.set_potential(array,size,extent)             # <<<<<<<<<<<<<<
  * 
  *         self.thisptr.trans_array_state = 1
  */
-  __pyx_t_12 = __pyx_convert_vector_from_py_std_3a__3a_vector_3c_std_3a__3a_vector_3c_std_3a__3a_vector_3c_double_3e____3e____3e___(__pyx_v_array); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 211, __pyx_L1_error)
-  __pyx_t_13 = __pyx_convert_vector_from_py_int(__pyx_v_size); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 211, __pyx_L1_error)
-  __pyx_t_14 = __pyx_convert_vector_from_py_double(__pyx_v_extent); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 211, __pyx_L1_error)
+  __pyx_t_12 = __pyx_convert_vector_from_py_std_3a__3a_vector_3c_std_3a__3a_vector_3c_std_3a__3a_vector_3c_double_3e____3e____3e___(__pyx_v_array); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 220, __pyx_L1_error)
+  __pyx_t_13 = __pyx_convert_vector_from_py_int(__pyx_v_size); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 220, __pyx_L1_error)
+  __pyx_t_14 = __pyx_convert_vector_from_py_double(__pyx_v_extent); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 220, __pyx_L1_error)
   __pyx_v_self->thisptr->set_potential(__pyx_t_12, __pyx_t_13, __pyx_t_14);
 
-  /* "pyqstem/qstem_interface.pyx":213
+  /* "pyqstem/qstem_interface.pyx":222
  *         self.thisptr.set_potential(array,size,extent)
  * 
  *         self.thisptr.trans_array_state = 1             # <<<<<<<<<<<<<<
@@ -4747,7 +4942,7 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_28set_potential(st
  */
   __pyx_v_self->thisptr->trans_array_state = 1;
 
-  /* "pyqstem/qstem_interface.pyx":191
+  /* "pyqstem/qstem_interface.pyx":200
  *         #    self.thisptr.wave_state = -1
  * 
  *     def set_potential(self,potential,scan_range=None):             # <<<<<<<<<<<<<<
@@ -4778,7 +4973,7 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_28set_potential(st
   return __pyx_r;
 }
 
-/* "pyqstem/qstem_interface.pyx":217
+/* "pyqstem/qstem_interface.pyx":226
  *         #    self.thisptr.wave_state = -1
  * 
  *     def get_potential_or_transfunc(self):             # <<<<<<<<<<<<<<
@@ -4799,7 +4994,7 @@ static PyObject *__pyx_pw_7pyqstem_15qstem_interface_7PyQSTEM_31get_potential_or
   return __pyx_r;
 }
 
-/* "pyqstem/qstem_interface.pyx":223
+/* "pyqstem/qstem_interface.pyx":232
  *         else:
  *             trans_array = self.thisptr.get_potential_or_transfunc(&resolutionX,&resolutionY,&sliceThickness)
  *             trans_array = np.apply_along_axis(lambda args: [complex(*args)], 3, trans_array)[:,:,:,0]             # <<<<<<<<<<<<<<
@@ -4828,12 +5023,12 @@ static PyObject *__pyx_lambda_funcdef_lambda(CYTHON_UNUSED PyObject *__pyx_self,
   PyObject *__pyx_t_2 = NULL;
   __Pyx_RefNannySetupContext("lambda", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = PySequence_Tuple(__pyx_v_args); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 223, __pyx_L1_error)
+  __pyx_t_1 = PySequence_Tuple(__pyx_v_args); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 232, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_Call(((PyObject *)(&PyComplex_Type)), __pyx_t_1, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 223, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_Call(((PyObject *)(&PyComplex_Type)), __pyx_t_1, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 232, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = PyList_New(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 223, __pyx_L1_error)
+  __pyx_t_1 = PyList_New(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 232, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_GIVEREF(__pyx_t_2);
   PyList_SET_ITEM(__pyx_t_1, 0, __pyx_t_2);
@@ -4854,7 +5049,7 @@ static PyObject *__pyx_lambda_funcdef_lambda(CYTHON_UNUSED PyObject *__pyx_self,
   return __pyx_r;
 }
 
-/* "pyqstem/qstem_interface.pyx":217
+/* "pyqstem/qstem_interface.pyx":226
  *         #    self.thisptr.wave_state = -1
  * 
  *     def get_potential_or_transfunc(self):             # <<<<<<<<<<<<<<
@@ -4880,7 +5075,7 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_30get_potential_or
   PyObject *__pyx_t_8 = NULL;
   __Pyx_RefNannySetupContext("get_potential_or_transfunc", 0);
 
-  /* "pyqstem/qstem_interface.pyx":219
+  /* "pyqstem/qstem_interface.pyx":228
  *     def get_potential_or_transfunc(self):
  *         cdef float resolutionX, resolutionY, sliceThickness
  *         if self.thisptr.trans_array_state==0:             # <<<<<<<<<<<<<<
@@ -4890,20 +5085,20 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_30get_potential_or
   __pyx_t_1 = ((__pyx_v_self->thisptr->trans_array_state == 0) != 0);
   if (__pyx_t_1) {
 
-    /* "pyqstem/qstem_interface.pyx":220
+    /* "pyqstem/qstem_interface.pyx":229
  *         cdef float resolutionX, resolutionY, sliceThickness
  *         if self.thisptr.trans_array_state==0:
  *             raise RuntimeError('A potential have not been build')             # <<<<<<<<<<<<<<
  *         else:
  *             trans_array = self.thisptr.get_potential_or_transfunc(&resolutionX,&resolutionY,&sliceThickness)
  */
-    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_RuntimeError, __pyx_tuple__9, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 220, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_RuntimeError, __pyx_tuple__10, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 229, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_Raise(__pyx_t_2, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __PYX_ERR(0, 220, __pyx_L1_error)
+    __PYX_ERR(0, 229, __pyx_L1_error)
 
-    /* "pyqstem/qstem_interface.pyx":219
+    /* "pyqstem/qstem_interface.pyx":228
  *     def get_potential_or_transfunc(self):
  *         cdef float resolutionX, resolutionY, sliceThickness
  *         if self.thisptr.trans_array_state==0:             # <<<<<<<<<<<<<<
@@ -4912,7 +5107,7 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_30get_potential_or
  */
   }
 
-  /* "pyqstem/qstem_interface.pyx":222
+  /* "pyqstem/qstem_interface.pyx":231
  *             raise RuntimeError('A potential have not been build')
  *         else:
  *             trans_array = self.thisptr.get_potential_or_transfunc(&resolutionX,&resolutionY,&sliceThickness)             # <<<<<<<<<<<<<<
@@ -4920,24 +5115,24 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_30get_potential_or
  *             potential_extent = self.get_potential_extent()
  */
   /*else*/ {
-    __pyx_t_2 = __pyx_convert_vector_to_py_std_3a__3a_vector_3c_std_3a__3a_vector_3c_std_3a__3a_vector_3c_double_3e____3e____3e___(__pyx_v_self->thisptr->get_potential_or_transfunc((&__pyx_v_resolutionX), (&__pyx_v_resolutionY), (&__pyx_v_sliceThickness))); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 222, __pyx_L1_error)
+    __pyx_t_2 = __pyx_convert_vector_to_py_std_3a__3a_vector_3c_std_3a__3a_vector_3c_std_3a__3a_vector_3c_double_3e____3e____3e___(__pyx_v_self->thisptr->get_potential_or_transfunc((&__pyx_v_resolutionX), (&__pyx_v_resolutionY), (&__pyx_v_sliceThickness))); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 231, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __pyx_v_trans_array = __pyx_t_2;
     __pyx_t_2 = 0;
 
-    /* "pyqstem/qstem_interface.pyx":223
+    /* "pyqstem/qstem_interface.pyx":232
  *         else:
  *             trans_array = self.thisptr.get_potential_or_transfunc(&resolutionX,&resolutionY,&sliceThickness)
  *             trans_array = np.apply_along_axis(lambda args: [complex(*args)], 3, trans_array)[:,:,:,0]             # <<<<<<<<<<<<<<
  *             potential_extent = self.get_potential_extent()
  *             return Potential(trans_array,(resolutionX,resolutionY,sliceThickness),
  */
-    __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 223, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 232, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_apply_along_axis); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 223, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_apply_along_axis); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 232, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_t_3 = __Pyx_CyFunction_NewEx(&__pyx_mdef_7pyqstem_15qstem_interface_7PyQSTEM_26get_potential_or_transfunc_lambda, 0, __pyx_n_s_get_potential_or_transfunc_local, NULL, __pyx_n_s_pyqstem_qstem_interface, __pyx_d, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 223, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_CyFunction_NewEx(&__pyx_mdef_7pyqstem_15qstem_interface_7PyQSTEM_26get_potential_or_transfunc_lambda, 0, __pyx_n_s_get_potential_or_transfunc_local, NULL, __pyx_n_s_pyqstem_qstem_interface, __pyx_d, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 232, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __pyx_t_5 = NULL;
     __pyx_t_6 = 0;
@@ -4954,7 +5149,7 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_30get_potential_or
     #if CYTHON_FAST_PYCALL
     if (PyFunction_Check(__pyx_t_4)) {
       PyObject *__pyx_temp[4] = {__pyx_t_5, __pyx_t_3, __pyx_int_3, __pyx_v_trans_array};
-      __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_6, 3+__pyx_t_6); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 223, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_6, 3+__pyx_t_6); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 232, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -4963,14 +5158,14 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_30get_potential_or
     #if CYTHON_FAST_PYCCALL
     if (__Pyx_PyFastCFunction_Check(__pyx_t_4)) {
       PyObject *__pyx_temp[4] = {__pyx_t_5, __pyx_t_3, __pyx_int_3, __pyx_v_trans_array};
-      __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_6, 3+__pyx_t_6); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 223, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_6, 3+__pyx_t_6); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 232, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     } else
     #endif
     {
-      __pyx_t_7 = PyTuple_New(3+__pyx_t_6); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 223, __pyx_L1_error)
+      __pyx_t_7 = PyTuple_New(3+__pyx_t_6); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 232, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
       if (__pyx_t_5) {
         __Pyx_GIVEREF(__pyx_t_5); PyTuple_SET_ITEM(__pyx_t_7, 0, __pyx_t_5); __pyx_t_5 = NULL;
@@ -4984,25 +5179,25 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_30get_potential_or
       __Pyx_GIVEREF(__pyx_v_trans_array);
       PyTuple_SET_ITEM(__pyx_t_7, 2+__pyx_t_6, __pyx_v_trans_array);
       __pyx_t_3 = 0;
-      __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_7, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 223, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_7, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 232, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
     }
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __pyx_t_4 = PyObject_GetItem(__pyx_t_2, __pyx_tuple__13); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 223, __pyx_L1_error)
+    __pyx_t_4 = PyObject_GetItem(__pyx_t_2, __pyx_tuple__14); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 232, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_DECREF_SET(__pyx_v_trans_array, __pyx_t_4);
     __pyx_t_4 = 0;
 
-    /* "pyqstem/qstem_interface.pyx":224
+    /* "pyqstem/qstem_interface.pyx":233
  *             trans_array = self.thisptr.get_potential_or_transfunc(&resolutionX,&resolutionY,&sliceThickness)
  *             trans_array = np.apply_along_axis(lambda args: [complex(*args)], 3, trans_array)[:,:,:,0]
  *             potential_extent = self.get_potential_extent()             # <<<<<<<<<<<<<<
  *             return Potential(trans_array,(resolutionX,resolutionY,sliceThickness),
  *                               offset=(potential_extent[0],potential_extent[2],0))
  */
-    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_get_potential_extent); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 224, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_get_potential_extent); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 233, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __pyx_t_7 = NULL;
     if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_2))) {
@@ -5015,17 +5210,17 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_30get_potential_or
       }
     }
     if (__pyx_t_7) {
-      __pyx_t_4 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_7); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 224, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_7); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 233, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
     } else {
-      __pyx_t_4 = __Pyx_PyObject_CallNoArg(__pyx_t_2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 224, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_PyObject_CallNoArg(__pyx_t_2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 233, __pyx_L1_error)
     }
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __pyx_v_potential_extent = __pyx_t_4;
     __pyx_t_4 = 0;
 
-    /* "pyqstem/qstem_interface.pyx":225
+    /* "pyqstem/qstem_interface.pyx":234
  *             trans_array = np.apply_along_axis(lambda args: [complex(*args)], 3, trans_array)[:,:,:,0]
  *             potential_extent = self.get_potential_extent()
  *             return Potential(trans_array,(resolutionX,resolutionY,sliceThickness),             # <<<<<<<<<<<<<<
@@ -5033,15 +5228,15 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_30get_potential_or
  * 
  */
     __Pyx_XDECREF(__pyx_r);
-    __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_Potential); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 225, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_Potential); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 234, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_2 = PyFloat_FromDouble(__pyx_v_resolutionX); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 225, __pyx_L1_error)
+    __pyx_t_2 = PyFloat_FromDouble(__pyx_v_resolutionX); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 234, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_7 = PyFloat_FromDouble(__pyx_v_resolutionY); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 225, __pyx_L1_error)
+    __pyx_t_7 = PyFloat_FromDouble(__pyx_v_resolutionY); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 234, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
-    __pyx_t_3 = PyFloat_FromDouble(__pyx_v_sliceThickness); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 225, __pyx_L1_error)
+    __pyx_t_3 = PyFloat_FromDouble(__pyx_v_sliceThickness); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 234, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_5 = PyTuple_New(3); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 225, __pyx_L1_error)
+    __pyx_t_5 = PyTuple_New(3); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 234, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_GIVEREF(__pyx_t_2);
     PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_2);
@@ -5052,7 +5247,7 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_30get_potential_or
     __pyx_t_2 = 0;
     __pyx_t_7 = 0;
     __pyx_t_3 = 0;
-    __pyx_t_3 = PyTuple_New(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 225, __pyx_L1_error)
+    __pyx_t_3 = PyTuple_New(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 234, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_INCREF(__pyx_v_trans_array);
     __Pyx_GIVEREF(__pyx_v_trans_array);
@@ -5061,20 +5256,20 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_30get_potential_or
     PyTuple_SET_ITEM(__pyx_t_3, 1, __pyx_t_5);
     __pyx_t_5 = 0;
 
-    /* "pyqstem/qstem_interface.pyx":226
+    /* "pyqstem/qstem_interface.pyx":235
  *             potential_extent = self.get_potential_extent()
  *             return Potential(trans_array,(resolutionX,resolutionY,sliceThickness),
  *                               offset=(potential_extent[0],potential_extent[2],0))             # <<<<<<<<<<<<<<
  * 
  *     def calculate_transfunc(self):
  */
-    __pyx_t_5 = PyDict_New(); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 226, __pyx_L1_error)
+    __pyx_t_5 = PyDict_New(); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 235, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
-    __pyx_t_7 = __Pyx_GetItemInt(__pyx_v_potential_extent, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 226, __pyx_L1_error)
+    __pyx_t_7 = __Pyx_GetItemInt(__pyx_v_potential_extent, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 235, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
-    __pyx_t_2 = __Pyx_GetItemInt(__pyx_v_potential_extent, 2, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 226, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_GetItemInt(__pyx_v_potential_extent, 2, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 235, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_8 = PyTuple_New(3); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 226, __pyx_L1_error)
+    __pyx_t_8 = PyTuple_New(3); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 235, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
     __Pyx_GIVEREF(__pyx_t_7);
     PyTuple_SET_ITEM(__pyx_t_8, 0, __pyx_t_7);
@@ -5085,17 +5280,17 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_30get_potential_or
     PyTuple_SET_ITEM(__pyx_t_8, 2, __pyx_int_0);
     __pyx_t_7 = 0;
     __pyx_t_2 = 0;
-    if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_offset, __pyx_t_8) < 0) __PYX_ERR(0, 226, __pyx_L1_error)
+    if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_offset, __pyx_t_8) < 0) __PYX_ERR(0, 235, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
 
-    /* "pyqstem/qstem_interface.pyx":225
+    /* "pyqstem/qstem_interface.pyx":234
  *             trans_array = np.apply_along_axis(lambda args: [complex(*args)], 3, trans_array)[:,:,:,0]
  *             potential_extent = self.get_potential_extent()
  *             return Potential(trans_array,(resolutionX,resolutionY,sliceThickness),             # <<<<<<<<<<<<<<
  *                               offset=(potential_extent[0],potential_extent[2],0))
  * 
  */
-    __pyx_t_8 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_3, __pyx_t_5); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 225, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_3, __pyx_t_5); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 234, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -5105,7 +5300,7 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_30get_potential_or
     goto __pyx_L0;
   }
 
-  /* "pyqstem/qstem_interface.pyx":217
+  /* "pyqstem/qstem_interface.pyx":226
  *         #    self.thisptr.wave_state = -1
  * 
  *     def get_potential_or_transfunc(self):             # <<<<<<<<<<<<<<
@@ -5131,7 +5326,7 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_30get_potential_or
   return __pyx_r;
 }
 
-/* "pyqstem/qstem_interface.pyx":228
+/* "pyqstem/qstem_interface.pyx":237
  *                               offset=(potential_extent[0],potential_extent[2],0))
  * 
  *     def calculate_transfunc(self):             # <<<<<<<<<<<<<<
@@ -5158,7 +5353,7 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_32calculate_transf
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("calculate_transfunc", 0);
 
-  /* "pyqstem/qstem_interface.pyx":230
+  /* "pyqstem/qstem_interface.pyx":239
  *     def calculate_transfunc(self):
  * 
  *         if self.thisptr.trans_array_state==0:             # <<<<<<<<<<<<<<
@@ -5168,20 +5363,20 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_32calculate_transf
   switch (__pyx_v_self->thisptr->trans_array_state) {
     case 0:
 
-    /* "pyqstem/qstem_interface.pyx":231
+    /* "pyqstem/qstem_interface.pyx":240
  * 
  *         if self.thisptr.trans_array_state==0:
  *             raise RuntimeError('Please set or build a potential')             # <<<<<<<<<<<<<<
  *         elif self.thisptr.trans_array_state==1:
  *             self.thisptr.calculate_transfunc()
  */
-    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_RuntimeError, __pyx_tuple__14, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 231, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_RuntimeError, __pyx_tuple__15, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 240, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_Raise(__pyx_t_1, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __PYX_ERR(0, 231, __pyx_L1_error)
+    __PYX_ERR(0, 240, __pyx_L1_error)
 
-    /* "pyqstem/qstem_interface.pyx":230
+    /* "pyqstem/qstem_interface.pyx":239
  *     def calculate_transfunc(self):
  * 
  *         if self.thisptr.trans_array_state==0:             # <<<<<<<<<<<<<<
@@ -5190,7 +5385,7 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_32calculate_transf
  */
     break;
 
-    /* "pyqstem/qstem_interface.pyx":232
+    /* "pyqstem/qstem_interface.pyx":241
  *         if self.thisptr.trans_array_state==0:
  *             raise RuntimeError('Please set or build a potential')
  *         elif self.thisptr.trans_array_state==1:             # <<<<<<<<<<<<<<
@@ -5199,7 +5394,7 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_32calculate_transf
  */
     case 1:
 
-    /* "pyqstem/qstem_interface.pyx":233
+    /* "pyqstem/qstem_interface.pyx":242
  *             raise RuntimeError('Please set or build a potential')
  *         elif self.thisptr.trans_array_state==1:
  *             self.thisptr.calculate_transfunc()             # <<<<<<<<<<<<<<
@@ -5208,7 +5403,7 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_32calculate_transf
  */
     __pyx_v_self->thisptr->calculate_transfunc();
 
-    /* "pyqstem/qstem_interface.pyx":234
+    /* "pyqstem/qstem_interface.pyx":243
  *         elif self.thisptr.trans_array_state==1:
  *             self.thisptr.calculate_transfunc()
  *             self.thisptr.trans_array_state=2             # <<<<<<<<<<<<<<
@@ -5217,7 +5412,7 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_32calculate_transf
  */
     __pyx_v_self->thisptr->trans_array_state = 2;
 
-    /* "pyqstem/qstem_interface.pyx":232
+    /* "pyqstem/qstem_interface.pyx":241
  *         if self.thisptr.trans_array_state==0:
  *             raise RuntimeError('Please set or build a potential')
  *         elif self.thisptr.trans_array_state==1:             # <<<<<<<<<<<<<<
@@ -5226,7 +5421,7 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_32calculate_transf
  */
     break;
 
-    /* "pyqstem/qstem_interface.pyx":235
+    /* "pyqstem/qstem_interface.pyx":244
  *             self.thisptr.calculate_transfunc()
  *             self.thisptr.trans_array_state=2
  *         elif self.thisptr.trans_array_state==2:             # <<<<<<<<<<<<<<
@@ -5238,7 +5433,7 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_32calculate_transf
     default: break;
   }
 
-  /* "pyqstem/qstem_interface.pyx":228
+  /* "pyqstem/qstem_interface.pyx":237
  *                               offset=(potential_extent[0],potential_extent[2],0))
  * 
  *     def calculate_transfunc(self):             # <<<<<<<<<<<<<<
@@ -5259,7 +5454,7 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_32calculate_transf
   return __pyx_r;
 }
 
-/* "pyqstem/qstem_interface.pyx":238
+/* "pyqstem/qstem_interface.pyx":247
  *             pass
  * 
  *     def set_scan_range(self,scan_range):             # <<<<<<<<<<<<<<
@@ -5293,65 +5488,65 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_34set_scan_range(s
   int __pyx_t_8;
   __Pyx_RefNannySetupContext("set_scan_range", 0);
 
-  /* "pyqstem/qstem_interface.pyx":240
+  /* "pyqstem/qstem_interface.pyx":249
  *     def set_scan_range(self,scan_range):
  * 
  *         self.thisptr.set_scan_range(scan_range[0][0],scan_range[0][1],scan_range[0][2],             # <<<<<<<<<<<<<<
  *                       scan_range[1][0],scan_range[1][1],scan_range[1][2])
  * 
  */
-  __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_scan_range, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 240, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_scan_range, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 249, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_GetItemInt(__pyx_t_1, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 240, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_GetItemInt(__pyx_t_1, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 249, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_3 = __pyx_PyFloat_AsFloat(__pyx_t_2); if (unlikely((__pyx_t_3 == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 240, __pyx_L1_error)
+  __pyx_t_3 = __pyx_PyFloat_AsFloat(__pyx_t_2); if (unlikely((__pyx_t_3 == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 249, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_GetItemInt(__pyx_v_scan_range, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 240, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_GetItemInt(__pyx_v_scan_range, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 249, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_1 = __Pyx_GetItemInt(__pyx_t_2, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 240, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_GetItemInt(__pyx_t_2, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 249, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_4 = __pyx_PyFloat_AsFloat(__pyx_t_1); if (unlikely((__pyx_t_4 == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 240, __pyx_L1_error)
+  __pyx_t_4 = __pyx_PyFloat_AsFloat(__pyx_t_1); if (unlikely((__pyx_t_4 == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 249, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_scan_range, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 240, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_scan_range, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 249, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_GetItemInt(__pyx_t_1, 2, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 240, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_GetItemInt(__pyx_t_1, 2, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 249, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_5 = __Pyx_PyInt_As_int(__pyx_t_2); if (unlikely((__pyx_t_5 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 240, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyInt_As_int(__pyx_t_2); if (unlikely((__pyx_t_5 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 249, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "pyqstem/qstem_interface.pyx":241
+  /* "pyqstem/qstem_interface.pyx":250
  * 
  *         self.thisptr.set_scan_range(scan_range[0][0],scan_range[0][1],scan_range[0][2],
  *                       scan_range[1][0],scan_range[1][1],scan_range[1][2])             # <<<<<<<<<<<<<<
  * 
  *     def build_probe(self,v0,alpha,num_samples,resolution=None,window_size=None,
  */
-  __pyx_t_2 = __Pyx_GetItemInt(__pyx_v_scan_range, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 241, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_GetItemInt(__pyx_v_scan_range, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 250, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_1 = __Pyx_GetItemInt(__pyx_t_2, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 241, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_GetItemInt(__pyx_t_2, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 250, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_6 = __pyx_PyFloat_AsFloat(__pyx_t_1); if (unlikely((__pyx_t_6 == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 241, __pyx_L1_error)
+  __pyx_t_6 = __pyx_PyFloat_AsFloat(__pyx_t_1); if (unlikely((__pyx_t_6 == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 250, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_scan_range, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 241, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_scan_range, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 250, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_GetItemInt(__pyx_t_1, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 241, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_GetItemInt(__pyx_t_1, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 250, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_7 = __pyx_PyFloat_AsFloat(__pyx_t_2); if (unlikely((__pyx_t_7 == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 241, __pyx_L1_error)
+  __pyx_t_7 = __pyx_PyFloat_AsFloat(__pyx_t_2); if (unlikely((__pyx_t_7 == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 250, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_GetItemInt(__pyx_v_scan_range, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 241, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_GetItemInt(__pyx_v_scan_range, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 250, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_1 = __Pyx_GetItemInt(__pyx_t_2, 2, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 241, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_GetItemInt(__pyx_t_2, 2, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 250, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_8 = __Pyx_PyInt_As_int(__pyx_t_1); if (unlikely((__pyx_t_8 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 241, __pyx_L1_error)
+  __pyx_t_8 = __Pyx_PyInt_As_int(__pyx_t_1); if (unlikely((__pyx_t_8 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 250, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "pyqstem/qstem_interface.pyx":240
+  /* "pyqstem/qstem_interface.pyx":249
  *     def set_scan_range(self,scan_range):
  * 
  *         self.thisptr.set_scan_range(scan_range[0][0],scan_range[0][1],scan_range[0][2],             # <<<<<<<<<<<<<<
@@ -5360,7 +5555,7 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_34set_scan_range(s
  */
   __pyx_v_self->thisptr->set_scan_range(__pyx_t_3, __pyx_t_4, __pyx_t_5, __pyx_t_6, __pyx_t_7, __pyx_t_8);
 
-  /* "pyqstem/qstem_interface.pyx":238
+  /* "pyqstem/qstem_interface.pyx":247
  *             pass
  * 
  *     def set_scan_range(self,scan_range):             # <<<<<<<<<<<<<<
@@ -5382,7 +5577,7 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_34set_scan_range(s
   return __pyx_r;
 }
 
-/* "pyqstem/qstem_interface.pyx":243
+/* "pyqstem/qstem_interface.pyx":252
  *                       scan_range[1][0],scan_range[1][1],scan_range[1][2])
  * 
  *     def build_probe(self,v0,alpha,num_samples,resolution=None,window_size=None,             # <<<<<<<<<<<<<<
@@ -5417,7 +5612,7 @@ static PyObject *__pyx_pw_7pyqstem_15qstem_interface_7PyQSTEM_37build_probe(PyOb
     values[7] = ((PyObject *)__pyx_int_0);
     values[8] = ((PyObject *)__pyx_int_0);
     values[9] = ((PyObject *)__pyx_int_0);
-    values[10] = __pyx_k__15;
+    values[10] = __pyx_k__16;
     if (unlikely(__pyx_kwds)) {
       Py_ssize_t kw_args;
       const Py_ssize_t pos_args = PyTuple_GET_SIZE(__pyx_args);
@@ -5444,12 +5639,12 @@ static PyObject *__pyx_pw_7pyqstem_15qstem_interface_7PyQSTEM_37build_probe(PyOb
         case  1:
         if (likely((values[1] = PyDict_GetItem(__pyx_kwds, __pyx_n_s_alpha)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("build_probe", 0, 3, 11, 1); __PYX_ERR(0, 243, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("build_probe", 0, 3, 11, 1); __PYX_ERR(0, 252, __pyx_L3_error)
         }
         case  2:
         if (likely((values[2] = PyDict_GetItem(__pyx_kwds, __pyx_n_s_num_samples)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("build_probe", 0, 3, 11, 2); __PYX_ERR(0, 243, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("build_probe", 0, 3, 11, 2); __PYX_ERR(0, 252, __pyx_L3_error)
         }
         case  3:
         if (kw_args > 0) {
@@ -5493,7 +5688,7 @@ static PyObject *__pyx_pw_7pyqstem_15qstem_interface_7PyQSTEM_37build_probe(PyOb
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "build_probe") < 0)) __PYX_ERR(0, 243, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "build_probe") < 0)) __PYX_ERR(0, 252, __pyx_L3_error)
       }
     } else {
       switch (PyTuple_GET_SIZE(__pyx_args)) {
@@ -5526,7 +5721,7 @@ static PyObject *__pyx_pw_7pyqstem_15qstem_interface_7PyQSTEM_37build_probe(PyOb
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("build_probe", 0, 3, 11, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 243, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("build_probe", 0, 3, 11, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 252, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("pyqstem.qstem_interface.PyQSTEM.build_probe", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -5560,14 +5755,14 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_36build_probe(stru
   float __pyx_t_11;
   std::string __pyx_t_12;
   float __pyx_t_13;
-  float __pyx_t_14;
-  float __pyx_t_15;
-  int __pyx_t_16;
-  int __pyx_t_17;
+  int __pyx_t_14;
+  int __pyx_t_15;
+  float __pyx_t_16;
+  float __pyx_t_17;
   __Pyx_RefNannySetupContext("build_probe", 0);
   __Pyx_INCREF(__pyx_v_resolution);
 
-  /* "pyqstem/qstem_interface.pyx":246
+  /* "pyqstem/qstem_interface.pyx":255
  *                     defocus=0,Cs=0,C5=0,astig_mag=0,astig_angle=0,aberrations={}):
  * 
  *         if ((resolution is None)&(window_size is None)):             # <<<<<<<<<<<<<<
@@ -5579,20 +5774,20 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_36build_probe(stru
   __pyx_t_3 = ((__pyx_t_1 & __pyx_t_2) != 0);
   if (__pyx_t_3) {
 
-    /* "pyqstem/qstem_interface.pyx":247
+    /* "pyqstem/qstem_interface.pyx":256
  * 
  *         if ((resolution is None)&(window_size is None)):
  *             raise RuntimeError("Please specify resolution or window size")             # <<<<<<<<<<<<<<
  * 
  *         if resolution is None:
  */
-    __pyx_t_4 = __Pyx_PyObject_Call(__pyx_builtin_RuntimeError, __pyx_tuple__16, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 247, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_Call(__pyx_builtin_RuntimeError, __pyx_tuple__17, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 256, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_Raise(__pyx_t_4, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __PYX_ERR(0, 247, __pyx_L1_error)
+    __PYX_ERR(0, 256, __pyx_L1_error)
 
-    /* "pyqstem/qstem_interface.pyx":246
+    /* "pyqstem/qstem_interface.pyx":255
  *                     defocus=0,Cs=0,C5=0,astig_mag=0,astig_angle=0,aberrations={}):
  * 
  *         if ((resolution is None)&(window_size is None)):             # <<<<<<<<<<<<<<
@@ -5601,7 +5796,7 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_36build_probe(stru
  */
   }
 
-  /* "pyqstem/qstem_interface.pyx":249
+  /* "pyqstem/qstem_interface.pyx":258
  *             raise RuntimeError("Please specify resolution or window size")
  * 
  *         if resolution is None:             # <<<<<<<<<<<<<<
@@ -5612,16 +5807,16 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_36build_probe(stru
   __pyx_t_2 = (__pyx_t_3 != 0);
   if (__pyx_t_2) {
 
-    /* "pyqstem/qstem_interface.pyx":250
+    /* "pyqstem/qstem_interface.pyx":259
  * 
  *         if resolution is None:
  *             resolution = np.array(window_size)/np.array(num_samples)             # <<<<<<<<<<<<<<
  * 
  *         cdef unordered_map[string, float] aberrations_map
  */
-    __pyx_t_5 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 250, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 259, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
-    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_array); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 250, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_array); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 259, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __pyx_t_5 = NULL;
@@ -5635,13 +5830,13 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_36build_probe(stru
       }
     }
     if (!__pyx_t_5) {
-      __pyx_t_4 = __Pyx_PyObject_CallOneArg(__pyx_t_6, __pyx_v_window_size); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 250, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_PyObject_CallOneArg(__pyx_t_6, __pyx_v_window_size); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 259, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
     } else {
       #if CYTHON_FAST_PYCALL
       if (PyFunction_Check(__pyx_t_6)) {
         PyObject *__pyx_temp[2] = {__pyx_t_5, __pyx_v_window_size};
-        __pyx_t_4 = __Pyx_PyFunction_FastCall(__pyx_t_6, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 250, __pyx_L1_error)
+        __pyx_t_4 = __Pyx_PyFunction_FastCall(__pyx_t_6, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 259, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
         __Pyx_GOTREF(__pyx_t_4);
       } else
@@ -5649,27 +5844,27 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_36build_probe(stru
       #if CYTHON_FAST_PYCCALL
       if (__Pyx_PyFastCFunction_Check(__pyx_t_6)) {
         PyObject *__pyx_temp[2] = {__pyx_t_5, __pyx_v_window_size};
-        __pyx_t_4 = __Pyx_PyCFunction_FastCall(__pyx_t_6, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 250, __pyx_L1_error)
+        __pyx_t_4 = __Pyx_PyCFunction_FastCall(__pyx_t_6, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 259, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
         __Pyx_GOTREF(__pyx_t_4);
       } else
       #endif
       {
-        __pyx_t_7 = PyTuple_New(1+1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 250, __pyx_L1_error)
+        __pyx_t_7 = PyTuple_New(1+1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 259, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_7);
         __Pyx_GIVEREF(__pyx_t_5); PyTuple_SET_ITEM(__pyx_t_7, 0, __pyx_t_5); __pyx_t_5 = NULL;
         __Pyx_INCREF(__pyx_v_window_size);
         __Pyx_GIVEREF(__pyx_v_window_size);
         PyTuple_SET_ITEM(__pyx_t_7, 0+1, __pyx_v_window_size);
-        __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_6, __pyx_t_7, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 250, __pyx_L1_error)
+        __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_6, __pyx_t_7, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 259, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_4);
         __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
       }
     }
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-    __pyx_t_7 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 250, __pyx_L1_error)
+    __pyx_t_7 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 259, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
-    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_n_s_array); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 250, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_n_s_array); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 259, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
     __pyx_t_7 = NULL;
@@ -5683,13 +5878,13 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_36build_probe(stru
       }
     }
     if (!__pyx_t_7) {
-      __pyx_t_6 = __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_v_num_samples); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 250, __pyx_L1_error)
+      __pyx_t_6 = __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_v_num_samples); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 259, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_6);
     } else {
       #if CYTHON_FAST_PYCALL
       if (PyFunction_Check(__pyx_t_5)) {
         PyObject *__pyx_temp[2] = {__pyx_t_7, __pyx_v_num_samples};
-        __pyx_t_6 = __Pyx_PyFunction_FastCall(__pyx_t_5, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 250, __pyx_L1_error)
+        __pyx_t_6 = __Pyx_PyFunction_FastCall(__pyx_t_5, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 259, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
         __Pyx_GOTREF(__pyx_t_6);
       } else
@@ -5697,32 +5892,32 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_36build_probe(stru
       #if CYTHON_FAST_PYCCALL
       if (__Pyx_PyFastCFunction_Check(__pyx_t_5)) {
         PyObject *__pyx_temp[2] = {__pyx_t_7, __pyx_v_num_samples};
-        __pyx_t_6 = __Pyx_PyCFunction_FastCall(__pyx_t_5, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 250, __pyx_L1_error)
+        __pyx_t_6 = __Pyx_PyCFunction_FastCall(__pyx_t_5, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 259, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
         __Pyx_GOTREF(__pyx_t_6);
       } else
       #endif
       {
-        __pyx_t_8 = PyTuple_New(1+1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 250, __pyx_L1_error)
+        __pyx_t_8 = PyTuple_New(1+1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 259, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_8);
         __Pyx_GIVEREF(__pyx_t_7); PyTuple_SET_ITEM(__pyx_t_8, 0, __pyx_t_7); __pyx_t_7 = NULL;
         __Pyx_INCREF(__pyx_v_num_samples);
         __Pyx_GIVEREF(__pyx_v_num_samples);
         PyTuple_SET_ITEM(__pyx_t_8, 0+1, __pyx_v_num_samples);
-        __pyx_t_6 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_8, NULL); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 250, __pyx_L1_error)
+        __pyx_t_6 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_8, NULL); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 259, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_6);
         __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
       }
     }
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    __pyx_t_5 = __Pyx_PyNumber_Divide(__pyx_t_4, __pyx_t_6); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 250, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyNumber_Divide(__pyx_t_4, __pyx_t_6); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 259, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
     __Pyx_DECREF_SET(__pyx_v_resolution, __pyx_t_5);
     __pyx_t_5 = 0;
 
-    /* "pyqstem/qstem_interface.pyx":249
+    /* "pyqstem/qstem_interface.pyx":258
  *             raise RuntimeError("Please specify resolution or window size")
  * 
  *         if resolution is None:             # <<<<<<<<<<<<<<
@@ -5731,14 +5926,14 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_36build_probe(stru
  */
   }
 
-  /* "pyqstem/qstem_interface.pyx":254
+  /* "pyqstem/qstem_interface.pyx":263
  *         cdef unordered_map[string, float] aberrations_map
  * 
  *         symbols=[b'a22',b'phi22',b'a20',             # <<<<<<<<<<<<<<
  *                  b'a33',b'phi33',b'a31',b'phi31',
  *                  b'a44',b'phi44',b'a42',b'phi42',b'a40',
  */
-  __pyx_t_5 = PyList_New(25); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 254, __pyx_L1_error)
+  __pyx_t_5 = PyList_New(25); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 263, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_INCREF(__pyx_n_b_a22);
   __Pyx_GIVEREF(__pyx_n_b_a22);
@@ -5818,16 +6013,16 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_36build_probe(stru
   __pyx_v_symbols = ((PyObject*)__pyx_t_5);
   __pyx_t_5 = 0;
 
-  /* "pyqstem/qstem_interface.pyx":260
+  /* "pyqstem/qstem_interface.pyx":269
  *                  b'a66',b'phi66',b'a64',b'phi64',b'a62',b'phi62',b'a60']
  * 
  *         keys = [key.encode('utf-8') for key in aberrations.keys()]             # <<<<<<<<<<<<<<
  * 
  *         for symbol in symbols:
  */
-  __pyx_t_5 = PyList_New(0); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 260, __pyx_L1_error)
+  __pyx_t_5 = PyList_New(0); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 269, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_aberrations, __pyx_n_s_keys); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 260, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_aberrations, __pyx_n_s_keys); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 269, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __pyx_t_8 = NULL;
   if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_4))) {
@@ -5840,10 +6035,10 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_36build_probe(stru
     }
   }
   if (__pyx_t_8) {
-    __pyx_t_6 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_8); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 260, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_8); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 269, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
   } else {
-    __pyx_t_6 = __Pyx_PyObject_CallNoArg(__pyx_t_4); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 260, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyObject_CallNoArg(__pyx_t_4); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 269, __pyx_L1_error)
   }
   __Pyx_GOTREF(__pyx_t_6);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
@@ -5851,9 +6046,9 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_36build_probe(stru
     __pyx_t_4 = __pyx_t_6; __Pyx_INCREF(__pyx_t_4); __pyx_t_9 = 0;
     __pyx_t_10 = NULL;
   } else {
-    __pyx_t_9 = -1; __pyx_t_4 = PyObject_GetIter(__pyx_t_6); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 260, __pyx_L1_error)
+    __pyx_t_9 = -1; __pyx_t_4 = PyObject_GetIter(__pyx_t_6); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 269, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_10 = Py_TYPE(__pyx_t_4)->tp_iternext; if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 260, __pyx_L1_error)
+    __pyx_t_10 = Py_TYPE(__pyx_t_4)->tp_iternext; if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 269, __pyx_L1_error)
   }
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
   for (;;) {
@@ -5861,17 +6056,17 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_36build_probe(stru
       if (likely(PyList_CheckExact(__pyx_t_4))) {
         if (__pyx_t_9 >= PyList_GET_SIZE(__pyx_t_4)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_6 = PyList_GET_ITEM(__pyx_t_4, __pyx_t_9); __Pyx_INCREF(__pyx_t_6); __pyx_t_9++; if (unlikely(0 < 0)) __PYX_ERR(0, 260, __pyx_L1_error)
+        __pyx_t_6 = PyList_GET_ITEM(__pyx_t_4, __pyx_t_9); __Pyx_INCREF(__pyx_t_6); __pyx_t_9++; if (unlikely(0 < 0)) __PYX_ERR(0, 269, __pyx_L1_error)
         #else
-        __pyx_t_6 = PySequence_ITEM(__pyx_t_4, __pyx_t_9); __pyx_t_9++; if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 260, __pyx_L1_error)
+        __pyx_t_6 = PySequence_ITEM(__pyx_t_4, __pyx_t_9); __pyx_t_9++; if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 269, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_6);
         #endif
       } else {
         if (__pyx_t_9 >= PyTuple_GET_SIZE(__pyx_t_4)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_6 = PyTuple_GET_ITEM(__pyx_t_4, __pyx_t_9); __Pyx_INCREF(__pyx_t_6); __pyx_t_9++; if (unlikely(0 < 0)) __PYX_ERR(0, 260, __pyx_L1_error)
+        __pyx_t_6 = PyTuple_GET_ITEM(__pyx_t_4, __pyx_t_9); __Pyx_INCREF(__pyx_t_6); __pyx_t_9++; if (unlikely(0 < 0)) __PYX_ERR(0, 269, __pyx_L1_error)
         #else
-        __pyx_t_6 = PySequence_ITEM(__pyx_t_4, __pyx_t_9); __pyx_t_9++; if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 260, __pyx_L1_error)
+        __pyx_t_6 = PySequence_ITEM(__pyx_t_4, __pyx_t_9); __pyx_t_9++; if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 269, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_6);
         #endif
       }
@@ -5881,7 +6076,7 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_36build_probe(stru
         PyObject* exc_type = PyErr_Occurred();
         if (exc_type) {
           if (likely(exc_type == PyExc_StopIteration || PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-          else __PYX_ERR(0, 260, __pyx_L1_error)
+          else __PYX_ERR(0, 269, __pyx_L1_error)
         }
         break;
       }
@@ -5889,19 +6084,19 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_36build_probe(stru
     }
     __Pyx_XDECREF_SET(__pyx_v_key, __pyx_t_6);
     __pyx_t_6 = 0;
-    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_v_key, __pyx_n_s_encode); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 260, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_v_key, __pyx_n_s_encode); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 269, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
-    __pyx_t_8 = __Pyx_PyObject_Call(__pyx_t_6, __pyx_tuple__17, NULL); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 260, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_PyObject_Call(__pyx_t_6, __pyx_tuple__18, NULL); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 269, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-    if (unlikely(__Pyx_ListComp_Append(__pyx_t_5, (PyObject*)__pyx_t_8))) __PYX_ERR(0, 260, __pyx_L1_error)
+    if (unlikely(__Pyx_ListComp_Append(__pyx_t_5, (PyObject*)__pyx_t_8))) __PYX_ERR(0, 269, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
   }
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_v_keys = ((PyObject*)__pyx_t_5);
   __pyx_t_5 = 0;
 
-  /* "pyqstem/qstem_interface.pyx":262
+  /* "pyqstem/qstem_interface.pyx":271
  *         keys = [key.encode('utf-8') for key in aberrations.keys()]
  * 
  *         for symbol in symbols:             # <<<<<<<<<<<<<<
@@ -5912,46 +6107,46 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_36build_probe(stru
   for (;;) {
     if (__pyx_t_9 >= PyList_GET_SIZE(__pyx_t_5)) break;
     #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-    __pyx_t_4 = PyList_GET_ITEM(__pyx_t_5, __pyx_t_9); __Pyx_INCREF(__pyx_t_4); __pyx_t_9++; if (unlikely(0 < 0)) __PYX_ERR(0, 262, __pyx_L1_error)
+    __pyx_t_4 = PyList_GET_ITEM(__pyx_t_5, __pyx_t_9); __Pyx_INCREF(__pyx_t_4); __pyx_t_9++; if (unlikely(0 < 0)) __PYX_ERR(0, 271, __pyx_L1_error)
     #else
-    __pyx_t_4 = PySequence_ITEM(__pyx_t_5, __pyx_t_9); __pyx_t_9++; if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 262, __pyx_L1_error)
+    __pyx_t_4 = PySequence_ITEM(__pyx_t_5, __pyx_t_9); __pyx_t_9++; if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 271, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     #endif
     __Pyx_XDECREF_SET(__pyx_v_symbol, __pyx_t_4);
     __pyx_t_4 = 0;
 
-    /* "pyqstem/qstem_interface.pyx":263
+    /* "pyqstem/qstem_interface.pyx":272
  * 
  *         for symbol in symbols:
  *             if symbol in keys:             # <<<<<<<<<<<<<<
  *                 aberrations_map[symbol] = aberrations[symbol.decode('utf-8')]
  *             elif symbol == b'a20':
  */
-    __pyx_t_2 = (__Pyx_PySequence_ContainsTF(__pyx_v_symbol, __pyx_v_keys, Py_EQ)); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 263, __pyx_L1_error)
+    __pyx_t_2 = (__Pyx_PySequence_ContainsTF(__pyx_v_symbol, __pyx_v_keys, Py_EQ)); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 272, __pyx_L1_error)
     __pyx_t_3 = (__pyx_t_2 != 0);
     if (__pyx_t_3) {
 
-      /* "pyqstem/qstem_interface.pyx":264
+      /* "pyqstem/qstem_interface.pyx":273
  *         for symbol in symbols:
  *             if symbol in keys:
  *                 aberrations_map[symbol] = aberrations[symbol.decode('utf-8')]             # <<<<<<<<<<<<<<
  *             elif symbol == b'a20':
  *                 aberrations_map[symbol] = defocus
  */
-      __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_symbol, __pyx_n_s_decode); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 264, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_symbol, __pyx_n_s_decode); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 273, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
-      __pyx_t_8 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_tuple__18, NULL); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 264, __pyx_L1_error)
+      __pyx_t_8 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_tuple__19, NULL); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 273, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_8);
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-      __pyx_t_4 = PyObject_GetItem(__pyx_v_aberrations, __pyx_t_8); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 264, __pyx_L1_error)
+      __pyx_t_4 = PyObject_GetItem(__pyx_v_aberrations, __pyx_t_8); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 273, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-      __pyx_t_11 = __pyx_PyFloat_AsFloat(__pyx_t_4); if (unlikely((__pyx_t_11 == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 264, __pyx_L1_error)
+      __pyx_t_11 = __pyx_PyFloat_AsFloat(__pyx_t_4); if (unlikely((__pyx_t_11 == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 273, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-      __pyx_t_12 = __pyx_convert_string_from_py_std__in_string(__pyx_v_symbol); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 264, __pyx_L1_error)
+      __pyx_t_12 = __pyx_convert_string_from_py_std__in_string(__pyx_v_symbol); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 273, __pyx_L1_error)
       (__pyx_v_aberrations_map[__pyx_t_12]) = __pyx_t_11;
 
-      /* "pyqstem/qstem_interface.pyx":263
+      /* "pyqstem/qstem_interface.pyx":272
  * 
  *         for symbol in symbols:
  *             if symbol in keys:             # <<<<<<<<<<<<<<
@@ -5961,28 +6156,28 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_36build_probe(stru
       goto __pyx_L9;
     }
 
-    /* "pyqstem/qstem_interface.pyx":265
+    /* "pyqstem/qstem_interface.pyx":274
  *             if symbol in keys:
  *                 aberrations_map[symbol] = aberrations[symbol.decode('utf-8')]
  *             elif symbol == b'a20':             # <<<<<<<<<<<<<<
  *                 aberrations_map[symbol] = defocus
  *             elif symbol == b'a40':
  */
-    __pyx_t_3 = (__Pyx_PyBytes_Equals(__pyx_v_symbol, __pyx_n_b_a20, Py_EQ)); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 265, __pyx_L1_error)
+    __pyx_t_3 = (__Pyx_PyBytes_Equals(__pyx_v_symbol, __pyx_n_b_a20, Py_EQ)); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 274, __pyx_L1_error)
     if (__pyx_t_3) {
 
-      /* "pyqstem/qstem_interface.pyx":266
+      /* "pyqstem/qstem_interface.pyx":275
  *                 aberrations_map[symbol] = aberrations[symbol.decode('utf-8')]
  *             elif symbol == b'a20':
  *                 aberrations_map[symbol] = defocus             # <<<<<<<<<<<<<<
  *             elif symbol == b'a40':
  *                 aberrations_map[symbol] = Cs
  */
-      __pyx_t_11 = __pyx_PyFloat_AsFloat(__pyx_v_defocus); if (unlikely((__pyx_t_11 == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 266, __pyx_L1_error)
-      __pyx_t_12 = __pyx_convert_string_from_py_std__in_string(__pyx_v_symbol); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 266, __pyx_L1_error)
+      __pyx_t_11 = __pyx_PyFloat_AsFloat(__pyx_v_defocus); if (unlikely((__pyx_t_11 == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 275, __pyx_L1_error)
+      __pyx_t_12 = __pyx_convert_string_from_py_std__in_string(__pyx_v_symbol); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 275, __pyx_L1_error)
       (__pyx_v_aberrations_map[__pyx_t_12]) = __pyx_t_11;
 
-      /* "pyqstem/qstem_interface.pyx":265
+      /* "pyqstem/qstem_interface.pyx":274
  *             if symbol in keys:
  *                 aberrations_map[symbol] = aberrations[symbol.decode('utf-8')]
  *             elif symbol == b'a20':             # <<<<<<<<<<<<<<
@@ -5992,28 +6187,28 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_36build_probe(stru
       goto __pyx_L9;
     }
 
-    /* "pyqstem/qstem_interface.pyx":267
+    /* "pyqstem/qstem_interface.pyx":276
  *             elif symbol == b'a20':
  *                 aberrations_map[symbol] = defocus
  *             elif symbol == b'a40':             # <<<<<<<<<<<<<<
  *                 aberrations_map[symbol] = Cs
  *             elif symbol == b'a60':
  */
-    __pyx_t_3 = (__Pyx_PyBytes_Equals(__pyx_v_symbol, __pyx_n_b_a40, Py_EQ)); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 267, __pyx_L1_error)
+    __pyx_t_3 = (__Pyx_PyBytes_Equals(__pyx_v_symbol, __pyx_n_b_a40, Py_EQ)); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 276, __pyx_L1_error)
     if (__pyx_t_3) {
 
-      /* "pyqstem/qstem_interface.pyx":268
+      /* "pyqstem/qstem_interface.pyx":277
  *                 aberrations_map[symbol] = defocus
  *             elif symbol == b'a40':
  *                 aberrations_map[symbol] = Cs             # <<<<<<<<<<<<<<
  *             elif symbol == b'a60':
  *                 aberrations_map[symbol] = C5
  */
-      __pyx_t_11 = __pyx_PyFloat_AsFloat(__pyx_v_Cs); if (unlikely((__pyx_t_11 == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 268, __pyx_L1_error)
-      __pyx_t_12 = __pyx_convert_string_from_py_std__in_string(__pyx_v_symbol); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 268, __pyx_L1_error)
+      __pyx_t_11 = __pyx_PyFloat_AsFloat(__pyx_v_Cs); if (unlikely((__pyx_t_11 == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 277, __pyx_L1_error)
+      __pyx_t_12 = __pyx_convert_string_from_py_std__in_string(__pyx_v_symbol); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 277, __pyx_L1_error)
       (__pyx_v_aberrations_map[__pyx_t_12]) = __pyx_t_11;
 
-      /* "pyqstem/qstem_interface.pyx":267
+      /* "pyqstem/qstem_interface.pyx":276
  *             elif symbol == b'a20':
  *                 aberrations_map[symbol] = defocus
  *             elif symbol == b'a40':             # <<<<<<<<<<<<<<
@@ -6023,28 +6218,28 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_36build_probe(stru
       goto __pyx_L9;
     }
 
-    /* "pyqstem/qstem_interface.pyx":269
+    /* "pyqstem/qstem_interface.pyx":278
  *             elif symbol == b'a40':
  *                 aberrations_map[symbol] = Cs
  *             elif symbol == b'a60':             # <<<<<<<<<<<<<<
  *                 aberrations_map[symbol] = C5
  *             elif symbol == b'a22':
  */
-    __pyx_t_3 = (__Pyx_PyBytes_Equals(__pyx_v_symbol, __pyx_n_b_a60, Py_EQ)); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 269, __pyx_L1_error)
+    __pyx_t_3 = (__Pyx_PyBytes_Equals(__pyx_v_symbol, __pyx_n_b_a60, Py_EQ)); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 278, __pyx_L1_error)
     if (__pyx_t_3) {
 
-      /* "pyqstem/qstem_interface.pyx":270
+      /* "pyqstem/qstem_interface.pyx":279
  *                 aberrations_map[symbol] = Cs
  *             elif symbol == b'a60':
  *                 aberrations_map[symbol] = C5             # <<<<<<<<<<<<<<
  *             elif symbol == b'a22':
  *                 aberrations_map[symbol] = astig_mag
  */
-      __pyx_t_11 = __pyx_PyFloat_AsFloat(__pyx_v_C5); if (unlikely((__pyx_t_11 == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 270, __pyx_L1_error)
-      __pyx_t_12 = __pyx_convert_string_from_py_std__in_string(__pyx_v_symbol); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 270, __pyx_L1_error)
+      __pyx_t_11 = __pyx_PyFloat_AsFloat(__pyx_v_C5); if (unlikely((__pyx_t_11 == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 279, __pyx_L1_error)
+      __pyx_t_12 = __pyx_convert_string_from_py_std__in_string(__pyx_v_symbol); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 279, __pyx_L1_error)
       (__pyx_v_aberrations_map[__pyx_t_12]) = __pyx_t_11;
 
-      /* "pyqstem/qstem_interface.pyx":269
+      /* "pyqstem/qstem_interface.pyx":278
  *             elif symbol == b'a40':
  *                 aberrations_map[symbol] = Cs
  *             elif symbol == b'a60':             # <<<<<<<<<<<<<<
@@ -6054,28 +6249,28 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_36build_probe(stru
       goto __pyx_L9;
     }
 
-    /* "pyqstem/qstem_interface.pyx":271
+    /* "pyqstem/qstem_interface.pyx":280
  *             elif symbol == b'a60':
  *                 aberrations_map[symbol] = C5
  *             elif symbol == b'a22':             # <<<<<<<<<<<<<<
  *                 aberrations_map[symbol] = astig_mag
  *             elif symbol == b'phi22':
  */
-    __pyx_t_3 = (__Pyx_PyBytes_Equals(__pyx_v_symbol, __pyx_n_b_a22, Py_EQ)); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 271, __pyx_L1_error)
+    __pyx_t_3 = (__Pyx_PyBytes_Equals(__pyx_v_symbol, __pyx_n_b_a22, Py_EQ)); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 280, __pyx_L1_error)
     if (__pyx_t_3) {
 
-      /* "pyqstem/qstem_interface.pyx":272
+      /* "pyqstem/qstem_interface.pyx":281
  *                 aberrations_map[symbol] = C5
  *             elif symbol == b'a22':
  *                 aberrations_map[symbol] = astig_mag             # <<<<<<<<<<<<<<
  *             elif symbol == b'phi22':
  *                 aberrations_map[symbol] = astig_angle
  */
-      __pyx_t_11 = __pyx_PyFloat_AsFloat(__pyx_v_astig_mag); if (unlikely((__pyx_t_11 == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 272, __pyx_L1_error)
-      __pyx_t_12 = __pyx_convert_string_from_py_std__in_string(__pyx_v_symbol); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 272, __pyx_L1_error)
+      __pyx_t_11 = __pyx_PyFloat_AsFloat(__pyx_v_astig_mag); if (unlikely((__pyx_t_11 == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 281, __pyx_L1_error)
+      __pyx_t_12 = __pyx_convert_string_from_py_std__in_string(__pyx_v_symbol); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 281, __pyx_L1_error)
       (__pyx_v_aberrations_map[__pyx_t_12]) = __pyx_t_11;
 
-      /* "pyqstem/qstem_interface.pyx":271
+      /* "pyqstem/qstem_interface.pyx":280
  *             elif symbol == b'a60':
  *                 aberrations_map[symbol] = C5
  *             elif symbol == b'a22':             # <<<<<<<<<<<<<<
@@ -6085,28 +6280,28 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_36build_probe(stru
       goto __pyx_L9;
     }
 
-    /* "pyqstem/qstem_interface.pyx":273
+    /* "pyqstem/qstem_interface.pyx":282
  *             elif symbol == b'a22':
  *                 aberrations_map[symbol] = astig_mag
  *             elif symbol == b'phi22':             # <<<<<<<<<<<<<<
  *                 aberrations_map[symbol] = astig_angle
  *             else:
  */
-    __pyx_t_3 = (__Pyx_PyBytes_Equals(__pyx_v_symbol, __pyx_n_b_phi22, Py_EQ)); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 273, __pyx_L1_error)
+    __pyx_t_3 = (__Pyx_PyBytes_Equals(__pyx_v_symbol, __pyx_n_b_phi22, Py_EQ)); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 282, __pyx_L1_error)
     if (__pyx_t_3) {
 
-      /* "pyqstem/qstem_interface.pyx":274
+      /* "pyqstem/qstem_interface.pyx":283
  *                 aberrations_map[symbol] = astig_mag
  *             elif symbol == b'phi22':
  *                 aberrations_map[symbol] = astig_angle             # <<<<<<<<<<<<<<
  *             else:
  *                 aberrations_map[symbol] = 0.
  */
-      __pyx_t_11 = __pyx_PyFloat_AsFloat(__pyx_v_astig_angle); if (unlikely((__pyx_t_11 == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 274, __pyx_L1_error)
-      __pyx_t_12 = __pyx_convert_string_from_py_std__in_string(__pyx_v_symbol); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 274, __pyx_L1_error)
+      __pyx_t_11 = __pyx_PyFloat_AsFloat(__pyx_v_astig_angle); if (unlikely((__pyx_t_11 == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 283, __pyx_L1_error)
+      __pyx_t_12 = __pyx_convert_string_from_py_std__in_string(__pyx_v_symbol); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 283, __pyx_L1_error)
       (__pyx_v_aberrations_map[__pyx_t_12]) = __pyx_t_11;
 
-      /* "pyqstem/qstem_interface.pyx":273
+      /* "pyqstem/qstem_interface.pyx":282
  *             elif symbol == b'a22':
  *                 aberrations_map[symbol] = astig_mag
  *             elif symbol == b'phi22':             # <<<<<<<<<<<<<<
@@ -6116,20 +6311,20 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_36build_probe(stru
       goto __pyx_L9;
     }
 
-    /* "pyqstem/qstem_interface.pyx":276
+    /* "pyqstem/qstem_interface.pyx":285
  *                 aberrations_map[symbol] = astig_angle
  *             else:
  *                 aberrations_map[symbol] = 0.             # <<<<<<<<<<<<<<
  * 
- *         self.thisptr.build_probe(v0,alpha,resolution[0],resolution[1],num_samples[0],num_samples[1],aberrations_map)
+ *         self.thisptr.build_probe(v0,alpha,num_samples[0],num_samples[1],resolution[0],resolution[1],aberrations_map)
  */
     /*else*/ {
-      __pyx_t_12 = __pyx_convert_string_from_py_std__in_string(__pyx_v_symbol); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 276, __pyx_L1_error)
+      __pyx_t_12 = __pyx_convert_string_from_py_std__in_string(__pyx_v_symbol); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 285, __pyx_L1_error)
       (__pyx_v_aberrations_map[__pyx_t_12]) = 0.;
     }
     __pyx_L9:;
 
-    /* "pyqstem/qstem_interface.pyx":262
+    /* "pyqstem/qstem_interface.pyx":271
  *         keys = [key.encode('utf-8') for key in aberrations.keys()]
  * 
  *         for symbol in symbols:             # <<<<<<<<<<<<<<
@@ -6139,43 +6334,43 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_36build_probe(stru
   }
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-  /* "pyqstem/qstem_interface.pyx":278
+  /* "pyqstem/qstem_interface.pyx":287
  *                 aberrations_map[symbol] = 0.
  * 
- *         self.thisptr.build_probe(v0,alpha,resolution[0],resolution[1],num_samples[0],num_samples[1],aberrations_map)             # <<<<<<<<<<<<<<
+ *         self.thisptr.build_probe(v0,alpha,num_samples[0],num_samples[1],resolution[0],resolution[1],aberrations_map)             # <<<<<<<<<<<<<<
  *         self.thisptr.wave_state = 1
  * 
  */
-  __pyx_t_11 = __pyx_PyFloat_AsFloat(__pyx_v_v0); if (unlikely((__pyx_t_11 == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 278, __pyx_L1_error)
-  __pyx_t_13 = __pyx_PyFloat_AsFloat(__pyx_v_alpha); if (unlikely((__pyx_t_13 == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 278, __pyx_L1_error)
-  __pyx_t_5 = __Pyx_GetItemInt(__pyx_v_resolution, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 278, __pyx_L1_error)
+  __pyx_t_11 = __pyx_PyFloat_AsFloat(__pyx_v_v0); if (unlikely((__pyx_t_11 == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 287, __pyx_L1_error)
+  __pyx_t_13 = __pyx_PyFloat_AsFloat(__pyx_v_alpha); if (unlikely((__pyx_t_13 == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 287, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_GetItemInt(__pyx_v_num_samples, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 287, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_14 = __pyx_PyFloat_AsFloat(__pyx_t_5); if (unlikely((__pyx_t_14 == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 278, __pyx_L1_error)
+  __pyx_t_14 = __Pyx_PyInt_As_int(__pyx_t_5); if (unlikely((__pyx_t_14 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 287, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  __pyx_t_5 = __Pyx_GetItemInt(__pyx_v_resolution, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 278, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_GetItemInt(__pyx_v_num_samples, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 287, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_15 = __pyx_PyFloat_AsFloat(__pyx_t_5); if (unlikely((__pyx_t_15 == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 278, __pyx_L1_error)
+  __pyx_t_15 = __Pyx_PyInt_As_int(__pyx_t_5); if (unlikely((__pyx_t_15 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 287, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  __pyx_t_5 = __Pyx_GetItemInt(__pyx_v_num_samples, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 278, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_GetItemInt(__pyx_v_resolution, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 287, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_16 = __Pyx_PyInt_As_int(__pyx_t_5); if (unlikely((__pyx_t_16 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 278, __pyx_L1_error)
+  __pyx_t_16 = __pyx_PyFloat_AsFloat(__pyx_t_5); if (unlikely((__pyx_t_16 == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 287, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  __pyx_t_5 = __Pyx_GetItemInt(__pyx_v_num_samples, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 278, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_GetItemInt(__pyx_v_resolution, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 287, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_17 = __Pyx_PyInt_As_int(__pyx_t_5); if (unlikely((__pyx_t_17 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 278, __pyx_L1_error)
+  __pyx_t_17 = __pyx_PyFloat_AsFloat(__pyx_t_5); if (unlikely((__pyx_t_17 == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 287, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __pyx_v_self->thisptr->build_probe(__pyx_t_11, __pyx_t_13, __pyx_t_14, __pyx_t_15, __pyx_t_16, __pyx_t_17, __pyx_v_aberrations_map);
 
-  /* "pyqstem/qstem_interface.pyx":279
+  /* "pyqstem/qstem_interface.pyx":288
  * 
- *         self.thisptr.build_probe(v0,alpha,resolution[0],resolution[1],num_samples[0],num_samples[1],aberrations_map)
+ *         self.thisptr.build_probe(v0,alpha,num_samples[0],num_samples[1],resolution[0],resolution[1],aberrations_map)
  *         self.thisptr.wave_state = 1             # <<<<<<<<<<<<<<
  * 
- *     def build_wave(self,type,v0):
+ *     def build_wave(self,type,v0,num_samples,resolution=None):
  */
   __pyx_v_self->thisptr->wave_state = 1;
 
-  /* "pyqstem/qstem_interface.pyx":243
+  /* "pyqstem/qstem_interface.pyx":252
  *                       scan_range[1][0],scan_range[1][1],scan_range[1][2])
  * 
  *     def build_probe(self,v0,alpha,num_samples,resolution=None,window_size=None,             # <<<<<<<<<<<<<<
@@ -6205,12 +6400,12 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_36build_probe(stru
   return __pyx_r;
 }
 
-/* "pyqstem/qstem_interface.pyx":281
+/* "pyqstem/qstem_interface.pyx":290
  *         self.thisptr.wave_state = 1
  * 
- *     def build_wave(self,type,v0):             # <<<<<<<<<<<<<<
+ *     def build_wave(self,type,v0,num_samples,resolution=None):             # <<<<<<<<<<<<<<
  * 
- *         if self.thisptr.trans_array_state<=0:
+ *         if type=='plane': type=0
  */
 
 /* Python wrapper */
@@ -6218,16 +6413,21 @@ static PyObject *__pyx_pw_7pyqstem_15qstem_interface_7PyQSTEM_39build_wave(PyObj
 static PyObject *__pyx_pw_7pyqstem_15qstem_interface_7PyQSTEM_39build_wave(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_type = 0;
   PyObject *__pyx_v_v0 = 0;
+  PyObject *__pyx_v_num_samples = 0;
+  PyObject *__pyx_v_resolution = 0;
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("build_wave (wrapper)", 0);
   {
-    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_type,&__pyx_n_s_v0,0};
-    PyObject* values[2] = {0,0};
+    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_type,&__pyx_n_s_v0,&__pyx_n_s_num_samples,&__pyx_n_s_resolution,0};
+    PyObject* values[4] = {0,0,0,0};
+    values[3] = ((PyObject *)Py_None);
     if (unlikely(__pyx_kwds)) {
       Py_ssize_t kw_args;
       const Py_ssize_t pos_args = PyTuple_GET_SIZE(__pyx_args);
       switch (pos_args) {
+        case  4: values[3] = PyTuple_GET_ITEM(__pyx_args, 3);
+        case  3: values[2] = PyTuple_GET_ITEM(__pyx_args, 2);
         case  2: values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
         case  1: values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
         case  0: break;
@@ -6241,37 +6441,53 @@ static PyObject *__pyx_pw_7pyqstem_15qstem_interface_7PyQSTEM_39build_wave(PyObj
         case  1:
         if (likely((values[1] = PyDict_GetItem(__pyx_kwds, __pyx_n_s_v0)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("build_wave", 1, 2, 2, 1); __PYX_ERR(0, 281, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("build_wave", 0, 3, 4, 1); __PYX_ERR(0, 290, __pyx_L3_error)
+        }
+        case  2:
+        if (likely((values[2] = PyDict_GetItem(__pyx_kwds, __pyx_n_s_num_samples)) != 0)) kw_args--;
+        else {
+          __Pyx_RaiseArgtupleInvalid("build_wave", 0, 3, 4, 2); __PYX_ERR(0, 290, __pyx_L3_error)
+        }
+        case  3:
+        if (kw_args > 0) {
+          PyObject* value = PyDict_GetItem(__pyx_kwds, __pyx_n_s_resolution);
+          if (value) { values[3] = value; kw_args--; }
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "build_wave") < 0)) __PYX_ERR(0, 281, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "build_wave") < 0)) __PYX_ERR(0, 290, __pyx_L3_error)
       }
-    } else if (PyTuple_GET_SIZE(__pyx_args) != 2) {
-      goto __pyx_L5_argtuple_error;
     } else {
-      values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
-      values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
+      switch (PyTuple_GET_SIZE(__pyx_args)) {
+        case  4: values[3] = PyTuple_GET_ITEM(__pyx_args, 3);
+        case  3: values[2] = PyTuple_GET_ITEM(__pyx_args, 2);
+        values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
+        values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
+        break;
+        default: goto __pyx_L5_argtuple_error;
+      }
     }
     __pyx_v_type = values[0];
     __pyx_v_v0 = values[1];
+    __pyx_v_num_samples = values[2];
+    __pyx_v_resolution = values[3];
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("build_wave", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 281, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("build_wave", 0, 3, 4, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 290, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("pyqstem.qstem_interface.PyQSTEM.build_wave", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_38build_wave(((struct __pyx_obj_7pyqstem_15qstem_interface_PyQSTEM *)__pyx_v_self), __pyx_v_type, __pyx_v_v0);
+  __pyx_r = __pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_38build_wave(((struct __pyx_obj_7pyqstem_15qstem_interface_PyQSTEM *)__pyx_v_self), __pyx_v_type, __pyx_v_v0, __pyx_v_num_samples, __pyx_v_resolution);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_38build_wave(struct __pyx_obj_7pyqstem_15qstem_interface_PyQSTEM *__pyx_v_self, PyObject *__pyx_v_type, PyObject *__pyx_v_v0) {
+static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_38build_wave(struct __pyx_obj_7pyqstem_15qstem_interface_PyQSTEM *__pyx_v_self, PyObject *__pyx_v_type, PyObject *__pyx_v_v0, PyObject *__pyx_v_num_samples, PyObject *__pyx_v_resolution) {
   PyObject *__pyx_v_old_v0 = NULL;
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
@@ -6280,65 +6496,38 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_38build_wave(struc
   PyObject *__pyx_t_3 = NULL;
   PyObject *__pyx_t_4 = NULL;
   int __pyx_t_5;
-  float __pyx_t_6;
-  PyObject *__pyx_t_7 = NULL;
+  int __pyx_t_6;
+  float __pyx_t_7;
   int __pyx_t_8;
+  int __pyx_t_9;
+  float __pyx_t_10;
+  float __pyx_t_11;
+  PyObject *__pyx_t_12 = NULL;
   __Pyx_RefNannySetupContext("build_wave", 0);
   __Pyx_INCREF(__pyx_v_type);
+  __Pyx_INCREF(__pyx_v_resolution);
 
-  /* "pyqstem/qstem_interface.pyx":283
- *     def build_wave(self,type,v0):
- * 
- *         if self.thisptr.trans_array_state<=0:             # <<<<<<<<<<<<<<
- *             raise RuntimeError('Create potential before building the wave function')
- * 
- */
-  __pyx_t_1 = ((__pyx_v_self->thisptr->trans_array_state <= 0) != 0);
-  if (__pyx_t_1) {
-
-    /* "pyqstem/qstem_interface.pyx":284
- * 
- *         if self.thisptr.trans_array_state<=0:
- *             raise RuntimeError('Create potential before building the wave function')             # <<<<<<<<<<<<<<
- * 
- *         if type=='plane': type=0
- */
-    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_RuntimeError, __pyx_tuple__19, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 284, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_2);
-    __Pyx_Raise(__pyx_t_2, 0, 0, 0);
-    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __PYX_ERR(0, 284, __pyx_L1_error)
-
-    /* "pyqstem/qstem_interface.pyx":283
- *     def build_wave(self,type,v0):
- * 
- *         if self.thisptr.trans_array_state<=0:             # <<<<<<<<<<<<<<
- *             raise RuntimeError('Create potential before building the wave function')
- * 
- */
-  }
-
-  /* "pyqstem/qstem_interface.pyx":286
- *             raise RuntimeError('Create potential before building the wave function')
+  /* "pyqstem/qstem_interface.pyx":292
+ *     def build_wave(self,type,v0,num_samples,resolution=None):
  * 
  *         if type=='plane': type=0             # <<<<<<<<<<<<<<
  *         old_v0 = self.get_energy()
  * 
  */
-  __pyx_t_1 = (__Pyx_PyString_Equals(__pyx_v_type, __pyx_n_s_plane, Py_EQ)); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(0, 286, __pyx_L1_error)
+  __pyx_t_1 = (__Pyx_PyString_Equals(__pyx_v_type, __pyx_n_s_plane, Py_EQ)); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(0, 292, __pyx_L1_error)
   if (__pyx_t_1) {
     __Pyx_INCREF(__pyx_int_0);
     __Pyx_DECREF_SET(__pyx_v_type, __pyx_int_0);
   }
 
-  /* "pyqstem/qstem_interface.pyx":287
+  /* "pyqstem/qstem_interface.pyx":293
  * 
  *         if type=='plane': type=0
  *         old_v0 = self.get_energy()             # <<<<<<<<<<<<<<
  * 
- *         self.thisptr.build_wave(type,v0)
+ *         if resolution is None:
  */
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_get_energy); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 287, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_get_energy); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 293, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __pyx_t_4 = NULL;
   if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_3))) {
@@ -6351,29 +6540,83 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_38build_wave(struc
     }
   }
   if (__pyx_t_4) {
-    __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_4); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 287, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_4); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 293, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   } else {
-    __pyx_t_2 = __Pyx_PyObject_CallNoArg(__pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 287, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_CallNoArg(__pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 293, __pyx_L1_error)
   }
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_v_old_v0 = __pyx_t_2;
   __pyx_t_2 = 0;
 
-  /* "pyqstem/qstem_interface.pyx":289
+  /* "pyqstem/qstem_interface.pyx":295
  *         old_v0 = self.get_energy()
  * 
- *         self.thisptr.build_wave(type,v0)             # <<<<<<<<<<<<<<
+ *         if resolution is None:             # <<<<<<<<<<<<<<
+ *             resolution = [-1,-1]
+ * 
+ */
+  __pyx_t_1 = (__pyx_v_resolution == Py_None);
+  __pyx_t_5 = (__pyx_t_1 != 0);
+  if (__pyx_t_5) {
+
+    /* "pyqstem/qstem_interface.pyx":296
+ * 
+ *         if resolution is None:
+ *             resolution = [-1,-1]             # <<<<<<<<<<<<<<
+ * 
+ *         self.thisptr.build_wave(type,v0,num_samples[0],num_samples[1],resolution[0],resolution[1])
+ */
+    __pyx_t_2 = PyList_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 296, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __Pyx_INCREF(__pyx_int_neg_1);
+    __Pyx_GIVEREF(__pyx_int_neg_1);
+    PyList_SET_ITEM(__pyx_t_2, 0, __pyx_int_neg_1);
+    __Pyx_INCREF(__pyx_int_neg_1);
+    __Pyx_GIVEREF(__pyx_int_neg_1);
+    PyList_SET_ITEM(__pyx_t_2, 1, __pyx_int_neg_1);
+    __Pyx_DECREF_SET(__pyx_v_resolution, __pyx_t_2);
+    __pyx_t_2 = 0;
+
+    /* "pyqstem/qstem_interface.pyx":295
+ *         old_v0 = self.get_energy()
+ * 
+ *         if resolution is None:             # <<<<<<<<<<<<<<
+ *             resolution = [-1,-1]
+ * 
+ */
+  }
+
+  /* "pyqstem/qstem_interface.pyx":298
+ *             resolution = [-1,-1]
+ * 
+ *         self.thisptr.build_wave(type,v0,num_samples[0],num_samples[1],resolution[0],resolution[1])             # <<<<<<<<<<<<<<
  * 
  *         self.thisptr.wave_state = 1
  */
-  __pyx_t_5 = __Pyx_PyInt_As_int(__pyx_v_type); if (unlikely((__pyx_t_5 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 289, __pyx_L1_error)
-  __pyx_t_6 = __pyx_PyFloat_AsFloat(__pyx_v_v0); if (unlikely((__pyx_t_6 == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 289, __pyx_L1_error)
-  __pyx_v_self->thisptr->build_wave(__pyx_t_5, __pyx_t_6);
+  __pyx_t_6 = __Pyx_PyInt_As_int(__pyx_v_type); if (unlikely((__pyx_t_6 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 298, __pyx_L1_error)
+  __pyx_t_7 = __pyx_PyFloat_AsFloat(__pyx_v_v0); if (unlikely((__pyx_t_7 == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 298, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_GetItemInt(__pyx_v_num_samples, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 298, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __pyx_t_8 = __Pyx_PyInt_As_int(__pyx_t_2); if (unlikely((__pyx_t_8 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 298, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __pyx_t_2 = __Pyx_GetItemInt(__pyx_v_num_samples, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 298, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __pyx_t_9 = __Pyx_PyInt_As_int(__pyx_t_2); if (unlikely((__pyx_t_9 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 298, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __pyx_t_2 = __Pyx_GetItemInt(__pyx_v_resolution, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 298, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __pyx_t_10 = __pyx_PyFloat_AsFloat(__pyx_t_2); if (unlikely((__pyx_t_10 == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 298, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __pyx_t_2 = __Pyx_GetItemInt(__pyx_v_resolution, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 298, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __pyx_t_11 = __pyx_PyFloat_AsFloat(__pyx_t_2); if (unlikely((__pyx_t_11 == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 298, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __pyx_v_self->thisptr->build_wave(__pyx_t_6, __pyx_t_7, __pyx_t_8, __pyx_t_9, __pyx_t_10, __pyx_t_11);
 
-  /* "pyqstem/qstem_interface.pyx":291
- *         self.thisptr.build_wave(type,v0)
+  /* "pyqstem/qstem_interface.pyx":300
+ *         self.thisptr.build_wave(type,v0,num_samples[0],num_samples[1],resolution[0],resolution[1])
  * 
  *         self.thisptr.wave_state = 1             # <<<<<<<<<<<<<<
  *         if self.thisptr.trans_array_state == 2:
@@ -6381,29 +6624,29 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_38build_wave(struc
  */
   __pyx_v_self->thisptr->wave_state = 1;
 
-  /* "pyqstem/qstem_interface.pyx":292
+  /* "pyqstem/qstem_interface.pyx":301
  * 
  *         self.thisptr.wave_state = 1
  *         if self.thisptr.trans_array_state == 2:             # <<<<<<<<<<<<<<
  *             if not np.isclose(old_v0,v0,rtol=0,atol=1e-6):
  *                 self.thisptr.trans_array_state = -2
  */
-  __pyx_t_1 = ((__pyx_v_self->thisptr->trans_array_state == 2) != 0);
-  if (__pyx_t_1) {
+  __pyx_t_5 = ((__pyx_v_self->thisptr->trans_array_state == 2) != 0);
+  if (__pyx_t_5) {
 
-    /* "pyqstem/qstem_interface.pyx":293
+    /* "pyqstem/qstem_interface.pyx":302
  *         self.thisptr.wave_state = 1
  *         if self.thisptr.trans_array_state == 2:
  *             if not np.isclose(old_v0,v0,rtol=0,atol=1e-6):             # <<<<<<<<<<<<<<
  *                 self.thisptr.trans_array_state = -2
  * 
  */
-    __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 293, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 302, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_isclose); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 293, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_isclose); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 302, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 293, __pyx_L1_error)
+    __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 302, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_INCREF(__pyx_v_old_v0);
     __Pyx_GIVEREF(__pyx_v_old_v0);
@@ -6411,21 +6654,21 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_38build_wave(struc
     __Pyx_INCREF(__pyx_v_v0);
     __Pyx_GIVEREF(__pyx_v_v0);
     PyTuple_SET_ITEM(__pyx_t_2, 1, __pyx_v_v0);
-    __pyx_t_4 = PyDict_New(); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 293, __pyx_L1_error)
+    __pyx_t_4 = PyDict_New(); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 302, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    if (PyDict_SetItem(__pyx_t_4, __pyx_n_s_rtol, __pyx_int_0) < 0) __PYX_ERR(0, 293, __pyx_L1_error)
-    if (PyDict_SetItem(__pyx_t_4, __pyx_n_s_atol, __pyx_float_1eneg_6) < 0) __PYX_ERR(0, 293, __pyx_L1_error)
-    __pyx_t_7 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_2, __pyx_t_4); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 293, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_7);
+    if (PyDict_SetItem(__pyx_t_4, __pyx_n_s_rtol, __pyx_int_0) < 0) __PYX_ERR(0, 302, __pyx_L1_error)
+    if (PyDict_SetItem(__pyx_t_4, __pyx_n_s_atol, __pyx_float_1eneg_6) < 0) __PYX_ERR(0, 302, __pyx_L1_error)
+    __pyx_t_12 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_2, __pyx_t_4); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 302, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_12);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_t_7); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(0, 293, __pyx_L1_error)
-    __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-    __pyx_t_8 = ((!__pyx_t_1) != 0);
-    if (__pyx_t_8) {
+    __pyx_t_5 = __Pyx_PyObject_IsTrue(__pyx_t_12); if (unlikely(__pyx_t_5 < 0)) __PYX_ERR(0, 302, __pyx_L1_error)
+    __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
+    __pyx_t_1 = ((!__pyx_t_5) != 0);
+    if (__pyx_t_1) {
 
-      /* "pyqstem/qstem_interface.pyx":294
+      /* "pyqstem/qstem_interface.pyx":303
  *         if self.thisptr.trans_array_state == 2:
  *             if not np.isclose(old_v0,v0,rtol=0,atol=1e-6):
  *                 self.thisptr.trans_array_state = -2             # <<<<<<<<<<<<<<
@@ -6434,7 +6677,7 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_38build_wave(struc
  */
       __pyx_v_self->thisptr->trans_array_state = -2;
 
-      /* "pyqstem/qstem_interface.pyx":293
+      /* "pyqstem/qstem_interface.pyx":302
  *         self.thisptr.wave_state = 1
  *         if self.thisptr.trans_array_state == 2:
  *             if not np.isclose(old_v0,v0,rtol=0,atol=1e-6):             # <<<<<<<<<<<<<<
@@ -6443,7 +6686,7 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_38build_wave(struc
  */
     }
 
-    /* "pyqstem/qstem_interface.pyx":292
+    /* "pyqstem/qstem_interface.pyx":301
  * 
  *         self.thisptr.wave_state = 1
  *         if self.thisptr.trans_array_state == 2:             # <<<<<<<<<<<<<<
@@ -6452,12 +6695,12 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_38build_wave(struc
  */
   }
 
-  /* "pyqstem/qstem_interface.pyx":281
+  /* "pyqstem/qstem_interface.pyx":290
  *         self.thisptr.wave_state = 1
  * 
- *     def build_wave(self,type,v0):             # <<<<<<<<<<<<<<
+ *     def build_wave(self,type,v0,num_samples,resolution=None):             # <<<<<<<<<<<<<<
  * 
- *         if self.thisptr.trans_array_state<=0:
+ *         if type=='plane': type=0
  */
 
   /* function exit code */
@@ -6467,18 +6710,19 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_38build_wave(struc
   __Pyx_XDECREF(__pyx_t_2);
   __Pyx_XDECREF(__pyx_t_3);
   __Pyx_XDECREF(__pyx_t_4);
-  __Pyx_XDECREF(__pyx_t_7);
+  __Pyx_XDECREF(__pyx_t_12);
   __Pyx_AddTraceback("pyqstem.qstem_interface.PyQSTEM.build_wave", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XDECREF(__pyx_v_old_v0);
   __Pyx_XDECREF(__pyx_v_type);
+  __Pyx_XDECREF(__pyx_v_resolution);
   __Pyx_XGIVEREF(__pyx_r);
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-/* "pyqstem/qstem_interface.pyx":296
+/* "pyqstem/qstem_interface.pyx":305
  *                 self.thisptr.trans_array_state = -2
  * 
  *     def set_wave(self,wave):             # <<<<<<<<<<<<<<
@@ -6528,50 +6772,50 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_40set_wave(struct 
   float __pyx_t_14;
   __Pyx_RefNannySetupContext("set_wave", 0);
 
-  /* "pyqstem/qstem_interface.pyx":297
+  /* "pyqstem/qstem_interface.pyx":306
  * 
  *     def set_wave(self,wave):
  *         nx=wave.array.shape[0]             # <<<<<<<<<<<<<<
  *         ny=wave.array.shape[1]
  * 
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_wave, __pyx_n_s_array); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 297, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_wave, __pyx_n_s_array); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 306, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_shape); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 297, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_shape); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 306, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_GetItemInt(__pyx_t_2, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 297, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_GetItemInt(__pyx_t_2, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 306, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_v_nx = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "pyqstem/qstem_interface.pyx":298
+  /* "pyqstem/qstem_interface.pyx":307
  *     def set_wave(self,wave):
  *         nx=wave.array.shape[0]
  *         ny=wave.array.shape[1]             # <<<<<<<<<<<<<<
  * 
  *         nx_old,ny_old,slices_old = self.get_numsamples()
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_wave, __pyx_n_s_array); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 298, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_wave, __pyx_n_s_array); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 307, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_shape); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 298, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_shape); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 307, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_GetItemInt(__pyx_t_2, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 298, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_GetItemInt(__pyx_t_2, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 307, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_v_ny = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "pyqstem/qstem_interface.pyx":300
+  /* "pyqstem/qstem_interface.pyx":309
  *         ny=wave.array.shape[1]
  * 
  *         nx_old,ny_old,slices_old = self.get_numsamples()             # <<<<<<<<<<<<<<
  *         resolutionX,resolutionY,sliceThickness = self.get_resolution()
  * 
  */
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_get_numsamples); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 300, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_get_numsamples); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 309, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_3 = NULL;
   if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_2))) {
@@ -6584,10 +6828,10 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_40set_wave(struct 
     }
   }
   if (__pyx_t_3) {
-    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 300, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 309, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   } else {
-    __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 300, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 309, __pyx_L1_error)
   }
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -6601,7 +6845,7 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_40set_wave(struct 
     if (unlikely(size != 3)) {
       if (size > 3) __Pyx_RaiseTooManyValuesError(3);
       else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-      __PYX_ERR(0, 300, __pyx_L1_error)
+      __PYX_ERR(0, 309, __pyx_L1_error)
     }
     #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
     if (likely(PyTuple_CheckExact(sequence))) {
@@ -6617,17 +6861,17 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_40set_wave(struct 
     __Pyx_INCREF(__pyx_t_3);
     __Pyx_INCREF(__pyx_t_4);
     #else
-    __pyx_t_2 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 300, __pyx_L1_error)
+    __pyx_t_2 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 309, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_3 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 300, __pyx_L1_error)
+    __pyx_t_3 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 309, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_4 = PySequence_ITEM(sequence, 2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 300, __pyx_L1_error)
+    __pyx_t_4 = PySequence_ITEM(sequence, 2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 309, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     #endif
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   } else {
     Py_ssize_t index = -1;
-    __pyx_t_5 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 300, __pyx_L1_error)
+    __pyx_t_5 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 309, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __pyx_t_6 = Py_TYPE(__pyx_t_5)->tp_iternext;
@@ -6637,7 +6881,7 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_40set_wave(struct 
     __Pyx_GOTREF(__pyx_t_3);
     index = 2; __pyx_t_4 = __pyx_t_6(__pyx_t_5); if (unlikely(!__pyx_t_4)) goto __pyx_L3_unpacking_failed;
     __Pyx_GOTREF(__pyx_t_4);
-    if (__Pyx_IternextUnpackEndCheck(__pyx_t_6(__pyx_t_5), 3) < 0) __PYX_ERR(0, 300, __pyx_L1_error)
+    if (__Pyx_IternextUnpackEndCheck(__pyx_t_6(__pyx_t_5), 3) < 0) __PYX_ERR(0, 309, __pyx_L1_error)
     __pyx_t_6 = NULL;
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     goto __pyx_L4_unpacking_done;
@@ -6645,7 +6889,7 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_40set_wave(struct 
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __pyx_t_6 = NULL;
     if (__Pyx_IterFinish() == 0) __Pyx_RaiseNeedMoreValuesError(index);
-    __PYX_ERR(0, 300, __pyx_L1_error)
+    __PYX_ERR(0, 309, __pyx_L1_error)
     __pyx_L4_unpacking_done:;
   }
   __pyx_v_nx_old = __pyx_t_2;
@@ -6655,14 +6899,14 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_40set_wave(struct 
   __pyx_v_slices_old = __pyx_t_4;
   __pyx_t_4 = 0;
 
-  /* "pyqstem/qstem_interface.pyx":301
+  /* "pyqstem/qstem_interface.pyx":310
  * 
  *         nx_old,ny_old,slices_old = self.get_numsamples()
  *         resolutionX,resolutionY,sliceThickness = self.get_resolution()             # <<<<<<<<<<<<<<
  * 
  *         if self.thisptr.trans_array_state>0:
  */
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_get_resolution); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 301, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_get_resolution); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 310, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __pyx_t_3 = NULL;
   if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_4))) {
@@ -6675,10 +6919,10 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_40set_wave(struct 
     }
   }
   if (__pyx_t_3) {
-    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 301, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 310, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   } else {
-    __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_t_4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 301, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_t_4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 310, __pyx_L1_error)
   }
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
@@ -6692,7 +6936,7 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_40set_wave(struct 
     if (unlikely(size != 3)) {
       if (size > 3) __Pyx_RaiseTooManyValuesError(3);
       else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-      __PYX_ERR(0, 301, __pyx_L1_error)
+      __PYX_ERR(0, 310, __pyx_L1_error)
     }
     #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
     if (likely(PyTuple_CheckExact(sequence))) {
@@ -6708,17 +6952,17 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_40set_wave(struct 
     __Pyx_INCREF(__pyx_t_3);
     __Pyx_INCREF(__pyx_t_2);
     #else
-    __pyx_t_4 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 301, __pyx_L1_error)
+    __pyx_t_4 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 310, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_3 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 301, __pyx_L1_error)
+    __pyx_t_3 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 310, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_2 = PySequence_ITEM(sequence, 2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 301, __pyx_L1_error)
+    __pyx_t_2 = PySequence_ITEM(sequence, 2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 310, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     #endif
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   } else {
     Py_ssize_t index = -1;
-    __pyx_t_5 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 301, __pyx_L1_error)
+    __pyx_t_5 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 310, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __pyx_t_6 = Py_TYPE(__pyx_t_5)->tp_iternext;
@@ -6728,7 +6972,7 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_40set_wave(struct 
     __Pyx_GOTREF(__pyx_t_3);
     index = 2; __pyx_t_2 = __pyx_t_6(__pyx_t_5); if (unlikely(!__pyx_t_2)) goto __pyx_L5_unpacking_failed;
     __Pyx_GOTREF(__pyx_t_2);
-    if (__Pyx_IternextUnpackEndCheck(__pyx_t_6(__pyx_t_5), 3) < 0) __PYX_ERR(0, 301, __pyx_L1_error)
+    if (__Pyx_IternextUnpackEndCheck(__pyx_t_6(__pyx_t_5), 3) < 0) __PYX_ERR(0, 310, __pyx_L1_error)
     __pyx_t_6 = NULL;
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     goto __pyx_L6_unpacking_done;
@@ -6736,7 +6980,7 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_40set_wave(struct 
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __pyx_t_6 = NULL;
     if (__Pyx_IterFinish() == 0) __Pyx_RaiseNeedMoreValuesError(index);
-    __PYX_ERR(0, 301, __pyx_L1_error)
+    __PYX_ERR(0, 310, __pyx_L1_error)
     __pyx_L6_unpacking_done:;
   }
   __pyx_v_resolutionX = __pyx_t_4;
@@ -6746,7 +6990,7 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_40set_wave(struct 
   __pyx_v_sliceThickness = __pyx_t_2;
   __pyx_t_2 = 0;
 
-  /* "pyqstem/qstem_interface.pyx":303
+  /* "pyqstem/qstem_interface.pyx":312
  *         resolutionX,resolutionY,sliceThickness = self.get_resolution()
  * 
  *         if self.thisptr.trans_array_state>0:             # <<<<<<<<<<<<<<
@@ -6756,31 +7000,31 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_40set_wave(struct 
   __pyx_t_7 = ((__pyx_v_self->thisptr->trans_array_state > 0) != 0);
   if (__pyx_t_7) {
 
-    /* "pyqstem/qstem_interface.pyx":304
+    /* "pyqstem/qstem_interface.pyx":313
  * 
  *         if self.thisptr.trans_array_state>0:
  *             if ((nx_old!=nx)|(ny_old!=ny)):             # <<<<<<<<<<<<<<
  *                 raise RuntimeError('Wave function shape does not match QSTEM: ({0},{1}) != ({2},{3})'.format(nx,ny,nx_old,ny_old))
  * 
  */
-    __pyx_t_1 = PyObject_RichCompare(__pyx_v_nx_old, __pyx_v_nx, Py_NE); __Pyx_XGOTREF(__pyx_t_1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 304, __pyx_L1_error)
-    __pyx_t_2 = PyObject_RichCompare(__pyx_v_ny_old, __pyx_v_ny, Py_NE); __Pyx_XGOTREF(__pyx_t_2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 304, __pyx_L1_error)
-    __pyx_t_3 = PyNumber_Or(__pyx_t_1, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 304, __pyx_L1_error)
+    __pyx_t_1 = PyObject_RichCompare(__pyx_v_nx_old, __pyx_v_nx, Py_NE); __Pyx_XGOTREF(__pyx_t_1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 313, __pyx_L1_error)
+    __pyx_t_2 = PyObject_RichCompare(__pyx_v_ny_old, __pyx_v_ny, Py_NE); __Pyx_XGOTREF(__pyx_t_2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 313, __pyx_L1_error)
+    __pyx_t_3 = PyNumber_Or(__pyx_t_1, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 313, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_t_7 = __Pyx_PyObject_IsTrue(__pyx_t_3); if (unlikely(__pyx_t_7 < 0)) __PYX_ERR(0, 304, __pyx_L1_error)
+    __pyx_t_7 = __Pyx_PyObject_IsTrue(__pyx_t_3); if (unlikely(__pyx_t_7 < 0)) __PYX_ERR(0, 313, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     if (__pyx_t_7) {
 
-      /* "pyqstem/qstem_interface.pyx":305
+      /* "pyqstem/qstem_interface.pyx":314
  *         if self.thisptr.trans_array_state>0:
  *             if ((nx_old!=nx)|(ny_old!=ny)):
  *                 raise RuntimeError('Wave function shape does not match QSTEM: ({0},{1}) != ({2},{3})'.format(nx,ny,nx_old,ny_old))             # <<<<<<<<<<<<<<
  * 
  *         if wave.sampling is not None:
  */
-      __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_Wave_function_shape_does_not_mat, __pyx_n_s_format); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 305, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_Wave_function_shape_does_not_mat, __pyx_n_s_format); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 314, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __pyx_t_1 = NULL;
       __pyx_t_8 = 0;
@@ -6797,7 +7041,7 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_40set_wave(struct 
       #if CYTHON_FAST_PYCALL
       if (PyFunction_Check(__pyx_t_2)) {
         PyObject *__pyx_temp[5] = {__pyx_t_1, __pyx_v_nx, __pyx_v_ny, __pyx_v_nx_old, __pyx_v_ny_old};
-        __pyx_t_3 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_8, 4+__pyx_t_8); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 305, __pyx_L1_error)
+        __pyx_t_3 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_8, 4+__pyx_t_8); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 314, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
         __Pyx_GOTREF(__pyx_t_3);
       } else
@@ -6805,13 +7049,13 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_40set_wave(struct 
       #if CYTHON_FAST_PYCCALL
       if (__Pyx_PyFastCFunction_Check(__pyx_t_2)) {
         PyObject *__pyx_temp[5] = {__pyx_t_1, __pyx_v_nx, __pyx_v_ny, __pyx_v_nx_old, __pyx_v_ny_old};
-        __pyx_t_3 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_8, 4+__pyx_t_8); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 305, __pyx_L1_error)
+        __pyx_t_3 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_8, 4+__pyx_t_8); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 314, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
         __Pyx_GOTREF(__pyx_t_3);
       } else
       #endif
       {
-        __pyx_t_4 = PyTuple_New(4+__pyx_t_8); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 305, __pyx_L1_error)
+        __pyx_t_4 = PyTuple_New(4+__pyx_t_8); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 314, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_4);
         if (__pyx_t_1) {
           __Pyx_GIVEREF(__pyx_t_1); PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_1); __pyx_t_1 = NULL;
@@ -6828,24 +7072,24 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_40set_wave(struct 
         __Pyx_INCREF(__pyx_v_ny_old);
         __Pyx_GIVEREF(__pyx_v_ny_old);
         PyTuple_SET_ITEM(__pyx_t_4, 3+__pyx_t_8, __pyx_v_ny_old);
-        __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_4, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 305, __pyx_L1_error)
+        __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_4, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 314, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
         __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       }
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-      __pyx_t_2 = PyTuple_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 305, __pyx_L1_error)
+      __pyx_t_2 = PyTuple_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 314, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_GIVEREF(__pyx_t_3);
       PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_t_3);
       __pyx_t_3 = 0;
-      __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_RuntimeError, __pyx_t_2, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 305, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_RuntimeError, __pyx_t_2, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 314, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
       __Pyx_Raise(__pyx_t_3, 0, 0, 0);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-      __PYX_ERR(0, 305, __pyx_L1_error)
+      __PYX_ERR(0, 314, __pyx_L1_error)
 
-      /* "pyqstem/qstem_interface.pyx":304
+      /* "pyqstem/qstem_interface.pyx":313
  * 
  *         if self.thisptr.trans_array_state>0:
  *             if ((nx_old!=nx)|(ny_old!=ny)):             # <<<<<<<<<<<<<<
@@ -6854,7 +7098,7 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_40set_wave(struct 
  */
     }
 
-    /* "pyqstem/qstem_interface.pyx":303
+    /* "pyqstem/qstem_interface.pyx":312
  *         resolutionX,resolutionY,sliceThickness = self.get_resolution()
  * 
  *         if self.thisptr.trans_array_state>0:             # <<<<<<<<<<<<<<
@@ -6863,40 +7107,40 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_40set_wave(struct 
  */
   }
 
-  /* "pyqstem/qstem_interface.pyx":307
+  /* "pyqstem/qstem_interface.pyx":316
  *                 raise RuntimeError('Wave function shape does not match QSTEM: ({0},{1}) != ({2},{3})'.format(nx,ny,nx_old,ny_old))
  * 
  *         if wave.sampling is not None:             # <<<<<<<<<<<<<<
  *             if not np.any(np.isclose(wave.sampling,(resolutionX,resolutionY),rtol=0,atol=1e-06)):
  *                 warnings.warn('Wavefunction resolution will be changed to match the simulation box')
  */
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_wave, __pyx_n_s_sampling); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 307, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_wave, __pyx_n_s_sampling); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 316, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __pyx_t_7 = (__pyx_t_3 != Py_None);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_t_9 = (__pyx_t_7 != 0);
   if (__pyx_t_9) {
 
-    /* "pyqstem/qstem_interface.pyx":308
+    /* "pyqstem/qstem_interface.pyx":317
  * 
  *         if wave.sampling is not None:
  *             if not np.any(np.isclose(wave.sampling,(resolutionX,resolutionY),rtol=0,atol=1e-06)):             # <<<<<<<<<<<<<<
  *                 warnings.warn('Wavefunction resolution will be changed to match the simulation box')
  * 
  */
-    __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 308, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 317, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_any); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 308, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_any); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 317, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 308, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 317, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_isclose); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 308, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_isclose); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 317, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_wave, __pyx_n_s_sampling); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 308, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_wave, __pyx_n_s_sampling); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 317, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_5 = PyTuple_New(2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 308, __pyx_L1_error)
+    __pyx_t_5 = PyTuple_New(2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 317, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_INCREF(__pyx_v_resolutionX);
     __Pyx_GIVEREF(__pyx_v_resolutionX);
@@ -6904,7 +7148,7 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_40set_wave(struct 
     __Pyx_INCREF(__pyx_v_resolutionY);
     __Pyx_GIVEREF(__pyx_v_resolutionY);
     PyTuple_SET_ITEM(__pyx_t_5, 1, __pyx_v_resolutionY);
-    __pyx_t_10 = PyTuple_New(2); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 308, __pyx_L1_error)
+    __pyx_t_10 = PyTuple_New(2); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 317, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_10);
     __Pyx_GIVEREF(__pyx_t_2);
     PyTuple_SET_ITEM(__pyx_t_10, 0, __pyx_t_2);
@@ -6912,11 +7156,11 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_40set_wave(struct 
     PyTuple_SET_ITEM(__pyx_t_10, 1, __pyx_t_5);
     __pyx_t_2 = 0;
     __pyx_t_5 = 0;
-    __pyx_t_5 = PyDict_New(); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 308, __pyx_L1_error)
+    __pyx_t_5 = PyDict_New(); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 317, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
-    if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_rtol, __pyx_int_0) < 0) __PYX_ERR(0, 308, __pyx_L1_error)
-    if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_atol, __pyx_float_1eneg_06) < 0) __PYX_ERR(0, 308, __pyx_L1_error)
-    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_10, __pyx_t_5); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 308, __pyx_L1_error)
+    if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_rtol, __pyx_int_0) < 0) __PYX_ERR(0, 317, __pyx_L1_error)
+    if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_atol, __pyx_float_1eneg_06) < 0) __PYX_ERR(0, 317, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_10, __pyx_t_5); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 317, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
@@ -6932,14 +7176,14 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_40set_wave(struct 
       }
     }
     if (!__pyx_t_5) {
-      __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 308, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 317, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
       __Pyx_GOTREF(__pyx_t_3);
     } else {
       #if CYTHON_FAST_PYCALL
       if (PyFunction_Check(__pyx_t_4)) {
         PyObject *__pyx_temp[2] = {__pyx_t_5, __pyx_t_2};
-        __pyx_t_3 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 308, __pyx_L1_error)
+        __pyx_t_3 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 317, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
         __Pyx_GOTREF(__pyx_t_3);
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -6948,48 +7192,48 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_40set_wave(struct 
       #if CYTHON_FAST_PYCCALL
       if (__Pyx_PyFastCFunction_Check(__pyx_t_4)) {
         PyObject *__pyx_temp[2] = {__pyx_t_5, __pyx_t_2};
-        __pyx_t_3 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 308, __pyx_L1_error)
+        __pyx_t_3 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 317, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
         __Pyx_GOTREF(__pyx_t_3);
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
       } else
       #endif
       {
-        __pyx_t_10 = PyTuple_New(1+1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 308, __pyx_L1_error)
+        __pyx_t_10 = PyTuple_New(1+1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 317, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_10);
         __Pyx_GIVEREF(__pyx_t_5); PyTuple_SET_ITEM(__pyx_t_10, 0, __pyx_t_5); __pyx_t_5 = NULL;
         __Pyx_GIVEREF(__pyx_t_2);
         PyTuple_SET_ITEM(__pyx_t_10, 0+1, __pyx_t_2);
         __pyx_t_2 = 0;
-        __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_10, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 308, __pyx_L1_error)
+        __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_10, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 317, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
         __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
       }
     }
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __pyx_t_9 = __Pyx_PyObject_IsTrue(__pyx_t_3); if (unlikely(__pyx_t_9 < 0)) __PYX_ERR(0, 308, __pyx_L1_error)
+    __pyx_t_9 = __Pyx_PyObject_IsTrue(__pyx_t_3); if (unlikely(__pyx_t_9 < 0)) __PYX_ERR(0, 317, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __pyx_t_7 = ((!__pyx_t_9) != 0);
     if (__pyx_t_7) {
 
-      /* "pyqstem/qstem_interface.pyx":309
+      /* "pyqstem/qstem_interface.pyx":318
  *         if wave.sampling is not None:
  *             if not np.any(np.isclose(wave.sampling,(resolutionX,resolutionY),rtol=0,atol=1e-06)):
  *                 warnings.warn('Wavefunction resolution will be changed to match the simulation box')             # <<<<<<<<<<<<<<
  * 
  *         array = np.concatenate((np.real(wave.array)[:,:,np.newaxis],np.imag(wave.array)[:,:,np.newaxis]),axis=2)
  */
-      __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_warnings); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 309, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_warnings); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 318, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
-      __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_warn); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 309, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_warn); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 318, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-      __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_tuple__20, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 309, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_tuple__20, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 318, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-      /* "pyqstem/qstem_interface.pyx":308
+      /* "pyqstem/qstem_interface.pyx":317
  * 
  *         if wave.sampling is not None:
  *             if not np.any(np.isclose(wave.sampling,(resolutionX,resolutionY),rtol=0,atol=1e-06)):             # <<<<<<<<<<<<<<
@@ -6998,7 +7242,7 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_40set_wave(struct 
  */
     }
 
-    /* "pyqstem/qstem_interface.pyx":307
+    /* "pyqstem/qstem_interface.pyx":316
  *                 raise RuntimeError('Wave function shape does not match QSTEM: ({0},{1}) != ({2},{3})'.format(nx,ny,nx_old,ny_old))
  * 
  *         if wave.sampling is not None:             # <<<<<<<<<<<<<<
@@ -7007,24 +7251,24 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_40set_wave(struct 
  */
   }
 
-  /* "pyqstem/qstem_interface.pyx":311
+  /* "pyqstem/qstem_interface.pyx":320
  *                 warnings.warn('Wavefunction resolution will be changed to match the simulation box')
  * 
  *         array = np.concatenate((np.real(wave.array)[:,:,np.newaxis],np.imag(wave.array)[:,:,np.newaxis]),axis=2)             # <<<<<<<<<<<<<<
  * 
  *         old_v0 = self.get_energy()
  */
-  __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 311, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 320, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_concatenate); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 311, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_concatenate); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 320, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_10 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 311, __pyx_L1_error)
+  __pyx_t_10 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 320, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_10);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_10, __pyx_n_s_real); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 311, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_10, __pyx_n_s_real); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 320, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-  __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_v_wave, __pyx_n_s_array); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 311, __pyx_L1_error)
+  __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_v_wave, __pyx_n_s_array); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 320, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_10);
   __pyx_t_5 = NULL;
   if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_2))) {
@@ -7037,14 +7281,14 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_40set_wave(struct 
     }
   }
   if (!__pyx_t_5) {
-    __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_10); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 311, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_10); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 320, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
     __Pyx_GOTREF(__pyx_t_3);
   } else {
     #if CYTHON_FAST_PYCALL
     if (PyFunction_Check(__pyx_t_2)) {
       PyObject *__pyx_temp[2] = {__pyx_t_5, __pyx_t_10};
-      __pyx_t_3 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 311, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 320, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
@@ -7053,31 +7297,31 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_40set_wave(struct 
     #if CYTHON_FAST_PYCCALL
     if (__Pyx_PyFastCFunction_Check(__pyx_t_2)) {
       PyObject *__pyx_temp[2] = {__pyx_t_5, __pyx_t_10};
-      __pyx_t_3 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 311, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 320, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
     } else
     #endif
     {
-      __pyx_t_1 = PyTuple_New(1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 311, __pyx_L1_error)
+      __pyx_t_1 = PyTuple_New(1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 320, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_GIVEREF(__pyx_t_5); PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_t_5); __pyx_t_5 = NULL;
       __Pyx_GIVEREF(__pyx_t_10);
       PyTuple_SET_ITEM(__pyx_t_1, 0+1, __pyx_t_10);
       __pyx_t_10 = 0;
-      __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_1, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 311, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_1, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 320, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     }
   }
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 311, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 320, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_newaxis); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 311, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_newaxis); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 320, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = PyTuple_New(3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 311, __pyx_L1_error)
+  __pyx_t_2 = PyTuple_New(3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 320, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_INCREF(__pyx_slice__21);
   __Pyx_GIVEREF(__pyx_slice__21);
@@ -7088,16 +7332,16 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_40set_wave(struct 
   __Pyx_GIVEREF(__pyx_t_1);
   PyTuple_SET_ITEM(__pyx_t_2, 2, __pyx_t_1);
   __pyx_t_1 = 0;
-  __pyx_t_1 = PyObject_GetItem(__pyx_t_3, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 311, __pyx_L1_error)
+  __pyx_t_1 = PyObject_GetItem(__pyx_t_3, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 320, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 311, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 320, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_imag); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 311, __pyx_L1_error)
+  __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_imag); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 320, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_10);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_wave, __pyx_n_s_array); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 311, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_wave, __pyx_n_s_array); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 320, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __pyx_t_5 = NULL;
   if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_10))) {
@@ -7110,14 +7354,14 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_40set_wave(struct 
     }
   }
   if (!__pyx_t_5) {
-    __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_10, __pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 311, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_10, __pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 320, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_GOTREF(__pyx_t_2);
   } else {
     #if CYTHON_FAST_PYCALL
     if (PyFunction_Check(__pyx_t_10)) {
       PyObject *__pyx_temp[2] = {__pyx_t_5, __pyx_t_3};
-      __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_10, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 311, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_10, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 320, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -7126,31 +7370,31 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_40set_wave(struct 
     #if CYTHON_FAST_PYCCALL
     if (__Pyx_PyFastCFunction_Check(__pyx_t_10)) {
       PyObject *__pyx_temp[2] = {__pyx_t_5, __pyx_t_3};
-      __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_10, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 311, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_10, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 320, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     } else
     #endif
     {
-      __pyx_t_11 = PyTuple_New(1+1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 311, __pyx_L1_error)
+      __pyx_t_11 = PyTuple_New(1+1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 320, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_11);
       __Pyx_GIVEREF(__pyx_t_5); PyTuple_SET_ITEM(__pyx_t_11, 0, __pyx_t_5); __pyx_t_5 = NULL;
       __Pyx_GIVEREF(__pyx_t_3);
       PyTuple_SET_ITEM(__pyx_t_11, 0+1, __pyx_t_3);
       __pyx_t_3 = 0;
-      __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_10, __pyx_t_11, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 311, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_10, __pyx_t_11, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 320, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
     }
   }
   __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-  __pyx_t_10 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 311, __pyx_L1_error)
+  __pyx_t_10 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 320, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_10);
-  __pyx_t_11 = __Pyx_PyObject_GetAttrStr(__pyx_t_10, __pyx_n_s_newaxis); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 311, __pyx_L1_error)
+  __pyx_t_11 = __Pyx_PyObject_GetAttrStr(__pyx_t_10, __pyx_n_s_newaxis); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 320, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_11);
   __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-  __pyx_t_10 = PyTuple_New(3); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 311, __pyx_L1_error)
+  __pyx_t_10 = PyTuple_New(3); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 320, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_10);
   __Pyx_INCREF(__pyx_slice__23);
   __Pyx_GIVEREF(__pyx_slice__23);
@@ -7161,11 +7405,11 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_40set_wave(struct 
   __Pyx_GIVEREF(__pyx_t_11);
   PyTuple_SET_ITEM(__pyx_t_10, 2, __pyx_t_11);
   __pyx_t_11 = 0;
-  __pyx_t_11 = PyObject_GetItem(__pyx_t_2, __pyx_t_10); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 311, __pyx_L1_error)
+  __pyx_t_11 = PyObject_GetItem(__pyx_t_2, __pyx_t_10); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 320, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_11);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-  __pyx_t_10 = PyTuple_New(2); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 311, __pyx_L1_error)
+  __pyx_t_10 = PyTuple_New(2); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 320, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_10);
   __Pyx_GIVEREF(__pyx_t_1);
   PyTuple_SET_ITEM(__pyx_t_10, 0, __pyx_t_1);
@@ -7173,15 +7417,15 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_40set_wave(struct 
   PyTuple_SET_ITEM(__pyx_t_10, 1, __pyx_t_11);
   __pyx_t_1 = 0;
   __pyx_t_11 = 0;
-  __pyx_t_11 = PyTuple_New(1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 311, __pyx_L1_error)
+  __pyx_t_11 = PyTuple_New(1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 320, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_11);
   __Pyx_GIVEREF(__pyx_t_10);
   PyTuple_SET_ITEM(__pyx_t_11, 0, __pyx_t_10);
   __pyx_t_10 = 0;
-  __pyx_t_10 = PyDict_New(); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 311, __pyx_L1_error)
+  __pyx_t_10 = PyDict_New(); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 320, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_10);
-  if (PyDict_SetItem(__pyx_t_10, __pyx_n_s_axis, __pyx_int_2) < 0) __PYX_ERR(0, 311, __pyx_L1_error)
-  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_11, __pyx_t_10); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 311, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_10, __pyx_n_s_axis, __pyx_int_2) < 0) __PYX_ERR(0, 320, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_11, __pyx_t_10); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 320, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
@@ -7189,14 +7433,14 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_40set_wave(struct 
   __pyx_v_array = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "pyqstem/qstem_interface.pyx":313
+  /* "pyqstem/qstem_interface.pyx":322
  *         array = np.concatenate((np.real(wave.array)[:,:,np.newaxis],np.imag(wave.array)[:,:,np.newaxis]),axis=2)
  * 
  *         old_v0 = self.get_energy()             # <<<<<<<<<<<<<<
  *         self.thisptr.set_wave(array,nx,ny,wave.energy)
  * 
  */
-  __pyx_t_10 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_get_energy); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 313, __pyx_L1_error)
+  __pyx_t_10 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_get_energy); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 322, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_10);
   __pyx_t_11 = NULL;
   if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_10))) {
@@ -7209,33 +7453,33 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_40set_wave(struct 
     }
   }
   if (__pyx_t_11) {
-    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_10, __pyx_t_11); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 313, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_10, __pyx_t_11); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 322, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
   } else {
-    __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_t_10); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 313, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_t_10); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 322, __pyx_L1_error)
   }
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
   __pyx_v_old_v0 = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "pyqstem/qstem_interface.pyx":314
+  /* "pyqstem/qstem_interface.pyx":323
  * 
  *         old_v0 = self.get_energy()
  *         self.thisptr.set_wave(array,nx,ny,wave.energy)             # <<<<<<<<<<<<<<
  * 
  *         self.thisptr.wave_state = 1
  */
-  __pyx_t_12 = __pyx_convert_vector_from_py_std_3a__3a_vector_3c_std_3a__3a_vector_3c_double_3e____3e___(__pyx_v_array); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 314, __pyx_L1_error)
-  __pyx_t_8 = __Pyx_PyInt_As_int(__pyx_v_nx); if (unlikely((__pyx_t_8 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 314, __pyx_L1_error)
-  __pyx_t_13 = __Pyx_PyInt_As_int(__pyx_v_ny); if (unlikely((__pyx_t_13 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 314, __pyx_L1_error)
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_wave, __pyx_n_s_energy); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 314, __pyx_L1_error)
+  __pyx_t_12 = __pyx_convert_vector_from_py_std_3a__3a_vector_3c_std_3a__3a_vector_3c_double_3e____3e___(__pyx_v_array); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 323, __pyx_L1_error)
+  __pyx_t_8 = __Pyx_PyInt_As_int(__pyx_v_nx); if (unlikely((__pyx_t_8 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 323, __pyx_L1_error)
+  __pyx_t_13 = __Pyx_PyInt_As_int(__pyx_v_ny); if (unlikely((__pyx_t_13 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 323, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_wave, __pyx_n_s_energy); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 323, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_14 = __pyx_PyFloat_AsFloat(__pyx_t_1); if (unlikely((__pyx_t_14 == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 314, __pyx_L1_error)
+  __pyx_t_14 = __pyx_PyFloat_AsFloat(__pyx_t_1); if (unlikely((__pyx_t_14 == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 323, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_self->thisptr->set_wave(__pyx_t_12, __pyx_t_8, __pyx_t_13, __pyx_t_14);
 
-  /* "pyqstem/qstem_interface.pyx":316
+  /* "pyqstem/qstem_interface.pyx":325
  *         self.thisptr.set_wave(array,nx,ny,wave.energy)
  * 
  *         self.thisptr.wave_state = 1             # <<<<<<<<<<<<<<
@@ -7244,7 +7488,7 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_40set_wave(struct 
  */
   __pyx_v_self->thisptr->wave_state = 1;
 
-  /* "pyqstem/qstem_interface.pyx":317
+  /* "pyqstem/qstem_interface.pyx":326
  * 
  *         self.thisptr.wave_state = 1
  *         if self.thisptr.trans_array_state == 2:             # <<<<<<<<<<<<<<
@@ -7254,21 +7498,21 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_40set_wave(struct 
   __pyx_t_7 = ((__pyx_v_self->thisptr->trans_array_state == 2) != 0);
   if (__pyx_t_7) {
 
-    /* "pyqstem/qstem_interface.pyx":318
+    /* "pyqstem/qstem_interface.pyx":327
  *         self.thisptr.wave_state = 1
  *         if self.thisptr.trans_array_state == 2:
  *             if not np.isclose(old_v0,wave.energy,rtol=0,atol=1e-6):             # <<<<<<<<<<<<<<
  *                 self.thisptr.trans_array_state = -2
  * 
  */
-    __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 318, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 327, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_isclose); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 318, __pyx_L1_error)
+    __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_isclose); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 327, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_10);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_wave, __pyx_n_s_energy); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 318, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_wave, __pyx_n_s_energy); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 327, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_11 = PyTuple_New(2); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 318, __pyx_L1_error)
+    __pyx_t_11 = PyTuple_New(2); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 327, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_11);
     __Pyx_INCREF(__pyx_v_old_v0);
     __Pyx_GIVEREF(__pyx_v_old_v0);
@@ -7276,21 +7520,21 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_40set_wave(struct 
     __Pyx_GIVEREF(__pyx_t_1);
     PyTuple_SET_ITEM(__pyx_t_11, 1, __pyx_t_1);
     __pyx_t_1 = 0;
-    __pyx_t_1 = PyDict_New(); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 318, __pyx_L1_error)
+    __pyx_t_1 = PyDict_New(); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 327, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_rtol, __pyx_int_0) < 0) __PYX_ERR(0, 318, __pyx_L1_error)
-    if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_atol, __pyx_float_1eneg_6) < 0) __PYX_ERR(0, 318, __pyx_L1_error)
-    __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_10, __pyx_t_11, __pyx_t_1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 318, __pyx_L1_error)
+    if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_rtol, __pyx_int_0) < 0) __PYX_ERR(0, 327, __pyx_L1_error)
+    if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_atol, __pyx_float_1eneg_6) < 0) __PYX_ERR(0, 327, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_10, __pyx_t_11, __pyx_t_1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 327, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
     __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_t_7 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely(__pyx_t_7 < 0)) __PYX_ERR(0, 318, __pyx_L1_error)
+    __pyx_t_7 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely(__pyx_t_7 < 0)) __PYX_ERR(0, 327, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __pyx_t_9 = ((!__pyx_t_7) != 0);
     if (__pyx_t_9) {
 
-      /* "pyqstem/qstem_interface.pyx":319
+      /* "pyqstem/qstem_interface.pyx":328
  *         if self.thisptr.trans_array_state == 2:
  *             if not np.isclose(old_v0,wave.energy,rtol=0,atol=1e-6):
  *                 self.thisptr.trans_array_state = -2             # <<<<<<<<<<<<<<
@@ -7299,7 +7543,7 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_40set_wave(struct 
  */
       __pyx_v_self->thisptr->trans_array_state = -2;
 
-      /* "pyqstem/qstem_interface.pyx":318
+      /* "pyqstem/qstem_interface.pyx":327
  *         self.thisptr.wave_state = 1
  *         if self.thisptr.trans_array_state == 2:
  *             if not np.isclose(old_v0,wave.energy,rtol=0,atol=1e-6):             # <<<<<<<<<<<<<<
@@ -7308,7 +7552,7 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_40set_wave(struct 
  */
     }
 
-    /* "pyqstem/qstem_interface.pyx":317
+    /* "pyqstem/qstem_interface.pyx":326
  * 
  *         self.thisptr.wave_state = 1
  *         if self.thisptr.trans_array_state == 2:             # <<<<<<<<<<<<<<
@@ -7317,7 +7561,7 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_40set_wave(struct 
  */
   }
 
-  /* "pyqstem/qstem_interface.pyx":296
+  /* "pyqstem/qstem_interface.pyx":305
  *                 self.thisptr.trans_array_state = -2
  * 
  *     def set_wave(self,wave):             # <<<<<<<<<<<<<<
@@ -7354,7 +7598,7 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_40set_wave(struct 
   return __pyx_r;
 }
 
-/* "pyqstem/qstem_interface.pyx":321
+/* "pyqstem/qstem_interface.pyx":330
  *                 self.thisptr.trans_array_state = -2
  * 
  *     def get_wave(self):             # <<<<<<<<<<<<<<
@@ -7375,7 +7619,7 @@ static PyObject *__pyx_pw_7pyqstem_15qstem_interface_7PyQSTEM_43get_wave(PyObjec
   return __pyx_r;
 }
 
-/* "pyqstem/qstem_interface.pyx":327
+/* "pyqstem/qstem_interface.pyx":336
  *         cdef float resolutionX, resolutionY, v0
  *         wave_array = self.thisptr.get_wave(&resolutionX,&resolutionY,&v0)
  *         wave_array = np.apply_along_axis(lambda args: [complex(*args)], 2, wave_array)[:,:,0]             # <<<<<<<<<<<<<<
@@ -7404,12 +7648,12 @@ static PyObject *__pyx_lambda_funcdef_lambda1(CYTHON_UNUSED PyObject *__pyx_self
   PyObject *__pyx_t_2 = NULL;
   __Pyx_RefNannySetupContext("lambda1", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = PySequence_Tuple(__pyx_v_args); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 327, __pyx_L1_error)
+  __pyx_t_1 = PySequence_Tuple(__pyx_v_args); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 336, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_Call(((PyObject *)(&PyComplex_Type)), __pyx_t_1, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 327, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_Call(((PyObject *)(&PyComplex_Type)), __pyx_t_1, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 336, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = PyList_New(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 327, __pyx_L1_error)
+  __pyx_t_1 = PyList_New(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 336, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_GIVEREF(__pyx_t_2);
   PyList_SET_ITEM(__pyx_t_1, 0, __pyx_t_2);
@@ -7430,7 +7674,7 @@ static PyObject *__pyx_lambda_funcdef_lambda1(CYTHON_UNUSED PyObject *__pyx_self
   return __pyx_r;
 }
 
-/* "pyqstem/qstem_interface.pyx":321
+/* "pyqstem/qstem_interface.pyx":330
  *                 self.thisptr.trans_array_state = -2
  * 
  *     def get_wave(self):             # <<<<<<<<<<<<<<
@@ -7455,7 +7699,7 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_42get_wave(struct 
   PyObject *__pyx_t_8 = NULL;
   __Pyx_RefNannySetupContext("get_wave", 0);
 
-  /* "pyqstem/qstem_interface.pyx":322
+  /* "pyqstem/qstem_interface.pyx":331
  * 
  *     def get_wave(self):
  *         if self.thisptr.wave_state == 0:             # <<<<<<<<<<<<<<
@@ -7465,20 +7709,20 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_42get_wave(struct 
   __pyx_t_1 = ((__pyx_v_self->thisptr->wave_state == 0) != 0);
   if (__pyx_t_1) {
 
-    /* "pyqstem/qstem_interface.pyx":323
+    /* "pyqstem/qstem_interface.pyx":332
  *     def get_wave(self):
  *         if self.thisptr.wave_state == 0:
  *             raise RuntimeError('A wavefunction have not been created')             # <<<<<<<<<<<<<<
  * 
  *         cdef float resolutionX, resolutionY, v0
  */
-    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_RuntimeError, __pyx_tuple__25, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 323, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_RuntimeError, __pyx_tuple__25, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 332, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_Raise(__pyx_t_2, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __PYX_ERR(0, 323, __pyx_L1_error)
+    __PYX_ERR(0, 332, __pyx_L1_error)
 
-    /* "pyqstem/qstem_interface.pyx":322
+    /* "pyqstem/qstem_interface.pyx":331
  * 
  *     def get_wave(self):
  *         if self.thisptr.wave_state == 0:             # <<<<<<<<<<<<<<
@@ -7487,31 +7731,31 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_42get_wave(struct 
  */
   }
 
-  /* "pyqstem/qstem_interface.pyx":326
+  /* "pyqstem/qstem_interface.pyx":335
  * 
  *         cdef float resolutionX, resolutionY, v0
  *         wave_array = self.thisptr.get_wave(&resolutionX,&resolutionY,&v0)             # <<<<<<<<<<<<<<
  *         wave_array = np.apply_along_axis(lambda args: [complex(*args)], 2, wave_array)[:,:,0]
  * 
  */
-  __pyx_t_2 = __pyx_convert_vector_to_py_std_3a__3a_vector_3c_std_3a__3a_vector_3c_double_3e____3e___(__pyx_v_self->thisptr->get_wave((&__pyx_v_resolutionX), (&__pyx_v_resolutionY), (&__pyx_v_v0))); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 326, __pyx_L1_error)
+  __pyx_t_2 = __pyx_convert_vector_to_py_std_3a__3a_vector_3c_std_3a__3a_vector_3c_double_3e____3e___(__pyx_v_self->thisptr->get_wave((&__pyx_v_resolutionX), (&__pyx_v_resolutionY), (&__pyx_v_v0))); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 335, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_v_wave_array = __pyx_t_2;
   __pyx_t_2 = 0;
 
-  /* "pyqstem/qstem_interface.pyx":327
+  /* "pyqstem/qstem_interface.pyx":336
  *         cdef float resolutionX, resolutionY, v0
  *         wave_array = self.thisptr.get_wave(&resolutionX,&resolutionY,&v0)
  *         wave_array = np.apply_along_axis(lambda args: [complex(*args)], 2, wave_array)[:,:,0]             # <<<<<<<<<<<<<<
  * 
  *         return Wave(wave_array,energy=v0,sampling=(resolutionX,resolutionY))
  */
-  __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 327, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 336, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_apply_along_axis); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 327, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_apply_along_axis); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 336, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_CyFunction_NewEx(&__pyx_mdef_7pyqstem_15qstem_interface_7PyQSTEM_8get_wave_lambda1, 0, __pyx_n_s_get_wave_locals_lambda, NULL, __pyx_n_s_pyqstem_qstem_interface, __pyx_d, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 327, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_NewEx(&__pyx_mdef_7pyqstem_15qstem_interface_7PyQSTEM_8get_wave_lambda1, 0, __pyx_n_s_get_wave_locals_lambda, NULL, __pyx_n_s_pyqstem_qstem_interface, __pyx_d, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 336, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __pyx_t_5 = NULL;
   __pyx_t_6 = 0;
@@ -7528,7 +7772,7 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_42get_wave(struct 
   #if CYTHON_FAST_PYCALL
   if (PyFunction_Check(__pyx_t_4)) {
     PyObject *__pyx_temp[4] = {__pyx_t_5, __pyx_t_3, __pyx_int_2, __pyx_v_wave_array};
-    __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_6, 3+__pyx_t_6); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 327, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_6, 3+__pyx_t_6); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 336, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -7537,14 +7781,14 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_42get_wave(struct 
   #if CYTHON_FAST_PYCCALL
   if (__Pyx_PyFastCFunction_Check(__pyx_t_4)) {
     PyObject *__pyx_temp[4] = {__pyx_t_5, __pyx_t_3, __pyx_int_2, __pyx_v_wave_array};
-    __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_6, 3+__pyx_t_6); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 327, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_6, 3+__pyx_t_6); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 336, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   } else
   #endif
   {
-    __pyx_t_7 = PyTuple_New(3+__pyx_t_6); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 327, __pyx_L1_error)
+    __pyx_t_7 = PyTuple_New(3+__pyx_t_6); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 336, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
     if (__pyx_t_5) {
       __Pyx_GIVEREF(__pyx_t_5); PyTuple_SET_ITEM(__pyx_t_7, 0, __pyx_t_5); __pyx_t_5 = NULL;
@@ -7558,18 +7802,18 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_42get_wave(struct 
     __Pyx_GIVEREF(__pyx_v_wave_array);
     PyTuple_SET_ITEM(__pyx_t_7, 2+__pyx_t_6, __pyx_v_wave_array);
     __pyx_t_3 = 0;
-    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_7, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 327, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_7, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 336, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
   }
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_4 = PyObject_GetItem(__pyx_t_2, __pyx_tuple__28); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 327, __pyx_L1_error)
+  __pyx_t_4 = PyObject_GetItem(__pyx_t_2, __pyx_tuple__28); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 336, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF_SET(__pyx_v_wave_array, __pyx_t_4);
   __pyx_t_4 = 0;
 
-  /* "pyqstem/qstem_interface.pyx":329
+  /* "pyqstem/qstem_interface.pyx":338
  *         wave_array = np.apply_along_axis(lambda args: [complex(*args)], 2, wave_array)[:,:,0]
  * 
  *         return Wave(wave_array,energy=v0,sampling=(resolutionX,resolutionY))             # <<<<<<<<<<<<<<
@@ -7577,24 +7821,24 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_42get_wave(struct 
  *     def add_detector(self,name,radii,shift=(0,0)):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_Wave); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 329, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_Wave); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 338, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_2 = PyTuple_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 329, __pyx_L1_error)
+  __pyx_t_2 = PyTuple_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 338, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_INCREF(__pyx_v_wave_array);
   __Pyx_GIVEREF(__pyx_v_wave_array);
   PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_v_wave_array);
-  __pyx_t_7 = PyDict_New(); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 329, __pyx_L1_error)
+  __pyx_t_7 = PyDict_New(); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 338, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
-  __pyx_t_3 = PyFloat_FromDouble(__pyx_v_v0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 329, __pyx_L1_error)
+  __pyx_t_3 = PyFloat_FromDouble(__pyx_v_v0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 338, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (PyDict_SetItem(__pyx_t_7, __pyx_n_s_energy, __pyx_t_3) < 0) __PYX_ERR(0, 329, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_7, __pyx_n_s_energy, __pyx_t_3) < 0) __PYX_ERR(0, 338, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = PyFloat_FromDouble(__pyx_v_resolutionX); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 329, __pyx_L1_error)
+  __pyx_t_3 = PyFloat_FromDouble(__pyx_v_resolutionX); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 338, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_5 = PyFloat_FromDouble(__pyx_v_resolutionY); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 329, __pyx_L1_error)
+  __pyx_t_5 = PyFloat_FromDouble(__pyx_v_resolutionY); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 338, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_8 = PyTuple_New(2); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 329, __pyx_L1_error)
+  __pyx_t_8 = PyTuple_New(2); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 338, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_8);
   __Pyx_GIVEREF(__pyx_t_3);
   PyTuple_SET_ITEM(__pyx_t_8, 0, __pyx_t_3);
@@ -7602,9 +7846,9 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_42get_wave(struct 
   PyTuple_SET_ITEM(__pyx_t_8, 1, __pyx_t_5);
   __pyx_t_3 = 0;
   __pyx_t_5 = 0;
-  if (PyDict_SetItem(__pyx_t_7, __pyx_n_s_sampling, __pyx_t_8) < 0) __PYX_ERR(0, 329, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_7, __pyx_n_s_sampling, __pyx_t_8) < 0) __PYX_ERR(0, 338, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-  __pyx_t_8 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_2, __pyx_t_7); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 329, __pyx_L1_error)
+  __pyx_t_8 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_2, __pyx_t_7); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 338, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_8);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -7613,7 +7857,7 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_42get_wave(struct 
   __pyx_t_8 = 0;
   goto __pyx_L0;
 
-  /* "pyqstem/qstem_interface.pyx":321
+  /* "pyqstem/qstem_interface.pyx":330
  *                 self.thisptr.trans_array_state = -2
  * 
  *     def get_wave(self):             # <<<<<<<<<<<<<<
@@ -7638,7 +7882,7 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_42get_wave(struct 
   return __pyx_r;
 }
 
-/* "pyqstem/qstem_interface.pyx":331
+/* "pyqstem/qstem_interface.pyx":340
  *         return Wave(wave_array,energy=v0,sampling=(resolutionX,resolutionY))
  * 
  *     def add_detector(self,name,radii,shift=(0,0)):             # <<<<<<<<<<<<<<
@@ -7677,7 +7921,7 @@ static PyObject *__pyx_pw_7pyqstem_15qstem_interface_7PyQSTEM_45add_detector(PyO
         case  1:
         if (likely((values[1] = PyDict_GetItem(__pyx_kwds, __pyx_n_s_radii)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("add_detector", 0, 2, 3, 1); __PYX_ERR(0, 331, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("add_detector", 0, 2, 3, 1); __PYX_ERR(0, 340, __pyx_L3_error)
         }
         case  2:
         if (kw_args > 0) {
@@ -7686,7 +7930,7 @@ static PyObject *__pyx_pw_7pyqstem_15qstem_interface_7PyQSTEM_45add_detector(PyO
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "add_detector") < 0)) __PYX_ERR(0, 331, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "add_detector") < 0)) __PYX_ERR(0, 340, __pyx_L3_error)
       }
     } else {
       switch (PyTuple_GET_SIZE(__pyx_args)) {
@@ -7703,7 +7947,7 @@ static PyObject *__pyx_pw_7pyqstem_15qstem_interface_7PyQSTEM_45add_detector(PyO
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("add_detector", 0, 2, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 331, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("add_detector", 0, 2, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 340, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("pyqstem.qstem_interface.PyQSTEM.add_detector", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -7726,22 +7970,22 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_44add_detector(str
   PyObject *__pyx_t_5 = NULL;
   __Pyx_RefNannySetupContext("add_detector", 0);
 
-  /* "pyqstem/qstem_interface.pyx":332
+  /* "pyqstem/qstem_interface.pyx":341
  * 
  *     def add_detector(self,name,radii,shift=(0,0)):
  *         self._detectors[name]=[False,radii[0],radii[1],shift[0],shift[1]]             # <<<<<<<<<<<<<<
  * 
  *     def remove_detector(self,name):
  */
-  __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_radii, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 332, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_radii, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 341, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_GetItemInt(__pyx_v_radii, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 332, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_GetItemInt(__pyx_v_radii, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 341, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_GetItemInt(__pyx_v_shift, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 332, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_GetItemInt(__pyx_v_shift, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 341, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = __Pyx_GetItemInt(__pyx_v_shift, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 332, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_GetItemInt(__pyx_v_shift, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 341, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_5 = PyList_New(5); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 332, __pyx_L1_error)
+  __pyx_t_5 = PyList_New(5); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 341, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_INCREF(Py_False);
   __Pyx_GIVEREF(Py_False);
@@ -7758,13 +8002,13 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_44add_detector(str
   __pyx_t_2 = 0;
   __pyx_t_3 = 0;
   __pyx_t_4 = 0;
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_detectors); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 332, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_detectors); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 341, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  if (unlikely(PyObject_SetItem(__pyx_t_4, __pyx_v_name, __pyx_t_5) < 0)) __PYX_ERR(0, 332, __pyx_L1_error)
+  if (unlikely(PyObject_SetItem(__pyx_t_4, __pyx_v_name, __pyx_t_5) < 0)) __PYX_ERR(0, 341, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-  /* "pyqstem/qstem_interface.pyx":331
+  /* "pyqstem/qstem_interface.pyx":340
  *         return Wave(wave_array,energy=v0,sampling=(resolutionX,resolutionY))
  * 
  *     def add_detector(self,name,radii,shift=(0,0)):             # <<<<<<<<<<<<<<
@@ -7789,7 +8033,7 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_44add_detector(str
   return __pyx_r;
 }
 
-/* "pyqstem/qstem_interface.pyx":334
+/* "pyqstem/qstem_interface.pyx":343
  *         self._detectors[name]=[False,radii[0],radii[1],shift[0],shift[1]]
  * 
  *     def remove_detector(self,name):             # <<<<<<<<<<<<<<
@@ -7821,16 +8065,16 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_46remove_detector(
   PyObject *__pyx_t_6 = NULL;
   __Pyx_RefNannySetupContext("remove_detector", 0);
 
-  /* "pyqstem/qstem_interface.pyx":335
+  /* "pyqstem/qstem_interface.pyx":344
  * 
  *     def remove_detector(self,name):
  *       if name not in self._detectors.keys():             # <<<<<<<<<<<<<<
  *           raise RuntimeError('Detector name {0} not recognized'.format(name))
  * 
  */
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_detectors); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 335, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_detectors); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 344, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_keys); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 335, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_keys); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 344, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_t_2 = NULL;
@@ -7844,26 +8088,26 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_46remove_detector(
     }
   }
   if (__pyx_t_2) {
-    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 335, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 344, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   } else {
-    __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 335, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 344, __pyx_L1_error)
   }
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_4 = (__Pyx_PySequence_ContainsTF(__pyx_v_name, __pyx_t_1, Py_NE)); if (unlikely(__pyx_t_4 < 0)) __PYX_ERR(0, 335, __pyx_L1_error)
+  __pyx_t_4 = (__Pyx_PySequence_ContainsTF(__pyx_v_name, __pyx_t_1, Py_NE)); if (unlikely(__pyx_t_4 < 0)) __PYX_ERR(0, 344, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_t_5 = (__pyx_t_4 != 0);
   if (__pyx_t_5) {
 
-    /* "pyqstem/qstem_interface.pyx":336
+    /* "pyqstem/qstem_interface.pyx":345
  *     def remove_detector(self,name):
  *       if name not in self._detectors.keys():
  *           raise RuntimeError('Detector name {0} not recognized'.format(name))             # <<<<<<<<<<<<<<
  * 
  *       del self._detectors[name]
  */
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_Detector_name_0_not_recognized, __pyx_n_s_format); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 336, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_Detector_name_0_not_recognized, __pyx_n_s_format); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 345, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __pyx_t_2 = NULL;
     if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_3))) {
@@ -7876,13 +8120,13 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_46remove_detector(
       }
     }
     if (!__pyx_t_2) {
-      __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_v_name); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 336, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_v_name); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 345, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
     } else {
       #if CYTHON_FAST_PYCALL
       if (PyFunction_Check(__pyx_t_3)) {
         PyObject *__pyx_temp[2] = {__pyx_t_2, __pyx_v_name};
-        __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 336, __pyx_L1_error)
+        __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 345, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
         __Pyx_GOTREF(__pyx_t_1);
       } else
@@ -7890,37 +8134,37 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_46remove_detector(
       #if CYTHON_FAST_PYCCALL
       if (__Pyx_PyFastCFunction_Check(__pyx_t_3)) {
         PyObject *__pyx_temp[2] = {__pyx_t_2, __pyx_v_name};
-        __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 336, __pyx_L1_error)
+        __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 345, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
         __Pyx_GOTREF(__pyx_t_1);
       } else
       #endif
       {
-        __pyx_t_6 = PyTuple_New(1+1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 336, __pyx_L1_error)
+        __pyx_t_6 = PyTuple_New(1+1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 345, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_6);
         __Pyx_GIVEREF(__pyx_t_2); PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_t_2); __pyx_t_2 = NULL;
         __Pyx_INCREF(__pyx_v_name);
         __Pyx_GIVEREF(__pyx_v_name);
         PyTuple_SET_ITEM(__pyx_t_6, 0+1, __pyx_v_name);
-        __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_6, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 336, __pyx_L1_error)
+        __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_6, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 345, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
         __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
       }
     }
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_t_3 = PyTuple_New(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 336, __pyx_L1_error)
+    __pyx_t_3 = PyTuple_New(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 345, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_GIVEREF(__pyx_t_1);
     PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_1);
     __pyx_t_1 = 0;
-    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_RuntimeError, __pyx_t_3, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 336, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_RuntimeError, __pyx_t_3, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 345, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_Raise(__pyx_t_1, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __PYX_ERR(0, 336, __pyx_L1_error)
+    __PYX_ERR(0, 345, __pyx_L1_error)
 
-    /* "pyqstem/qstem_interface.pyx":335
+    /* "pyqstem/qstem_interface.pyx":344
  * 
  *     def remove_detector(self,name):
  *       if name not in self._detectors.keys():             # <<<<<<<<<<<<<<
@@ -7929,19 +8173,19 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_46remove_detector(
  */
   }
 
-  /* "pyqstem/qstem_interface.pyx":338
+  /* "pyqstem/qstem_interface.pyx":347
  *           raise RuntimeError('Detector name {0} not recognized'.format(name))
  * 
  *       del self._detectors[name]             # <<<<<<<<<<<<<<
  * 
  *     def read_detector(self,name,dwell_time=1,current=1):
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_detectors); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 338, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_detectors); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 347, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (unlikely(PyObject_DelItem(__pyx_t_1, __pyx_v_name) < 0)) __PYX_ERR(0, 338, __pyx_L1_error)
+  if (unlikely(PyObject_DelItem(__pyx_t_1, __pyx_v_name) < 0)) __PYX_ERR(0, 347, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "pyqstem/qstem_interface.pyx":334
+  /* "pyqstem/qstem_interface.pyx":343
  *         self._detectors[name]=[False,radii[0],radii[1],shift[0],shift[1]]
  * 
  *     def remove_detector(self,name):             # <<<<<<<<<<<<<<
@@ -7965,7 +8209,7 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_46remove_detector(
   return __pyx_r;
 }
 
-/* "pyqstem/qstem_interface.pyx":340
+/* "pyqstem/qstem_interface.pyx":349
  *       del self._detectors[name]
  * 
  *     def read_detector(self,name,dwell_time=1,current=1):             # <<<<<<<<<<<<<<
@@ -8014,7 +8258,7 @@ static PyObject *__pyx_pw_7pyqstem_15qstem_interface_7PyQSTEM_49read_detector(Py
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "read_detector") < 0)) __PYX_ERR(0, 340, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "read_detector") < 0)) __PYX_ERR(0, 349, __pyx_L3_error)
       }
     } else {
       switch (PyTuple_GET_SIZE(__pyx_args)) {
@@ -8031,7 +8275,7 @@ static PyObject *__pyx_pw_7pyqstem_15qstem_interface_7PyQSTEM_49read_detector(Py
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("read_detector", 0, 1, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 340, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("read_detector", 0, 1, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 349, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("pyqstem.qstem_interface.PyQSTEM.read_detector", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -8059,16 +8303,16 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_48read_detector(st
   int __pyx_t_9;
   __Pyx_RefNannySetupContext("read_detector", 0);
 
-  /* "pyqstem/qstem_interface.pyx":341
+  /* "pyqstem/qstem_interface.pyx":350
  * 
  *     def read_detector(self,name,dwell_time=1,current=1):
  *         if name not in self._detectors.keys():             # <<<<<<<<<<<<<<
  *             raise RuntimeError('Detector name {0} not recognized'.format(name))
  * 
  */
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_detectors); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 341, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_detectors); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 350, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_keys); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 341, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_keys); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 350, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_t_2 = NULL;
@@ -8082,26 +8326,26 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_48read_detector(st
     }
   }
   if (__pyx_t_2) {
-    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 341, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 350, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   } else {
-    __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 341, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 350, __pyx_L1_error)
   }
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_4 = (__Pyx_PySequence_ContainsTF(__pyx_v_name, __pyx_t_1, Py_NE)); if (unlikely(__pyx_t_4 < 0)) __PYX_ERR(0, 341, __pyx_L1_error)
+  __pyx_t_4 = (__Pyx_PySequence_ContainsTF(__pyx_v_name, __pyx_t_1, Py_NE)); if (unlikely(__pyx_t_4 < 0)) __PYX_ERR(0, 350, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_t_5 = (__pyx_t_4 != 0);
   if (__pyx_t_5) {
 
-    /* "pyqstem/qstem_interface.pyx":342
+    /* "pyqstem/qstem_interface.pyx":351
  *     def read_detector(self,name,dwell_time=1,current=1):
  *         if name not in self._detectors.keys():
  *             raise RuntimeError('Detector name {0} not recognized'.format(name))             # <<<<<<<<<<<<<<
  * 
  *         if not self._detectors[name][0]:
  */
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_Detector_name_0_not_recognized, __pyx_n_s_format); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 342, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_Detector_name_0_not_recognized, __pyx_n_s_format); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 351, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __pyx_t_2 = NULL;
     if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_3))) {
@@ -8114,13 +8358,13 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_48read_detector(st
       }
     }
     if (!__pyx_t_2) {
-      __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_v_name); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 342, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_v_name); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 351, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
     } else {
       #if CYTHON_FAST_PYCALL
       if (PyFunction_Check(__pyx_t_3)) {
         PyObject *__pyx_temp[2] = {__pyx_t_2, __pyx_v_name};
-        __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 342, __pyx_L1_error)
+        __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 351, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
         __Pyx_GOTREF(__pyx_t_1);
       } else
@@ -8128,37 +8372,37 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_48read_detector(st
       #if CYTHON_FAST_PYCCALL
       if (__Pyx_PyFastCFunction_Check(__pyx_t_3)) {
         PyObject *__pyx_temp[2] = {__pyx_t_2, __pyx_v_name};
-        __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 342, __pyx_L1_error)
+        __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 351, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
         __Pyx_GOTREF(__pyx_t_1);
       } else
       #endif
       {
-        __pyx_t_6 = PyTuple_New(1+1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 342, __pyx_L1_error)
+        __pyx_t_6 = PyTuple_New(1+1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 351, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_6);
         __Pyx_GIVEREF(__pyx_t_2); PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_t_2); __pyx_t_2 = NULL;
         __Pyx_INCREF(__pyx_v_name);
         __Pyx_GIVEREF(__pyx_v_name);
         PyTuple_SET_ITEM(__pyx_t_6, 0+1, __pyx_v_name);
-        __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_6, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 342, __pyx_L1_error)
+        __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_6, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 351, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
         __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
       }
     }
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_t_3 = PyTuple_New(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 342, __pyx_L1_error)
+    __pyx_t_3 = PyTuple_New(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 351, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_GIVEREF(__pyx_t_1);
     PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_1);
     __pyx_t_1 = 0;
-    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_RuntimeError, __pyx_t_3, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 342, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_RuntimeError, __pyx_t_3, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 351, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_Raise(__pyx_t_1, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __PYX_ERR(0, 342, __pyx_L1_error)
+    __PYX_ERR(0, 351, __pyx_L1_error)
 
-    /* "pyqstem/qstem_interface.pyx":341
+    /* "pyqstem/qstem_interface.pyx":350
  * 
  *     def read_detector(self,name,dwell_time=1,current=1):
  *         if name not in self._detectors.keys():             # <<<<<<<<<<<<<<
@@ -8167,34 +8411,34 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_48read_detector(st
  */
   }
 
-  /* "pyqstem/qstem_interface.pyx":344
+  /* "pyqstem/qstem_interface.pyx":353
  *             raise RuntimeError('Detector name {0} not recognized'.format(name))
  * 
  *         if not self._detectors[name][0]:             # <<<<<<<<<<<<<<
  *             raise RuntimeError('Detector {0} is empty, add the detector before running'.format(name))
  * 
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_detectors); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 344, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_detectors); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 353, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_3 = PyObject_GetItem(__pyx_t_1, __pyx_v_name); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 344, __pyx_L1_error)
+  __pyx_t_3 = PyObject_GetItem(__pyx_t_1, __pyx_v_name); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 353, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_GetItemInt(__pyx_t_3, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 344, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_GetItemInt(__pyx_t_3, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 353, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_5 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely(__pyx_t_5 < 0)) __PYX_ERR(0, 344, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely(__pyx_t_5 < 0)) __PYX_ERR(0, 353, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_t_4 = ((!__pyx_t_5) != 0);
   if (__pyx_t_4) {
 
-    /* "pyqstem/qstem_interface.pyx":345
+    /* "pyqstem/qstem_interface.pyx":354
  * 
  *         if not self._detectors[name][0]:
  *             raise RuntimeError('Detector {0} is empty, add the detector before running'.format(name))             # <<<<<<<<<<<<<<
  * 
- *         img = np.array(self.thisptr.read_detector(self._detectors.keys().index(name)))
+ *         img = np.array(self.thisptr.read_detector(list(self._detectors.keys()).index(name)))
  */
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_Detector_0_is_empty_add_the_dete, __pyx_n_s_format); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 345, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_Detector_0_is_empty_add_the_dete, __pyx_n_s_format); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 354, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __pyx_t_6 = NULL;
     if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_3))) {
@@ -8207,13 +8451,13 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_48read_detector(st
       }
     }
     if (!__pyx_t_6) {
-      __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_v_name); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 345, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_v_name); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 354, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
     } else {
       #if CYTHON_FAST_PYCALL
       if (PyFunction_Check(__pyx_t_3)) {
         PyObject *__pyx_temp[2] = {__pyx_t_6, __pyx_v_name};
-        __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 345, __pyx_L1_error)
+        __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 354, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
         __Pyx_GOTREF(__pyx_t_1);
       } else
@@ -8221,37 +8465,37 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_48read_detector(st
       #if CYTHON_FAST_PYCCALL
       if (__Pyx_PyFastCFunction_Check(__pyx_t_3)) {
         PyObject *__pyx_temp[2] = {__pyx_t_6, __pyx_v_name};
-        __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 345, __pyx_L1_error)
+        __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 354, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
         __Pyx_GOTREF(__pyx_t_1);
       } else
       #endif
       {
-        __pyx_t_2 = PyTuple_New(1+1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 345, __pyx_L1_error)
+        __pyx_t_2 = PyTuple_New(1+1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 354, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
         __Pyx_GIVEREF(__pyx_t_6); PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_t_6); __pyx_t_6 = NULL;
         __Pyx_INCREF(__pyx_v_name);
         __Pyx_GIVEREF(__pyx_v_name);
         PyTuple_SET_ITEM(__pyx_t_2, 0+1, __pyx_v_name);
-        __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_2, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 345, __pyx_L1_error)
+        __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_2, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 354, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
       }
     }
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_t_3 = PyTuple_New(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 345, __pyx_L1_error)
+    __pyx_t_3 = PyTuple_New(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 354, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_GIVEREF(__pyx_t_1);
     PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_1);
     __pyx_t_1 = 0;
-    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_RuntimeError, __pyx_t_3, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 345, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_RuntimeError, __pyx_t_3, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 354, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_Raise(__pyx_t_1, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __PYX_ERR(0, 345, __pyx_L1_error)
+    __PYX_ERR(0, 354, __pyx_L1_error)
 
-    /* "pyqstem/qstem_interface.pyx":344
+    /* "pyqstem/qstem_interface.pyx":353
  *             raise RuntimeError('Detector name {0} not recognized'.format(name))
  * 
  *         if not self._detectors[name][0]:             # <<<<<<<<<<<<<<
@@ -8260,21 +8504,21 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_48read_detector(st
  */
   }
 
-  /* "pyqstem/qstem_interface.pyx":347
+  /* "pyqstem/qstem_interface.pyx":356
  *             raise RuntimeError('Detector {0} is empty, add the detector before running'.format(name))
  * 
- *         img = np.array(self.thisptr.read_detector(self._detectors.keys().index(name)))             # <<<<<<<<<<<<<<
+ *         img = np.array(self.thisptr.read_detector(list(self._detectors.keys()).index(name)))             # <<<<<<<<<<<<<<
  *         img*=dwell_time*current/1.6021773e-4
  * 
  */
-  __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 347, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 356, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_array); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 347, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_array); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 356, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_7 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_detectors); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 347, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_detectors); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 356, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
-  __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_n_s_keys); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 347, __pyx_L1_error)
+  __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_n_s_keys); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 356, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_8);
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
   __pyx_t_7 = NULL;
@@ -8288,104 +8532,107 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_48read_detector(st
     }
   }
   if (__pyx_t_7) {
-    __pyx_t_6 = __Pyx_PyObject_CallOneArg(__pyx_t_8, __pyx_t_7); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 347, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyObject_CallOneArg(__pyx_t_8, __pyx_t_7); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 356, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
   } else {
-    __pyx_t_6 = __Pyx_PyObject_CallNoArg(__pyx_t_8); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 347, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyObject_CallNoArg(__pyx_t_8); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 356, __pyx_L1_error)
   }
   __Pyx_GOTREF(__pyx_t_6);
   __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-  __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_index); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 347, __pyx_L1_error)
+  __pyx_t_8 = PySequence_List(__pyx_t_6); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 356, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_8);
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-  __pyx_t_6 = NULL;
-  if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_8))) {
-    __pyx_t_6 = PyMethod_GET_SELF(__pyx_t_8);
-    if (likely(__pyx_t_6)) {
-      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_8);
-      __Pyx_INCREF(__pyx_t_6);
+  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_n_s_index); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 356, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_6);
+  __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
+  __pyx_t_8 = NULL;
+  if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_6))) {
+    __pyx_t_8 = PyMethod_GET_SELF(__pyx_t_6);
+    if (likely(__pyx_t_8)) {
+      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_6);
+      __Pyx_INCREF(__pyx_t_8);
       __Pyx_INCREF(function);
-      __Pyx_DECREF_SET(__pyx_t_8, function);
+      __Pyx_DECREF_SET(__pyx_t_6, function);
     }
   }
-  if (!__pyx_t_6) {
-    __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_t_8, __pyx_v_name); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 347, __pyx_L1_error)
+  if (!__pyx_t_8) {
+    __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_t_6, __pyx_v_name); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 356, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
   } else {
     #if CYTHON_FAST_PYCALL
-    if (PyFunction_Check(__pyx_t_8)) {
-      PyObject *__pyx_temp[2] = {__pyx_t_6, __pyx_v_name};
-      __pyx_t_3 = __Pyx_PyFunction_FastCall(__pyx_t_8, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 347, __pyx_L1_error)
-      __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
+    if (PyFunction_Check(__pyx_t_6)) {
+      PyObject *__pyx_temp[2] = {__pyx_t_8, __pyx_v_name};
+      __pyx_t_3 = __Pyx_PyFunction_FastCall(__pyx_t_6, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 356, __pyx_L1_error)
+      __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
       __Pyx_GOTREF(__pyx_t_3);
     } else
     #endif
     #if CYTHON_FAST_PYCCALL
-    if (__Pyx_PyFastCFunction_Check(__pyx_t_8)) {
-      PyObject *__pyx_temp[2] = {__pyx_t_6, __pyx_v_name};
-      __pyx_t_3 = __Pyx_PyCFunction_FastCall(__pyx_t_8, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 347, __pyx_L1_error)
-      __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
+    if (__Pyx_PyFastCFunction_Check(__pyx_t_6)) {
+      PyObject *__pyx_temp[2] = {__pyx_t_8, __pyx_v_name};
+      __pyx_t_3 = __Pyx_PyCFunction_FastCall(__pyx_t_6, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 356, __pyx_L1_error)
+      __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
       __Pyx_GOTREF(__pyx_t_3);
     } else
     #endif
     {
-      __pyx_t_7 = PyTuple_New(1+1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 347, __pyx_L1_error)
+      __pyx_t_7 = PyTuple_New(1+1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 356, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
-      __Pyx_GIVEREF(__pyx_t_6); PyTuple_SET_ITEM(__pyx_t_7, 0, __pyx_t_6); __pyx_t_6 = NULL;
+      __Pyx_GIVEREF(__pyx_t_8); PyTuple_SET_ITEM(__pyx_t_7, 0, __pyx_t_8); __pyx_t_8 = NULL;
       __Pyx_INCREF(__pyx_v_name);
       __Pyx_GIVEREF(__pyx_v_name);
       PyTuple_SET_ITEM(__pyx_t_7, 0+1, __pyx_v_name);
-      __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_8, __pyx_t_7, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 347, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_6, __pyx_t_7, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 356, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
     }
   }
-  __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-  __pyx_t_9 = __Pyx_PyInt_As_int(__pyx_t_3); if (unlikely((__pyx_t_9 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 347, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+  __pyx_t_9 = __Pyx_PyInt_As_int(__pyx_t_3); if (unlikely((__pyx_t_9 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 356, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = __pyx_convert_vector_to_py_std_3a__3a_vector_3c_double_3e___(__pyx_v_self->thisptr->read_detector(__pyx_t_9)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 347, __pyx_L1_error)
+  __pyx_t_3 = __pyx_convert_vector_to_py_std_3a__3a_vector_3c_double_3e___(__pyx_v_self->thisptr->read_detector(__pyx_t_9)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 356, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_8 = NULL;
+  __pyx_t_6 = NULL;
   if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_2))) {
-    __pyx_t_8 = PyMethod_GET_SELF(__pyx_t_2);
-    if (likely(__pyx_t_8)) {
+    __pyx_t_6 = PyMethod_GET_SELF(__pyx_t_2);
+    if (likely(__pyx_t_6)) {
       PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_2);
-      __Pyx_INCREF(__pyx_t_8);
+      __Pyx_INCREF(__pyx_t_6);
       __Pyx_INCREF(function);
       __Pyx_DECREF_SET(__pyx_t_2, function);
     }
   }
-  if (!__pyx_t_8) {
-    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 347, __pyx_L1_error)
+  if (!__pyx_t_6) {
+    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 356, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_GOTREF(__pyx_t_1);
   } else {
     #if CYTHON_FAST_PYCALL
     if (PyFunction_Check(__pyx_t_2)) {
-      PyObject *__pyx_temp[2] = {__pyx_t_8, __pyx_t_3};
-      __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 347, __pyx_L1_error)
-      __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
+      PyObject *__pyx_temp[2] = {__pyx_t_6, __pyx_t_3};
+      __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 356, __pyx_L1_error)
+      __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     } else
     #endif
     #if CYTHON_FAST_PYCCALL
     if (__Pyx_PyFastCFunction_Check(__pyx_t_2)) {
-      PyObject *__pyx_temp[2] = {__pyx_t_8, __pyx_t_3};
-      __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 347, __pyx_L1_error)
-      __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
+      PyObject *__pyx_temp[2] = {__pyx_t_6, __pyx_t_3};
+      __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 356, __pyx_L1_error)
+      __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     } else
     #endif
     {
-      __pyx_t_7 = PyTuple_New(1+1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 347, __pyx_L1_error)
+      __pyx_t_7 = PyTuple_New(1+1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 356, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
-      __Pyx_GIVEREF(__pyx_t_8); PyTuple_SET_ITEM(__pyx_t_7, 0, __pyx_t_8); __pyx_t_8 = NULL;
+      __Pyx_GIVEREF(__pyx_t_6); PyTuple_SET_ITEM(__pyx_t_7, 0, __pyx_t_6); __pyx_t_6 = NULL;
       __Pyx_GIVEREF(__pyx_t_3);
       PyTuple_SET_ITEM(__pyx_t_7, 0+1, __pyx_t_3);
       __pyx_t_3 = 0;
-      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_7, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 347, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_7, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 356, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
     }
@@ -8394,25 +8641,25 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_48read_detector(st
   __pyx_v_img = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "pyqstem/qstem_interface.pyx":348
+  /* "pyqstem/qstem_interface.pyx":357
  * 
- *         img = np.array(self.thisptr.read_detector(self._detectors.keys().index(name)))
+ *         img = np.array(self.thisptr.read_detector(list(self._detectors.keys()).index(name)))
  *         img*=dwell_time*current/1.6021773e-4             # <<<<<<<<<<<<<<
  * 
  *         return img
  */
-  __pyx_t_1 = PyNumber_Multiply(__pyx_v_dwell_time, __pyx_v_current); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 348, __pyx_L1_error)
+  __pyx_t_1 = PyNumber_Multiply(__pyx_v_dwell_time, __pyx_v_current); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 357, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyFloat_DivideObjC(__pyx_t_1, __pyx_float_1_6021773eneg_4, 1.6021773e-4, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 348, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyFloat_DivideObjC(__pyx_t_1, __pyx_float_1_6021773eneg_4, 1.6021773e-4, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 357, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = PyNumber_InPlaceMultiply(__pyx_v_img, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 348, __pyx_L1_error)
+  __pyx_t_1 = PyNumber_InPlaceMultiply(__pyx_v_img, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 357, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF_SET(__pyx_v_img, __pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "pyqstem/qstem_interface.pyx":350
+  /* "pyqstem/qstem_interface.pyx":359
  *         img*=dwell_time*current/1.6021773e-4
  * 
  *         return img             # <<<<<<<<<<<<<<
@@ -8424,7 +8671,7 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_48read_detector(st
   __pyx_r = __pyx_v_img;
   goto __pyx_L0;
 
-  /* "pyqstem/qstem_interface.pyx":340
+  /* "pyqstem/qstem_interface.pyx":349
  *       del self._detectors[name]
  * 
  *     def read_detector(self,name,dwell_time=1,current=1):             # <<<<<<<<<<<<<<
@@ -8449,7 +8696,7 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_48read_detector(st
   return __pyx_r;
 }
 
-/* "pyqstem/qstem_interface.pyx":352
+/* "pyqstem/qstem_interface.pyx":361
  *         return img
  * 
  *     def run(self,display_progress_interval=None):             # <<<<<<<<<<<<<<
@@ -8485,7 +8732,7 @@ static PyObject *__pyx_pw_7pyqstem_15qstem_interface_7PyQSTEM_51run(PyObject *__
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "run") < 0)) __PYX_ERR(0, 352, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "run") < 0)) __PYX_ERR(0, 361, __pyx_L3_error)
       }
     } else {
       switch (PyTuple_GET_SIZE(__pyx_args)) {
@@ -8498,7 +8745,7 @@ static PyObject *__pyx_pw_7pyqstem_15qstem_interface_7PyQSTEM_51run(PyObject *__
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("run", 0, 0, 1, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 352, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("run", 0, 0, 1, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 361, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("pyqstem.qstem_interface.PyQSTEM.run", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -8515,7 +8762,7 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_50run(struct __pyx
   PyObject *__pyx_v_pot_ext = NULL;
   PyObject *__pyx_v_min_pot_ext = NULL;
   PyObject *__pyx_v_properties = NULL;
-  CYTHON_UNUSED PyObject *__pyx_v_name = NULL;
+  PyObject *__pyx_v_name = NULL;
   PyObject *__pyx_v_values = NULL;
   PyObject *__pyx_v_names = NULL;
   PyObject *__pyx_r = NULL;
@@ -8537,7 +8784,7 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_50run(struct __pyx
   __Pyx_RefNannySetupContext("run", 0);
   __Pyx_INCREF(__pyx_v_display_progress_interval);
 
-  /* "pyqstem/qstem_interface.pyx":353
+  /* "pyqstem/qstem_interface.pyx":362
  * 
  *     def run(self,display_progress_interval=None):
  *         if self.thisptr.wave_state==0:             # <<<<<<<<<<<<<<
@@ -8547,20 +8794,20 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_50run(struct __pyx
   __pyx_t_1 = ((__pyx_v_self->thisptr->wave_state == 0) != 0);
   if (__pyx_t_1) {
 
-    /* "pyqstem/qstem_interface.pyx":354
+    /* "pyqstem/qstem_interface.pyx":363
  *     def run(self,display_progress_interval=None):
  *         if self.thisptr.wave_state==0:
  *             raise RuntimeError('A wavefunction have not been created')             # <<<<<<<<<<<<<<
  *         elif self.thisptr.wave_state==-1:
  *             raise RuntimeError('The wavefunction have to be recreated after changing the potential sampling')
  */
-    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_RuntimeError, __pyx_tuple__30, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 354, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_RuntimeError, __pyx_tuple__30, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 363, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_Raise(__pyx_t_2, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __PYX_ERR(0, 354, __pyx_L1_error)
+    __PYX_ERR(0, 363, __pyx_L1_error)
 
-    /* "pyqstem/qstem_interface.pyx":353
+    /* "pyqstem/qstem_interface.pyx":362
  * 
  *     def run(self,display_progress_interval=None):
  *         if self.thisptr.wave_state==0:             # <<<<<<<<<<<<<<
@@ -8569,7 +8816,7 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_50run(struct __pyx
  */
   }
 
-  /* "pyqstem/qstem_interface.pyx":355
+  /* "pyqstem/qstem_interface.pyx":364
  *         if self.thisptr.wave_state==0:
  *             raise RuntimeError('A wavefunction have not been created')
  *         elif self.thisptr.wave_state==-1:             # <<<<<<<<<<<<<<
@@ -8579,20 +8826,20 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_50run(struct __pyx
   __pyx_t_1 = ((__pyx_v_self->thisptr->wave_state == -1L) != 0);
   if (__pyx_t_1) {
 
-    /* "pyqstem/qstem_interface.pyx":356
+    /* "pyqstem/qstem_interface.pyx":365
  *             raise RuntimeError('A wavefunction have not been created')
  *         elif self.thisptr.wave_state==-1:
  *             raise RuntimeError('The wavefunction have to be recreated after changing the potential sampling')             # <<<<<<<<<<<<<<
  *         elif self.thisptr.trans_array_state==0:
  *             raise RuntimeError('A potential have not been created')
  */
-    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_RuntimeError, __pyx_tuple__31, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 356, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_RuntimeError, __pyx_tuple__31, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 365, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_Raise(__pyx_t_2, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __PYX_ERR(0, 356, __pyx_L1_error)
+    __PYX_ERR(0, 365, __pyx_L1_error)
 
-    /* "pyqstem/qstem_interface.pyx":355
+    /* "pyqstem/qstem_interface.pyx":364
  *         if self.thisptr.wave_state==0:
  *             raise RuntimeError('A wavefunction have not been created')
  *         elif self.thisptr.wave_state==-1:             # <<<<<<<<<<<<<<
@@ -8601,7 +8848,7 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_50run(struct __pyx
  */
   }
 
-  /* "pyqstem/qstem_interface.pyx":357
+  /* "pyqstem/qstem_interface.pyx":366
  *         elif self.thisptr.wave_state==-1:
  *             raise RuntimeError('The wavefunction have to be recreated after changing the potential sampling')
  *         elif self.thisptr.trans_array_state==0:             # <<<<<<<<<<<<<<
@@ -8611,20 +8858,20 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_50run(struct __pyx
   __pyx_t_1 = ((__pyx_v_self->thisptr->trans_array_state == 0) != 0);
   if (__pyx_t_1) {
 
-    /* "pyqstem/qstem_interface.pyx":358
+    /* "pyqstem/qstem_interface.pyx":367
  *             raise RuntimeError('The wavefunction have to be recreated after changing the potential sampling')
  *         elif self.thisptr.trans_array_state==0:
  *             raise RuntimeError('A potential have not been created')             # <<<<<<<<<<<<<<
  *         elif self.thisptr.trans_array_state==-1:
  *             raise RuntimeError('The potential have to be recreated after changing the atoms or simulation box')
  */
-    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_RuntimeError, __pyx_tuple__32, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 358, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_RuntimeError, __pyx_tuple__32, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 367, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_Raise(__pyx_t_2, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __PYX_ERR(0, 358, __pyx_L1_error)
+    __PYX_ERR(0, 367, __pyx_L1_error)
 
-    /* "pyqstem/qstem_interface.pyx":357
+    /* "pyqstem/qstem_interface.pyx":366
  *         elif self.thisptr.wave_state==-1:
  *             raise RuntimeError('The wavefunction have to be recreated after changing the potential sampling')
  *         elif self.thisptr.trans_array_state==0:             # <<<<<<<<<<<<<<
@@ -8633,7 +8880,7 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_50run(struct __pyx
  */
   }
 
-  /* "pyqstem/qstem_interface.pyx":359
+  /* "pyqstem/qstem_interface.pyx":368
  *         elif self.thisptr.trans_array_state==0:
  *             raise RuntimeError('A potential have not been created')
  *         elif self.thisptr.trans_array_state==-1:             # <<<<<<<<<<<<<<
@@ -8643,20 +8890,20 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_50run(struct __pyx
   __pyx_t_1 = ((__pyx_v_self->thisptr->trans_array_state == -1L) != 0);
   if (__pyx_t_1) {
 
-    /* "pyqstem/qstem_interface.pyx":360
+    /* "pyqstem/qstem_interface.pyx":369
  *             raise RuntimeError('A potential have not been created')
  *         elif self.thisptr.trans_array_state==-1:
  *             raise RuntimeError('The potential have to be recreated after changing the atoms or simulation box')             # <<<<<<<<<<<<<<
  *         elif self.thisptr.trans_array_state==-2:
  *             raise RuntimeError('The transmission function energy does not match wavefunction')
  */
-    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_RuntimeError, __pyx_tuple__33, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 360, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_RuntimeError, __pyx_tuple__33, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 369, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_Raise(__pyx_t_2, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __PYX_ERR(0, 360, __pyx_L1_error)
+    __PYX_ERR(0, 369, __pyx_L1_error)
 
-    /* "pyqstem/qstem_interface.pyx":359
+    /* "pyqstem/qstem_interface.pyx":368
  *         elif self.thisptr.trans_array_state==0:
  *             raise RuntimeError('A potential have not been created')
  *         elif self.thisptr.trans_array_state==-1:             # <<<<<<<<<<<<<<
@@ -8665,7 +8912,7 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_50run(struct __pyx
  */
   }
 
-  /* "pyqstem/qstem_interface.pyx":361
+  /* "pyqstem/qstem_interface.pyx":370
  *         elif self.thisptr.trans_array_state==-1:
  *             raise RuntimeError('The potential have to be recreated after changing the atoms or simulation box')
  *         elif self.thisptr.trans_array_state==-2:             # <<<<<<<<<<<<<<
@@ -8675,20 +8922,20 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_50run(struct __pyx
   __pyx_t_1 = ((__pyx_v_self->thisptr->trans_array_state == -2L) != 0);
   if (__pyx_t_1) {
 
-    /* "pyqstem/qstem_interface.pyx":362
+    /* "pyqstem/qstem_interface.pyx":371
  *             raise RuntimeError('The potential have to be recreated after changing the atoms or simulation box')
  *         elif self.thisptr.trans_array_state==-2:
  *             raise RuntimeError('The transmission function energy does not match wavefunction')             # <<<<<<<<<<<<<<
  * 
- *         pot_ext = self.get_potential_extent()
+ *         cdef unordered_map[string, vector[double]] detector_map
  */
-    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_RuntimeError, __pyx_tuple__34, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 362, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_RuntimeError, __pyx_tuple__34, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 371, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_Raise(__pyx_t_2, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __PYX_ERR(0, 362, __pyx_L1_error)
+    __PYX_ERR(0, 371, __pyx_L1_error)
 
-    /* "pyqstem/qstem_interface.pyx":361
+    /* "pyqstem/qstem_interface.pyx":370
  *         elif self.thisptr.trans_array_state==-1:
  *             raise RuntimeError('The potential have to be recreated after changing the atoms or simulation box')
  *         elif self.thisptr.trans_array_state==-2:             # <<<<<<<<<<<<<<
@@ -8697,227 +8944,227 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_50run(struct __pyx
  */
   }
 
-  /* "pyqstem/qstem_interface.pyx":364
- *             raise RuntimeError('The transmission function energy does not match wavefunction')
- * 
- *         pot_ext = self.get_potential_extent()             # <<<<<<<<<<<<<<
- *         min_pot_ext = self.get_minimum_potential_extent()
- * 
- */
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_get_potential_extent); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 364, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = NULL;
-  if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_3))) {
-    __pyx_t_4 = PyMethod_GET_SELF(__pyx_t_3);
-    if (likely(__pyx_t_4)) {
-      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_3);
-      __Pyx_INCREF(__pyx_t_4);
-      __Pyx_INCREF(function);
-      __Pyx_DECREF_SET(__pyx_t_3, function);
-    }
-  }
-  if (__pyx_t_4) {
-    __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_4); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 364, __pyx_L1_error)
-    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  } else {
-    __pyx_t_2 = __Pyx_PyObject_CallNoArg(__pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 364, __pyx_L1_error)
-  }
-  __Pyx_GOTREF(__pyx_t_2);
-  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_v_pot_ext = __pyx_t_2;
-  __pyx_t_2 = 0;
-
-  /* "pyqstem/qstem_interface.pyx":365
- * 
- *         pot_ext = self.get_potential_extent()
- *         min_pot_ext = self.get_minimum_potential_extent()             # <<<<<<<<<<<<<<
- * 
- *         if ((pot_ext[0]-min_pot_ext[0]>TOL)|(min_pot_ext[1]-pot_ext[1]>TOL)|
- */
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_get_minimum_potential_extent); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 365, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = NULL;
-  if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_3))) {
-    __pyx_t_4 = PyMethod_GET_SELF(__pyx_t_3);
-    if (likely(__pyx_t_4)) {
-      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_3);
-      __Pyx_INCREF(__pyx_t_4);
-      __Pyx_INCREF(function);
-      __Pyx_DECREF_SET(__pyx_t_3, function);
-    }
-  }
-  if (__pyx_t_4) {
-    __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_4); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 365, __pyx_L1_error)
-    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  } else {
-    __pyx_t_2 = __Pyx_PyObject_CallNoArg(__pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 365, __pyx_L1_error)
-  }
-  __Pyx_GOTREF(__pyx_t_2);
-  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_v_min_pot_ext = __pyx_t_2;
-  __pyx_t_2 = 0;
-
-  /* "pyqstem/qstem_interface.pyx":367
- *         min_pot_ext = self.get_minimum_potential_extent()
- * 
- *         if ((pot_ext[0]-min_pot_ext[0]>TOL)|(min_pot_ext[1]-pot_ext[1]>TOL)|             # <<<<<<<<<<<<<<
- *             (pot_ext[2]-min_pot_ext[2]>TOL)|(min_pot_ext[3]-pot_ext[3]>TOL)):
- *             raise RuntimeError('The potential is too small to accomodate the probe size for the chosen scan range')
- */
-  __pyx_t_2 = __Pyx_GetItemInt(__pyx_v_pot_ext, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 367, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_GetItemInt(__pyx_v_min_pot_ext, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 367, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = PyNumber_Subtract(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 367, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_4);
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_TOL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 367, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_2 = PyObject_RichCompare(__pyx_t_4, __pyx_t_3, Py_GT); __Pyx_XGOTREF(__pyx_t_2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 367, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_GetItemInt(__pyx_v_min_pot_ext, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 367, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = __Pyx_GetItemInt(__pyx_v_pot_ext, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 367, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_5 = PyNumber_Subtract(__pyx_t_3, __pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 367, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_5);
-  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_TOL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 367, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_3 = PyObject_RichCompare(__pyx_t_5, __pyx_t_4, Py_GT); __Pyx_XGOTREF(__pyx_t_3); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 367, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_4 = PyNumber_Or(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 367, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_4);
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-
-  /* "pyqstem/qstem_interface.pyx":368
- * 
- *         if ((pot_ext[0]-min_pot_ext[0]>TOL)|(min_pot_ext[1]-pot_ext[1]>TOL)|
- *             (pot_ext[2]-min_pot_ext[2]>TOL)|(min_pot_ext[3]-pot_ext[3]>TOL)):             # <<<<<<<<<<<<<<
- *             raise RuntimeError('The potential is too small to accomodate the probe size for the chosen scan range')
- * 
- */
-  __pyx_t_3 = __Pyx_GetItemInt(__pyx_v_pot_ext, 2, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 368, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_2 = __Pyx_GetItemInt(__pyx_v_min_pot_ext, 2, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 368, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_5 = PyNumber_Subtract(__pyx_t_3, __pyx_t_2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 368, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_5);
-  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_TOL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 368, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = PyObject_RichCompare(__pyx_t_5, __pyx_t_2, Py_GT); __Pyx_XGOTREF(__pyx_t_3); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 368, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-
-  /* "pyqstem/qstem_interface.pyx":367
- *         min_pot_ext = self.get_minimum_potential_extent()
- * 
- *         if ((pot_ext[0]-min_pot_ext[0]>TOL)|(min_pot_ext[1]-pot_ext[1]>TOL)|             # <<<<<<<<<<<<<<
- *             (pot_ext[2]-min_pot_ext[2]>TOL)|(min_pot_ext[3]-pot_ext[3]>TOL)):
- *             raise RuntimeError('The potential is too small to accomodate the probe size for the chosen scan range')
- */
-  __pyx_t_2 = PyNumber_Or(__pyx_t_4, __pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 367, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-
-  /* "pyqstem/qstem_interface.pyx":368
- * 
- *         if ((pot_ext[0]-min_pot_ext[0]>TOL)|(min_pot_ext[1]-pot_ext[1]>TOL)|
- *             (pot_ext[2]-min_pot_ext[2]>TOL)|(min_pot_ext[3]-pot_ext[3]>TOL)):             # <<<<<<<<<<<<<<
- *             raise RuntimeError('The potential is too small to accomodate the probe size for the chosen scan range')
- * 
- */
-  __pyx_t_3 = __Pyx_GetItemInt(__pyx_v_min_pot_ext, 3, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 368, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = __Pyx_GetItemInt(__pyx_v_pot_ext, 3, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 368, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_5 = PyNumber_Subtract(__pyx_t_3, __pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 368, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_5);
-  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_TOL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 368, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_3 = PyObject_RichCompare(__pyx_t_5, __pyx_t_4, Py_GT); __Pyx_XGOTREF(__pyx_t_3); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 368, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_4 = PyNumber_Or(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 368, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_4);
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(0, 368, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-
-  /* "pyqstem/qstem_interface.pyx":367
- *         min_pot_ext = self.get_minimum_potential_extent()
- * 
- *         if ((pot_ext[0]-min_pot_ext[0]>TOL)|(min_pot_ext[1]-pot_ext[1]>TOL)|             # <<<<<<<<<<<<<<
- *             (pot_ext[2]-min_pot_ext[2]>TOL)|(min_pot_ext[3]-pot_ext[3]>TOL)):
- *             raise RuntimeError('The potential is too small to accomodate the probe size for the chosen scan range')
- */
-  if (__pyx_t_1) {
-
-    /* "pyqstem/qstem_interface.pyx":369
- *         if ((pot_ext[0]-min_pot_ext[0]>TOL)|(min_pot_ext[1]-pot_ext[1]>TOL)|
- *             (pot_ext[2]-min_pot_ext[2]>TOL)|(min_pot_ext[3]-pot_ext[3]>TOL)):
- *             raise RuntimeError('The potential is too small to accomodate the probe size for the chosen scan range')             # <<<<<<<<<<<<<<
- * 
- *         cdef unordered_map[string, vector[double]] detector_map
- */
-    __pyx_t_4 = __Pyx_PyObject_Call(__pyx_builtin_RuntimeError, __pyx_tuple__35, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 369, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_4);
-    __Pyx_Raise(__pyx_t_4, 0, 0, 0);
-    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __PYX_ERR(0, 369, __pyx_L1_error)
-
-    /* "pyqstem/qstem_interface.pyx":367
- *         min_pot_ext = self.get_minimum_potential_extent()
- * 
- *         if ((pot_ext[0]-min_pot_ext[0]>TOL)|(min_pot_ext[1]-pot_ext[1]>TOL)|             # <<<<<<<<<<<<<<
- *             (pot_ext[2]-min_pot_ext[2]>TOL)|(min_pot_ext[3]-pot_ext[3]>TOL)):
- *             raise RuntimeError('The potential is too small to accomodate the probe size for the chosen scan range')
- */
-  }
-
-  /* "pyqstem/qstem_interface.pyx":373
+  /* "pyqstem/qstem_interface.pyx":375
  *         cdef unordered_map[string, vector[double]] detector_map
  * 
  *         if self.thisptr.mode == 'STEM':             # <<<<<<<<<<<<<<
- *             properties=[]
- *             for name,values in self._detectors.items():
+ *             pot_ext = self.get_potential_extent()
+ *             min_pot_ext = self.get_minimum_potential_extent()
  */
   __pyx_t_1 = ((__pyx_v_self->thisptr->mode == ((char *)"STEM")) != 0);
   if (__pyx_t_1) {
 
-    /* "pyqstem/qstem_interface.pyx":374
+    /* "pyqstem/qstem_interface.pyx":376
  * 
  *         if self.thisptr.mode == 'STEM':
+ *             pot_ext = self.get_potential_extent()             # <<<<<<<<<<<<<<
+ *             min_pot_ext = self.get_minimum_potential_extent()
+ * 
+ */
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_get_potential_extent); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 376, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __pyx_t_4 = NULL;
+    if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_3))) {
+      __pyx_t_4 = PyMethod_GET_SELF(__pyx_t_3);
+      if (likely(__pyx_t_4)) {
+        PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_3);
+        __Pyx_INCREF(__pyx_t_4);
+        __Pyx_INCREF(function);
+        __Pyx_DECREF_SET(__pyx_t_3, function);
+      }
+    }
+    if (__pyx_t_4) {
+      __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_4); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 376, __pyx_L1_error)
+      __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+    } else {
+      __pyx_t_2 = __Pyx_PyObject_CallNoArg(__pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 376, __pyx_L1_error)
+    }
+    __Pyx_GOTREF(__pyx_t_2);
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __pyx_v_pot_ext = __pyx_t_2;
+    __pyx_t_2 = 0;
+
+    /* "pyqstem/qstem_interface.pyx":377
+ *         if self.thisptr.mode == 'STEM':
+ *             pot_ext = self.get_potential_extent()
+ *             min_pot_ext = self.get_minimum_potential_extent()             # <<<<<<<<<<<<<<
+ * 
+ *             if ((pot_ext[0]-min_pot_ext[0]>TOL)|(min_pot_ext[1]-pot_ext[1]>TOL)|
+ */
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_get_minimum_potential_extent); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 377, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __pyx_t_4 = NULL;
+    if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_3))) {
+      __pyx_t_4 = PyMethod_GET_SELF(__pyx_t_3);
+      if (likely(__pyx_t_4)) {
+        PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_3);
+        __Pyx_INCREF(__pyx_t_4);
+        __Pyx_INCREF(function);
+        __Pyx_DECREF_SET(__pyx_t_3, function);
+      }
+    }
+    if (__pyx_t_4) {
+      __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_4); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 377, __pyx_L1_error)
+      __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+    } else {
+      __pyx_t_2 = __Pyx_PyObject_CallNoArg(__pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 377, __pyx_L1_error)
+    }
+    __Pyx_GOTREF(__pyx_t_2);
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __pyx_v_min_pot_ext = __pyx_t_2;
+    __pyx_t_2 = 0;
+
+    /* "pyqstem/qstem_interface.pyx":379
+ *             min_pot_ext = self.get_minimum_potential_extent()
+ * 
+ *             if ((pot_ext[0]-min_pot_ext[0]>TOL)|(min_pot_ext[1]-pot_ext[1]>TOL)|             # <<<<<<<<<<<<<<
+ *                 (pot_ext[2]-min_pot_ext[2]>TOL)|(min_pot_ext[3]-pot_ext[3]>TOL)):
+ *                 raise RuntimeError('The potential is too small to accomodate the probe size for the chosen scan range')
+ */
+    __pyx_t_2 = __Pyx_GetItemInt(__pyx_v_pot_ext, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 379, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __pyx_t_3 = __Pyx_GetItemInt(__pyx_v_min_pot_ext, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 379, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __pyx_t_4 = PyNumber_Subtract(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 379, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_TOL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 379, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __pyx_t_2 = PyObject_RichCompare(__pyx_t_4, __pyx_t_3, Py_GT); __Pyx_XGOTREF(__pyx_t_2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 379, __pyx_L1_error)
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __pyx_t_3 = __Pyx_GetItemInt(__pyx_v_min_pot_ext, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 379, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __pyx_t_4 = __Pyx_GetItemInt(__pyx_v_pot_ext, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 379, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
+    __pyx_t_5 = PyNumber_Subtract(__pyx_t_3, __pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 379, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_5);
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+    __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_TOL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 379, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
+    __pyx_t_3 = PyObject_RichCompare(__pyx_t_5, __pyx_t_4, Py_GT); __Pyx_XGOTREF(__pyx_t_3); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 379, __pyx_L1_error)
+    __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+    __pyx_t_4 = PyNumber_Or(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 379, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+
+    /* "pyqstem/qstem_interface.pyx":380
+ * 
+ *             if ((pot_ext[0]-min_pot_ext[0]>TOL)|(min_pot_ext[1]-pot_ext[1]>TOL)|
+ *                 (pot_ext[2]-min_pot_ext[2]>TOL)|(min_pot_ext[3]-pot_ext[3]>TOL)):             # <<<<<<<<<<<<<<
+ *                 raise RuntimeError('The potential is too small to accomodate the probe size for the chosen scan range')
+ * 
+ */
+    __pyx_t_3 = __Pyx_GetItemInt(__pyx_v_pot_ext, 2, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 380, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __pyx_t_2 = __Pyx_GetItemInt(__pyx_v_min_pot_ext, 2, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 380, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __pyx_t_5 = PyNumber_Subtract(__pyx_t_3, __pyx_t_2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 380, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_5);
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+    __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_TOL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 380, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __pyx_t_3 = PyObject_RichCompare(__pyx_t_5, __pyx_t_2, Py_GT); __Pyx_XGOTREF(__pyx_t_3); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 380, __pyx_L1_error)
+    __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+
+    /* "pyqstem/qstem_interface.pyx":379
+ *             min_pot_ext = self.get_minimum_potential_extent()
+ * 
+ *             if ((pot_ext[0]-min_pot_ext[0]>TOL)|(min_pot_ext[1]-pot_ext[1]>TOL)|             # <<<<<<<<<<<<<<
+ *                 (pot_ext[2]-min_pot_ext[2]>TOL)|(min_pot_ext[3]-pot_ext[3]>TOL)):
+ *                 raise RuntimeError('The potential is too small to accomodate the probe size for the chosen scan range')
+ */
+    __pyx_t_2 = PyNumber_Or(__pyx_t_4, __pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 379, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+
+    /* "pyqstem/qstem_interface.pyx":380
+ * 
+ *             if ((pot_ext[0]-min_pot_ext[0]>TOL)|(min_pot_ext[1]-pot_ext[1]>TOL)|
+ *                 (pot_ext[2]-min_pot_ext[2]>TOL)|(min_pot_ext[3]-pot_ext[3]>TOL)):             # <<<<<<<<<<<<<<
+ *                 raise RuntimeError('The potential is too small to accomodate the probe size for the chosen scan range')
+ * 
+ */
+    __pyx_t_3 = __Pyx_GetItemInt(__pyx_v_min_pot_ext, 3, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 380, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __pyx_t_4 = __Pyx_GetItemInt(__pyx_v_pot_ext, 3, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 380, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
+    __pyx_t_5 = PyNumber_Subtract(__pyx_t_3, __pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 380, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_5);
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+    __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_TOL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 380, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
+    __pyx_t_3 = PyObject_RichCompare(__pyx_t_5, __pyx_t_4, Py_GT); __Pyx_XGOTREF(__pyx_t_3); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 380, __pyx_L1_error)
+    __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+    __pyx_t_4 = PyNumber_Or(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 380, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(0, 380, __pyx_L1_error)
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+
+    /* "pyqstem/qstem_interface.pyx":379
+ *             min_pot_ext = self.get_minimum_potential_extent()
+ * 
+ *             if ((pot_ext[0]-min_pot_ext[0]>TOL)|(min_pot_ext[1]-pot_ext[1]>TOL)|             # <<<<<<<<<<<<<<
+ *                 (pot_ext[2]-min_pot_ext[2]>TOL)|(min_pot_ext[3]-pot_ext[3]>TOL)):
+ *                 raise RuntimeError('The potential is too small to accomodate the probe size for the chosen scan range')
+ */
+    if (__pyx_t_1) {
+
+      /* "pyqstem/qstem_interface.pyx":381
+ *             if ((pot_ext[0]-min_pot_ext[0]>TOL)|(min_pot_ext[1]-pot_ext[1]>TOL)|
+ *                 (pot_ext[2]-min_pot_ext[2]>TOL)|(min_pot_ext[3]-pot_ext[3]>TOL)):
+ *                 raise RuntimeError('The potential is too small to accomodate the probe size for the chosen scan range')             # <<<<<<<<<<<<<<
+ * 
+ *             properties=[]
+ */
+      __pyx_t_4 = __Pyx_PyObject_Call(__pyx_builtin_RuntimeError, __pyx_tuple__35, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 381, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_4);
+      __Pyx_Raise(__pyx_t_4, 0, 0, 0);
+      __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+      __PYX_ERR(0, 381, __pyx_L1_error)
+
+      /* "pyqstem/qstem_interface.pyx":379
+ *             min_pot_ext = self.get_minimum_potential_extent()
+ * 
+ *             if ((pot_ext[0]-min_pot_ext[0]>TOL)|(min_pot_ext[1]-pot_ext[1]>TOL)|             # <<<<<<<<<<<<<<
+ *                 (pot_ext[2]-min_pot_ext[2]>TOL)|(min_pot_ext[3]-pot_ext[3]>TOL)):
+ *                 raise RuntimeError('The potential is too small to accomodate the probe size for the chosen scan range')
+ */
+    }
+
+    /* "pyqstem/qstem_interface.pyx":383
+ *                 raise RuntimeError('The potential is too small to accomodate the probe size for the chosen scan range')
+ * 
  *             properties=[]             # <<<<<<<<<<<<<<
  *             for name,values in self._detectors.items():
  *                 values[0]=True
  */
-    __pyx_t_4 = PyList_New(0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 374, __pyx_L1_error)
+    __pyx_t_4 = PyList_New(0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 383, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __pyx_v_properties = ((PyObject*)__pyx_t_4);
     __pyx_t_4 = 0;
 
-    /* "pyqstem/qstem_interface.pyx":375
- *         if self.thisptr.mode == 'STEM':
+    /* "pyqstem/qstem_interface.pyx":384
+ * 
  *             properties=[]
  *             for name,values in self._detectors.items():             # <<<<<<<<<<<<<<
  *                 values[0]=True
  *                 properties.append(values[1:])
  */
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_detectors); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 375, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_detectors); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 384, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_items); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 375, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_items); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 384, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __pyx_t_3 = NULL;
@@ -8931,10 +9178,10 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_50run(struct __pyx
       }
     }
     if (__pyx_t_3) {
-      __pyx_t_4 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 375, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 384, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     } else {
-      __pyx_t_4 = __Pyx_PyObject_CallNoArg(__pyx_t_2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 375, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_PyObject_CallNoArg(__pyx_t_2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 384, __pyx_L1_error)
     }
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -8942,9 +9189,9 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_50run(struct __pyx
       __pyx_t_2 = __pyx_t_4; __Pyx_INCREF(__pyx_t_2); __pyx_t_6 = 0;
       __pyx_t_7 = NULL;
     } else {
-      __pyx_t_6 = -1; __pyx_t_2 = PyObject_GetIter(__pyx_t_4); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 375, __pyx_L1_error)
+      __pyx_t_6 = -1; __pyx_t_2 = PyObject_GetIter(__pyx_t_4); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 384, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
-      __pyx_t_7 = Py_TYPE(__pyx_t_2)->tp_iternext; if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 375, __pyx_L1_error)
+      __pyx_t_7 = Py_TYPE(__pyx_t_2)->tp_iternext; if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 384, __pyx_L1_error)
     }
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     for (;;) {
@@ -8952,17 +9199,17 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_50run(struct __pyx
         if (likely(PyList_CheckExact(__pyx_t_2))) {
           if (__pyx_t_6 >= PyList_GET_SIZE(__pyx_t_2)) break;
           #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-          __pyx_t_4 = PyList_GET_ITEM(__pyx_t_2, __pyx_t_6); __Pyx_INCREF(__pyx_t_4); __pyx_t_6++; if (unlikely(0 < 0)) __PYX_ERR(0, 375, __pyx_L1_error)
+          __pyx_t_4 = PyList_GET_ITEM(__pyx_t_2, __pyx_t_6); __Pyx_INCREF(__pyx_t_4); __pyx_t_6++; if (unlikely(0 < 0)) __PYX_ERR(0, 384, __pyx_L1_error)
           #else
-          __pyx_t_4 = PySequence_ITEM(__pyx_t_2, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 375, __pyx_L1_error)
+          __pyx_t_4 = PySequence_ITEM(__pyx_t_2, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 384, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_4);
           #endif
         } else {
           if (__pyx_t_6 >= PyTuple_GET_SIZE(__pyx_t_2)) break;
           #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-          __pyx_t_4 = PyTuple_GET_ITEM(__pyx_t_2, __pyx_t_6); __Pyx_INCREF(__pyx_t_4); __pyx_t_6++; if (unlikely(0 < 0)) __PYX_ERR(0, 375, __pyx_L1_error)
+          __pyx_t_4 = PyTuple_GET_ITEM(__pyx_t_2, __pyx_t_6); __Pyx_INCREF(__pyx_t_4); __pyx_t_6++; if (unlikely(0 < 0)) __PYX_ERR(0, 384, __pyx_L1_error)
           #else
-          __pyx_t_4 = PySequence_ITEM(__pyx_t_2, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 375, __pyx_L1_error)
+          __pyx_t_4 = PySequence_ITEM(__pyx_t_2, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 384, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_4);
           #endif
         }
@@ -8972,7 +9219,7 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_50run(struct __pyx
           PyObject* exc_type = PyErr_Occurred();
           if (exc_type) {
             if (likely(exc_type == PyExc_StopIteration || PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-            else __PYX_ERR(0, 375, __pyx_L1_error)
+            else __PYX_ERR(0, 384, __pyx_L1_error)
           }
           break;
         }
@@ -8988,7 +9235,7 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_50run(struct __pyx
         if (unlikely(size != 2)) {
           if (size > 2) __Pyx_RaiseTooManyValuesError(2);
           else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-          __PYX_ERR(0, 375, __pyx_L1_error)
+          __PYX_ERR(0, 384, __pyx_L1_error)
         }
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
         if (likely(PyTuple_CheckExact(sequence))) {
@@ -9001,15 +9248,15 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_50run(struct __pyx
         __Pyx_INCREF(__pyx_t_3);
         __Pyx_INCREF(__pyx_t_5);
         #else
-        __pyx_t_3 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 375, __pyx_L1_error)
+        __pyx_t_3 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 384, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
-        __pyx_t_5 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 375, __pyx_L1_error)
+        __pyx_t_5 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 384, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_5);
         #endif
         __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       } else {
         Py_ssize_t index = -1;
-        __pyx_t_8 = PyObject_GetIter(__pyx_t_4); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 375, __pyx_L1_error)
+        __pyx_t_8 = PyObject_GetIter(__pyx_t_4); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 384, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_8);
         __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
         __pyx_t_9 = Py_TYPE(__pyx_t_8)->tp_iternext;
@@ -9017,7 +9264,7 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_50run(struct __pyx
         __Pyx_GOTREF(__pyx_t_3);
         index = 1; __pyx_t_5 = __pyx_t_9(__pyx_t_8); if (unlikely(!__pyx_t_5)) goto __pyx_L8_unpacking_failed;
         __Pyx_GOTREF(__pyx_t_5);
-        if (__Pyx_IternextUnpackEndCheck(__pyx_t_9(__pyx_t_8), 2) < 0) __PYX_ERR(0, 375, __pyx_L1_error)
+        if (__Pyx_IternextUnpackEndCheck(__pyx_t_9(__pyx_t_8), 2) < 0) __PYX_ERR(0, 384, __pyx_L1_error)
         __pyx_t_9 = NULL;
         __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
         goto __pyx_L9_unpacking_done;
@@ -9025,7 +9272,7 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_50run(struct __pyx
         __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
         __pyx_t_9 = NULL;
         if (__Pyx_IterFinish() == 0) __Pyx_RaiseNeedMoreValuesError(index);
-        __PYX_ERR(0, 375, __pyx_L1_error)
+        __PYX_ERR(0, 384, __pyx_L1_error)
         __pyx_L9_unpacking_done:;
       }
       __Pyx_XDECREF_SET(__pyx_v_name, __pyx_t_3);
@@ -9033,29 +9280,29 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_50run(struct __pyx
       __Pyx_XDECREF_SET(__pyx_v_values, __pyx_t_5);
       __pyx_t_5 = 0;
 
-      /* "pyqstem/qstem_interface.pyx":376
+      /* "pyqstem/qstem_interface.pyx":385
  *             properties=[]
  *             for name,values in self._detectors.items():
  *                 values[0]=True             # <<<<<<<<<<<<<<
  *                 properties.append(values[1:])
  * 
  */
-      if (unlikely(__Pyx_SetItemInt(__pyx_v_values, 0, Py_True, long, 1, __Pyx_PyInt_From_long, 0, 0, 1) < 0)) __PYX_ERR(0, 376, __pyx_L1_error)
+      if (unlikely(__Pyx_SetItemInt(__pyx_v_values, 0, Py_True, long, 1, __Pyx_PyInt_From_long, 0, 0, 1) < 0)) __PYX_ERR(0, 385, __pyx_L1_error)
 
-      /* "pyqstem/qstem_interface.pyx":377
+      /* "pyqstem/qstem_interface.pyx":386
  *             for name,values in self._detectors.items():
  *                 values[0]=True
  *                 properties.append(values[1:])             # <<<<<<<<<<<<<<
  * 
- *             names = self._detectors.keys()
+ *             names = [name.encode('utf-8') for name in self._detectors.keys()]
  */
-      __pyx_t_4 = __Pyx_PyObject_GetSlice(__pyx_v_values, 1, 0, NULL, NULL, &__pyx_slice__36, 1, 0, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 377, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_PyObject_GetSlice(__pyx_v_values, 1, 0, NULL, NULL, &__pyx_slice__36, 1, 0, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 386, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
-      __pyx_t_10 = __Pyx_PyList_Append(__pyx_v_properties, __pyx_t_4); if (unlikely(__pyx_t_10 == -1)) __PYX_ERR(0, 377, __pyx_L1_error)
+      __pyx_t_10 = __Pyx_PyList_Append(__pyx_v_properties, __pyx_t_4); if (unlikely(__pyx_t_10 == -1)) __PYX_ERR(0, 386, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-      /* "pyqstem/qstem_interface.pyx":375
- *         if self.thisptr.mode == 'STEM':
+      /* "pyqstem/qstem_interface.pyx":384
+ * 
  *             properties=[]
  *             for name,values in self._detectors.items():             # <<<<<<<<<<<<<<
  *                 values[0]=True
@@ -9064,64 +9311,117 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_50run(struct __pyx
     }
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-    /* "pyqstem/qstem_interface.pyx":379
+    /* "pyqstem/qstem_interface.pyx":388
  *                 properties.append(values[1:])
  * 
- *             names = self._detectors.keys()             # <<<<<<<<<<<<<<
+ *             names = [name.encode('utf-8') for name in self._detectors.keys()]             # <<<<<<<<<<<<<<
  *             self.thisptr.create_detectors(names,properties,len(self._detectors))
  * 
  */
-    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_detectors); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 379, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_keys); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 379, __pyx_L1_error)
+    __pyx_t_2 = PyList_New(0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 388, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_detectors); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 388, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
-    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __pyx_t_4 = NULL;
-    if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_5))) {
-      __pyx_t_4 = PyMethod_GET_SELF(__pyx_t_5);
-      if (likely(__pyx_t_4)) {
-        PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_5);
-        __Pyx_INCREF(__pyx_t_4);
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_keys); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 388, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+    __pyx_t_5 = NULL;
+    if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_3))) {
+      __pyx_t_5 = PyMethod_GET_SELF(__pyx_t_3);
+      if (likely(__pyx_t_5)) {
+        PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_3);
+        __Pyx_INCREF(__pyx_t_5);
         __Pyx_INCREF(function);
-        __Pyx_DECREF_SET(__pyx_t_5, function);
+        __Pyx_DECREF_SET(__pyx_t_3, function);
       }
     }
-    if (__pyx_t_4) {
-      __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_t_4); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 379, __pyx_L1_error)
-      __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+    if (__pyx_t_5) {
+      __pyx_t_4 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_5); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 388, __pyx_L1_error)
+      __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     } else {
-      __pyx_t_2 = __Pyx_PyObject_CallNoArg(__pyx_t_5); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 379, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_PyObject_CallNoArg(__pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 388, __pyx_L1_error)
     }
-    __Pyx_GOTREF(__pyx_t_2);
-    __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    __pyx_v_names = __pyx_t_2;
+    __Pyx_GOTREF(__pyx_t_4);
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    if (likely(PyList_CheckExact(__pyx_t_4)) || PyTuple_CheckExact(__pyx_t_4)) {
+      __pyx_t_3 = __pyx_t_4; __Pyx_INCREF(__pyx_t_3); __pyx_t_6 = 0;
+      __pyx_t_7 = NULL;
+    } else {
+      __pyx_t_6 = -1; __pyx_t_3 = PyObject_GetIter(__pyx_t_4); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 388, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_3);
+      __pyx_t_7 = Py_TYPE(__pyx_t_3)->tp_iternext; if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 388, __pyx_L1_error)
+    }
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+    for (;;) {
+      if (likely(!__pyx_t_7)) {
+        if (likely(PyList_CheckExact(__pyx_t_3))) {
+          if (__pyx_t_6 >= PyList_GET_SIZE(__pyx_t_3)) break;
+          #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
+          __pyx_t_4 = PyList_GET_ITEM(__pyx_t_3, __pyx_t_6); __Pyx_INCREF(__pyx_t_4); __pyx_t_6++; if (unlikely(0 < 0)) __PYX_ERR(0, 388, __pyx_L1_error)
+          #else
+          __pyx_t_4 = PySequence_ITEM(__pyx_t_3, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 388, __pyx_L1_error)
+          __Pyx_GOTREF(__pyx_t_4);
+          #endif
+        } else {
+          if (__pyx_t_6 >= PyTuple_GET_SIZE(__pyx_t_3)) break;
+          #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
+          __pyx_t_4 = PyTuple_GET_ITEM(__pyx_t_3, __pyx_t_6); __Pyx_INCREF(__pyx_t_4); __pyx_t_6++; if (unlikely(0 < 0)) __PYX_ERR(0, 388, __pyx_L1_error)
+          #else
+          __pyx_t_4 = PySequence_ITEM(__pyx_t_3, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 388, __pyx_L1_error)
+          __Pyx_GOTREF(__pyx_t_4);
+          #endif
+        }
+      } else {
+        __pyx_t_4 = __pyx_t_7(__pyx_t_3);
+        if (unlikely(!__pyx_t_4)) {
+          PyObject* exc_type = PyErr_Occurred();
+          if (exc_type) {
+            if (likely(exc_type == PyExc_StopIteration || PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
+            else __PYX_ERR(0, 388, __pyx_L1_error)
+          }
+          break;
+        }
+        __Pyx_GOTREF(__pyx_t_4);
+      }
+      __Pyx_XDECREF_SET(__pyx_v_name, __pyx_t_4);
+      __pyx_t_4 = 0;
+      __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_name, __pyx_n_s_encode); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 388, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_4);
+      __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_tuple__37, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 388, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_5);
+      __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+      if (unlikely(__Pyx_ListComp_Append(__pyx_t_2, (PyObject*)__pyx_t_5))) __PYX_ERR(0, 388, __pyx_L1_error)
+      __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+    }
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __pyx_v_names = ((PyObject*)__pyx_t_2);
     __pyx_t_2 = 0;
 
-    /* "pyqstem/qstem_interface.pyx":380
+    /* "pyqstem/qstem_interface.pyx":389
  * 
- *             names = self._detectors.keys()
+ *             names = [name.encode('utf-8') for name in self._detectors.keys()]
  *             self.thisptr.create_detectors(names,properties,len(self._detectors))             # <<<<<<<<<<<<<<
  * 
  *         if display_progress_interval is None:
  */
-    __pyx_t_11 = __pyx_convert_vector_from_py_std_3a__3a_string(__pyx_v_names); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 380, __pyx_L1_error)
-    __pyx_t_12 = __pyx_convert_vector_from_py_std_3a__3a_vector_3c_double_3e___(__pyx_v_properties); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 380, __pyx_L1_error)
-    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_detectors); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 380, __pyx_L1_error)
+    __pyx_t_11 = __pyx_convert_vector_from_py_std_3a__3a_string(__pyx_v_names); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 389, __pyx_L1_error)
+    __pyx_t_12 = __pyx_convert_vector_from_py_std_3a__3a_vector_3c_double_3e___(__pyx_v_properties); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 389, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_detectors); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 389, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_6 = PyObject_Length(__pyx_t_2); if (unlikely(__pyx_t_6 == -1)) __PYX_ERR(0, 380, __pyx_L1_error)
+    __pyx_t_6 = PyObject_Length(__pyx_t_2); if (unlikely(__pyx_t_6 == -1)) __PYX_ERR(0, 389, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __pyx_v_self->thisptr->create_detectors(__pyx_t_11, __pyx_t_12, __pyx_t_6);
 
-    /* "pyqstem/qstem_interface.pyx":373
+    /* "pyqstem/qstem_interface.pyx":375
  *         cdef unordered_map[string, vector[double]] detector_map
  * 
  *         if self.thisptr.mode == 'STEM':             # <<<<<<<<<<<<<<
- *             properties=[]
- *             for name,values in self._detectors.items():
+ *             pot_ext = self.get_potential_extent()
+ *             min_pot_ext = self.get_minimum_potential_extent()
  */
   }
 
-  /* "pyqstem/qstem_interface.pyx":382
+  /* "pyqstem/qstem_interface.pyx":391
  *             self.thisptr.create_detectors(names,properties,len(self._detectors))
  * 
  *         if display_progress_interval is None:             # <<<<<<<<<<<<<<
@@ -9132,7 +9432,7 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_50run(struct __pyx
   __pyx_t_13 = (__pyx_t_1 != 0);
   if (__pyx_t_13) {
 
-    /* "pyqstem/qstem_interface.pyx":383
+    /* "pyqstem/qstem_interface.pyx":392
  * 
  *         if display_progress_interval is None:
  *             display_progress_interval = -1             # <<<<<<<<<<<<<<
@@ -9142,7 +9442,7 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_50run(struct __pyx
     __Pyx_INCREF(__pyx_int_neg_1);
     __Pyx_DECREF_SET(__pyx_v_display_progress_interval, __pyx_int_neg_1);
 
-    /* "pyqstem/qstem_interface.pyx":382
+    /* "pyqstem/qstem_interface.pyx":391
  *             self.thisptr.create_detectors(names,properties,len(self._detectors))
  * 
  *         if display_progress_interval is None:             # <<<<<<<<<<<<<<
@@ -9151,43 +9451,43 @@ static PyObject *__pyx_pf_7pyqstem_15qstem_interface_7PyQSTEM_50run(struct __pyx
  */
   }
 
-  /* "pyqstem/qstem_interface.pyx":385
+  /* "pyqstem/qstem_interface.pyx":394
  *             display_progress_interval = -1
  * 
  *         self.calculate_transfunc()             # <<<<<<<<<<<<<<
  *         self.thisptr.run(display_progress_interval)
  */
-  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_calculate_transfunc); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 385, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_4 = NULL;
-  if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_5))) {
-    __pyx_t_4 = PyMethod_GET_SELF(__pyx_t_5);
-    if (likely(__pyx_t_4)) {
-      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_5);
-      __Pyx_INCREF(__pyx_t_4);
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_calculate_transfunc); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 394, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __pyx_t_5 = NULL;
+  if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_3))) {
+    __pyx_t_5 = PyMethod_GET_SELF(__pyx_t_3);
+    if (likely(__pyx_t_5)) {
+      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_3);
+      __Pyx_INCREF(__pyx_t_5);
       __Pyx_INCREF(function);
-      __Pyx_DECREF_SET(__pyx_t_5, function);
+      __Pyx_DECREF_SET(__pyx_t_3, function);
     }
   }
-  if (__pyx_t_4) {
-    __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_t_4); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 385, __pyx_L1_error)
-    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  if (__pyx_t_5) {
+    __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_5); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 394, __pyx_L1_error)
+    __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   } else {
-    __pyx_t_2 = __Pyx_PyObject_CallNoArg(__pyx_t_5); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 385, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_CallNoArg(__pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 394, __pyx_L1_error)
   }
   __Pyx_GOTREF(__pyx_t_2);
-  __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "pyqstem/qstem_interface.pyx":386
+  /* "pyqstem/qstem_interface.pyx":395
  * 
  *         self.calculate_transfunc()
  *         self.thisptr.run(display_progress_interval)             # <<<<<<<<<<<<<<
  */
-  __pyx_t_14 = __Pyx_PyInt_As_int(__pyx_v_display_progress_interval); if (unlikely((__pyx_t_14 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 386, __pyx_L1_error)
+  __pyx_t_14 = __Pyx_PyInt_As_int(__pyx_v_display_progress_interval); if (unlikely((__pyx_t_14 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 395, __pyx_L1_error)
   __pyx_v_self->thisptr->run(__pyx_t_14);
 
-  /* "pyqstem/qstem_interface.pyx":352
+  /* "pyqstem/qstem_interface.pyx":361
  *         return img
  * 
  *     def run(self,display_progress_interval=None):             # <<<<<<<<<<<<<<
@@ -10590,12 +10890,13 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_kp_s_A_potential_have_not_been_create, __pyx_k_A_potential_have_not_been_create, sizeof(__pyx_k_A_potential_have_not_been_create), 0, 0, 1, 0},
   {&__pyx_kp_s_A_wavefunction_have_not_been_cre, __pyx_k_A_wavefunction_have_not_been_cre, sizeof(__pyx_k_A_wavefunction_have_not_been_cre), 0, 0, 1, 0},
   {&__pyx_n_s_C5, __pyx_k_C5, sizeof(__pyx_k_C5), 0, 0, 1, 1},
-  {&__pyx_kp_s_Create_potential_before_building, __pyx_k_Create_potential_before_building, sizeof(__pyx_k_Create_potential_before_building), 0, 0, 1, 0},
   {&__pyx_n_s_Cs, __pyx_k_Cs, sizeof(__pyx_k_Cs), 0, 0, 1, 1},
   {&__pyx_kp_s_Detector_0_is_empty_add_the_dete, __pyx_k_Detector_0_is_empty_add_the_dete, sizeof(__pyx_k_Detector_0_is_empty_add_the_dete), 0, 0, 1, 0},
   {&__pyx_kp_s_Detector_name_0_not_recognized, __pyx_k_Detector_name_0_not_recognized, sizeof(__pyx_k_Detector_name_0_not_recognized), 0, 0, 1, 0},
   {&__pyx_n_s_OrderedDict, __pyx_k_OrderedDict, sizeof(__pyx_k_OrderedDict), 0, 0, 1, 1},
+  {&__pyx_kp_s_Periodic_boundary_conditions_not, __pyx_k_Periodic_boundary_conditions_not, sizeof(__pyx_k_Periodic_boundary_conditions_not), 0, 0, 1, 0},
   {&__pyx_kp_s_Please_provide_scan_window_for_m, __pyx_k_Please_provide_scan_window_for_m, sizeof(__pyx_k_Please_provide_scan_window_for_m), 0, 0, 1, 0},
+  {&__pyx_kp_s_Please_set_atoms_and_simulation, __pyx_k_Please_set_atoms_and_simulation, sizeof(__pyx_k_Please_set_atoms_and_simulation), 0, 0, 1, 0},
   {&__pyx_kp_s_Please_set_or_build_a_potential, __pyx_k_Please_set_or_build_a_potential, sizeof(__pyx_k_Please_set_or_build_a_potential), 0, 0, 1, 0},
   {&__pyx_kp_s_Please_specify_resolution_or_win, __pyx_k_Please_specify_resolution_or_win, sizeof(__pyx_k_Please_specify_resolution_or_win), 0, 0, 1, 0},
   {&__pyx_n_s_Potential, __pyx_k_Potential, sizeof(__pyx_k_Potential), 0, 0, 1, 1},
@@ -10610,7 +10911,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_Wave, __pyx_k_Wave, sizeof(__pyx_k_Wave), 0, 0, 1, 1},
   {&__pyx_kp_s_Wave_function_shape_does_not_mat, __pyx_k_Wave_function_shape_does_not_mat, sizeof(__pyx_k_Wave_function_shape_does_not_mat), 0, 0, 1, 0},
   {&__pyx_kp_s_Wavefunction_resolution_will_be, __pyx_k_Wavefunction_resolution_will_be, sizeof(__pyx_k_Wavefunction_resolution_will_be), 0, 0, 1, 0},
-  {&__pyx_n_s__37, __pyx_k__37, sizeof(__pyx_k__37), 0, 0, 1, 1},
+  {&__pyx_n_s__38, __pyx_k__38, sizeof(__pyx_k__38), 0, 0, 1, 1},
   {&__pyx_n_b_a20, __pyx_k_a20, sizeof(__pyx_k_a20), 0, 0, 0, 1},
   {&__pyx_n_b_a22, __pyx_k_a22, sizeof(__pyx_k_a22), 0, 0, 0, 1},
   {&__pyx_n_b_a31, __pyx_k_a31, sizeof(__pyx_k_a31), 0, 0, 0, 1},
@@ -10679,8 +10980,6 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_mode, __pyx_k_mode, sizeof(__pyx_k_mode), 0, 0, 1, 1},
   {&__pyx_n_s_name, __pyx_k_name, sizeof(__pyx_k_name), 0, 0, 1, 1},
   {&__pyx_n_s_newaxis, __pyx_k_newaxis, sizeof(__pyx_k_newaxis), 0, 0, 1, 1},
-  {&__pyx_n_s_nonperiodic_xy, __pyx_k_nonperiodic_xy, sizeof(__pyx_k_nonperiodic_xy), 0, 0, 1, 1},
-  {&__pyx_n_s_nonperiodic_z, __pyx_k_nonperiodic_z, sizeof(__pyx_k_nonperiodic_z), 0, 0, 1, 1},
   {&__pyx_n_s_np, __pyx_k_np, sizeof(__pyx_k_np), 0, 0, 1, 1},
   {&__pyx_n_s_num_samples, __pyx_k_num_samples, sizeof(__pyx_k_num_samples), 0, 0, 1, 1},
   {&__pyx_n_s_num_slices, __pyx_k_num_slices, sizeof(__pyx_k_num_slices), 0, 0, 1, 1},
@@ -10703,9 +11002,8 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_plt, __pyx_k_plt, sizeof(__pyx_k_plt), 0, 0, 1, 1},
   {&__pyx_n_s_potential, __pyx_k_potential, sizeof(__pyx_k_potential), 0, 0, 1, 1},
   {&__pyx_n_s_potential_extent, __pyx_k_potential_extent, sizeof(__pyx_k_potential_extent), 0, 0, 1, 1},
+  {&__pyx_n_s_probe_extent, __pyx_k_probe_extent, sizeof(__pyx_k_probe_extent), 0, 0, 1, 1},
   {&__pyx_n_s_pyqstem_qstem_interface, __pyx_k_pyqstem_qstem_interface, sizeof(__pyx_k_pyqstem_qstem_interface), 0, 0, 1, 1},
-  {&__pyx_n_s_pyqstem_util, __pyx_k_pyqstem_util, sizeof(__pyx_k_pyqstem_util), 0, 0, 1, 1},
-  {&__pyx_n_s_pyqstem_wave, __pyx_k_pyqstem_wave, sizeof(__pyx_k_pyqstem_wave), 0, 0, 1, 1},
   {&__pyx_n_s_radii, __pyx_k_radii, sizeof(__pyx_k_radii), 0, 0, 1, 1},
   {&__pyx_n_s_range, __pyx_k_range, sizeof(__pyx_k_range), 0, 0, 1, 1},
   {&__pyx_n_s_real, __pyx_k_real, sizeof(__pyx_k_real), 0, 0, 1, 1},
@@ -10717,18 +11015,19 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_set_scan_range, __pyx_k_set_scan_range, sizeof(__pyx_k_set_scan_range), 0, 0, 1, 1},
   {&__pyx_n_s_shape, __pyx_k_shape, sizeof(__pyx_k_shape), 0, 0, 1, 1},
   {&__pyx_n_s_shift, __pyx_k_shift, sizeof(__pyx_k_shift), 0, 0, 1, 1},
-  {&__pyx_n_s_show, __pyx_k_show, sizeof(__pyx_k_show), 0, 0, 1, 1},
   {&__pyx_n_s_test, __pyx_k_test, sizeof(__pyx_k_test), 0, 0, 1, 1},
   {&__pyx_n_s_type, __pyx_k_type, sizeof(__pyx_k_type), 0, 0, 1, 1},
   {&__pyx_kp_s_utf_8, __pyx_k_utf_8, sizeof(__pyx_k_utf_8), 0, 0, 1, 0},
+  {&__pyx_n_s_util, __pyx_k_util, sizeof(__pyx_k_util), 0, 0, 1, 1},
   {&__pyx_n_s_v0, __pyx_k_v0, sizeof(__pyx_k_v0), 0, 0, 1, 1},
   {&__pyx_n_s_warn, __pyx_k_warn, sizeof(__pyx_k_warn), 0, 0, 1, 1},
   {&__pyx_n_s_warnings, __pyx_k_warnings, sizeof(__pyx_k_warnings), 0, 0, 1, 1},
+  {&__pyx_n_s_wave, __pyx_k_wave, sizeof(__pyx_k_wave), 0, 0, 1, 1},
   {&__pyx_n_s_window_size, __pyx_k_window_size, sizeof(__pyx_k_window_size), 0, 0, 1, 1},
   {0, 0, 0, 0, 0, 0, 0}
 };
 static int __Pyx_InitCachedBuiltins(void) {
-  __pyx_builtin_RuntimeError = __Pyx_GetBuiltinName(__pyx_n_s_RuntimeError); if (!__pyx_builtin_RuntimeError) __PYX_ERR(0, 172, __pyx_L1_error)
+  __pyx_builtin_RuntimeError = __Pyx_GetBuiltinName(__pyx_n_s_RuntimeError); if (!__pyx_builtin_RuntimeError) __PYX_ERR(0, 113, __pyx_L1_error)
   __pyx_builtin_range = __Pyx_GetBuiltinName(__pyx_n_s_range); if (!__pyx_builtin_range) __PYX_ERR(1, 68, __pyx_L1_error)
   return 0;
   __pyx_L1_error:;
@@ -10739,286 +11038,297 @@ static int __Pyx_InitCachedConstants(void) {
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__Pyx_InitCachedConstants", 0);
 
-  /* "pyqstem/qstem_interface.pyx":172
+  /* "pyqstem/qstem_interface.pyx":184
  *         if self.thisptr.mode == 'STEM':
  *             if scan_range is None:
  *                 raise RuntimeError('Please provide scan window for mode STEM')             # <<<<<<<<<<<<<<
  *             else:
  *                 self.set_scan_range(scan_range)
  */
-  __pyx_tuple_ = PyTuple_Pack(1, __pyx_kp_s_Please_provide_scan_window_for_m); if (unlikely(!__pyx_tuple_)) __PYX_ERR(0, 172, __pyx_L1_error)
+  __pyx_tuple_ = PyTuple_Pack(1, __pyx_kp_s_Please_provide_scan_window_for_m); if (unlikely(!__pyx_tuple_)) __PYX_ERR(0, 184, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple_);
   __Pyx_GIVEREF(__pyx_tuple_);
 
-  /* "pyqstem/qstem_interface.pyx":205
+  /* "pyqstem/qstem_interface.pyx":189
+ * 
+ *         if ((self.thisptr.atoms_state==0)|(self.thisptr.box_state==0)):
+ *             raise RuntimeError('Please set atoms and simulation box')             # <<<<<<<<<<<<<<
+ * 
+ *         #nx_old,ny_old,slices_old = self.get_numsamples()
+ */
+  __pyx_tuple__2 = PyTuple_Pack(1, __pyx_kp_s_Please_set_atoms_and_simulation); if (unlikely(!__pyx_tuple__2)) __PYX_ERR(0, 189, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__2);
+  __Pyx_GIVEREF(__pyx_tuple__2);
+
+  /* "pyqstem/qstem_interface.pyx":214
  * 
  *         if self.thisptr.wave_state > 0:
  *             if not np.any(np.isclose(potential.sampling[:2],self.get_resolution(),rtol=1e-6,atol=1e-6)):             # <<<<<<<<<<<<<<
  *                 raise RuntimeError('Potential resolution does not match wavefunction ({0},{1})!=({2},{3})'
  *                           .format(potential.sampling[0],potential.sampling[1],self.get_resolution()[0],self.get_resolution()[1]))
  */
-  __pyx_slice__2 = PySlice_New(Py_None, __pyx_int_2, Py_None); if (unlikely(!__pyx_slice__2)) __PYX_ERR(0, 205, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_slice__2);
-  __Pyx_GIVEREF(__pyx_slice__2);
+  __pyx_slice__3 = PySlice_New(Py_None, __pyx_int_2, Py_None); if (unlikely(!__pyx_slice__3)) __PYX_ERR(0, 214, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_slice__3);
+  __Pyx_GIVEREF(__pyx_slice__3);
 
-  /* "pyqstem/qstem_interface.pyx":209
+  /* "pyqstem/qstem_interface.pyx":218
  *                           .format(potential.sampling[0],potential.sampling[1],self.get_resolution()[0],self.get_resolution()[1]))
  * 
  *         array = np.concatenate((np.real(array)[:,:,:,np.newaxis],np.imag(array)[:,:,:,np.newaxis]),axis=3)             # <<<<<<<<<<<<<<
  * 
  *         self.thisptr.set_potential(array,size,extent)
  */
-  __pyx_slice__3 = PySlice_New(Py_None, Py_None, Py_None); if (unlikely(!__pyx_slice__3)) __PYX_ERR(0, 209, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_slice__3);
-  __Pyx_GIVEREF(__pyx_slice__3);
-  __pyx_slice__4 = PySlice_New(Py_None, Py_None, Py_None); if (unlikely(!__pyx_slice__4)) __PYX_ERR(0, 209, __pyx_L1_error)
+  __pyx_slice__4 = PySlice_New(Py_None, Py_None, Py_None); if (unlikely(!__pyx_slice__4)) __PYX_ERR(0, 218, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_slice__4);
   __Pyx_GIVEREF(__pyx_slice__4);
-  __pyx_slice__5 = PySlice_New(Py_None, Py_None, Py_None); if (unlikely(!__pyx_slice__5)) __PYX_ERR(0, 209, __pyx_L1_error)
+  __pyx_slice__5 = PySlice_New(Py_None, Py_None, Py_None); if (unlikely(!__pyx_slice__5)) __PYX_ERR(0, 218, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_slice__5);
   __Pyx_GIVEREF(__pyx_slice__5);
-  __pyx_slice__6 = PySlice_New(Py_None, Py_None, Py_None); if (unlikely(!__pyx_slice__6)) __PYX_ERR(0, 209, __pyx_L1_error)
+  __pyx_slice__6 = PySlice_New(Py_None, Py_None, Py_None); if (unlikely(!__pyx_slice__6)) __PYX_ERR(0, 218, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_slice__6);
   __Pyx_GIVEREF(__pyx_slice__6);
-  __pyx_slice__7 = PySlice_New(Py_None, Py_None, Py_None); if (unlikely(!__pyx_slice__7)) __PYX_ERR(0, 209, __pyx_L1_error)
+  __pyx_slice__7 = PySlice_New(Py_None, Py_None, Py_None); if (unlikely(!__pyx_slice__7)) __PYX_ERR(0, 218, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_slice__7);
   __Pyx_GIVEREF(__pyx_slice__7);
-  __pyx_slice__8 = PySlice_New(Py_None, Py_None, Py_None); if (unlikely(!__pyx_slice__8)) __PYX_ERR(0, 209, __pyx_L1_error)
+  __pyx_slice__8 = PySlice_New(Py_None, Py_None, Py_None); if (unlikely(!__pyx_slice__8)) __PYX_ERR(0, 218, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_slice__8);
   __Pyx_GIVEREF(__pyx_slice__8);
+  __pyx_slice__9 = PySlice_New(Py_None, Py_None, Py_None); if (unlikely(!__pyx_slice__9)) __PYX_ERR(0, 218, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_slice__9);
+  __Pyx_GIVEREF(__pyx_slice__9);
 
-  /* "pyqstem/qstem_interface.pyx":220
+  /* "pyqstem/qstem_interface.pyx":229
  *         cdef float resolutionX, resolutionY, sliceThickness
  *         if self.thisptr.trans_array_state==0:
  *             raise RuntimeError('A potential have not been build')             # <<<<<<<<<<<<<<
  *         else:
  *             trans_array = self.thisptr.get_potential_or_transfunc(&resolutionX,&resolutionY,&sliceThickness)
  */
-  __pyx_tuple__9 = PyTuple_Pack(1, __pyx_kp_s_A_potential_have_not_been_build); if (unlikely(!__pyx_tuple__9)) __PYX_ERR(0, 220, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__9);
-  __Pyx_GIVEREF(__pyx_tuple__9);
+  __pyx_tuple__10 = PyTuple_Pack(1, __pyx_kp_s_A_potential_have_not_been_build); if (unlikely(!__pyx_tuple__10)) __PYX_ERR(0, 229, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__10);
+  __Pyx_GIVEREF(__pyx_tuple__10);
 
-  /* "pyqstem/qstem_interface.pyx":223
+  /* "pyqstem/qstem_interface.pyx":232
  *         else:
  *             trans_array = self.thisptr.get_potential_or_transfunc(&resolutionX,&resolutionY,&sliceThickness)
  *             trans_array = np.apply_along_axis(lambda args: [complex(*args)], 3, trans_array)[:,:,:,0]             # <<<<<<<<<<<<<<
  *             potential_extent = self.get_potential_extent()
  *             return Potential(trans_array,(resolutionX,resolutionY,sliceThickness),
  */
-  __pyx_slice__10 = PySlice_New(Py_None, Py_None, Py_None); if (unlikely(!__pyx_slice__10)) __PYX_ERR(0, 223, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_slice__10);
-  __Pyx_GIVEREF(__pyx_slice__10);
-  __pyx_slice__11 = PySlice_New(Py_None, Py_None, Py_None); if (unlikely(!__pyx_slice__11)) __PYX_ERR(0, 223, __pyx_L1_error)
+  __pyx_slice__11 = PySlice_New(Py_None, Py_None, Py_None); if (unlikely(!__pyx_slice__11)) __PYX_ERR(0, 232, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_slice__11);
   __Pyx_GIVEREF(__pyx_slice__11);
-  __pyx_slice__12 = PySlice_New(Py_None, Py_None, Py_None); if (unlikely(!__pyx_slice__12)) __PYX_ERR(0, 223, __pyx_L1_error)
+  __pyx_slice__12 = PySlice_New(Py_None, Py_None, Py_None); if (unlikely(!__pyx_slice__12)) __PYX_ERR(0, 232, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_slice__12);
   __Pyx_GIVEREF(__pyx_slice__12);
-  __pyx_tuple__13 = PyTuple_Pack(4, __pyx_slice__10, __pyx_slice__11, __pyx_slice__12, __pyx_int_0); if (unlikely(!__pyx_tuple__13)) __PYX_ERR(0, 223, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__13);
-  __Pyx_GIVEREF(__pyx_tuple__13);
+  __pyx_slice__13 = PySlice_New(Py_None, Py_None, Py_None); if (unlikely(!__pyx_slice__13)) __PYX_ERR(0, 232, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_slice__13);
+  __Pyx_GIVEREF(__pyx_slice__13);
+  __pyx_tuple__14 = PyTuple_Pack(4, __pyx_slice__11, __pyx_slice__12, __pyx_slice__13, __pyx_int_0); if (unlikely(!__pyx_tuple__14)) __PYX_ERR(0, 232, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__14);
+  __Pyx_GIVEREF(__pyx_tuple__14);
 
-  /* "pyqstem/qstem_interface.pyx":231
+  /* "pyqstem/qstem_interface.pyx":240
  * 
  *         if self.thisptr.trans_array_state==0:
  *             raise RuntimeError('Please set or build a potential')             # <<<<<<<<<<<<<<
  *         elif self.thisptr.trans_array_state==1:
  *             self.thisptr.calculate_transfunc()
  */
-  __pyx_tuple__14 = PyTuple_Pack(1, __pyx_kp_s_Please_set_or_build_a_potential); if (unlikely(!__pyx_tuple__14)) __PYX_ERR(0, 231, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__14);
-  __Pyx_GIVEREF(__pyx_tuple__14);
+  __pyx_tuple__15 = PyTuple_Pack(1, __pyx_kp_s_Please_set_or_build_a_potential); if (unlikely(!__pyx_tuple__15)) __PYX_ERR(0, 240, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__15);
+  __Pyx_GIVEREF(__pyx_tuple__15);
 
-  /* "pyqstem/qstem_interface.pyx":247
+  /* "pyqstem/qstem_interface.pyx":256
  * 
  *         if ((resolution is None)&(window_size is None)):
  *             raise RuntimeError("Please specify resolution or window size")             # <<<<<<<<<<<<<<
  * 
  *         if resolution is None:
  */
-  __pyx_tuple__16 = PyTuple_Pack(1, __pyx_kp_s_Please_specify_resolution_or_win); if (unlikely(!__pyx_tuple__16)) __PYX_ERR(0, 247, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__16);
-  __Pyx_GIVEREF(__pyx_tuple__16);
+  __pyx_tuple__17 = PyTuple_Pack(1, __pyx_kp_s_Please_specify_resolution_or_win); if (unlikely(!__pyx_tuple__17)) __PYX_ERR(0, 256, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__17);
+  __Pyx_GIVEREF(__pyx_tuple__17);
 
-  /* "pyqstem/qstem_interface.pyx":260
+  /* "pyqstem/qstem_interface.pyx":269
  *                  b'a66',b'phi66',b'a64',b'phi64',b'a62',b'phi62',b'a60']
  * 
  *         keys = [key.encode('utf-8') for key in aberrations.keys()]             # <<<<<<<<<<<<<<
  * 
  *         for symbol in symbols:
  */
-  __pyx_tuple__17 = PyTuple_Pack(1, __pyx_kp_s_utf_8); if (unlikely(!__pyx_tuple__17)) __PYX_ERR(0, 260, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__17);
-  __Pyx_GIVEREF(__pyx_tuple__17);
+  __pyx_tuple__18 = PyTuple_Pack(1, __pyx_kp_s_utf_8); if (unlikely(!__pyx_tuple__18)) __PYX_ERR(0, 269, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__18);
+  __Pyx_GIVEREF(__pyx_tuple__18);
 
-  /* "pyqstem/qstem_interface.pyx":264
+  /* "pyqstem/qstem_interface.pyx":273
  *         for symbol in symbols:
  *             if symbol in keys:
  *                 aberrations_map[symbol] = aberrations[symbol.decode('utf-8')]             # <<<<<<<<<<<<<<
  *             elif symbol == b'a20':
  *                 aberrations_map[symbol] = defocus
  */
-  __pyx_tuple__18 = PyTuple_Pack(1, __pyx_kp_s_utf_8); if (unlikely(!__pyx_tuple__18)) __PYX_ERR(0, 264, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__18);
-  __Pyx_GIVEREF(__pyx_tuple__18);
-
-  /* "pyqstem/qstem_interface.pyx":284
- * 
- *         if self.thisptr.trans_array_state<=0:
- *             raise RuntimeError('Create potential before building the wave function')             # <<<<<<<<<<<<<<
- * 
- *         if type=='plane': type=0
- */
-  __pyx_tuple__19 = PyTuple_Pack(1, __pyx_kp_s_Create_potential_before_building); if (unlikely(!__pyx_tuple__19)) __PYX_ERR(0, 284, __pyx_L1_error)
+  __pyx_tuple__19 = PyTuple_Pack(1, __pyx_kp_s_utf_8); if (unlikely(!__pyx_tuple__19)) __PYX_ERR(0, 273, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__19);
   __Pyx_GIVEREF(__pyx_tuple__19);
 
-  /* "pyqstem/qstem_interface.pyx":309
+  /* "pyqstem/qstem_interface.pyx":318
  *         if wave.sampling is not None:
  *             if not np.any(np.isclose(wave.sampling,(resolutionX,resolutionY),rtol=0,atol=1e-06)):
  *                 warnings.warn('Wavefunction resolution will be changed to match the simulation box')             # <<<<<<<<<<<<<<
  * 
  *         array = np.concatenate((np.real(wave.array)[:,:,np.newaxis],np.imag(wave.array)[:,:,np.newaxis]),axis=2)
  */
-  __pyx_tuple__20 = PyTuple_Pack(1, __pyx_kp_s_Wavefunction_resolution_will_be); if (unlikely(!__pyx_tuple__20)) __PYX_ERR(0, 309, __pyx_L1_error)
+  __pyx_tuple__20 = PyTuple_Pack(1, __pyx_kp_s_Wavefunction_resolution_will_be); if (unlikely(!__pyx_tuple__20)) __PYX_ERR(0, 318, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__20);
   __Pyx_GIVEREF(__pyx_tuple__20);
 
-  /* "pyqstem/qstem_interface.pyx":311
+  /* "pyqstem/qstem_interface.pyx":320
  *                 warnings.warn('Wavefunction resolution will be changed to match the simulation box')
  * 
  *         array = np.concatenate((np.real(wave.array)[:,:,np.newaxis],np.imag(wave.array)[:,:,np.newaxis]),axis=2)             # <<<<<<<<<<<<<<
  * 
  *         old_v0 = self.get_energy()
  */
-  __pyx_slice__21 = PySlice_New(Py_None, Py_None, Py_None); if (unlikely(!__pyx_slice__21)) __PYX_ERR(0, 311, __pyx_L1_error)
+  __pyx_slice__21 = PySlice_New(Py_None, Py_None, Py_None); if (unlikely(!__pyx_slice__21)) __PYX_ERR(0, 320, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_slice__21);
   __Pyx_GIVEREF(__pyx_slice__21);
-  __pyx_slice__22 = PySlice_New(Py_None, Py_None, Py_None); if (unlikely(!__pyx_slice__22)) __PYX_ERR(0, 311, __pyx_L1_error)
+  __pyx_slice__22 = PySlice_New(Py_None, Py_None, Py_None); if (unlikely(!__pyx_slice__22)) __PYX_ERR(0, 320, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_slice__22);
   __Pyx_GIVEREF(__pyx_slice__22);
-  __pyx_slice__23 = PySlice_New(Py_None, Py_None, Py_None); if (unlikely(!__pyx_slice__23)) __PYX_ERR(0, 311, __pyx_L1_error)
+  __pyx_slice__23 = PySlice_New(Py_None, Py_None, Py_None); if (unlikely(!__pyx_slice__23)) __PYX_ERR(0, 320, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_slice__23);
   __Pyx_GIVEREF(__pyx_slice__23);
-  __pyx_slice__24 = PySlice_New(Py_None, Py_None, Py_None); if (unlikely(!__pyx_slice__24)) __PYX_ERR(0, 311, __pyx_L1_error)
+  __pyx_slice__24 = PySlice_New(Py_None, Py_None, Py_None); if (unlikely(!__pyx_slice__24)) __PYX_ERR(0, 320, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_slice__24);
   __Pyx_GIVEREF(__pyx_slice__24);
 
-  /* "pyqstem/qstem_interface.pyx":323
+  /* "pyqstem/qstem_interface.pyx":332
  *     def get_wave(self):
  *         if self.thisptr.wave_state == 0:
  *             raise RuntimeError('A wavefunction have not been created')             # <<<<<<<<<<<<<<
  * 
  *         cdef float resolutionX, resolutionY, v0
  */
-  __pyx_tuple__25 = PyTuple_Pack(1, __pyx_kp_s_A_wavefunction_have_not_been_cre); if (unlikely(!__pyx_tuple__25)) __PYX_ERR(0, 323, __pyx_L1_error)
+  __pyx_tuple__25 = PyTuple_Pack(1, __pyx_kp_s_A_wavefunction_have_not_been_cre); if (unlikely(!__pyx_tuple__25)) __PYX_ERR(0, 332, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__25);
   __Pyx_GIVEREF(__pyx_tuple__25);
 
-  /* "pyqstem/qstem_interface.pyx":327
+  /* "pyqstem/qstem_interface.pyx":336
  *         cdef float resolutionX, resolutionY, v0
  *         wave_array = self.thisptr.get_wave(&resolutionX,&resolutionY,&v0)
  *         wave_array = np.apply_along_axis(lambda args: [complex(*args)], 2, wave_array)[:,:,0]             # <<<<<<<<<<<<<<
  * 
  *         return Wave(wave_array,energy=v0,sampling=(resolutionX,resolutionY))
  */
-  __pyx_slice__26 = PySlice_New(Py_None, Py_None, Py_None); if (unlikely(!__pyx_slice__26)) __PYX_ERR(0, 327, __pyx_L1_error)
+  __pyx_slice__26 = PySlice_New(Py_None, Py_None, Py_None); if (unlikely(!__pyx_slice__26)) __PYX_ERR(0, 336, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_slice__26);
   __Pyx_GIVEREF(__pyx_slice__26);
-  __pyx_slice__27 = PySlice_New(Py_None, Py_None, Py_None); if (unlikely(!__pyx_slice__27)) __PYX_ERR(0, 327, __pyx_L1_error)
+  __pyx_slice__27 = PySlice_New(Py_None, Py_None, Py_None); if (unlikely(!__pyx_slice__27)) __PYX_ERR(0, 336, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_slice__27);
   __Pyx_GIVEREF(__pyx_slice__27);
-  __pyx_tuple__28 = PyTuple_Pack(3, __pyx_slice__26, __pyx_slice__27, __pyx_int_0); if (unlikely(!__pyx_tuple__28)) __PYX_ERR(0, 327, __pyx_L1_error)
+  __pyx_tuple__28 = PyTuple_Pack(3, __pyx_slice__26, __pyx_slice__27, __pyx_int_0); if (unlikely(!__pyx_tuple__28)) __PYX_ERR(0, 336, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__28);
   __Pyx_GIVEREF(__pyx_tuple__28);
 
-  /* "pyqstem/qstem_interface.pyx":331
+  /* "pyqstem/qstem_interface.pyx":340
  *         return Wave(wave_array,energy=v0,sampling=(resolutionX,resolutionY))
  * 
  *     def add_detector(self,name,radii,shift=(0,0)):             # <<<<<<<<<<<<<<
  *         self._detectors[name]=[False,radii[0],radii[1],shift[0],shift[1]]
  * 
  */
-  __pyx_tuple__29 = PyTuple_Pack(2, __pyx_int_0, __pyx_int_0); if (unlikely(!__pyx_tuple__29)) __PYX_ERR(0, 331, __pyx_L1_error)
+  __pyx_tuple__29 = PyTuple_Pack(2, __pyx_int_0, __pyx_int_0); if (unlikely(!__pyx_tuple__29)) __PYX_ERR(0, 340, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__29);
   __Pyx_GIVEREF(__pyx_tuple__29);
 
-  /* "pyqstem/qstem_interface.pyx":354
+  /* "pyqstem/qstem_interface.pyx":363
  *     def run(self,display_progress_interval=None):
  *         if self.thisptr.wave_state==0:
  *             raise RuntimeError('A wavefunction have not been created')             # <<<<<<<<<<<<<<
  *         elif self.thisptr.wave_state==-1:
  *             raise RuntimeError('The wavefunction have to be recreated after changing the potential sampling')
  */
-  __pyx_tuple__30 = PyTuple_Pack(1, __pyx_kp_s_A_wavefunction_have_not_been_cre); if (unlikely(!__pyx_tuple__30)) __PYX_ERR(0, 354, __pyx_L1_error)
+  __pyx_tuple__30 = PyTuple_Pack(1, __pyx_kp_s_A_wavefunction_have_not_been_cre); if (unlikely(!__pyx_tuple__30)) __PYX_ERR(0, 363, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__30);
   __Pyx_GIVEREF(__pyx_tuple__30);
 
-  /* "pyqstem/qstem_interface.pyx":356
+  /* "pyqstem/qstem_interface.pyx":365
  *             raise RuntimeError('A wavefunction have not been created')
  *         elif self.thisptr.wave_state==-1:
  *             raise RuntimeError('The wavefunction have to be recreated after changing the potential sampling')             # <<<<<<<<<<<<<<
  *         elif self.thisptr.trans_array_state==0:
  *             raise RuntimeError('A potential have not been created')
  */
-  __pyx_tuple__31 = PyTuple_Pack(1, __pyx_kp_s_The_wavefunction_have_to_be_recr); if (unlikely(!__pyx_tuple__31)) __PYX_ERR(0, 356, __pyx_L1_error)
+  __pyx_tuple__31 = PyTuple_Pack(1, __pyx_kp_s_The_wavefunction_have_to_be_recr); if (unlikely(!__pyx_tuple__31)) __PYX_ERR(0, 365, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__31);
   __Pyx_GIVEREF(__pyx_tuple__31);
 
-  /* "pyqstem/qstem_interface.pyx":358
+  /* "pyqstem/qstem_interface.pyx":367
  *             raise RuntimeError('The wavefunction have to be recreated after changing the potential sampling')
  *         elif self.thisptr.trans_array_state==0:
  *             raise RuntimeError('A potential have not been created')             # <<<<<<<<<<<<<<
  *         elif self.thisptr.trans_array_state==-1:
  *             raise RuntimeError('The potential have to be recreated after changing the atoms or simulation box')
  */
-  __pyx_tuple__32 = PyTuple_Pack(1, __pyx_kp_s_A_potential_have_not_been_create); if (unlikely(!__pyx_tuple__32)) __PYX_ERR(0, 358, __pyx_L1_error)
+  __pyx_tuple__32 = PyTuple_Pack(1, __pyx_kp_s_A_potential_have_not_been_create); if (unlikely(!__pyx_tuple__32)) __PYX_ERR(0, 367, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__32);
   __Pyx_GIVEREF(__pyx_tuple__32);
 
-  /* "pyqstem/qstem_interface.pyx":360
+  /* "pyqstem/qstem_interface.pyx":369
  *             raise RuntimeError('A potential have not been created')
  *         elif self.thisptr.trans_array_state==-1:
  *             raise RuntimeError('The potential have to be recreated after changing the atoms or simulation box')             # <<<<<<<<<<<<<<
  *         elif self.thisptr.trans_array_state==-2:
  *             raise RuntimeError('The transmission function energy does not match wavefunction')
  */
-  __pyx_tuple__33 = PyTuple_Pack(1, __pyx_kp_s_The_potential_have_to_be_recreat); if (unlikely(!__pyx_tuple__33)) __PYX_ERR(0, 360, __pyx_L1_error)
+  __pyx_tuple__33 = PyTuple_Pack(1, __pyx_kp_s_The_potential_have_to_be_recreat); if (unlikely(!__pyx_tuple__33)) __PYX_ERR(0, 369, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__33);
   __Pyx_GIVEREF(__pyx_tuple__33);
 
-  /* "pyqstem/qstem_interface.pyx":362
+  /* "pyqstem/qstem_interface.pyx":371
  *             raise RuntimeError('The potential have to be recreated after changing the atoms or simulation box')
  *         elif self.thisptr.trans_array_state==-2:
  *             raise RuntimeError('The transmission function energy does not match wavefunction')             # <<<<<<<<<<<<<<
  * 
- *         pot_ext = self.get_potential_extent()
+ *         cdef unordered_map[string, vector[double]] detector_map
  */
-  __pyx_tuple__34 = PyTuple_Pack(1, __pyx_kp_s_The_transmission_function_energy); if (unlikely(!__pyx_tuple__34)) __PYX_ERR(0, 362, __pyx_L1_error)
+  __pyx_tuple__34 = PyTuple_Pack(1, __pyx_kp_s_The_transmission_function_energy); if (unlikely(!__pyx_tuple__34)) __PYX_ERR(0, 371, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__34);
   __Pyx_GIVEREF(__pyx_tuple__34);
 
-  /* "pyqstem/qstem_interface.pyx":369
- *         if ((pot_ext[0]-min_pot_ext[0]>TOL)|(min_pot_ext[1]-pot_ext[1]>TOL)|
- *             (pot_ext[2]-min_pot_ext[2]>TOL)|(min_pot_ext[3]-pot_ext[3]>TOL)):
- *             raise RuntimeError('The potential is too small to accomodate the probe size for the chosen scan range')             # <<<<<<<<<<<<<<
+  /* "pyqstem/qstem_interface.pyx":381
+ *             if ((pot_ext[0]-min_pot_ext[0]>TOL)|(min_pot_ext[1]-pot_ext[1]>TOL)|
+ *                 (pot_ext[2]-min_pot_ext[2]>TOL)|(min_pot_ext[3]-pot_ext[3]>TOL)):
+ *                 raise RuntimeError('The potential is too small to accomodate the probe size for the chosen scan range')             # <<<<<<<<<<<<<<
  * 
- *         cdef unordered_map[string, vector[double]] detector_map
+ *             properties=[]
  */
-  __pyx_tuple__35 = PyTuple_Pack(1, __pyx_kp_s_The_potential_is_too_small_to_ac); if (unlikely(!__pyx_tuple__35)) __PYX_ERR(0, 369, __pyx_L1_error)
+  __pyx_tuple__35 = PyTuple_Pack(1, __pyx_kp_s_The_potential_is_too_small_to_ac); if (unlikely(!__pyx_tuple__35)) __PYX_ERR(0, 381, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__35);
   __Pyx_GIVEREF(__pyx_tuple__35);
 
-  /* "pyqstem/qstem_interface.pyx":377
+  /* "pyqstem/qstem_interface.pyx":386
  *             for name,values in self._detectors.items():
  *                 values[0]=True
  *                 properties.append(values[1:])             # <<<<<<<<<<<<<<
  * 
- *             names = self._detectors.keys()
+ *             names = [name.encode('utf-8') for name in self._detectors.keys()]
  */
-  __pyx_slice__36 = PySlice_New(__pyx_int_1, Py_None, Py_None); if (unlikely(!__pyx_slice__36)) __PYX_ERR(0, 377, __pyx_L1_error)
+  __pyx_slice__36 = PySlice_New(__pyx_int_1, Py_None, Py_None); if (unlikely(!__pyx_slice__36)) __PYX_ERR(0, 386, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_slice__36);
   __Pyx_GIVEREF(__pyx_slice__36);
+
+  /* "pyqstem/qstem_interface.pyx":388
+ *                 properties.append(values[1:])
+ * 
+ *             names = [name.encode('utf-8') for name in self._detectors.keys()]             # <<<<<<<<<<<<<<
+ *             self.thisptr.create_detectors(names,properties,len(self._detectors))
+ * 
+ */
+  __pyx_tuple__37 = PyTuple_Pack(1, __pyx_kp_s_utf_8); if (unlikely(!__pyx_tuple__37)) __PYX_ERR(0, 388, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__37);
+  __Pyx_GIVEREF(__pyx_tuple__37);
   __Pyx_RefNannyFinishContext();
   return 0;
   __pyx_L1_error:;
@@ -11169,7 +11479,7 @@ PyMODINIT_FUNC PyInit_qstem_interface(void)
  * import numpy as np
  * from collections import OrderedDict             # <<<<<<<<<<<<<<
  * import matplotlib.pyplot as plt
- * from pyqstem.wave import Wave, Potential
+ * from libcpp.unordered_map cimport unordered_map
  */
   __pyx_t_1 = PyList_New(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 4, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
@@ -11189,28 +11499,28 @@ PyMODINIT_FUNC PyInit_qstem_interface(void)
  * import numpy as np
  * from collections import OrderedDict
  * import matplotlib.pyplot as plt             # <<<<<<<<<<<<<<
- * from pyqstem.wave import Wave, Potential
- * from pyqstem.util import atoms_plot
+ * from libcpp.unordered_map cimport unordered_map
+ * from libcpp.pair cimport pair
  */
   __pyx_t_2 = PyList_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 5, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __Pyx_INCREF(__pyx_n_s__37);
-  __Pyx_GIVEREF(__pyx_n_s__37);
-  PyList_SET_ITEM(__pyx_t_2, 0, __pyx_n_s__37);
+  __Pyx_INCREF(__pyx_n_s__38);
+  __Pyx_GIVEREF(__pyx_n_s__38);
+  PyList_SET_ITEM(__pyx_t_2, 0, __pyx_n_s__38);
   __pyx_t_1 = __Pyx_Import(__pyx_n_s_matplotlib_pyplot, __pyx_t_2, -1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 5, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_plt, __pyx_t_1) < 0) __PYX_ERR(0, 5, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "pyqstem/qstem_interface.pyx":6
- * from collections import OrderedDict
- * import matplotlib.pyplot as plt
- * from pyqstem.wave import Wave, Potential             # <<<<<<<<<<<<<<
- * from pyqstem.util import atoms_plot
- * from libcpp.unordered_map cimport unordered_map
+  /* "pyqstem/qstem_interface.pyx":9
+ * from libcpp.pair cimport pair
+ * from libcpp.string cimport string
+ * from .wave import Wave, Potential             # <<<<<<<<<<<<<<
+ * from .util import atoms_plot
+ * 
  */
-  __pyx_t_1 = PyList_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 6, __pyx_L1_error)
+  __pyx_t_1 = PyList_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 9, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_INCREF(__pyx_n_s_Wave);
   __Pyx_GIVEREF(__pyx_n_s_Wave);
@@ -11218,42 +11528,42 @@ PyMODINIT_FUNC PyInit_qstem_interface(void)
   __Pyx_INCREF(__pyx_n_s_Potential);
   __Pyx_GIVEREF(__pyx_n_s_Potential);
   PyList_SET_ITEM(__pyx_t_1, 1, __pyx_n_s_Potential);
-  __pyx_t_2 = __Pyx_Import(__pyx_n_s_pyqstem_wave, __pyx_t_1, -1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 6, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_Import(__pyx_n_s_wave, __pyx_t_1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 9, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_ImportFrom(__pyx_t_2, __pyx_n_s_Wave); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 6, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_ImportFrom(__pyx_t_2, __pyx_n_s_Wave); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 9, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_Wave, __pyx_t_1) < 0) __PYX_ERR(0, 6, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_Wave, __pyx_t_1) < 0) __PYX_ERR(0, 9, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_ImportFrom(__pyx_t_2, __pyx_n_s_Potential); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 6, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_ImportFrom(__pyx_t_2, __pyx_n_s_Potential); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 9, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_Potential, __pyx_t_1) < 0) __PYX_ERR(0, 6, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_Potential, __pyx_t_1) < 0) __PYX_ERR(0, 9, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "pyqstem/qstem_interface.pyx":7
- * import matplotlib.pyplot as plt
- * from pyqstem.wave import Wave, Potential
- * from pyqstem.util import atoms_plot             # <<<<<<<<<<<<<<
- * from libcpp.unordered_map cimport unordered_map
- * from libcpp.pair cimport pair
+  /* "pyqstem/qstem_interface.pyx":10
+ * from libcpp.string cimport string
+ * from .wave import Wave, Potential
+ * from .util import atoms_plot             # <<<<<<<<<<<<<<
+ * 
+ * TOL=1e-6
  */
-  __pyx_t_2 = PyList_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 7, __pyx_L1_error)
+  __pyx_t_2 = PyList_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 10, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_INCREF(__pyx_n_s_atoms_plot);
   __Pyx_GIVEREF(__pyx_n_s_atoms_plot);
   PyList_SET_ITEM(__pyx_t_2, 0, __pyx_n_s_atoms_plot);
-  __pyx_t_1 = __Pyx_Import(__pyx_n_s_pyqstem_util, __pyx_t_2, -1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 7, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_Import(__pyx_n_s_util, __pyx_t_2, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 10, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_ImportFrom(__pyx_t_1, __pyx_n_s_atoms_plot); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 7, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_ImportFrom(__pyx_t_1, __pyx_n_s_atoms_plot); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 10, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_atoms_plot, __pyx_t_2) < 0) __PYX_ERR(0, 7, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_atoms_plot, __pyx_t_2) < 0) __PYX_ERR(0, 10, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
   /* "pyqstem/qstem_interface.pyx":12
- * from libcpp.string cimport string
+ * from .util import atoms_plot
  * 
  * TOL=1e-6             # <<<<<<<<<<<<<<
  * 
@@ -11266,7 +11576,7 @@ PyMODINIT_FUNC PyInit_qstem_interface(void)
  * 
  *     _detectors=OrderedDict()             # <<<<<<<<<<<<<<
  * 
- * 
+ *     def __dealloc__(self):
  */
   __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_OrderedDict); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 87, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
@@ -11292,16 +11602,16 @@ PyMODINIT_FUNC PyInit_qstem_interface(void)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   PyType_Modified(__pyx_ptype_7pyqstem_15qstem_interface_PyQSTEM);
 
-  /* "pyqstem/qstem_interface.pyx":244
+  /* "pyqstem/qstem_interface.pyx":253
  * 
  *     def build_probe(self,v0,alpha,num_samples,resolution=None,window_size=None,
  *                     defocus=0,Cs=0,C5=0,astig_mag=0,astig_angle=0,aberrations={}):             # <<<<<<<<<<<<<<
  * 
  *         if ((resolution is None)&(window_size is None)):
  */
-  __pyx_t_1 = PyDict_New(); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 244, __pyx_L1_error)
+  __pyx_t_1 = PyDict_New(); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 253, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_k__15 = __pyx_t_1;
+  __pyx_k__16 = __pyx_t_1;
   __Pyx_GIVEREF(__pyx_t_1);
   __pyx_t_1 = 0;
 
@@ -11809,87 +12119,6 @@ static CYTHON_INLINE PyObject* __Pyx_PyObject_CallNoArg(PyObject *func) {
     return result;
 }
 
-/* GetItemInt */
-      static CYTHON_INLINE PyObject *__Pyx_GetItemInt_Generic(PyObject *o, PyObject* j) {
-    PyObject *r;
-    if (!j) return NULL;
-    r = PyObject_GetItem(o, j);
-    Py_DECREF(j);
-    return r;
-}
-static CYTHON_INLINE PyObject *__Pyx_GetItemInt_List_Fast(PyObject *o, Py_ssize_t i,
-                                                              CYTHON_NCP_UNUSED int wraparound,
-                                                              CYTHON_NCP_UNUSED int boundscheck) {
-#if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-    if (wraparound & unlikely(i < 0)) i += PyList_GET_SIZE(o);
-    if ((!boundscheck) || likely((0 <= i) & (i < PyList_GET_SIZE(o)))) {
-        PyObject *r = PyList_GET_ITEM(o, i);
-        Py_INCREF(r);
-        return r;
-    }
-    return __Pyx_GetItemInt_Generic(o, PyInt_FromSsize_t(i));
-#else
-    return PySequence_GetItem(o, i);
-#endif
-}
-static CYTHON_INLINE PyObject *__Pyx_GetItemInt_Tuple_Fast(PyObject *o, Py_ssize_t i,
-                                                              CYTHON_NCP_UNUSED int wraparound,
-                                                              CYTHON_NCP_UNUSED int boundscheck) {
-#if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-    if (wraparound & unlikely(i < 0)) i += PyTuple_GET_SIZE(o);
-    if ((!boundscheck) || likely((0 <= i) & (i < PyTuple_GET_SIZE(o)))) {
-        PyObject *r = PyTuple_GET_ITEM(o, i);
-        Py_INCREF(r);
-        return r;
-    }
-    return __Pyx_GetItemInt_Generic(o, PyInt_FromSsize_t(i));
-#else
-    return PySequence_GetItem(o, i);
-#endif
-}
-static CYTHON_INLINE PyObject *__Pyx_GetItemInt_Fast(PyObject *o, Py_ssize_t i, int is_list,
-                                                     CYTHON_NCP_UNUSED int wraparound,
-                                                     CYTHON_NCP_UNUSED int boundscheck) {
-#if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS && CYTHON_USE_TYPE_SLOTS
-    if (is_list || PyList_CheckExact(o)) {
-        Py_ssize_t n = ((!wraparound) | likely(i >= 0)) ? i : i + PyList_GET_SIZE(o);
-        if ((!boundscheck) || (likely((n >= 0) & (n < PyList_GET_SIZE(o))))) {
-            PyObject *r = PyList_GET_ITEM(o, n);
-            Py_INCREF(r);
-            return r;
-        }
-    }
-    else if (PyTuple_CheckExact(o)) {
-        Py_ssize_t n = ((!wraparound) | likely(i >= 0)) ? i : i + PyTuple_GET_SIZE(o);
-        if ((!boundscheck) || likely((n >= 0) & (n < PyTuple_GET_SIZE(o)))) {
-            PyObject *r = PyTuple_GET_ITEM(o, n);
-            Py_INCREF(r);
-            return r;
-        }
-    } else {
-        PySequenceMethods *m = Py_TYPE(o)->tp_as_sequence;
-        if (likely(m && m->sq_item)) {
-            if (wraparound && unlikely(i < 0) && likely(m->sq_length)) {
-                Py_ssize_t l = m->sq_length(o);
-                if (likely(l >= 0)) {
-                    i += l;
-                } else {
-                    if (!PyErr_ExceptionMatches(PyExc_OverflowError))
-                        return NULL;
-                    PyErr_Clear();
-                }
-            }
-            return m->sq_item(o, i);
-        }
-    }
-#else
-    if (is_list || PySequence_Check(o)) {
-        return PySequence_GetItem(o, i);
-    }
-#endif
-    return __Pyx_GetItemInt_Generic(o, PyInt_FromSsize_t(i));
-}
-
 /* PyErrFetchRestore */
       #if CYTHON_FAST_THREAD_STATE
 static CYTHON_INLINE void __Pyx_ErrRestoreInState(PyThreadState *tstate, PyObject *type, PyObject *value, PyObject *tb) {
@@ -12076,6 +12305,87 @@ bad:
     return;
 }
 #endif
+
+/* GetItemInt */
+        static CYTHON_INLINE PyObject *__Pyx_GetItemInt_Generic(PyObject *o, PyObject* j) {
+    PyObject *r;
+    if (!j) return NULL;
+    r = PyObject_GetItem(o, j);
+    Py_DECREF(j);
+    return r;
+}
+static CYTHON_INLINE PyObject *__Pyx_GetItemInt_List_Fast(PyObject *o, Py_ssize_t i,
+                                                              CYTHON_NCP_UNUSED int wraparound,
+                                                              CYTHON_NCP_UNUSED int boundscheck) {
+#if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
+    if (wraparound & unlikely(i < 0)) i += PyList_GET_SIZE(o);
+    if ((!boundscheck) || likely((0 <= i) & (i < PyList_GET_SIZE(o)))) {
+        PyObject *r = PyList_GET_ITEM(o, i);
+        Py_INCREF(r);
+        return r;
+    }
+    return __Pyx_GetItemInt_Generic(o, PyInt_FromSsize_t(i));
+#else
+    return PySequence_GetItem(o, i);
+#endif
+}
+static CYTHON_INLINE PyObject *__Pyx_GetItemInt_Tuple_Fast(PyObject *o, Py_ssize_t i,
+                                                              CYTHON_NCP_UNUSED int wraparound,
+                                                              CYTHON_NCP_UNUSED int boundscheck) {
+#if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
+    if (wraparound & unlikely(i < 0)) i += PyTuple_GET_SIZE(o);
+    if ((!boundscheck) || likely((0 <= i) & (i < PyTuple_GET_SIZE(o)))) {
+        PyObject *r = PyTuple_GET_ITEM(o, i);
+        Py_INCREF(r);
+        return r;
+    }
+    return __Pyx_GetItemInt_Generic(o, PyInt_FromSsize_t(i));
+#else
+    return PySequence_GetItem(o, i);
+#endif
+}
+static CYTHON_INLINE PyObject *__Pyx_GetItemInt_Fast(PyObject *o, Py_ssize_t i, int is_list,
+                                                     CYTHON_NCP_UNUSED int wraparound,
+                                                     CYTHON_NCP_UNUSED int boundscheck) {
+#if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS && CYTHON_USE_TYPE_SLOTS
+    if (is_list || PyList_CheckExact(o)) {
+        Py_ssize_t n = ((!wraparound) | likely(i >= 0)) ? i : i + PyList_GET_SIZE(o);
+        if ((!boundscheck) || (likely((n >= 0) & (n < PyList_GET_SIZE(o))))) {
+            PyObject *r = PyList_GET_ITEM(o, n);
+            Py_INCREF(r);
+            return r;
+        }
+    }
+    else if (PyTuple_CheckExact(o)) {
+        Py_ssize_t n = ((!wraparound) | likely(i >= 0)) ? i : i + PyTuple_GET_SIZE(o);
+        if ((!boundscheck) || likely((n >= 0) & (n < PyTuple_GET_SIZE(o)))) {
+            PyObject *r = PyTuple_GET_ITEM(o, n);
+            Py_INCREF(r);
+            return r;
+        }
+    } else {
+        PySequenceMethods *m = Py_TYPE(o)->tp_as_sequence;
+        if (likely(m && m->sq_item)) {
+            if (wraparound && unlikely(i < 0) && likely(m->sq_length)) {
+                Py_ssize_t l = m->sq_length(o);
+                if (likely(l >= 0)) {
+                    i += l;
+                } else {
+                    if (!PyErr_ExceptionMatches(PyExc_OverflowError))
+                        return NULL;
+                    PyErr_Clear();
+                }
+            }
+            return m->sq_item(o, i);
+        }
+    }
+#else
+    if (is_list || PySequence_Check(o)) {
+        return PySequence_GetItem(o, i);
+    }
+#endif
+    return __Pyx_GetItemInt_Generic(o, PyInt_FromSsize_t(i));
+}
 
 /* SliceObject */
         static CYTHON_INLINE PyObject* __Pyx_PyObject_GetSlice(PyObject* obj,

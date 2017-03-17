@@ -22,7 +22,7 @@ def view(wave,method='real',units='Angstrom',nav_axis=2,ind=-1,title=None,
     elif method == 'real':
         img=np.real(array)
     elif method == 'imaginary':
-        img=np.real(array)
+        img=np.imaginary(array)
     elif method == 'phase':
         img=np.angle(array)
     elif method == 'intensity':
@@ -227,7 +227,7 @@ class WaveBundle(object):
 
 class Potential(BaseArray):
 
-    def __init__(self, array, sampling, periodic_xy=False, periodic_z=False, offset=(0.,0.,0.)):
+    def __init__(self, array, sampling, periodic_xy=True, periodic_z=False, offset=(0.,0.,0.)):
         BaseArray.__init__(self, array, sampling, offset)
 
         self.periodic_xy=periodic_xy

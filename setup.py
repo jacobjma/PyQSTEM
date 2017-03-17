@@ -27,7 +27,7 @@ sources+=['pyqstem/qstem_interface.pyx','pyqstem/QSTEM.cpp']
 
 setup(name='qstem',
         packages = find_packages(),
-      ext_modules=cythonize(Extension('qstem_interface',
+      ext_modules=cythonize(Extension('pyqstem.qstem_interface',
                     sources=sources,
                     library_dirs=library_dirs,
                     libraries=libraries,

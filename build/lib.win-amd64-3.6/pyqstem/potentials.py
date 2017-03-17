@@ -1,4 +1,5 @@
 import numpy as np
+from .wave import Potential
 
 def poisson_solver(rho,atoms,smooth=0,units='QSTEM'):
     Lx,Ly,Lz = np.diag(atoms.get_cell())
@@ -46,7 +47,7 @@ def poisson_solver(rho,atoms,smooth=0,units='QSTEM'):
 
     return V
 
-def create_slices(V,n,Lz,nonneg=True):
+def create_potential_slices(V,n,box,nonneg=True):
     Nz=V.shape[2]
 
     if n<1:
@@ -55,15 +56,17 @@ def create_slices(V,n,Lz,nonneg=True):
     if Nz%n!=0:
         raise RuntimeError('V.shape[2] is not divisible by n ({0} % {1} != 0)'.format(Nz,n))
 
-
     V_slices=np.zeros(V.shape[:2]+(n,))
 
-    dz=Lz/float(Nz)
-    nz=Nz/n
+    dz=box[2]/float(Nz)
+    nz=int(Nz/n)
     for i in range(n):
         V_slices[:,:,i]=np.trapz(V[:,:,i*nz:(i+1)*nz+1],dx=dz,axis=2)
 
     if nonneg:
         V_slices=V_slices-V_slices.min()
 
-    return V_slices
+    sampling = (box[0]/V_slices.shape[0],box[1]/V_slices.shape[1],box[2]/n)
+    potential = Potential(V_slices,sampling)
+
+    return potential

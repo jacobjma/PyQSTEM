@@ -3,11 +3,11 @@ from libcpp.vector cimport vector
 import numpy as np
 from collections import OrderedDict
 import matplotlib.pyplot as plt
-from pyqstem.wave import Wave, Potential
-from pyqstem.util import atoms_plot
 from libcpp.unordered_map cimport unordered_map
 from libcpp.pair cimport pair
 from libcpp.string cimport string
+from .wave import Wave, Potential
+from .util import atoms_plot
 
 TOL=1e-6
 
@@ -34,14 +34,14 @@ cdef extern from "QSTEM.h" namespace "shapes":
         void get_energy(float*)
         void get_potential_extent(float*,float*,float*,float*)
 
-        void build_potential(int,int,int)
+        void build_potential(int)
         void set_potential(vector[vector[vector[vector[double]]]] &,vector[int] &,vector[double] &)
         vector[vector[vector[vector[double]]]] get_potential_or_transfunc(float*,float*,float*)
         void calculate_transfunc()
 
         void set_scan_range(float,float,int,float,float,int)
-        void build_wave(int,float)
-        void build_probe(float,float,float,float,int,int,unordered_map[string,float])
+        void build_wave(int,float,int,int,float,float)
+        void build_probe(float,float,int,int,float,float,unordered_map[string,float])
         void set_wave(vector[vector[vector[double]]],int,int,float)
         vector[vector[vector[double]]] get_wave(float*,float*,float*)
 
@@ -86,7 +86,6 @@ cdef class PyQSTEM:
 
     _detectors=OrderedDict()
 
-
     def __dealloc__(self):
         del self.thisptr
 
@@ -99,6 +98,7 @@ cdef class PyQSTEM:
         occ=[1.]*len(atoms)
         q=[0.]*len(atoms)
         Znum=atoms.get_atomic_numbers()
+
         if set_box:
             box=np.diag(atoms.get_cell())
             self.set_box(box)
@@ -108,7 +108,19 @@ cdef class PyQSTEM:
         if self.thisptr.trans_array_state >= 1:
             self.thisptr.trans_array_state = -1
 
-    def set_box(self,box,nonperiodic_xy=True,nonperiodic_z=True,cell_div=1):
+    def set_box(self,box,periodic_xy=None,periodic_z=False,cell_div=1):
+        if ((self.thisptr.mode == 'STEM')&(periodic_xy==True)):
+            raise RuntimeError('Periodic boundary conditions not implemented for mode {0}'.format(self.thisptr.mode))
+
+        if periodic_xy is None:
+            if self.thisptr.mode == 'STEM':
+                periodic_xy = False
+            elif self.thisptr.mode == 'TEM':
+                periodic_xy = True
+
+        nonperiodic_xy = not periodic_xy
+        nonperiodic_z = not periodic_z
+
         self.thisptr.set_box(box,nonperiodic_xy,nonperiodic_z,cell_div)
         self.thisptr.box_state = 1
         if self.thisptr.trans_array_state >= 1:
@@ -163,8 +175,8 @@ cdef class PyQSTEM:
         scan_range=self.get_scan_range()
         potential_extent=self.get_potential_extent()
         potential_samples=self.get_potential_samples()
-        atoms_plot(self._atoms,scan_range=scan_range,potential_extent=potential_extent,ax=ax,legend=True)
-        plt.show()
+        probe_extent=self.get_minimum_potential_extent()
+        atoms_plot(self._atoms,scan_range=scan_range,potential_extent=potential_extent,probe_extent=probe_extent,ax=ax,legend=True)
 
     def build_potential(self,num_slices,scan_range=None,num_samples=None):
         if self.thisptr.mode == 'STEM':
@@ -173,15 +185,12 @@ cdef class PyQSTEM:
             else:
                 self.set_scan_range(scan_range)
 
-        #if ((self.thisptr.atoms_state==0)|(self.thisptr.box_state==0)):
-        #    raise RuntimeError('Please set atoms and simulation box')
+        if ((self.thisptr.atoms_state==0)|(self.thisptr.box_state==0)):
+            raise RuntimeError('Please set atoms and simulation box')
 
         #nx_old,ny_old,slices_old = self.get_numsamples()
 
-        if num_samples is None:
-            self.thisptr.build_potential(num_slices,-1,-1)
-        else:
-            self.thisptr.build_potential(num_slices,num_samples[0],num_samples[1])
+        self.thisptr.build_potential(num_slices)
 
         self.thisptr.trans_array_state = 1
 
@@ -275,18 +284,18 @@ cdef class PyQSTEM:
             else:
                 aberrations_map[symbol] = 0.
 
-        self.thisptr.build_probe(v0,alpha,resolution[0],resolution[1],num_samples[0],num_samples[1],aberrations_map)
+        self.thisptr.build_probe(v0,alpha,num_samples[0],num_samples[1],resolution[0],resolution[1],aberrations_map)
         self.thisptr.wave_state = 1
 
-    def build_wave(self,type,v0):
-
-        if self.thisptr.trans_array_state<=0:
-            raise RuntimeError('Create potential before building the wave function')
+    def build_wave(self,type,v0,num_samples,resolution=None):
 
         if type=='plane': type=0
         old_v0 = self.get_energy()
 
-        self.thisptr.build_wave(type,v0)
+        if resolution is None:
+            resolution = [-1,-1]
+
+        self.thisptr.build_wave(type,v0,num_samples[0],num_samples[1],resolution[0],resolution[1])
 
         self.thisptr.wave_state = 1
         if self.thisptr.trans_array_state == 2:
@@ -344,7 +353,7 @@ cdef class PyQSTEM:
         if not self._detectors[name][0]:
             raise RuntimeError('Detector {0} is empty, add the detector before running'.format(name))
 
-        img = np.array(self.thisptr.read_detector(self._detectors.keys().index(name)))
+        img = np.array(self.thisptr.read_detector(list(self._detectors.keys()).index(name)))
         img*=dwell_time*current/1.6021773e-4
 
         return img
@@ -361,22 +370,22 @@ cdef class PyQSTEM:
         elif self.thisptr.trans_array_state==-2:
             raise RuntimeError('The transmission function energy does not match wavefunction')
 
-        pot_ext = self.get_potential_extent()
-        min_pot_ext = self.get_minimum_potential_extent()
-
-        if ((pot_ext[0]-min_pot_ext[0]>TOL)|(min_pot_ext[1]-pot_ext[1]>TOL)|
-            (pot_ext[2]-min_pot_ext[2]>TOL)|(min_pot_ext[3]-pot_ext[3]>TOL)):
-            raise RuntimeError('The potential is too small to accomodate the probe size for the chosen scan range')
-
         cdef unordered_map[string, vector[double]] detector_map
 
         if self.thisptr.mode == 'STEM':
+            pot_ext = self.get_potential_extent()
+            min_pot_ext = self.get_minimum_potential_extent()
+
+            if ((pot_ext[0]-min_pot_ext[0]>TOL)|(min_pot_ext[1]-pot_ext[1]>TOL)|
+                (pot_ext[2]-min_pot_ext[2]>TOL)|(min_pot_ext[3]-pot_ext[3]>TOL)):
+                raise RuntimeError('The potential is too small to accomodate the probe size for the chosen scan range')
+
             properties=[]
             for name,values in self._detectors.items():
                 values[0]=True
                 properties.append(values[1:])
 
-            names = self._detectors.keys()
+            names = [name.encode('utf-8') for name in self._detectors.keys()]
             self.thisptr.create_detectors(names,properties,len(self._detectors))
 
         if display_progress_interval is None:

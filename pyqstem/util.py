@@ -65,7 +65,7 @@ def spatial_frequencies(shape,sampling,return_polar=False,return_nyquist=False,w
 
     return ret
 
-def atoms_plot(atoms,direction=2,ax=None,scan_range=None,potential_extent=None,s=40,boundary=1,legend=False):
+def atoms_plot(atoms,direction=2,ax=None,scan_range=None,potential_extent=None,probe_extent=None,s=40,boundary=1,scale_atoms=1,legend=False):
 
     if not np.allclose(atoms.get_cell(), np.diag(np.diag(atoms.get_cell()))):
         warnings.warn("Ignoring non-diagonal components of unit cell")
@@ -83,22 +83,40 @@ def atoms_plot(atoms,direction=2,ax=None,scan_range=None,potential_extent=None,s
     direction_sort=np.argsort(-atoms.get_positions()[:,direction])
     atoms=atoms[direction_sort]
 
+    positions=atoms.get_positions()[:,axes]
+
     cell=atoms.get_cell()[axes,axes]
 
     if ax is None:
         fig, ax = plt.subplots()
 
     handles={}
-    for atom in atoms:
-        handles[atom.symbol]=ax.add_artist(Circle(xy=(atom.x, atom.y), color=cpk_colors[atom.number], radius=covalent_radii[atom.number],
-                        zorder=0,label=atom.symbol))
-    if legend:
-        plt.legend(handles=list(handles.values()))
+    for atom,pos in zip(atoms,positions):
+        handles[atom.symbol]=ax.add_artist(Circle(xy=(pos[0], pos[1]), facecolor=cpk_colors[atom.number], radius=scale_atoms*covalent_radii[atom.number],
+                        zorder=0,label=atom.symbol,lw=1,edgecolor='k'))
+
+    handles = list(handles.values())
+
+    if potential_extent is not None:
+        handles.append(ax.add_patch(patches.Rectangle((potential_extent[0],potential_extent[2]),
+                potential_extent[1]-potential_extent[0],potential_extent[3]-potential_extent[2],
+                alpha=0.2,color='g',linewidth=None,zorder=1,label='potential extent')))
+        ax.add_patch(patches.Rectangle((potential_extent[0],potential_extent[2]),
+                potential_extent[1]-potential_extent[0],potential_extent[3]-potential_extent[2],
+                linestyle='dashed',linewidth=1,fill=False,zorder=1))
+
+    if probe_extent is not None:
+        handles.append(ax.add_patch(patches.Rectangle((probe_extent[0],probe_extent[2]),
+                probe_extent[1]-probe_extent[0],probe_extent[3]-probe_extent[2],
+                alpha=0.2,color='b',linewidth=None,zorder=1,label='probe max extent')))
+        ax.add_patch(patches.Rectangle((probe_extent[0],probe_extent[2]),
+                probe_extent[1]-probe_extent[0],probe_extent[3]-probe_extent[2],
+                linestyle='dashed',linewidth=1,fill=False,zorder=1))
 
     if scan_range is not None:
-        ax.add_patch(patches.Rectangle((scan_range[0][0],scan_range[1][0]),
+        handles.append(ax.add_patch(patches.Rectangle((scan_range[0][0],scan_range[1][0]),
                 scan_range[0][1]-scan_range[0][0],scan_range[1][1]-scan_range[1][0],
-                alpha=0.2,color='coral',linewidth=None,zorder=3))
+                alpha=0.2,color='r',linewidth=None,zorder=3,label='scan range')))
         ax.add_patch(patches.Rectangle((scan_range[0][0],scan_range[1][0]),
                 scan_range[0][1]-scan_range[0][0],scan_range[1][1]-scan_range[1][0],
                 linestyle='dashed',linewidth=1,fill=False,zorder=3))
@@ -109,13 +127,8 @@ def atoms_plot(atoms,direction=2,ax=None,scan_range=None,potential_extent=None,s
         for i in range(1,scan_range[1][2]):
             ax.plot([scan_range[0][0],scan_range[0][1]],[scan_range[1][0]+i*dy]*2,'k-',alpha=.4,zorder=2)
 
-    if potential_extent is not None:
-        ax.add_patch(patches.Rectangle((potential_extent[0],potential_extent[2]),
-                potential_extent[1]-potential_extent[0],potential_extent[3]-potential_extent[2],
-                alpha=0.2,color='springgreen',linewidth=None,zorder=1))
-        ax.add_patch(patches.Rectangle((potential_extent[0],potential_extent[2]),
-                potential_extent[1]-potential_extent[0],potential_extent[3]-potential_extent[2],
-                linestyle='dashed',linewidth=1,fill=False,zorder=1))
+    if legend:
+        ax.legend(handles=handles)
 
     ax.plot([0,0,cell[0],cell[0],0],[0,cell[1],cell[1],0,0],'k',linewidth=1.5)
     ax.axis('equal')

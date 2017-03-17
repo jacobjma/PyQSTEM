@@ -406,6 +406,7 @@ void make3DSlices(MULS *muls,int nlayer,char *fileIn,atom *center) {
 	float *potPtr=NULL, *ptr;
 	static int divCount = 0;
 	static real **tempPot = NULL;
+	/*
 #if FLOAT_PRECISION == 1
 	static fftwf_complex ***oldTrans = NULL;
 	static fftwf_complex ***oldTrans0 = NULL;
@@ -413,6 +414,7 @@ void make3DSlices(MULS *muls,int nlayer,char *fileIn,atom *center) {
 	static fftw_complex ***oldTrans = NULL;
 	static fftw_complex ***oldTrans0 = NULL;
 #endif
+*/
 	ImageIOPtr imageIO = ImageIOPtr(new CImageIO(muls->potNx,muls->potNy,
 				muls->sliceThickness,muls->resolutionX,muls->resolutionY));
 	fftw_complex dPot;
@@ -428,6 +430,7 @@ void make3DSlices(MULS *muls,int nlayer,char *fileIn,atom *center) {
 		exit(0);
 	}
 
+/*
 	if (oldTrans0 == NULL) {
 #if FLOAT_PRECISION == 1
 		oldTrans0 = (fftwf_complex ***)fftw_malloc(nlayer * sizeof(fftwf_complex**));
@@ -442,7 +445,7 @@ void make3DSlices(MULS *muls,int nlayer,char *fileIn,atom *center) {
 	}
 	if (oldTrans != muls->trans)
 		printf("Warning: Transmission function pointer has changed!\n");
-
+*/
 	/* return, if there is nothing to do */
 	if (nlayer <1)
 		return;
@@ -587,11 +590,13 @@ void make3DSlices(MULS *muls,int nlayer,char *fileIn,atom *center) {
 	/*******************************************************
 	* initializing slicPos, cz, and transr
 	*************************************************************/
+	/*
 	if (oldTrans0[0] != muls->trans[0]) {
 		printf("Warning: transmision array pointers have changed!\n");
 		for (i=0;i<nlayer;i++)
 			muls->trans[i] = oldTrans0[i];
 	}
+	*/
 	/*
 	if (oldTrans0[0][0] != muls->trans[0][0]) {
 	printf("Warning: transmision array pointers have changed!\n");
@@ -625,6 +630,7 @@ void make3DSlices(MULS *muls,int nlayer,char *fileIn,atom *center) {
 		}
 		slicePos[i] = slicePos[i-1]+(*muls).cz[i-1]/2.0+(*muls).cz[i]/2.0;
 	}
+	printf("%f \n\n",(*muls).cz[0]);
 
 	memset(muls->trans[0][0],0,nlayer*nx*ny*sizeof(fftwf_complex));
 	/* check whether we have constant slice thickness */
@@ -2429,10 +2435,10 @@ int runMulsSTEM(MULS *muls, WavePtr wave) {
 
 			collectIntensity(muls, wave, muls->totalSliceCount+islice*(1+mRepeat));
 
-			if (muls->mode != STEM) {
+			//if (muls->mode != STEM) {
 				/* write pendelloesung plots, if this is not STEM */
-				writeBeams(muls,wave,islice, absolute_slice);
-			}
+			//	writeBeams(muls,wave,islice, absolute_slice);
+			//}
 
 			// go back to real space:
 #if FLOAT_PRECISION == 1
@@ -2478,7 +2484,7 @@ int runMulsSTEM(MULS *muls, WavePtr wave) {
 				// TODO (MCS 2013/04): this restructure probably broke this file saving -
 				//   need to rewrite a function to save things for TEM/CBED?
 				// This used to call interimWave(muls,wave,muls->totalSliceCount+islice*(1+mRepeat));
-				interimWave(muls,wave,absolute_slice*(1+mRepeat));
+				// interimWave(muls,wave,absolute_slice*(1+mRepeat));
 				collectIntensity(muls,wave,absolute_slice*(1+mRepeat));
 			}
 		} /* end for(islice...) */
@@ -2763,12 +2769,12 @@ void propagate_slow(void **w,int nx, int ny,MULS *muls)
 	int ixa, iya;
 	real wr, wi, tr, ti,ax,by;
 	real scale,t,dz;
-	static real dzs=0;
-	static real *propxr=NULL,*propyr=NULL;
-	static real *propxi=NULL,*propyi=NULL;
-	static real *kx2,*ky2;
-	static real *kx,*ky;
-	static real k2max=0,wavlen;
+	real dzs=0;
+	real *propxr=NULL,*propyr=NULL;
+	real *propxi=NULL,*propyi=NULL;
+	real *kx2,*ky2;
+	real *kx,*ky;
+	real k2max=0,wavlen;
 #if FLOAT_PRECISION == 1
 	fftwf_complex **wave;
 	wave = (fftwf_complex **)w;
@@ -2868,6 +2874,7 @@ only waver,i will be changed by this routine
 void transmit(void **wave, void **trans,int nx, int ny,int posx,int posy) {
 	int ix, iy;
 	double wr, wi, tr, ti;
+
 #if FLOAT_PRECISION == 1
 	fftwf_complex **w, **t;
 	w = (fftwf_complex **)wave;
@@ -2883,6 +2890,7 @@ void transmit(void **wave, void **trans,int nx, int ny,int posx,int posy) {
 		wi = w[ix][iy][1];
 		tr = t[ix+posx][iy+posy][0];
 		ti = t[ix+posx][iy+posy][1];
+
 		w[ix][iy][0] = wr*tr - wi*ti;
 		w[ix][iy][1] = wr*ti + wi*tr;
 	} /* end for(iy.. ix .) */

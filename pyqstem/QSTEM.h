@@ -32,15 +32,15 @@ namespace shapes {
         void get_energy(float* energy);
 
         void allocate_potential();
-        void build_potential(int slices,int nx,int ny);
+        void build_potential(int slices);
         void set_potential(const std::vector< std::vector< std::vector< std::vector<double> > > > & potential,
                 const std::vector<int> & size, const std::vector<double> & extent);
         std::vector <std::vector <std::vector <std::vector <double> > > >get_potential_or_transfunc(float * resolutionX,float* resolutionY,float* sliceThickness);
 
         void calculate_transfunc();
         void set_scan_range(float scanXStart,float scanXStop,int scanXN,float scanYStart,float scanYStop,int scanYN);
-        void build_wave(int type,float v0);
-        void build_probe(float v0,float alpha,float resolutionX,float resolutionY,int nx,int ny,std::unordered_map<std::string,float> abberations);
+        void build_wave(int type,float v0,int nx,int ny,float resolutionX,float resolutionY);
+        void build_probe(float v0,float alpha,int nx,int ny,float resolutionX,float resolutionY,std::unordered_map<std::string,float> abberations);
         void set_wave(std::vector <std::vector <std::vector <double> > >wave,int nx,int ny,float v0);
         std::vector <std::vector <std::vector <double> > > get_wave(float * resolutionX,float* resolutionY,float *v0);
         //void create_detector(std::string name,float rInside,float rOutside,float shiftX,float shiftY,int detectorNum);

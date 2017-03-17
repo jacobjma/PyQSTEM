@@ -1,1 +1,2 @@
-from qstem_interface import PyQSTEM
+#import qstem_interface
+from pyqstem.qstem_interface import PyQSTEM

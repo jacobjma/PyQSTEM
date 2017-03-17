@@ -20,3 +20,7 @@ source/memory_fftw3.cpp
 source/readparams.cpp
 source/stemlib.cpp
 source/stemutil.cpp
+test/test_stem.py
+test/test_stem_dft.py
+test/test_tem.py
+test/test_tem_dft.py
