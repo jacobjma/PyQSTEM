@@ -25,9 +25,50 @@ Optional:
 
 ## Building from Source
 ### Linux
-Nothing here yet.
-### Mac
-Nothing here yet.
+
+#### Install Python
+The easiest way to get started with Python is downloading a bundle installer. We recommend Anaconda, this platform includes Python and makes it easier to install the dependencies. Download and install [Anaconda](https://www.continuum.io/downloads).
+
+#### Compile and Install FFTW libraries
+Download and untar the latest source from http://www.fftw.org/download.html.
+```
+wget http://www.fftw.org/fftw-3.3.6-pl1.tar.gz
+tar -zxvf fftw-3.3.6-pl1.tar.gz
+```
+Configure to enable shared libraries and set the prefix to where you want the libraries installed, then compile and install
+```
+cd fftw-3.3.6-pl1
+./configure --prefix=$HOME/lib --enable-shared
+make install
+```
+We also need a single-precison version of FFTW, so do the same thing with `--enable-float`
+```
+./configure --enable-shared --enable-float
+make install
+```
+Make sure that the libraries can be found by adding their path to the `LIBRARY_PATH` variable.
+```
+export LIBRARY_PATH=$HOME/usr/lib:$LIBRARY_PATH
+```
+#### Install dependencies
+Install ASE and cython
+```
+pip install ase
+conda install cython
+conda install libgcc
+```
+The other required dependencies should be included with Anaconda, otherwise install them using `pip`.
+#### Install PyQSTEM
+When the dependencies are installed, download, compile and install PyQSTEM by writing.
+```
+git clone 
+cd pyqstem
+python setup.py install
+```
+You will get some warnings which can be ignored.
+
+QSTEM is now ready to be used from Python. We recommend that you start by testing one of the interactive notebooks included under pyqstem/examples.
+
 ### Windows
 #### Install Python
 The easiest way to get started with Python is downloading a bundle installer. We recommend Anaconda, this platform includes Python and makes it easier to install the dependencies. Download and install [Anaconda](https://www.continuum.io/downloads).
