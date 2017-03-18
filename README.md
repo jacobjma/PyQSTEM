@@ -54,10 +54,12 @@ export LIBRARY_PATH=$HOME/usr/lib:$LIBRARY_PATH
 Install ASE and cython
 ```
 pip install ase
-conda install cython
+pip install cython
+```
+The other required dependencies should be included with Anaconda, otherwise install them using `pip`. If your are using Anaconda you should ensure that standard libraries are available by writing
+```
 conda install libgcc
 ```
-The other required dependencies should be included with Anaconda, otherwise install them using `pip`.
 #### Install PyQSTEM
 When the dependencies are installed, download, compile and install PyQSTEM by writing.
 ```
