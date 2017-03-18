@@ -538,11 +538,11 @@ void make3DSlices(MULS *muls,int nlayer,char *fileIn,atom *center) {
 		// Ok, and cfgFile is not set before here...  Look at Muls and see if there's been some variable confusion
 
 
-		printf( "DEBUG: stemlib::make3Dslices : muls.cfgFile = %s \n", muls->cfgFile );
+		//printf( "DEBUG: stemlib::make3Dslices : muls.cfgFile = %s \n", muls->cfgFile );
 
 		qsort(atoms,natom,sizeof(atom),atomCompare);
 
-
+		/*
 		if ((*muls).cfgFile != NULL)
 		{
 			sprintf(buf,"%s/%s",muls->folder,muls->cfgFile);
@@ -561,12 +561,12 @@ void make3DSlices(MULS *muls,int nlayer,char *fileIn,atom *center) {
 				system(buf);
 			}
 		}
+		*/
 	} /* end of if divCount==cellDiv-1 ... */
 	else {
 		natom = muls->natom;
 		atoms = muls->atoms;
 	}
-
 	/**************************************************************
 	*	setup the slices with their start and end positions
 	*	then loop through all the atoms and add their potential to
@@ -630,7 +630,6 @@ void make3DSlices(MULS *muls,int nlayer,char *fileIn,atom *center) {
 		}
 		slicePos[i] = slicePos[i-1]+(*muls).cz[i-1]/2.0+(*muls).cz[i]/2.0;
 	}
-	printf("%f \n\n",(*muls).cz[0]);
 
 	memset(muls->trans[0][0],0,nlayer*nx*ny*sizeof(fftwf_complex));
 	/* check whether we have constant slice thickness */
@@ -1391,7 +1390,7 @@ fftwf_complex *getAtomPotential3D(int Znum, MULS *muls,double B,int *nzSub,int *
 		kmax2 = 0.5*nx*dkx/(double)OVERSAMP_X;  // largest k that we'll admit
 		smax2 = kmax2;
 
-		printf("dkx = %g, nx = %d, kmax2 = %g\n",dkx,nx,kmax2);
+		//printf("dkx = %g, nx = %d, kmax2 = %g\n",dkx,nx,kmax2);
 		if (muls->printLevel > 1) printf("Cutoff scattering angle: kmax=%g (1/A), dk=(%g,%g %g)\n",kmax2,dkx,dky,dkz);
 		scatPar[0][N_SF-1] = 1.2*smax2;
 		scatPar[0][N_SF-2] = 1.1*smax2;

@@ -31,19 +31,9 @@ potential = qstem.get_potential_or_transfunc()
 potential.view(method='real')
 plt.show()
 
-print(potential.array.shape)
-
 qstem.run()
 
-#potential.view()
-#plt.show()
-
-#print("sss")
-#qstem.run()
-
-#print("sss")
-
 wave = qstem.get_wave()
-#print (wave.array)
+
 wave.view()
 plt.show()
