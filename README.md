@@ -141,7 +141,7 @@ FFTW is installed with Homebrew, the rest with pip.
 brew install fftw
 pip install numpy scipy matplotlib ase
 pip install cython jupyter scikit-image
-
+```
 #### Install PyQSTEM
 When the dependencies are installed, download, compile and install PyQSTEM by writing.
 ```
