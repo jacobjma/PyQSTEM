@@ -231,7 +231,11 @@ cdef class PyQSTEM:
             raise RuntimeError('A potential have not been build')
         else:
             trans_array = self.thisptr.get_potential_or_transfunc(&resolutionX,&resolutionY,&sliceThickness)
-            trans_array = np.apply_along_axis(lambda args: [complex(*args)], 3, trans_array)[:,:,:,0]
+            #trans_array = np.apply_along_axis(lambda args: [complex(*args)], 3, trans_array)[:,:,:,0]
+            trans_array_noncplx = np.array(trans_array)
+            trans_array = np.empty(trans_array_noncplx.shape[:-1], dtype=np.complex)
+            trans_array.real = trans_array_noncplx[...,0]
+            trans_array.imag = trans_array_noncplx[...,1]
             potential_extent = self.get_potential_extent()
             return Potential(trans_array,(resolutionX,resolutionY,sliceThickness),
                               offset=(potential_extent[0],potential_extent[2],0))
