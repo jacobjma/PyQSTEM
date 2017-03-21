@@ -26,39 +26,12 @@ Optional:
 ## Building from Source
 ### Linux
 
-#### Install Python
-If you are new to Python the easiest way to get started is downloading a bundle installer. We recommend Anaconda, this platform includes Python and makes it easier to install the dependencies. Download and install [Anaconda](https://www.continuum.io/downloads).
-
-#### Compile and Install FFTW libraries
-Download and untar the latest source from http://www.fftw.org/download.html.
-```
-wget http://www.fftw.org/fftw-3.3.6-pl1.tar.gz
-tar -zxvf fftw-3.3.6-pl1.tar.gz
-```
-Configure to enable shared libraries and set the prefix to where you want the libraries installed, then compile and install
-```
-cd fftw-3.3.6-pl1
-./configure --prefix=$HOME/lib --enable-shared
-make install
-```
-We also need a single-precison version of FFTW, so do the same thing with `--enable-float`
-```
-./configure --prefix=$HOME/lib --enable-shared --enable-float
-make install
-```
-Make sure that the libraries can be found by adding their path to the `LIBRARY_PATH` variable.
-```
-export LIBRARY_PATH=$HOME/usr/lib:$LIBRARY_PATH
-```
 #### Install dependencies
-Install ASE and cython
+FFTW is installed with apt-get, the rest with pip.
 ```
-pip install ase
-pip install cython
-```
-The other required dependencies should be included with Anaconda, otherwise install them using `pip`. If your are using Anaconda you should ensure that standard libraries are available by writing
-```
-conda install libgcc
+sudo apt-get install libfftw3-dev libfftw3-single3
+pip install numpy scipy matplotlib ase
+pip install cython jupyter scikit-image
 ```
 #### Install PyQSTEM
 When the dependencies are installed, download, compile and install PyQSTEM by writing.
@@ -68,58 +41,13 @@ cd pyqstem
 python setup.py install
 ```
 You might get some warnings which can be ignored.
-
-QSTEM is now ready to be used from Python. We recommend that you start by testing one of the interactive notebooks included under pyqstem/examples.
-
-### Windows
-#### Install Python
-If you are new to Python the easiest way to get started is downloading a bundle installer. We recommend Anaconda, this platform includes Python and makes it easier to install the dependencies. Download and install [Anaconda](https://www.continuum.io/downloads).
-
-#### Install a C-compiler
-Compiling C++-extensions on Windows for Python 3.5 requires Microsoft Visual C++ 14.0 or later, this also works for earlier versions of Python. Download and install [Visual C++ 2015 Build Tools](http://landinghub.visualstudio.com/visual-cpp-build-tools), this requires 4 gb of free space and may take 20 minutes to install.
-
-Alternatively and only if you are using Python 2.7, you can install [TDM-GCC](http://tdm-gcc.tdragon.net/) and in the Anaconda prompt write 
-```
-conda install mingw libpython
-```
-Don't do this if you are using Visual C++.
-
-#### FFTW
-Precompiled libraries for [FFTW 3.3.5](http://www.fftw.org/install/windows.html) are included for both 32 and 64-bit Windows. You should not have to do anything.
-
-#### Install dependencies
-When Anaconda and a C++-compiler is installed, open the `Anaconda prompt`, and type the following commands to install ASE and cython:
-```
-pip install ase
-conda install cython
-```
-The other required dependencies should be included with Anaconda, otherwise install them using `pip`.
-
-#### Install PyQSTEM
-When the dependencies are installed, download, compile and install PyQSTEM by writing.
-```
-git clone https://github.com/jacobjma/PyQSTEM.git
-cd pyqstem
-python setup.py install
-```
-You might get some warnings which can be ignored.
-
-QSTEM is now ready to be used from Python. We recommend that you start by testing one of the interactive notebooks included under pyqstem/examples.
-
 
 ### Mac OS X
-
-Mac OS X comes with Python included, but installing packages into OS
-X's own Python is risky, as cleaning up a mess is almost impossible.
-For this reason, it is recommended to either install Python with
-Homebrew, or to install the Anaconda distribution.  This guide uses
-homebrew's Python, as you will need to install a number of other
-packages with Homebrew anyway.
+Mac OS X comes with Python included, but installing packages into OS X's own Python is risky, as cleaning up a mess is almost impossible. For this reason, it is recommended to either install Python with Homebrew, or to install the Anaconda distribution.  This guide uses homebrew's Python, as you will need to install a number of other packages with Homebrew anyway.
 
 #### Install Homebrew
 
-Install Homebrew following the instructions on the (Homebrew web
-site)[https://brew.sh/].
+Install Homebrew following the instructions on the (Homebrew website)[https://brew.sh/].
 
 #### Install Python with homebrew.
 
@@ -131,8 +59,7 @@ or if you want Python 3 with
 ```
 brew install python3
 ```
-Please double-check that you get the version of `python` and `pip`
-installed in /usr/local/bin, and not the default one in /usr/bin.
+Please double-check that you get the version of `python` and `pip` installed in /usr/local/bin, and not the default one in /usr/bin.
 
 #### Install dependencies
 
@@ -151,4 +78,36 @@ python setup.py install
 ```
 You might get some warnings which can be ignored.
 
-QSTEM is now ready to be used from Python. We recommend that you start by testing one of the interactive notebooks included under pyqstem/examples.
+### Windows
+#### Install Python
+If you are new to Python the easiest way to get started is downloading a bundle installer. We recommend Anaconda, this platform includes Python and makes it easier to install the dependencies. Download Anaconda for [here](https://www.continuum.io/downloads).
+
+#### Install a C-compiler
+Compiling C++-extensions for Python 3.5 on Windows requires Microsoft Visual C++ 14.0 or later. Download Visual C++ 2015 Build Tools from [here](http://landinghub.visualstudio.com/visual-cpp-build-tools), this requires 4 gb of free space and may take 20 minutes to install.
+
+Alternatively and only if you are using Python 2.7, you can install [TDM-GCC](http://tdm-gcc.tdragon.net/) and in the Anaconda prompt write 
+```
+conda install mingw libpython
+```
+But don't do this if you are using Visual C++.
+
+#### FFTW
+Precompiled libraries for [FFTW 3.3.5](http://www.fftw.org/install/windows.html) are included for both 32 and 64-bit Windows. You should not have to do anything.
+
+#### Install dependencies
+When Anaconda and a C++-compiler is installed, open the `Anaconda prompt`, and type the following commands to install ASE and cython:
+```
+pip install numpy matplotlib ase
+conda install cython scipy jupyter scikit-image
+```
+The other required dependencies should be included with Anaconda, otherwise install them using `pip`.
+
+#### Install PyQSTEM
+When the dependencies are installed, download, compile and install PyQSTEM by writing.
+```
+git clone https://github.com/jacobjma/PyQSTEM.git
+cd pyqstem
+python setup.py install
+```
+You might get some warnings which can be ignored.
+
