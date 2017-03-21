@@ -293,20 +293,19 @@ cdef class PyQSTEM:
         self.thisptr.build_probe(v0,alpha,num_samples[0],num_samples[1],resolution[0],resolution[1],aberrations_map)
         self.thisptr.wave_state = 1
 
-    def build_wave(self,str type,v0,num_samples,resolution=None):
+    def build_wave(self,str wave_type,v0,num_samples,resolution=None):
 
-        if isinstance(type, unicode):
-            c_mode = type.encode('UTF-8')
+        if wave_type=='plane':
+            wave_type_int=0
         else:
-            c_mode = type
+            raise RuntimeError('Wave type {0} not recognized'.format(wave_type))
 
-        if type=='plane': type=0
         old_v0 = self.get_energy()
 
         if resolution is None:
             resolution = [-1,-1]
 
-        self.thisptr.build_wave(type,v0,num_samples[0],num_samples[1],resolution[0],resolution[1])
+        self.thisptr.build_wave(wave_type_int,v0,num_samples[0],num_samples[1],resolution[0],resolution[1])
 
         self.thisptr.wave_state = 1
         if self.thisptr.trans_array_state == 2:
