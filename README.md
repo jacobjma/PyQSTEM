@@ -105,3 +105,50 @@ python setup.py install
 You might get some warnings which can be ignored.
 
 QSTEM is now ready to be used from Python. We recommend that you start by testing one of the interactive notebooks included under pyqstem/examples.
+
+
+### Mac OS X
+
+Mac OS X comes with Python included, but installing packages into OS
+X's own Python is risky, as cleaning up a mess is almost impossible.
+For this reason, it is recommended to either install Python with
+Homebrew, or to install the Anaconda distribution.  This guide uses
+homebrew's Python, as you will need to install a number of other
+packages with Homebrew anyway.
+
+#### Install Homebrew
+
+Install Homebrew following the instructions on the (Homebrew web
+site)[https://brew.sh/].
+
+#### Install Python with homebrew.
+
+Install Homebrew's python with the command
+```
+brew install python
+```
+or if you want Python 3 with
+```
+brew install python3
+```
+Please double-check that you get the version of `python` and `pip`
+installed in /usr/local/bin, and not the default one in /usr/bin.
+
+#### Install dependencies
+
+FFTW is installed with Homebrew, the rest with pip.
+```
+brew install fftw
+pip install numpy scipy matplotlib ase
+pip install cython jupyter scikit-image
+
+#### Install PyQSTEM
+When the dependencies are installed, download, compile and install PyQSTEM by writing.
+```
+git clone https://github.com/jacobjma/PyQSTEM.git
+cd PyQSTEM
+python setup.py install
+```
+You might get some warnings which can be ignored.
+
+QSTEM is now ready to be used from Python. We recommend that you start by testing one of the interactive notebooks included under pyqstem/examples.

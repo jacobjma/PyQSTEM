@@ -56,11 +56,13 @@ cdef class PyQSTEM:
     cdef char* c_mode
 
     cdef QSTEM *thisptr      # hold a C++ instance which we're wrapping
-    def __cinit__(self, unicode mode):
+    def __cinit__(self, str mode):
         self._atoms=None
 
-        byte_mode = mode.encode('UTF-8')
-        c_mode = byte_mode
+        if isinstance(mode, unicode):
+            c_mode = mode.encode('UTF-8')
+        else:
+            c_mode = mode
 
         self.thisptr = new QSTEM(c_mode)
 
