@@ -63,7 +63,7 @@ conda install libgcc
 #### Install PyQSTEM
 When the dependencies are installed, download, compile and install PyQSTEM by writing.
 ```
-git clone 
+git clone https://github.com/jacobjma/PyQSTEM.git
 cd pyqstem
 python setup.py install
 ```
@@ -98,7 +98,7 @@ The other required dependencies should be included with Anaconda, otherwise inst
 #### Install PyQSTEM
 When the dependencies are installed, download, compile and install PyQSTEM by writing.
 ```
-git clone 
+git clone https://github.com/jacobjma/PyQSTEM.git
 cd pyqstem
 python setup.py install
 ```
