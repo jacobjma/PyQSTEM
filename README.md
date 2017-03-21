@@ -97,8 +97,8 @@ Precompiled libraries for [FFTW 3.3.5](http://www.fftw.org/install/windows.html)
 #### Install dependencies
 When Anaconda and a C++-compiler is installed, open the `Anaconda prompt`, and type the following commands to install ASE and cython:
 ```
-pip install ase
-conda install cython
+pip install numpy matplotlib ase
+conda install cython scipy jupyter scikit-image
 ```
 The other required dependencies should be included with Anaconda, otherwise install them using `pip`.
 
