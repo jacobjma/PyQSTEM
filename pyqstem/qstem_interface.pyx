@@ -293,7 +293,12 @@ cdef class PyQSTEM:
         self.thisptr.build_probe(v0,alpha,num_samples[0],num_samples[1],resolution[0],resolution[1],aberrations_map)
         self.thisptr.wave_state = 1
 
-    def build_wave(self,type,v0,num_samples,resolution=None):
+    def build_wave(self,str type,v0,num_samples,resolution=None):
+
+        if isinstance(type, unicode):
+            c_mode = type.encode('UTF-8')
+        else:
+            c_mode = type
 
         if type=='plane': type=0
         old_v0 = self.get_energy()
@@ -343,16 +348,17 @@ cdef class PyQSTEM:
 
         return Wave(wave_array,energy=v0,sampling=(resolutionX,resolutionY))
 
-    def add_detector(self,name,radii,shift=(0,0)):
+    def add_detector(self,str name,radii,shift=(0,0)):
         self._detectors[name]=[False,radii[0],radii[1],shift[0],shift[1]]
 
-    def remove_detector(self,name):
+    def remove_detector(self,str name):
       if name not in self._detectors.keys():
           raise RuntimeError('Detector name {0} not recognized'.format(name))
 
       del self._detectors[name]
 
-    def read_detector(self,name,dwell_time=1,current=1):
+    def read_detector(self,str name,dwell_time=1,current=1):
+
         if name not in self._detectors.keys():
             raise RuntimeError('Detector name {0} not recognized'.format(name))
 
