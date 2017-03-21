@@ -26,39 +26,12 @@ Optional:
 ## Building from Source
 ### Linux
 
-#### Install Python
-If you are new to Python the easiest way to get started is downloading a bundle installer. We recommend Anaconda, this platform includes Python and makes it easier to install the dependencies. Download and install [Anaconda](https://www.continuum.io/downloads).
-
-#### Compile and Install FFTW libraries
-Download and untar the latest source from http://www.fftw.org/download.html.
-```
-wget http://www.fftw.org/fftw-3.3.6-pl1.tar.gz
-tar -zxvf fftw-3.3.6-pl1.tar.gz
-```
-Configure to enable shared libraries and set the prefix to where you want the libraries installed, then compile and install
-```
-cd fftw-3.3.6-pl1
-./configure --prefix=$HOME/lib --enable-shared
-make install
-```
-We also need a single-precison version of FFTW, so do the same thing with `--enable-float`
-```
-./configure --prefix=$HOME/lib --enable-shared --enable-float
-make install
-```
-Make sure that the libraries can be found by adding their path to the `LIBRARY_PATH` variable.
-```
-export LIBRARY_PATH=$HOME/usr/lib:$LIBRARY_PATH
-```
 #### Install dependencies
-Install ASE and cython
+FFTW is installed with apt-get, the rest with pip.
 ```
-pip install ase
-pip install cython
-```
-The other required dependencies should be included with Anaconda, otherwise install them using `pip`. If your are using Anaconda you should ensure that standard libraries are available by writing
-```
-conda install libgcc
+sudo apt-get install libfftw3-dev libfftw3-single3
+pip install numpy scipy matplotlib ase
+pip install cython jupyter scikit-image
 ```
 #### Install PyQSTEM
 When the dependencies are installed, download, compile and install PyQSTEM by writing.
@@ -69,7 +42,41 @@ python setup.py install
 ```
 You might get some warnings which can be ignored.
 
-QSTEM is now ready to be used from Python. We recommend that you start by testing one of the interactive notebooks included under pyqstem/examples.
+### Mac OS X
+Mac OS X comes with Python included, but installing packages into OS X's own Python is risky, as cleaning up a mess is almost impossible. For this reason, it is recommended to either install Python with Homebrew, or to install the Anaconda distribution.  This guide uses homebrew's Python, as you will need to install a number of other packages with Homebrew anyway.
+
+#### Install Homebrew
+
+Install Homebrew following the instructions on the (Homebrew website)[https://brew.sh/].
+
+#### Install Python with homebrew.
+
+Install Homebrew's python with the command
+```
+brew install python
+```
+or if you want Python 3 with
+```
+brew install python3
+```
+Please double-check that you get the version of `python` and `pip` installed in /usr/local/bin, and not the default one in /usr/bin.
+
+#### Install dependencies
+
+FFTW is installed with Homebrew, the rest with pip.
+```
+brew install fftw
+pip install numpy scipy matplotlib ase
+pip install cython jupyter scikit-image
+```
+#### Install PyQSTEM
+When the dependencies are installed, download, compile and install PyQSTEM by writing.
+```
+git clone https://github.com/jacobjma/PyQSTEM.git
+cd PyQSTEM
+python setup.py install
+```
+You might get some warnings which can be ignored.
 
 ### Windows
 #### Install Python
@@ -104,51 +111,3 @@ python setup.py install
 ```
 You might get some warnings which can be ignored.
 
-QSTEM is now ready to be used from Python. We recommend that you start by testing one of the interactive notebooks included under pyqstem/examples.
-
-
-### Mac OS X
-
-Mac OS X comes with Python included, but installing packages into OS
-X's own Python is risky, as cleaning up a mess is almost impossible.
-For this reason, it is recommended to either install Python with
-Homebrew, or to install the Anaconda distribution.  This guide uses
-homebrew's Python, as you will need to install a number of other
-packages with Homebrew anyway.
-
-#### Install Homebrew
-
-Install Homebrew following the instructions on the (Homebrew web
-site)[https://brew.sh/].
-
-#### Install Python with homebrew.
-
-Install Homebrew's python with the command
-```
-brew install python
-```
-or if you want Python 3 with
-```
-brew install python3
-```
-Please double-check that you get the version of `python` and `pip`
-installed in /usr/local/bin, and not the default one in /usr/bin.
-
-#### Install dependencies
-
-FFTW is installed with Homebrew, the rest with pip.
-```
-brew install fftw
-pip install numpy scipy matplotlib ase
-pip install cython jupyter scikit-image
-```
-#### Install PyQSTEM
-When the dependencies are installed, download, compile and install PyQSTEM by writing.
-```
-git clone https://github.com/jacobjma/PyQSTEM.git
-cd PyQSTEM
-python setup.py install
-```
-You might get some warnings which can be ignored.
-
-QSTEM is now ready to be used from Python. We recommend that you start by testing one of the interactive notebooks included under pyqstem/examples.
