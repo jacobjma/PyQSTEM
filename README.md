@@ -43,7 +43,7 @@ make install
 ```
 We also need a single-precison version of FFTW, so do the same thing with `--enable-float`
 ```
-./configure --enable-shared --enable-float
+./configure --prefix=$HOME/lib --enable-shared --enable-float
 make install
 ```
 Make sure that the libraries can be found by adding their path to the `LIBRARY_PATH` variable.
