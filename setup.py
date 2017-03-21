@@ -20,6 +20,7 @@ elif get_build_platform() == 'win-amd64':
     library_dirs = ['fftw/win64']
     libraries = ['libfftw3-3', 'libfftw3f-3', 'libfftw3l-3']
 else:
+    library_dirs = []
     libraries = ['fftw3','fftw3f']
 
 sources = ['memory_fftw3.cpp','data_containers.cpp','imagelib_fftw3.cpp',
