@@ -11758,7 +11758,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[59]:</div>
+<div class="prompt input_prompt">In&nbsp;[1]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
@@ -11791,7 +11791,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[94]:</div>
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">epsilon0</span><span class="o">=</span><span class="mf">0.07957747154594767</span> <span class="c1"># permitivity of vacuum in atomic units</span>
@@ -11803,38 +11803,24 @@ div#notebook {
 </div>
 </div>
 
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt"></div>
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>density shape: (208, 208, 208)  potential shape: (200, 200, 200)
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
 </div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Single sodium atom in 5x5x5 Angstrom box</p>
+<p>Single sodium atom in 10x10x10 Angstrom box</p>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[95]:</div>
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">rho</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;Na_ae_density.npy&#39;</span><span class="p">)</span> <span class="c1"># all-electron density from GPAW using LDA</span>
-<span class="n">V</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;Na_ae_potential.npy&#39;</span><span class="p">)</span>
+<span class="n">V</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;Na_ae_potential.npy&#39;</span><span class="p">)</span> <span class="c1"># all-electron potential from GPAW using LDA</span>
 <span class="n">atoms</span><span class="o">=</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;Na.cif&#39;</span><span class="p">,</span><span class="n">index</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="c1"># atomic configuration</span>
 <span class="n">V</span><span class="o">=-</span><span class="n">V</span><span class="o">/</span><span class="n">factor</span>
 
@@ -11881,18 +11867,18 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Single caessium atom in 5x5x5 Angstrom box</p>
+<p>Single caessium atom in 10x10x10 Angstrom box</p>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[96]:</div>
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">rho</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;Cs_ae_density.npy&#39;</span><span class="p">)</span> <span class="c1"># all-electron density from GPAW using LDA</span>
-<span class="n">V</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;Cs_ae_potential.npy&#39;</span><span class="p">)</span>
+<span class="n">V</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;Cs_ae_potential.npy&#39;</span><span class="p">)</span> <span class="c1"># all-electron potential from GPAW using LDA</span>
 <span class="n">atoms</span><span class="o">=</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;Cs.cif&#39;</span><span class="p">,</span><span class="n">index</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="c1"># atomic configuration</span>
 <span class="n">V</span><span class="o">=-</span><span class="n">V</span><span class="o">/</span><span class="n">factor</span>
 
@@ -11918,7 +11904,153 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Plot comparison</p>
+<p>Plot comparison of projected potential (on same colorscale)</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[21]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">fig</span><span class="p">,(</span><span class="n">ax1</span><span class="p">,</span><span class="n">ax2</span><span class="p">,</span><span class="n">ax3</span><span class="p">)</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+
+<span class="n">ax1</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">trapz</span><span class="p">(</span><span class="n">V_dft_Cs</span><span class="o">.</span><span class="n">array</span><span class="o">.</span><span class="n">real</span><span class="p">[</span><span class="mi">80</span><span class="p">:</span><span class="mi">120</span><span class="p">,</span><span class="mi">80</span><span class="p">:</span><span class="mi">120</span><span class="p">,:],</span><span class="n">dx</span><span class="o">=</span><span class="n">Lz</span><span class="o">/</span><span class="n">Nz</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">2</span><span class="p">),</span><span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">vmax</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">trapz</span><span class="p">(</span><span class="n">V_charge_Cs</span><span class="o">.</span><span class="n">array</span><span class="o">.</span><span class="n">real</span><span class="p">[</span><span class="mi">84</span><span class="p">:</span><span class="mi">124</span><span class="p">,</span><span class="mi">84</span><span class="p">:</span><span class="mi">124</span><span class="p">,:],</span><span class="n">dx</span><span class="o">=</span><span class="n">Lz</span><span class="o">/</span><span class="mi">208</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">2</span><span class="p">),</span><span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">vmax</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
+<span class="n">ax3</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">trapz</span><span class="p">(</span><span class="n">V_qstem_Cs</span><span class="o">.</span><span class="n">array</span><span class="o">.</span><span class="n">real</span><span class="p">[</span><span class="mi">80</span><span class="p">:</span><span class="mi">120</span><span class="p">,</span><span class="mi">80</span><span class="p">:</span><span class="mi">120</span><span class="p">,:],</span><span class="n">dx</span><span class="o">=</span><span class="n">Lz</span><span class="o">/</span><span class="n">Nz</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">2</span><span class="p">),</span><span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">vmax</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">ax3</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt"></div>
+
+
+<div class="output_png output_subarea ">
+<img src="data:image/png;base64,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
+SQAAAABJRU5ErkJggg==
+"
+>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Slices through 3d potentials, slightly shifted for clarity</p>
 
 </div>
 </div>
@@ -12428,6 +12560,16 @@ NjYnYRsHGxsbG5uTsI2DjY2Njc1J/H/VlPOmcgqytQAAAABJRU5ErkJggg==
 </div>
 </div>
 
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Detailed comparisson of the different DFT potentials</p>
+
+</div>
+</div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
