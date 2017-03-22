@@ -22,7 +22,7 @@ def view(wave,method='real',units='Angstrom',nav_axis=2,ind=-1,title=None,
     elif method == 'real':
         img=np.real(array)
     elif method == 'imaginary':
-        img=np.imaginary(array)
+        img=np.imag(array)
     elif method == 'phase':
         img=np.angle(array)
     elif method == 'intensity':
