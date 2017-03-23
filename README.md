@@ -2,7 +2,7 @@
 
 QSTEM is a program for quantitative image simulation in electron microscopy, including TEM, STEM and CBED image simulation. 
 
-This project interfaces the QSTEM code with Python and the Atomic Simulation Environment (ASE) to provide a single environment for building models, simulating and analysing images
+This project interfaces the QSTEM code with Python and the Atomic Simulation Environment (ASE) to provide a single environment for building models, simulating and analysing images.
 
 QSTEM webpage: http://qstem.org/
 
