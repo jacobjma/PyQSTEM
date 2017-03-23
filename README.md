@@ -47,7 +47,7 @@ Mac OS X comes with Python included, but installing packages into OS X's own Pyt
 
 #### Install Homebrew
 
-Install Homebrew following the instructions on the (Homebrew website)[https://brew.sh/].
+Install Homebrew following the instructions on the [Homebrew website](https://brew.sh/).
 
 #### Install Python with homebrew.
 
