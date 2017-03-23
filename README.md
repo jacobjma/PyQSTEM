@@ -83,13 +83,15 @@ You might get some warnings which can be ignored.
 If you are new to Python the easiest way to get started is downloading a bundle installer. We recommend Anaconda, this platform includes Python and makes it easier to install the dependencies. Download Anaconda [here](https://www.continuum.io/downloads).
 
 #### Install a C-compiler
+
+##### Python 3.5 or later
 Compiling C++-extensions for Python 3.5 on Windows requires Microsoft Visual C++ 14.0 or later. Download Visual C++ 2015 Build Tools from [here](http://landinghub.visualstudio.com/visual-cpp-build-tools), this requires 4 gb of free space and may take 20 minutes to install.
 
-Alternatively and only if you are using Python 2.7, you can install [TDM-GCC](http://tdm-gcc.tdragon.net/) and in the Anaconda prompt write 
+##### Python 2.7
+If you are using Python 2.7, you can install [TDM-GCC](http://tdm-gcc.tdragon.net/) and in the Anaconda prompt write 
 ```
 conda install mingw libpython
 ```
-But don't do this if you are using Visual C++.
 
 #### FFTW
 Precompiled libraries for [FFTW 3.3.5](http://www.fftw.org/install/windows.html) are included for both 32 and 64-bit Windows. You should not have to do anything.
