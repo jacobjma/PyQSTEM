@@ -88,7 +88,7 @@ If you are new to Python the easiest way to get started is downloading a bundle 
 Compiling C++-extensions for Python 3.5 on Windows requires Microsoft Visual C++ 14.0 or later. Download Visual C++ 2015 Build Tools from [here](http://landinghub.visualstudio.com/visual-cpp-build-tools), this requires 4 gb of free space and may take 20 minutes to install.
 
 ##### Python 2.7
-If you are using Python 2.7, you can install [TDM-GCC](http://tdm-gcc.tdragon.net/) and in the Anaconda prompt write 
+If you are using Python 2.7 you can install [TDM-GCC](http://tdm-gcc.tdragon.net/) and in the Anaconda prompt write 
 ```
 conda install mingw libpython
 ```
