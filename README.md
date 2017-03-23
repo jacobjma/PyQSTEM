@@ -97,7 +97,7 @@ conda install mingw libpython
 Precompiled libraries for [FFTW 3.3.5](http://www.fftw.org/install/windows.html) are included for both 32 and 64-bit Windows. You should not have to do anything.
 
 #### Install dependencies
-When Anaconda and a C++-compiler is installed, open the `Anaconda prompt`, and type the following commands to install ASE and cython:
+When Anaconda and a C++-compiler is installed, open the `Anaconda prompt`, and type the following commands to install ASE, cython and the rest of the dependencies:
 ```
 pip install numpy matplotlib ase
 conda install cython scipy
