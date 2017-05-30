@@ -181,10 +181,10 @@ class Wave(BaseArray):
 
         return Wavefunction(real+1.j*imag,self.energy,sampling,self.offset)
 
-    def detect(self,dose=None,MTF=None,imagespread=None,resample=None,return_noise=False):
+    def detect(self,dose=None,MTF=None,gaussian=None,resample=None,return_noise=False):
         sampling=self.sampling
         img=np.abs(self.array)**2
-        return detect(img,sampling,dose,MTF,imagespread,resample,return_noise)
+        return detect(img,sampling,dose,MTF,gaussian,resample,return_noise)
 
     def view(self,method='intensity',nav_axis=2,ind=-1,slider=False,ax=None,**kwargs):
 

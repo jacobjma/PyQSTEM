@@ -10,18 +10,19 @@ namespace shapes {
     class QSTEM {
     public:
         MULS muls;
+        WavePtr wave;
         int trans_array_state;
         int wave_state;
         int atoms_state;
         int box_state;
-        int scan_range_state;
 
         std::string mode;
         QSTEM(std::string mode);
         ~QSTEM();
+
         void set_atoms(int natom, int atomKinds, const std::vector< std::vector<double> > & pos,
-                        const std::vector<double> & dw,const std::vector<double> & occ,
-                        const std::vector<double> & q,const std::vector<int> & Znum);
+                        const std::vector<double> & occ,const std::vector<double> & q,
+                        const std::vector<int> & Znum);
         void set_box(const std::vector<double> &, int nonPeriod, int nonPeriodZ, float cellDiv);
 
         void get_resolution(float* resolutionX,float* resolutionY);
@@ -39,9 +40,10 @@ namespace shapes {
 
         void calculate_transfunc();
         void set_scan_range(float scanXStart,float scanXStop,int scanXN,float scanYStart,float scanYStop,int scanYN);
+        void free_wave();
         void build_wave(int type,float v0,int nx,int ny,float resolutionX,float resolutionY);
         void build_probe(float v0,float alpha,int nx,int ny,float resolutionX,float resolutionY,std::unordered_map<std::string,float> abberations);
-        void set_wave(std::vector <std::vector <std::vector <double> > >wave,int nx,int ny,float v0);
+        void set_wave(std::vector <std::vector <std::vector <double> > >wave,float v0,int nx,int ny,float resolutionX,float resolutionY);
         std::vector <std::vector <std::vector <double> > > get_wave(float * resolutionX,float* resolutionY,float *v0);
         //void create_detector(std::string name,float rInside,float rOutside,float shiftX,float shiftY,int detectorNum);
 

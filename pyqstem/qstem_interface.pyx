@@ -23,7 +23,7 @@ cdef extern from "QSTEM.h" namespace "shapes":
         int box_state
         int scan_range_state
 
-        void set_atoms(int,int,vector[vector[double]] &,vector[double] &,vector[double] &,
+        void set_atoms(int,int,vector[vector[double]] &,vector[double] &,
                         vector[double] &,vector[int] &)
         void set_box(vector[double] &,int,int,float)
 
@@ -42,7 +42,7 @@ cdef extern from "QSTEM.h" namespace "shapes":
         void set_scan_range(float,float,int,float,float,int)
         void build_wave(int,float,int,int,float,float)
         void build_probe(float,float,int,int,float,float,unordered_map[string,float])
-        void set_wave(vector[vector[vector[double]]],int,int,float)
+        void set_wave(vector[vector[vector[double]]],float,int,int,float,float)
         vector[vector[vector[double]]] get_wave(float*,float*,float*)
 
         void create_detectors(vector[string],vector[vector[double]],int)
@@ -67,45 +67,47 @@ cdef class PyQSTEM:
         self.thisptr = new QSTEM(c_mode)
 
         self.thisptr.mode = c_mode;
+
         # 0: potential not created
         # 1: potential created
         # 2: potential converted to transmission function
         # -1: potential created, but have to be recreated (atoms or simulation box changed)
         # -2: potential created, but have to be recreated (energy changed)
         self.thisptr.trans_array_state=0
+
         # 0: wave not created
         # 1: wave created
         # -1: wave created, but have to be recreated
         self.thisptr.wave_state=0
+
         # 0: atoms set
         # 1: atoms not set
         self.thisptr.atoms_state=0
+
         # 0: simulation box set
         # 1: simulation box not set
         self.thisptr.box_state=0
-
-        self.thisptr.scan_range_state=0
 
     _detectors=OrderedDict()
 
     def __dealloc__(self):
         del self.thisptr
 
-    def set_atoms(self,atoms,dw=None,set_box=1):
+    def set_atoms(self,atoms,set_box=True,TDS=False,B_factors=None):
         self._atoms=atoms
 
         positions = atoms.get_positions()
-        if dw is None:
-            dw=[0.]*len(atoms)
-        occ=[1.]*len(atoms)
-        q=[0.]*len(atoms)
+
+        occ=[1.]*len(atoms) # occupancy not implemeted
+        q=[0.]*len(atoms) # charge not implemeted
+
         Znum=atoms.get_atomic_numbers()
 
         if set_box:
             box=np.diag(atoms.get_cell())
             self.set_box(box)
 
-        self.thisptr.set_atoms(len(atoms),len(set(Znum)),positions,dw,occ,q,Znum)
+        self.thisptr.set_atoms(len(atoms),len(set(Znum)),positions,occ,q,Znum)
         self.thisptr.atoms_state = 1
         if self.thisptr.trans_array_state >= 1:
             self.thisptr.trans_array_state = -1
@@ -180,11 +182,18 @@ cdef class PyQSTEM:
         probe_extent=self.get_minimum_potential_extent()
         atoms_plot(self._atoms,scan_range=scan_range,potential_extent=potential_extent,probe_extent=probe_extent,ax=ax,legend=True)
 
-    def build_potential(self,num_slices,scan_range=None,num_samples=None):
+    def build_potential(self,num_slices,scan_range=None,probe_position=None):
+
         if self.thisptr.mode == 'STEM':
             if scan_range is None:
-                raise RuntimeError('Please provide scan window for mode STEM')
+                raise RuntimeError('Provide scan window for mode STEM')
             else:
+                self.set_scan_range(scan_range)
+        elif self.thisptr.mode == 'CBED':
+            if probe_position is None:
+                raise RuntimeError('Provide probe postion for mode CBED')
+            else:
+                scan_range = [[probe_position[0],probe_position[0],1],[probe_position[1],probe_position[1],1]]
                 self.set_scan_range(scan_range)
 
         if ((self.thisptr.atoms_state==0)|(self.thisptr.box_state==0)):
@@ -316,21 +325,26 @@ cdef class PyQSTEM:
         nx=wave.array.shape[0]
         ny=wave.array.shape[1]
 
-        nx_old,ny_old,slices_old = self.get_numsamples()
-        resolutionX,resolutionY,sliceThickness = self.get_resolution()
+        nx_old,ny_old = self.get_probe_samples()
+        resolutionX,resolutionY = self.get_resolution()
 
         if self.thisptr.trans_array_state>0:
             if ((nx_old!=nx)|(ny_old!=ny)):
                 raise RuntimeError('Wave function shape does not match QSTEM: ({0},{1}) != ({2},{3})'.format(nx,ny,nx_old,ny_old))
 
-        if wave.sampling is not None:
-            if not np.any(np.isclose(wave.sampling,(resolutionX,resolutionY),rtol=0,atol=1e-06)):
-                warnings.warn('Wavefunction resolution will be changed to match the simulation box')
+        #if wave.sampling is not None:
+        #    if not np.any(np.isclose(wave.sampling,(resolutionX,resolutionY),rtol=0,atol=1e-06)):
+        #        warnings.warn('Wavefunction resolution will be changed to match the simulation box')
 
         array = np.concatenate((np.real(wave.array)[:,:,np.newaxis],np.imag(wave.array)[:,:,np.newaxis]),axis=2)
 
+        if wave.sampling is None:
+            resolution = [-1,-1]
+        else:
+            resolution = wave.sampling
+
         old_v0 = self.get_energy()
-        self.thisptr.set_wave(array,nx,ny,wave.energy)
+        self.thisptr.set_wave(array,wave.energy,nx,ny,resolution[0],resolution[1])
 
         self.thisptr.wave_state = 1
         if self.thisptr.trans_array_state == 2:
@@ -370,6 +384,7 @@ cdef class PyQSTEM:
         return img
 
     def run(self,display_progress_interval=None):
+
         if self.thisptr.wave_state==0:
             raise RuntimeError('A wavefunction have not been created')
         elif self.thisptr.wave_state==-1:

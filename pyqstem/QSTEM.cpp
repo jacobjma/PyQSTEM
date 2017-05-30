@@ -43,6 +43,7 @@ QSTEM::QSTEM(std::string mode)
 
   muls.complete_pixels=0;
 
+  muls.atoms=NULL;
   muls.trans = NULL;
   muls.diffpat = NULL;
 
@@ -116,23 +117,25 @@ QSTEM::~QSTEM()
 }
 
 void QSTEM::set_atoms(int natom, int atomKinds, const std::vector< std::vector<double> > & pos,
-                        const std::vector<double> & dw,const std::vector<double> & occ,
-                        const std::vector<double> & q,const std::vector<int> & Znum)
+                        const std::vector<double> & occ, const std::vector<double> & q,
+                        const std::vector<int> & Znum)
 {
+  if (muls.atoms!=NULL){
+      free(muls.atoms);
+  }
   static atom *atoms = NULL;
   atoms = (atom *)malloc(natom*sizeof(atom));
 
-  int i;
-  for (i=0; i<natom; i++){
+  for (int i=0; i<natom; i++){
     atoms[i].x = pos[i][0];
     atoms[i].y = pos[i][1];
     atoms[i].z = pos[i][2];
-    atoms[i].dw = dw[i];
+    atoms[i].dw = 0.; //dw[i];
     atoms[i].occ = occ[i];
     atoms[i].q = q[i];
     atoms[i].Znum = Znum[i];
   }
-  muls.atoms=atoms;
+  muls.atoms = atoms;
   muls.natom = natom;
   muls.atomKinds = atomKinds;
 }
@@ -191,6 +194,14 @@ void QSTEM::get_energy(float* v0)
 
 void QSTEM::allocate_potential()
 {
+  if (muls.trans != NULL){
+    fftwf_free(muls.trans);
+    fftwf_free(muls.trans[0]);
+    fftwf_free(muls.trans[0][0]);
+    fftwf_destroy_plan(muls.fftPlanPotForw);
+    fftwf_destroy_plan(muls.fftPlanPotInv);
+    muls.trans = NULL;
+  }
 
   muls.sliceThickness = muls.c / (double)muls.slices;
 
@@ -209,10 +220,6 @@ void QSTEM::allocate_potential()
 
 void QSTEM::build_potential(int slices)
 {
-
-  fftwf_free(muls.trans);
-  muls.trans = NULL;
-
   if ((muls.mode == STEM) || (muls.mode == CBED)) {
 		muls.potOffsetX = muls.scanXStart - 0.5*muls.nx*muls.resolutionX;
 		muls.potOffsetY = muls.scanYStart - 0.5*muls.ny*muls.resolutionY;
@@ -246,14 +253,14 @@ void QSTEM::build_potential(int slices)
 
   allocate_potential();
 
+
   make3DSlices(&muls,muls.slices,muls.atomPosFile,NULL);
+
 }
 
 void QSTEM::set_potential(const std::vector< std::vector< std::vector< std::vector<double> > > > & potential,
                   const std::vector<int> & size, const std::vector<double> & extent)
 {
-  fftwf_free(muls.trans);
-  muls.trans = NULL;
 
   muls.potNx=size[0];
   muls.potNy=size[1];
@@ -343,17 +350,45 @@ void QSTEM::set_scan_range(float scanXStart,float scanXStop,int scanXN,float sca
   muls.scanYN = scanYN;
 }
 
-void QSTEM::set_wave(std::vector <std::vector <std::vector <double> > >wave,int nx,int ny,float v0)
+void QSTEM::free_wave(){
+  if (wave != NULL){
+    fftwf_free(wave->wave);
+    fftwf_free(wave->wave[0]);
+    fftwf_free(wave->diffpat);
+    fftwf_free(wave->diffpat[0]);
+    fftwf_free(wave->avgArray);
+    fftwf_free(wave->avgArray[0]);
+    fftwf_destroy_plan(wave->fftPlanWaveForw);
+    fftwf_destroy_plan(wave->fftPlanWaveInv);
+  }
+}
+
+void QSTEM::set_wave(std::vector <std::vector <std::vector <double> > >wave_vec,float v0,int nx,int ny,float resolutionX,float resolutionY)
 {
+  free_wave();
+
   muls.nx = nx;
   muls.ny = ny;
 
+  if (resolutionX <= 0){
+    muls.resolutionX = muls.ax / (double)muls.nx;
+  }
+  else {
+    muls.resolutionX = resolutionX;
+  }
+  if (resolutionX < 0){
+    muls.resolutionY = muls.by / (double)muls.ny;
+  }
+  else {
+    muls.resolutionY = resolutionY;
+  }
+
   muls.v0 = v0;
-  muls.wave = WavePtr(new WAVEFUNC(muls.nx,muls.ny,muls.resolutionX,muls.resolutionY));
+  wave = WavePtr(new WAVEFUNC(muls.nx,muls.ny,muls.resolutionX,muls.resolutionY));
     for (int ix=0;ix<muls.nx;ix++){
       for (int iy=0;iy<muls.ny;iy++){
         for (int ic=0;ic<2;ic++){
-          muls.wave->wave[ix][iy][ic] = wave.at(ix).at(iy).at(ic);
+          wave->wave[ix][iy][ic] = wave_vec.at(ix).at(iy).at(ic);
       }
     }
   }
@@ -361,6 +396,7 @@ void QSTEM::set_wave(std::vector <std::vector <std::vector <double> > >wave,int 
 
 void QSTEM::build_wave(int type,float v0,int nx,int ny,float resolutionX,float resolutionY)
 {
+  free_wave();
 
   muls.nx = nx;
   muls.ny = ny;
@@ -378,12 +414,15 @@ void QSTEM::build_wave(int type,float v0,int nx,int ny,float resolutionX,float r
   }
 
   muls.v0 = v0;
-  muls.wave = WavePtr(new WAVEFUNC(muls.nx,muls.ny,muls.resolutionX,muls.resolutionY));
+
+  wave = WavePtr(new WAVEFUNC(muls.nx,muls.ny,muls.resolutionX,muls.resolutionY));
+  //wave = new WAVEFUNC(muls.nx,muls.ny,muls.resolutionX,muls.resolutionY);
+
   if (type==0){
     for (int ix=0;ix<muls.nx;ix++){
       for (int iy=0;iy<muls.ny;iy++){
-        muls.wave->wave[ix][iy][0]=1.;
-        muls.wave->wave[ix][iy][1]=0;
+        wave->wave[ix][iy][0]=1.;
+        wave->wave[ix][iy][1]=0;
       }
     }
   }
@@ -391,6 +430,8 @@ void QSTEM::build_wave(int type,float v0,int nx,int ny,float resolutionX,float r
 
 void QSTEM::build_probe(float v0,float alpha,int nx,int ny,float resolutionX,float resolutionY,std::unordered_map<std::string,float> abberations)
 {
+  free_wave();
+
   muls.nx = nx;
   muls.ny = ny;
   muls.resolutionX = resolutionX;
@@ -438,8 +479,8 @@ void QSTEM::build_probe(float v0,float alpha,int nx,int ny,float resolutionX,flo
   muls.dE_EArray = (double *)malloc((muls.avgRuns+1)*sizeof(double));
   muls.dE_EArray[0] = 0.0;
 
-  muls.wave = WavePtr(new WAVEFUNC(muls.nx,muls.ny,muls.resolutionX,muls.resolutionY));
-  probe(&muls, muls.wave, muls.nx/2*muls.resolutionX, muls.ny/2*muls.resolutionY);
+  wave = WavePtr(new WAVEFUNC(muls.nx,muls.ny,muls.resolutionX,muls.resolutionY));
+  probe(&muls, wave, muls.nx/2*muls.resolutionX, muls.ny/2*muls.resolutionY);
 
 }
 
@@ -452,7 +493,7 @@ std::vector <std::vector <std::vector <double> > > QSTEM::get_wave(float* resolu
     for (int ix=0;ix<muls.nx;ix++){
       for (int iy=0;iy<muls.ny;iy++){
         for (int ic=0;ic<2;ic++){
-          wave_vec.at(ix).at(iy).at(ic) = muls.wave->wave[ix][iy][ic];
+          wave_vec.at(ix).at(iy).at(ic) = wave->wave[ix][iy][ic];
         }
       }
     }
@@ -516,12 +557,12 @@ void QSTEM::run(int displayProgInterval)
       ix = i / muls.scanYN;
       iy = i % muls.scanYN;
 
-      WavePtr wave;
-      wave = WavePtr(new WAVEFUNC(muls.nx,muls.ny,muls.resolutionX,muls.resolutionY));
+      WavePtr wave_tmp;
+      wave_tmp = WavePtr(new WAVEFUNC(muls.nx,muls.ny,muls.resolutionX,muls.resolutionY));
       for (int wix=0;wix<muls.nx;wix++){
         for (int wiy=0;wiy<muls.ny;wiy++){
           for (int wic=0;wic<2;wic++){
-            wave->wave[wix][wiy][wic] = muls.wave->wave[wix][wiy][wic];
+            wave_tmp->wave[wix][wiy][wic] = wave->wave[wix][wiy][wic];
           }
         }
       }
@@ -530,9 +571,9 @@ void QSTEM::run(int displayProgInterval)
       //          ((float)muls.scanXN*muls.resolutionX));
       //wave->iPosY = (int)((iy*(muls.scanYStop-muls.scanYStart))/
       //           ((float)muls.scanYN*muls.resolutionY));
-      wave->iPosX =(int)(muls.scanXStart/muls.resolutionX+(ix*(muls.scanXStop-muls.scanXStart)/
+      wave_tmp->iPosX =(int)(muls.scanXStart/muls.resolutionX+(ix*(muls.scanXStop-muls.scanXStart)/
                 ((float)muls.scanXN*muls.resolutionX))-((float)muls.nx/2.)-muls.potOffsetX/muls.resolutionX);
-      wave->iPosY =(int)(muls.scanYStart/muls.resolutionY+(iy*(muls.scanYStop-muls.scanYStart)/
+      wave_tmp->iPosY =(int)(muls.scanYStart/muls.resolutionY+(iy*(muls.scanYStop-muls.scanYStart)/
                           ((float)muls.scanYN*muls.resolutionY))-((float)muls.ny/2.)-muls.potOffsetY/muls.resolutionY);
 
       //if (wave->iPosX > muls.potNx-muls.nx){
@@ -543,10 +584,10 @@ void QSTEM::run(int displayProgInterval)
       //  wave->iPosY = muls.potNy-muls.ny;
       //}
 
-      wave->detPosX=ix;
-      wave->detPosY=iy;
+      wave_tmp->detPosX=ix;
+      wave_tmp->detPosY=iy;
 
-      runMulsSTEM(&muls,wave);
+      runMulsSTEM(&muls,wave_tmp);
 
       muls.complete_pixels++;
       /*
@@ -561,10 +602,14 @@ void QSTEM::run(int displayProgInterval)
       */
     }
   }
-  else{
-    runMulsSTEM(&muls,muls.wave);
+  else if (muls.mode == CBED){
+    wave->iPosX =(int)(muls.scanXStart/muls.resolutionX-((float)muls.nx/2.)-muls.potOffsetX/muls.resolutionX);
+    wave->iPosY =(int)(muls.scanYStart/muls.resolutionY-((float)muls.ny/2.)-muls.potOffsetY/muls.resolutionY);
+    runMulsSTEM(&muls,wave);
   }
-
+  else{
+    runMulsSTEM(&muls,wave);
+  }
 }
 
 std::vector <std::vector <double> > QSTEM::read_detector(int detNum)
