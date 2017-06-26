@@ -25,6 +25,7 @@ cdef extern from "QSTEM.h" namespace "shapes":
 
         void set_atoms(int,int,vector[vector[double]] &,vector[double] &,
                         vector[double] &,vector[int] &)
+        void set_positions(int,vector[vector[double]] &)
         void set_box(vector[double] &,int,int,float)
 
         void get_resolution(float*, float*)
@@ -96,7 +97,7 @@ cdef class PyQSTEM:
     def set_atoms(self,atoms,set_box=True,TDS=False,B_factors=None):
         self._atoms=atoms
 
-        positions = atoms.get_positions()
+        positions=atoms.get_positions()
 
         occ=[1.]*len(atoms) # occupancy not implemeted
         q=[0.]*len(atoms) # charge not implemeted
@@ -111,6 +112,9 @@ cdef class PyQSTEM:
         self.thisptr.atoms_state = 1
         if self.thisptr.trans_array_state >= 1:
             self.thisptr.trans_array_state = -1
+
+    def _set_positions(self,positions):
+        self.thisptr.set_positions(len(self._atoms),positions)
 
     def set_box(self,box,periodic_xy=None,periodic_z=False,cell_div=1):
         if ((self.thisptr.mode == 'STEM')&(periodic_xy==True)):
@@ -182,7 +186,7 @@ cdef class PyQSTEM:
         probe_extent=self.get_minimum_potential_extent()
         atoms_plot(self._atoms,scan_range=scan_range,potential_extent=potential_extent,probe_extent=probe_extent,ax=ax,legend=True)
 
-    def build_potential(self,num_slices,scan_range=None,probe_position=None):
+    def build_potential(self,num_slices=None,slice_thickness=.5,scan_range=None,probe_position=None):
 
         if self.thisptr.mode == 'STEM':
             if scan_range is None:
@@ -199,6 +203,8 @@ cdef class PyQSTEM:
         if ((self.thisptr.atoms_state==0)|(self.thisptr.box_state==0)):
             raise RuntimeError('Please set atoms and simulation box')
 
+        if num_slices is None:
+            num_slices = int(self._atoms.get_cell()[2,2]/slice_thickness)
         #nx_old,ny_old,slices_old = self.get_numsamples()
 
         self.thisptr.build_potential(num_slices)
@@ -246,8 +252,7 @@ cdef class PyQSTEM:
             trans_array.real = trans_array_noncplx[...,0]
             trans_array.imag = trans_array_noncplx[...,1]
             potential_extent = self.get_potential_extent()
-            return Potential(trans_array,(resolutionX,resolutionY,sliceThickness),
-                              offset=(potential_extent[0],potential_extent[2],0))
+            return Potential(trans_array,(resolutionX,resolutionY,sliceThickness))
 
     def calculate_transfunc(self):
 
@@ -383,14 +388,12 @@ cdef class PyQSTEM:
 
         return img
 
-    def run(self,display_progress_interval=None):
+    def run(self,slices_per_division=None,slice_thickness=.5,cell_divisions=1,scan_range=None,probe_position=None,display_progress_interval=None):
 
         if self.thisptr.wave_state==0:
             raise RuntimeError('A wavefunction have not been created')
         elif self.thisptr.wave_state==-1:
             raise RuntimeError('The wavefunction have to be recreated after changing the potential sampling')
-        elif self.thisptr.trans_array_state==0:
-            raise RuntimeError('A potential have not been created')
         elif self.thisptr.trans_array_state==-1:
             raise RuntimeError('The potential have to be recreated after changing the atoms or simulation box')
         elif self.thisptr.trans_array_state==-2:
@@ -417,5 +420,25 @@ cdef class PyQSTEM:
         if display_progress_interval is None:
             display_progress_interval = -1
 
-        self.calculate_transfunc()
-        self.thisptr.run(display_progress_interval)
+        box=np.diag(self._atoms.get_cell())
+        h=box[2]/cell_divisions
+        if slices_per_division is None:
+            slices_per_division = int(h/slice_thickness)
+
+        if cell_divisions == 1:
+            if self.thisptr.trans_array_state==0:
+                self.build_potential(slices_per_division)
+
+            self.calculate_transfunc()
+            self.thisptr.run(display_progress_interval)
+        else:
+            box_div=[box[0],box[1],h]
+            self.set_box(box_div)
+            positions=self._atoms.get_positions()
+
+            for i in range(cell_divisions):
+                self._set_positions(positions-[0,0,i*h])
+
+                self.build_potential(slices_per_division)
+                self.calculate_transfunc()
+                self.thisptr.run(display_progress_interval)

@@ -6,7 +6,11 @@ import scipy.ndimage
 import numpy as np
 from .detection import detect
 
-def view(wave,method='real',units='Angstrom',nav_axis=2,ind=-1,title=None,
+def load(name):
+    npzfile=np.load(name)
+    return Wave(npzfile['arr_0'],npzfile['arr_1'],npzfile['arr_2'])
+
+def view(wave,method='real',nav_axis=2,ind=-1,title=None,
             slider=False,ax=None,figsize=(6,6),cmap='gray',create_cbar=True,**kwargs):
 
     if len(wave.array.shape)==3:
@@ -40,10 +44,11 @@ def view(wave,method='real',units='Angstrom',nav_axis=2,ind=-1,title=None,
 
     if reciprocal_space==True:
         labels=['kx','ky','kz']
-        units = '1/'+units
+        units = '1/Angstrom'
         extent=wave.get_reciprocal_extent()
     else:
         labels=['x','y','z']
+        units = 'Angstrom'
 
     if len(img.shape)==3:
         img=np.rollaxis(img,nav_axis)
@@ -97,7 +102,7 @@ def view(wave,method='real',units='Angstrom',nav_axis=2,ind=-1,title=None,
     return [slider]
 
 class BaseArray(object):
-    def __init__(self, array, sampling=None, offset=(0,0,0), labels=['x','y','z'], units='Angstrom'):
+    def __init__(self, array, sampling=None):
 
         self.array=np.array(array,dtype=complex)
 
@@ -109,9 +114,7 @@ class BaseArray(object):
                 raise RuntimeError('Array shape does not match number of sampling entries')
 
         self.sampling=sampling
-        self.offset=offset
-        self.labels=labels
-        self.units=units
+        self.offset=(0,0,0)
 
         self.refs=[]
 
@@ -146,8 +149,8 @@ class BaseArray(object):
 
 class Wave(BaseArray):
 
-    def __init__(self, array, energy, sampling=None, periodic_xy=True, offset=(0.,0.,0.), labels=['x','y','z'], units='Angstrom'):
-        BaseArray.__init__(self, array, sampling, offset, labels, units)
+    def __init__(self, array, energy, sampling=None, periodic_xy=True):
+        BaseArray.__init__(self, array, sampling)
         self.energy = energy
 
     def get_wavelength(self):
@@ -186,10 +189,12 @@ class Wave(BaseArray):
         img=np.abs(self.array)**2
         return detect(img,sampling,dose,MTF,gaussian,resample,return_noise)
 
+    def save(self,name):
+        np.savez(name,self.array,self.energy,self.sampling)
+
     def view(self,method='intensity',nav_axis=2,ind=-1,slider=False,ax=None,**kwargs):
 
-        self.refs += view(self,method=method,units=self.units,
-                        nav_axis=nav_axis,ind=ind,slider=slider,ax=ax,**kwargs)
+        self.refs += view(self,method=method,nav_axis=nav_axis,ind=ind,slider=slider,ax=ax,**kwargs)
 
 class WaveBundle(object):
 
@@ -227,8 +232,8 @@ class WaveBundle(object):
 
 class Potential(BaseArray):
 
-    def __init__(self, array, sampling, periodic_xy=True, periodic_z=False, offset=(0.,0.,0.)):
-        BaseArray.__init__(self, array, sampling, offset)
+    def __init__(self, array, sampling, periodic_xy=True, periodic_z=False):
+        BaseArray.__init__(self, array, sampling)
 
         self.periodic_xy=periodic_xy
         self.periodic_z=periodic_z

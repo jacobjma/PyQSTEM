@@ -23,6 +23,7 @@ namespace shapes {
         void set_atoms(int natom, int atomKinds, const std::vector< std::vector<double> > & pos,
                         const std::vector<double> & occ,const std::vector<double> & q,
                         const std::vector<int> & Znum);
+        void set_positions(int natom, const std::vector< std::vector<double> > & pos);
         void set_box(const std::vector<double> &, int nonPeriod, int nonPeriodZ, float cellDiv);
 
         void get_resolution(float* resolutionX,float* resolutionY);

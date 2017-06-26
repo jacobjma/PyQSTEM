@@ -140,6 +140,15 @@ void QSTEM::set_atoms(int natom, int atomKinds, const std::vector< std::vector<d
   muls.atomKinds = atomKinds;
 }
 
+void QSTEM::set_positions(int natom,const std::vector< std::vector<double> > & pos)
+{
+  for (int i=0; i<natom; i++){
+    muls.atoms[i].x = pos[i][0];
+    muls.atoms[i].y = pos[i][1];
+    muls.atoms[i].z = pos[i][2];
+  }
+}
+
 void QSTEM::set_box(const std::vector<double> & box, int nonPeriod, int nonPeriodZ, float cellDiv)
 {
   muls.ax = box[0];

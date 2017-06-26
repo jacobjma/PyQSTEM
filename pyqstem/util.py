@@ -7,6 +7,7 @@ from ase.data import covalent_radii,chemical_symbols
 from matplotlib.patches import Circle
 from scipy.cluster.hierarchy import linkage,fcluster
 from ase import Atoms
+import collections
 
 def energy2wavelength(v0):
     m0=0.5109989461*10**3 # keV / c**2
@@ -27,12 +28,12 @@ def scherzer_point_resolution(v0,Cs):
 
 def spatial_frequencies(shape,sampling,return_polar=False,return_nyquist=False,wavelength=None):
 
-    if not isinstance(shape, (list, tuple)):
+    if not isinstance(shape, collections.Iterable):
         shape = (shape,)*2
 
-    if not isinstance(sampling, (list, tuple)):
+    if not isinstance(sampling, collections.Iterable):
         sampling = (sampling,)*2
-
+    
     dkx=1/(shape[0]*sampling[0])
     dky=1/(shape[1]*sampling[1])
 
@@ -137,16 +138,19 @@ def atoms_plot(atoms,direction=2,ax=None,scan_range=None,potential_extent=None,p
     ax.set_xlabel('{0} [Angstrom]'.format(labels[0]))
     ax.set_ylabel('{0} [Angstrom]'.format(labels[1]))
 
-    plt.tight_layout()
+def project_positions(atoms,distance=1,return_counts=False):
+    
+    positions=atoms.get_positions()[:,:2]
 
-def project_positions(pos,distance=1):
-    if isinstance(pos,Atoms):
-        pos=pos.get_positions()[:,:2]
-
-    clusters = fcluster(linkage(pos), distance, criterion='distance')
-    unique,indices=np.unique(clusters, return_index=True)
-    pos=np.array([np.mean(pos[clusters==u],axis=0) for u in unique])
-    return pos
+    clusters = fcluster(linkage(positions), distance, criterion='distance')
+    unique, indices = np.unique(clusters, return_index=True)
+    positions = np.array([np.mean(positions[clusters == u], axis=0) for u in unique])
+    
+    if return_counts:
+        counts=np.array([np.sum(clusters == u) for u in unique])
+        return positions, counts
+    else:
+        return positions
 
 def draw_scalebar(pil_img,scale_length,sampling,units='nm',placement=[5,5],margin=3,bar_height=3,
                   font=None,bar_color=0,bg_color=None,formatting='1f',anchor='top left'):
