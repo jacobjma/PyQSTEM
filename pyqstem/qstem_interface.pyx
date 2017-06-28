@@ -427,7 +427,7 @@ cdef class PyQSTEM:
 
         if cell_divisions == 1:
             if self.thisptr.trans_array_state==0:
-                self.build_potential(slices_per_division)
+                self.build_potential(slices_per_division,scan_range=scan_range,probe_position=probe_position)
 
             self.calculate_transfunc()
             self.thisptr.run(display_progress_interval)
@@ -439,6 +439,6 @@ cdef class PyQSTEM:
             for i in range(cell_divisions):
                 self._set_positions(positions-[0,0,i*h])
 
-                self.build_potential(slices_per_division)
+                self.build_potential(slices_per_division,scan_range=scan_range,probe_position=probe_position)
                 self.calculate_transfunc()
                 self.thisptr.run(display_progress_interval)
