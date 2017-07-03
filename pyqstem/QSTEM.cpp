@@ -114,6 +114,18 @@ QSTEM::QSTEM(std::string mode)
 
 QSTEM::~QSTEM()
 {
+	
+	if (muls.atoms!=NULL){
+		free(muls.atoms);
+	}
+	
+	if (muls.trans != NULL){
+		fftwf_free(muls.trans[0][0]);
+		for(int i = 0; i < muls.slices; i++)
+			fftwf_free(muls.trans[i]);
+		fftwf_free(muls.trans);
+	}
+		
 }
 
 void QSTEM::set_atoms(int natom, int atomKinds, const std::vector< std::vector<double> > & pos,
@@ -123,19 +135,18 @@ void QSTEM::set_atoms(int natom, int atomKinds, const std::vector< std::vector<d
   if (muls.atoms!=NULL){
       free(muls.atoms);
   }
-  static atom *atoms = NULL;
-  atoms = (atom *)malloc(natom*sizeof(atom));
+  
+  muls.atoms = (atom *)malloc(natom*sizeof(atom));
 
   for (int i=0; i<natom; i++){
-    atoms[i].x = pos[i][0];
-    atoms[i].y = pos[i][1];
-    atoms[i].z = pos[i][2];
-    atoms[i].dw = 0.; //dw[i];
-    atoms[i].occ = occ[i];
-    atoms[i].q = q[i];
-    atoms[i].Znum = Znum[i];
+    muls.atoms[i].x = pos[i][0];
+    muls.atoms[i].y = pos[i][1];
+    muls.atoms[i].z = pos[i][2];
+    muls.atoms[i].dw = 0.; //dw[i];
+    muls.atoms[i].occ = occ[i];
+    muls.atoms[i].q = q[i];
+    muls.atoms[i].Znum = Znum[i];
   }
-  muls.atoms = atoms;
   muls.natom = natom;
   muls.atomKinds = atomKinds;
 }
@@ -229,6 +240,7 @@ void QSTEM::allocate_potential()
 
 void QSTEM::build_potential(int slices)
 {
+
   if ((muls.mode == STEM) || (muls.mode == CBED)) {
 		muls.potOffsetX = muls.scanXStart - 0.5*muls.nx*muls.resolutionX;
 		muls.potOffsetY = muls.scanYStart - 0.5*muls.ny*muls.resolutionY;
