@@ -34,50 +34,91 @@ class CTF(object):
         self.aperture_envelope=None
         self.temporal_envelope=None
         self.spatial_envelope=None
-
-    def check_recalculate(self,wave,tol=1e-12):
-
-        if np.any([None is i for i in [self.array,self.wavelength,self.sampling]]):
+    
+    def copy(self):
+        return self.__class__(self.array,self.defocus,self.Cs,self.aperture,self.aperture_edge,
+                              self.convergence_angle,self.focal_spread,self.aberrations)
+    
+    def check_recalculate(self,shape,sampling,wavelength,tol=1e-12):
+        
+        if np.any([None is i for i in [self.array,self.sampling,self.wavelength]]):
             return True
-        elif ((not np.isclose(self.wavelength,wave.get_wavelength(),rtol=tol))|
-              (not np.isclose(self.sampling,wave.sampling,rtol=tol).all())|
-              (self.array.shape == wave.array.shape)):
+        elif ((not np.isclose(self.wavelength,wavelength,rtol=tol))|
+              (not np.isclose(self.sampling,sampling,rtol=tol).all())|
+              (not (self.array.shape == shape))):
             return True
         else:
             return False
 
-    def apply(self,wave):
-
-        if self.check_recalculate(wave):
-            self.wavelength=wave.get_wavelength()
-            self.sampling=wave.sampling
-            self.calculate(wave.array.shape,wave.sampling,self.wavelength)
-
-        new_wave_array=np.fft.ifft2(np.fft.fft2(wave.array)*self.array)
-
+    def apply(self,wave,keep=True):
+        
+        shape=wave.array.shape
+        sampling=wave.sampling
+        wavelength=wave.wavelength
+        
+        if self.check_recalculate(shape,sampling,wavelength):
+            ctf = self.calculate(shape,sampling,wavelength)
+        
+        new_wave_array=np.fft.ifft2(np.fft.fft2(wave.array)*ctf)
+        
+        if keep:
+            self.sampling=sampling
+            self.wavelength=wavelength
+            self.array=ctf
+        
         if len(new_wave_array.shape) > 2:
             return [Wave(a,wave.energy,wave.sampling) for a in new_wave_array]
         else:
             return Wave(new_wave_array,wave.energy,wave.sampling)
+    
+    def as_array(self,shape=None,sampling=None,energy=None,wavelength=None):
+        
+        if shape is None:
+            if self.array is None:
+                raise RuntimeError('Shape not set')
+            else:
+                shape = self.array.shape
+        
+        if sampling is None:
+            if self.sampling is None:
+                raise RuntimeError('Sampling not set')
+            else:
+                sampling = self.sampling
+        
+        if (wavelength is None)&(energy is None):
+            if self.wavelength is None:
+                raise RuntimeError('Wavelength not set. Provide energy or wavelength.')
+            else:
+                wavelength = self.wavelength
+                
+        if wavelength is None:
+            wavelength=energy2wavelength(energy)
+        
+        if self.check_recalculate(shape,sampling,wavelength):
+            return self.calculate(shape,sampling,wavelength)
+        else:
+            return self.array
 
     def calculate(self,shape,sampling,wavelength):
 
         self.kx,self.ky,self.k2,self.theta,self.phi=spatial_frequencies(shape,sampling,wavelength=wavelength,return_polar=True)
 
-        self.array=np.exp(-1.j*self.get_chi(self.theta,self.phi))
+        ctf=np.exp(-1.j*self.get_chi(self.theta,self.phi,wavelength))
 
         self.aperture_envelope = self.get_aperture_envelope(self.theta)
         if self.aperture_envelope is not None:
-            self.array*=self.aperture_envelope
+            ctf*=self.aperture_envelope
 
-        self.temporal_envelope = self.get_temporal_envelope(self.theta)
+        self.temporal_envelope = self.get_temporal_envelope(self.theta,wavelength)
         if self.temporal_envelope is not None:
-            self.array*=self.temporal_envelope
+            ctf*=self.temporal_envelope
 
-        self.spatial_envelope = self.get_spatial_envelope(self.theta,self.phi)
+        self.spatial_envelope = self.get_spatial_envelope(self.theta,self.phi,wavelength)
         if self.spatial_envelope is not None:
-            self.array*=self.spatial_envelope
-
+            ctf*=self.spatial_envelope
+        
+        return ctf
+        
     def get_aperture_envelope(self,theta):
         if np.isfinite(self.aperture):
             aperture=np.ones_like(theta)
@@ -89,15 +130,15 @@ class CTF(object):
 
         return aperture
 
-    def get_temporal_envelope(self,theta):
+    def get_temporal_envelope(self,theta,wavelength):
         if self.focal_spread > 0.:
-            temporal=np.exp(-np.sign(self.focal_spread)*(.5*np.pi/self.wavelength*self.focal_spread*theta**2)**2)
+            temporal=np.exp(-np.sign(self.focal_spread)*(.5*np.pi/wavelength*self.focal_spread*theta**2)**2)
         else:
             temporal=None
 
         return temporal
 
-    def get_spatial_envelope(self,theta,phi):
+    def get_spatial_envelope(self,theta,phi,wavelength):
         a=self.aberrations
         if self.convergence_angle > 0.:
             dchi_dq=2*np.pi/self.wavelength*(\
@@ -130,7 +171,7 @@ class CTF(object):
 
         return spatial
 
-    def get_chi(self,theta,phi):
+    def get_chi(self,theta,phi,wavelength):
         a=self.aberrations
         chi=1/2.*(a["a22"]*np.cos(2.*(phi-a["phi22"]))+a["a20"])*theta**2 +\
             1/3.*(a["a33"]*np.cos(3.*(phi-a["phi33"]))+\
@@ -143,7 +184,7 @@ class CTF(object):
             1/6.*(a["a66"]*np.cos(6.*(phi-a["phi66"]))+\
                   a["a64"]*np.cos(4.*(phi-a["phi64"]))+\
                   a["a62"]*np.cos(2.*(phi-a["phi62"]))+a["a60"])*theta**6
-        chi*=2*np.pi/self.wavelength
+        chi*=2*np.pi/wavelength
 
         return chi
 
@@ -157,8 +198,7 @@ class CTF(object):
         w=self.array.shape[0]//2
         kx=self.kx[:w,0]
         kx_interp = np.linspace(kx.min(),kx.max(),3000)
-
-
+        
         y=np.real(self.array[:w,0])
         if not interpolate:
             ax.plot(kx,y,'k--',label='Re(CTF)')

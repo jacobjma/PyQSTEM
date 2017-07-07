@@ -152,8 +152,13 @@ class Wave(BaseArray):
     def __init__(self, array, energy, sampling=None, periodic_xy=True):
         BaseArray.__init__(self, array, sampling)
         self.energy = energy
-
-    def get_wavelength(self):
+    
+    @property
+    def shape(self):
+        return self.array.shape
+    
+    @property
+    def wavelength(self):
         return 0.38783/np.sqrt(self.energy+9.78476*10**(-4)*self.energy**2)
 
     def z_slice(self,ind=-1):
@@ -184,10 +189,10 @@ class Wave(BaseArray):
 
         return Wavefunction(real+1.j*imag,self.energy,sampling,self.offset)
 
-    def detect(self,dose=None,MTF=None,gaussian=None,resample=None,return_noise=False):
+    def detect(self,dose=None,MTF_param=None,MTF_func=None,blur=None,resample=None):
         sampling=self.sampling
         img=np.abs(self.array)**2
-        return detect(img,sampling,dose,MTF,gaussian,resample,return_noise)
+        return detect(img,sampling,dose=dose,MTF_param=MTF_param,MTF_func=MTF_func,blur=blur,resample=resample)
 
     def save(self,name):
         np.savez(name,self.array,self.energy,self.sampling)
@@ -213,11 +218,11 @@ class WaveBundle(object):
         wave_list=[ctf.apply(wave) for wave in self.wave_list]
         return WaveBundle(wave_list)
 
-    def detect(self,dose=None,MTF=None,imagespread=None,resample=None,return_noise=False):
+    def detect(self,dose=None,MTF_param=None,MTF_func=None,blur=None,resample=None):
         wave_arr=np.array([wave.array for wave in self.wave_list])
         sampling=self.wave_list[0].sampling
         img=np.mean(np.abs(wave_arr)**2,axis=0)
-        return detect(img,sampling,dose,MTF,imagespread,resample,return_noise)
+        return detect(img,sampling,dose=dose,MTF_param=MTF_param,MTF_func=MTF_func,blur=blur,resample=resample)
 
     def view(self,method='intensity',nav_axis=2,ind=-1,slider=False,ax=None,**kwargs):
 
