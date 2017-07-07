@@ -1,8 +1,13 @@
 import numpy as np
+import numpy.linalg
 from .wave import Potential
 
 def poisson_solver(rho,atoms,smooth=0,units='QSTEM'):
-    Lx,Ly,Lz = np.diag(atoms.get_cell())
+	
+    Lx = np.linalg.norm(atoms.get_cell()[0])
+    Ly = np.linalg.norm(atoms.get_cell()[1])
+    Lz = np.linalg.norm(atoms.get_cell()[2])
+    
     Nx,Ny,Nz = rho.shape
 
     total_density=np.sum(rho)
