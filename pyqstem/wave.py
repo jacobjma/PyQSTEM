@@ -245,5 +245,4 @@ class Potential(BaseArray):
 
     def view(self,method='intensity',nav_axis=2,ind=-1,slider=False,ax=None,**kwargs):
         projected = np.sum(self.array,axis=2)
-        self.refs += view(self,method=method,units=self.units,
-                        nav_axis=nav_axis,ind=ind,slider=slider,ax=ax,**kwargs)
+        self.refs += view(self,method=method,nav_axis=nav_axis,ind=ind,slider=slider,ax=ax,**kwargs)
