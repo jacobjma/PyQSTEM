@@ -28,12 +28,6 @@ class CTF(object):
 
         self.wavelength=None
         self.sampling=None
-
-        self.theta=None
-        self.phi=None
-        self.aperture_envelope=None
-        self.temporal_envelope=None
-        self.spatial_envelope=None
     
     def copy(self):
         return self.__class__(self.array,self.defocus,self.Cs,self.aperture,self.aperture_edge,
@@ -71,8 +65,8 @@ class CTF(object):
         else:
             return Wave(new_wave_array,wave.energy,wave.sampling)
     
-    def as_array(self,shape=None,sampling=None,energy=None,wavelength=None):
-        
+    def parse_wave_params(self, shape, sampling, energy, wavelength):
+    
         if shape is None:
             if self.array is None:
                 raise RuntimeError('Shape not set')
@@ -94,30 +88,39 @@ class CTF(object):
         if wavelength is None:
             wavelength=energy2wavelength(energy)
         
+        return shape, sampling, wavelength
+    
+    def as_array(self,shape=None,sampling=None,energy=None,wavelength=None):
+        
+        shape, sampling, wavelength = self.parse_wave_params(shape, sampling, energy, wavelength)
+        
         if self.check_recalculate(shape,sampling,wavelength):
             return self.calculate(shape,sampling,wavelength)
         else:
             return self.array
 
-    def calculate(self,shape,sampling,wavelength):
+    def calculate(self,shape,sampling,wavelength,return_envelopes=False):
 
-        self.kx,self.ky,self.k2,self.theta,self.phi=spatial_frequencies(shape,sampling,wavelength=wavelength,return_polar=True)
+        kx,ky,k2,theta,phi=spatial_frequencies(shape,sampling,wavelength=wavelength,return_polar=True)
 
-        ctf=np.exp(-1.j*self.get_chi(self.theta,self.phi,wavelength))
+        ctf=np.exp(-1.j*self.get_chi(theta,phi,wavelength))
 
-        self.aperture_envelope = self.get_aperture_envelope(self.theta)
-        if self.aperture_envelope is not None:
-            ctf*=self.aperture_envelope
+        aperture = self.get_aperture_envelope(theta)
+        if aperture is not None:
+            ctf*=aperture
 
-        self.temporal_envelope = self.get_temporal_envelope(self.theta,wavelength)
-        if self.temporal_envelope is not None:
-            ctf*=self.temporal_envelope
+        temporal = self.get_temporal_envelope(theta,wavelength)
+        if temporal is not None:
+            ctf*=temporal
 
-        self.spatial_envelope = self.get_spatial_envelope(self.theta,self.phi,wavelength)
-        if self.spatial_envelope is not None:
-            ctf*=self.spatial_envelope
+        spatial = self.get_spatial_envelope(theta,phi,wavelength)
+        if spatial is not None:
+            ctf*=spatial
         
-        return ctf
+        if return_envelopes:
+            return ctf,aperture,temporal,spatial
+        else:
+            return ctf
         
     def get_aperture_envelope(self,theta):
         if np.isfinite(self.aperture):
@@ -188,18 +191,26 @@ class CTF(object):
 
         return chi
 
-    def radial_plot(self,max_freq=2,figsize=(6, 4),ax=None,interpolate=True):
+    def radial_plot(self,shape=None,sampling=None,wavelength=None,energy=None,
+                    max_freq=2,ax=None,interpolate=True):
 
         from scipy.interpolate import spline,interp1d
 
         if ax is None:
-            fig, ax = plt.subplots(figsize=figsize)
-
-        w=self.array.shape[0]//2
-        kx=self.kx[:w,0]
+            fig, ax = plt.subplots()
+        
+        shape, sampling, wavelength = self.parse_wave_params(shape, sampling, energy, wavelength)
+        
+        ctf,aperture,temporal,spatial = self.calculate(shape,sampling,wavelength,True)
+        
+        kx,ky,k2=spatial_frequencies(ctf.shape,sampling)
+        
+        w=ctf.shape[0]//2
+        kx=kx[:w,0]
         kx_interp = np.linspace(kx.min(),kx.max(),3000)
         
-        y=np.real(self.array[:w,0])
+        y=np.real(ctf[:w,0])
+        
         if not interpolate:
             ax.plot(kx,y,'k--',label='Re(CTF)')
         else:
@@ -208,7 +219,7 @@ class CTF(object):
             ax.plot(kx,y,'k.')
             ax.plot(kx_interp,ynew,'k--',label='Re(CTF)')
 
-        y=np.imag(self.array[:w,0])
+        y=np.imag(ctf[:w,0])
         if not interpolate:
             ax.plot(kx,y,'k-',label='Im(CTF)')
         else:
@@ -217,12 +228,12 @@ class CTF(object):
             ax.plot(kx,y,'k.')
             ax.plot(kx_interp,ynew,'k-',label='Im(CTF)')
 
-        if self.aperture_envelope is not None:
-            ax.plot(kx,self.aperture_envelope[:w,0],label='aperture')
-        if self.temporal_envelope is not None:
-            ax.plot(kx,self.temporal_envelope[:w,0],label='temporal')
-        if self.spatial_envelope is not None:
-            ax.plot(kx,self.spatial_envelope[:w,0],label='spatial')
+        if aperture is not None:
+            ax.plot(kx,aperture[:w,0],label='aperture')
+        if temporal is not None:
+            ax.plot(kx,temporal[:w,0],label='temporal')
+        if spatial is not None:
+            ax.plot(kx,spatial[:w,0],label='spatial')
 
         ax.set_xlabel('Spatial frequency [1/Angstrom]')
         ax.set_ylabel('Contrast')
