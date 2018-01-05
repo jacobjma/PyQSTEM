@@ -215,9 +215,9 @@ void QSTEM::get_energy(float* v0)
 void QSTEM::allocate_potential()
 {
   if (muls.trans != NULL){
-    fftwf_free(muls.trans);
-    fftwf_free(muls.trans[0]);
     fftwf_free(muls.trans[0][0]);
+    fftwf_free(muls.trans[0]);
+    fftwf_free(muls.trans);
     fftwf_destroy_plan(muls.fftPlanPotForw);
     fftwf_destroy_plan(muls.fftPlanPotInv);
     muls.trans = NULL;
@@ -373,12 +373,12 @@ void QSTEM::set_scan_range(float scanXStart,float scanXStop,int scanXN,float sca
 
 void QSTEM::free_wave(){
   if (wave != NULL){
-    fftwf_free(wave->wave);
     fftwf_free(wave->wave[0]);
-    fftwf_free(wave->diffpat);
+    fftwf_free(wave->wave);
     fftwf_free(wave->diffpat[0]);
-    fftwf_free(wave->avgArray);
+    fftwf_free(wave->diffpat);
     fftwf_free(wave->avgArray[0]);
+    fftwf_free(wave->avgArray);
     fftwf_destroy_plan(wave->fftPlanWaveForw);
     fftwf_destroy_plan(wave->fftPlanWaveInv);
   }
@@ -418,7 +418,7 @@ void QSTEM::set_wave(std::vector <std::vector <std::vector <double> > >wave_vec,
 void QSTEM::build_wave(int type,float v0,int nx,int ny,float resolutionX,float resolutionY)
 {
   free_wave();
-
+  
   muls.nx = nx;
   muls.ny = ny;
   if (resolutionX <= 0){
