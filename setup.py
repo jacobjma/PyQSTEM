@@ -47,7 +47,7 @@ setup(name='qstem',
                     library_dirs=library_dirs,
                     libraries=libraries,
                     include_dirs=include_dirs,
-                    extra_compile_args=['-std=c++11','-D MS_WIN64'],
+                    extra_compile_args=['-std=c++11','-stdlib=libc++','-D MS_WIN64'],
                     language='c++')),
 
      )
