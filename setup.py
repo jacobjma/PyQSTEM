@@ -13,6 +13,17 @@ import numpy as np
 import os
 import sys
 
+description = "A Python interface to the electron microscopy simulation program QSTEM."
+
+long_description = """\
+QSTEM is a program for quantitative image simulation in electron microscopy, including TEM, STEM and CBED image simulation.
+
+This project interfaces the QSTEM code with Python and the Atomic Simulation Environment (ASE) to provide a single environment for building models, simulating and analysing images.
+
+This package requires that the FFTW library has already been installed.
+"""
+
+
 include_dirs = [np.get_include(),os.path.join(os.getcwd(), 'fftw'),os.path.join(os.getcwd(), 'source/')]
 
 if get_build_platform() == 'win32':
@@ -40,14 +51,23 @@ sources = ['source/' + x for x in sources]
 
 sources+=['pyqstem/qstem_interface.pyx','pyqstem/QSTEM.cpp']
 
-setup(name='qstem',
-        packages = find_packages(),
-        ext_modules=cythonize(Extension('pyqstem.qstem_interface',
-                    sources=sources,
-                    library_dirs=library_dirs,
-                    libraries=libraries,
-                    include_dirs=include_dirs,
-                    extra_compile_args=['-std=c++11','-D MS_WIN64'],
-                    language='c++')),
+setup(name='pyqstem',
+      packages = find_packages(),
+      version = '1.0',
+      description=description,
+      long_description=long_description,
+      maintainer="Jacob Madsen",
+      maintainer_email="jacob.jma@gmail.com",
+      url="https://github.com/jacobjma/PyQSTEM",
+      license='GPLv3',
+      platforms = ["Windows", "Linux", "Mac OS-X", "Unix"],
+      install_requires=['ase', 'Cython', 'scikit-image', 'pillow'],
+      ext_modules=cythonize(Extension('pyqstem.qstem_interface',
+                                      sources=sources,
+                                      library_dirs=library_dirs,
+                                      libraries=libraries,
+                                      include_dirs=include_dirs,
+                                      extra_compile_args=['-std=c++11','-D MS_WIN64'],
+                                      language='c++')),
 
      )
