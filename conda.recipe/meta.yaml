@@ -2,13 +2,11 @@ package:
   name: pyqstem
   # this is nice, but only works once you have an initial annotated git tag
   # version: {{ GIT_DESCRIBE_TAG }}.{{ GIT_BUILD_STR }}
-  version:  0.0.1
+  version:  1.0
 
 source:
   git_url: https://github.com/jacobjma/PyQSTEM
   # git_tag:  (commit id or tag of release to build, defaults to master)
-  patches:
-    - setup_simplify.patch
 
 build:
   script: python setup.py install --single-version-externally-managed --record=record.txt
