@@ -48,5 +48,5 @@ about:
     doc_url: https://github.com/jacobjma/PyQSTEM
     home: https://github.com/jacobjma/PyQSTEM
     license: GPLv3
-    license_file: LICENSE
+    license_file: License.txt
     summary: A Python interface to the electron microscopy simulation program QSTEM.
