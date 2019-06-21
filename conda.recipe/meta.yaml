@@ -20,7 +20,6 @@ requirements:
     - numpy
     - python
     - setuptools
-    - toolchain
   run:
     - ase
     - fftw
