@@ -1,0 +1,52 @@
+package:
+  name: pyqstem
+  # this is nice, but only works once you have an initial annotated git tag
+  # version: {{ GIT_DESCRIBE_TAG }}.{{ GIT_BUILD_STR }}
+  version:  1.0
+
+source:
+  path: ..
+  # git_url: https://github.com/jacobjma/PyQSTEM
+  # git_tag:  (commit id or tag of release to build, defaults to master)
+
+build:
+  script: python setup.py install --single-version-externally-managed --record=record.txt
+
+requirements:
+  build:
+    - cython
+    - fftw
+    - numpy
+    - python
+    - setuptools
+  run:
+    - ase
+    - fftw
+    - matplotlib
+    - numpy
+    - python
+    - scikit-image
+    - scipy
+
+test:
+  imports:
+    - pyqstem
+    - pyqstem.util
+    - pyqstem.potentials
+
+about:
+    description: 'QSTEM is a program for quantitative image simulation in
+        electron microscopy, including TEM, STEM and CBED image simulation.
+
+        This project interfaces the QSTEM code with Python and the
+        Atomic Simulation Environment (ASE) to provide a single
+        environment for building models, simulating and analysing
+        images.
+
+        '
+    dev_url: https://github.com/jacobjma/PyQSTEM
+    doc_url: https://github.com/jacobjma/PyQSTEM
+    home: https://github.com/jacobjma/PyQSTEM
+    license: GPL3
+    license_file: License.txt
+    summary: A Python interface to the electron microscopy simulation program QSTEM.
