@@ -1,0 +1,6 @@
+global-include *.pyx
+global-include *.pxd
+global-include *.h
+global-include *.dll
+global-include *.def
+global-include *.exp

@@ -57,11 +57,11 @@ sources += ['pyqstem/qstem_interface.pyx','pyqstem/QSTEM.cpp']
 if is_windows:
     compargs = ['-D MS_WIN64']
 else:
-    compargs = ['-std=c++11']
+    compargs = ['-std=c++11', '-stdlib=libc++']
 
 setup(name='pyqstem',
       packages = find_packages(),
-      version = '1.0',
+      version = '1.0.2',
       description=description,
       long_description=long_description,
       maintainer="Jacob Madsen",
