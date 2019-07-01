@@ -1,6 +1,7 @@
 from setuptools import setup
 from setuptools import Extension
 from setuptools import find_packages
+import platform
 from pkg_resources import get_build_platform
 from Cython.Build import cythonize
 import numpy as np
@@ -27,6 +28,9 @@ include_dirs = [
 # Detect Anaconda and use Anaconda's FFTW on Windows.
 is_conda = os.path.exists(os.path.join(sys.prefix, 'conda-meta'))
 is_windows = get_build_platform() in ['win32', 'win-amd64']
+is_mac = 'macosx' in get_build_platform()
+if is_mac:
+    is_highsierra_or_older = platform.mac_ver()[0] < '10.14'
 
 if not is_conda and get_build_platform() == 'win32':
     # 32-bit Windows and not Anaconda: Use FFTW packaged with PyQSTEM
@@ -54,14 +58,22 @@ sources = ['source/' + x for x in sources]
 
 sources += ['pyqstem/qstem_interface.pyx','pyqstem/QSTEM.cpp']
 
+compargs = []
+linkargs = []
 if is_windows:
-    compargs = ['-D MS_WIN64']
+    compargs += ['-D MS_WIN64']
 else:
-    compargs = ['-std=c++11', '-stdlib=libc++']
+    compargs += ['-std=c++11']
+if is_mac and is_highsierra_or_older:
+    # These options are needed by the clang compiler on macOS X 10.13
+    # 'High Sierra' or older, it is default on 10.14 or newer.
+    compargs += ['-stdlib=libc++']
+    linkargs += ['-stdlib=libc++']
 
+    
 setup(name='pyqstem',
       packages = find_packages(),
-      version = '1.0.2',
+      version = '1.0.3',
       description=description,
       long_description=long_description,
       maintainer="Jacob Madsen",
@@ -77,6 +89,7 @@ setup(name='pyqstem',
                                       libraries=libraries,
                                       include_dirs=include_dirs,
                                       extra_compile_args=compargs,
+                                      extra_link_args=linkargs,
                                       language='c++')),
 
      )
