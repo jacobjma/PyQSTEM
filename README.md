@@ -1,5 +1,7 @@
 # PyQSTEM
 
+**This repository is no longer be maintained here. You may instead be interested in a [new Python-based multislice simulation program](https://github.com/jacobjma/abTEM).**
+
 QSTEM is a program for quantitative image simulation in electron microscopy, including TEM, STEM and CBED image simulation. 
 
 This project interfaces the QSTEM code with Python and the Atomic Simulation Environment (ASE) to provide a single environment for building models, simulating and analysing images.
