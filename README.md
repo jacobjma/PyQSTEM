@@ -4,10 +4,9 @@ QSTEM is a program for quantitative image simulation in electron microscopy, inc
 
 This project interfaces the QSTEM code with Python and the Atomic Simulation Environment (ASE) to provide a single environment for building models, simulating and analysing images.
 
-**This repository is no longer be maintained here. You may instead be interested in this [new Python-based multislice simulation program](https://github.com/jacobjma/abTEM).**
+*This program is no longer be maintained here. You may instead be interested in this [new Python-based multislice simulation program](https://github.com/jacobjma/abTEM).*
 
 QSTEM webpage: http://qstem.org/
-
 ASE webpage: http://wiki.fysik.dtu.dk/ase
 
 ## Dependencies
