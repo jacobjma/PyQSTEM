@@ -194,7 +194,7 @@ class CTF(object):
     def radial_plot(self,shape=None,sampling=None,wavelength=None,energy=None,
                     max_freq=2,ax=None,interpolate=True):
 
-        from scipy.interpolate import spline,interp1d
+        from scipy.interpolate import interp1d
 
         if ax is None:
             fig, ax = plt.subplots()
